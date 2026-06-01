@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>股票 1 分钟分时复盘</title>
+    <link rel="stylesheet" href="/styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="topbar" aria-label="查询条件">
+        <div>
+          <p class="eyebrow">A 股分时复盘</p>
+          <h1>1 分钟曲线对比</h1>
+        </div>
+        <form id="queryForm" class="controls">
+          <label class="field">
+            <span>日期</span>
+            <input id="dateInput" name="date" type="date" required />
+          </label>
+
+          <label class="field stock-select-field">
+            <span>股票</span>
+            <select id="stockSelect" name="stocks" multiple size="7" aria-label="股票多选"></select>
+          </label>
+
+          <label class="field custom-symbol">
+            <span>添加代码</span>
+            <div class="inline-input">
+              <input id="customSymbol" type="text" placeholder="600519 / sh600519" inputmode="text" />
+              <button id="addSymbolButton" type="button" title="添加股票代码">+</button>
+            </div>
+          </label>
+
+          <fieldset class="segmented" aria-label="图表模式">
+            <legend>显示</legend>
+            <label>
+              <input type="radio" name="mode" value="pct" checked />
+              <span>涨跌幅</span>
+            </label>
+            <label>
+              <input type="radio" name="mode" value="price" />
+              <span>价格</span>
+            </label>
+          </fieldset>
+
+          <button class="primary" type="submit">查询</button>
+        </form>
+      </section>
+
+      <section class="chart-panel" aria-label="分时图">
+        <div class="chart-header">
+          <div>
+            <h2 id="chartTitle">选择日期和股票后查询</h2>
+            <p id="chartSubtitle">交易日期 · 多标的</p>
+          </div>
+          <div id="status" class="status" role="status"></div>
+        </div>
+        <div id="chart" class="chart"></div>
+      </section>
+    </main>
+
+    <script src="/app.js"></script>
+  </body>
+</html>
