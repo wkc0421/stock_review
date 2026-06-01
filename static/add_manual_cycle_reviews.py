@@ -4,7 +4,7 @@ import json
 import re
 from pathlib import Path
 
-from generate_cycle_reviews import CSS, esc, render_table
+from generate_cycle_reviews import CSS, esc, leader_state_for_date, load_leader_ledger, render_table
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -67,8 +67,8 @@ MANUAL = [
         "date": "2026-05-12",
         "next": "2026-05-13",
         "cycle": "电力容量核心确认前分歧期",
-        "prior": "大唐发电",
-        "theme": "电力 / 算电协同",
+        "prior": "",
+        "theme": "",
         "core": "大唐发电延续高度；全市场57家涨停，最高11板",
         "tradable": "大唐发电5板按观察处理",
         "next_opportunity": "4板买点已过，5板只做持仓确认或观察，不做新开仓标准买点",
@@ -134,6 +134,9 @@ MANUAL = [
 ]
 
 
+LEADER_LEDGER = load_leader_ledger()
+
+
 def read_json(path):
     text = path.read_text(encoding="utf-8")
     match = re.search(r'<script type="application/json" id="stock-cycle-review-data">\s*(.*?)\s*</script>', text, re.S)
@@ -154,12 +157,13 @@ def previous_reports(date):
 
 
 def render(item):
-    prior = item["prior"]
-    theme = item["theme"]
+    anchor = leader_state_for_date(dt.date.fromisoformat(item["date"]), LEADER_LEDGER)
+    prior = item["prior"] or anchor["prior_leader"]
+    theme = item["theme"] or anchor["prior_theme"]
+    prior_confirmed = bool(item["prior"]) or anchor["prior_leader_confirmed"]
+    prior_source = "手工补源复盘项" if item["prior"] else anchor["prior_leader_source"]
+    prior_note = anchor["prior_leader_note"]
     prev = previous_reports(item["date"])
-    if (not prior or not theme) and prev:
-        prior = prior or prev[-1].get("prior_confirmed_leader", "")
-        theme = theme or prev[-1].get("prior_leader_theme", "")
 
     prev_rows = [
         [esc(r.get("review_date")), esc(r.get("cycle_stage")), esc(r.get("current_core")), esc(r.get("next_opportunity")), "只用前序归档滚动比较"]
@@ -188,6 +192,10 @@ def render(item):
         },
         "prior_confirmed_leader": prior,
         "prior_leader_theme": theme,
+        "prior_leader_confirmed": prior_confirmed,
+        "prior_leader_source": prior_source,
+        "prior_leader_note": prior_note,
+        "leader_watch": "无",
         "intermediate_trial_chain": item["core"],
         "old_leader_chain": f"{prior} / {theme}",
         "current_core": item["core"],
@@ -208,7 +216,7 @@ def render(item):
 <header><h1>A股短线周期复盘 - {esc(item["date"])}</h1><p class="note">次日计划对应：{esc(item["next"])}。复盘口径：历史实盘模拟，只使用 {esc(item["date"])} 当天及之前数据。{esc(item["source_note"])}</p><p class="risk">这是复盘框架，不构成投资建议或荐股。</p></header>
 <section class="grid status-grid" aria-label="核心状态"><div class="metric"><div class="label">当前周期</div><div class="value">{esc(item["cycle"])}</div></div><div class="metric"><div class="label">上一轮龙头/板块</div><div class="value">{esc(prior)} / {esc(theme)}</div></div><div class="metric"><div class="label">中间试错高标</div><div class="value">{esc(item["core"])}</div></div><div class="metric"><div class="label">可交易最高板</div><div class="value">{esc(item["tradable"])}</div></div><div class="metric"><div class="label">下一次标准买点</div><div class="value">{esc(item["next_opportunity"])}</div></div><div class="metric"><div class="label">硬性禁买</div><div class="value">不使用未来数据倒推</div></div></section>
 <section><h2>高位情绪快照</h2>{render_table(["最高板","可交易最高板","昨日高标表现","断板反馈","跌停高标","炸板高标","连板晋级率"], [[esc(item["core"]), esc(item["tradable"]), esc(f"{prior} / {theme}"), esc(item["sentiment"]), "见当日源", "见当日源", esc(item["sentiment"])]])}</section>
-<section><h2>周期链路</h2><div class="timeline"><div class="step"><div class="title">上一龙头</div><p>{esc(prior)} / {esc(theme)}</p></div><div class="step"><div class="title">题材判断</div><p>{esc(item["themes"])}</p></div><div class="step"><div class="title">当前核心</div><p>{esc(item["core"])}</p></div><div class="step"><div class="title">下一触发</div><p>{esc(item["next_opportunity"])}</p></div></div></section>
+<section><h2>周期链路</h2><div class="timeline"><div class="step"><div class="title">上一龙头</div><p>{esc(prior)} / {esc(theme)}。来源：{esc(prior_source)}。</p></div><div class="step"><div class="title">题材判断</div><p>{esc(item["themes"])}</p></div><div class="step"><div class="title">当前核心</div><p>{esc(item["core"])}</p></div><div class="step"><div class="title">下一触发</div><p>{esc(item["next_opportunity"])}</p></div></div></section>
 <section><h2>最近归档对比</h2>{render_table(["日期","周期","核心","上次跟踪/机会","跟踪结论"], prev_rows)}</section>
 <section><h2>板块强度</h2>{render_table(["板块","高标核心","一字/中位助攻","容量核心","与旧周期关系","强度"], theme_rows)}</section>
 <section><h2>连板梯队</h2>{render_table(["板数","股票","题材","角色","交易性","模型结论"], ladder_rows)}</section>

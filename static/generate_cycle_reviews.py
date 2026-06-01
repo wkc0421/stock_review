@@ -1,7 +1,9 @@
 import datetime as dt
 import html
 import json
+import os
 import re
+import time
 from pathlib import Path
 
 import requests
@@ -10,6 +12,7 @@ from bs4 import BeautifulSoup
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT_DIR = ROOT / "stock-cycle-reviews"
+LEADER_LEDGER_PATH = ROOT / "static" / "cycle_leaders.json"
 START = dt.date(2026, 3, 17)
 END = dt.date(2026, 6, 1)
 CATEGORY_URL = "https://wudaolu.com/c/aguhot/8.json"
@@ -20,6 +23,38 @@ CSS = """
 :root{--bg:#f6f7f9;--panel:#fff;--text:#1f2937;--muted:#6b7280;--line:#d9dee7;--strong:#13795b;--warn:#b26a00;--danger:#b42318;--info:#1d4ed8}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei",sans-serif;line-height:1.55}.page{width:min(1180px,calc(100% - 32px));margin:0 auto;padding:28px 0 42px}header{display:grid;gap:10px;margin-bottom:16px}h1{margin:0;font-size:clamp(24px,4vw,36px);letter-spacing:0}h2{margin:0 0 12px;font-size:18px;letter-spacing:0}p{margin:0}.note{color:var(--muted);font-size:14px}.risk{border-left:4px solid var(--warn);background:#fff8ec;padding:10px 12px;color:#7a4b00}.grid{display:grid;gap:12px}.status-grid{grid-template-columns:repeat(6,minmax(0,1fr));margin:16px 0}.metric,section{background:var(--panel);border:1px solid var(--line);border-radius:8px}.metric{min-height:96px;padding:12px}.metric .label{color:var(--muted);font-size:12px;margin-bottom:6px}.metric .value{font-size:17px;font-weight:700}section{padding:16px;margin-bottom:14px}.timeline,.plan{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.plan{grid-template-columns:repeat(3,1fr)}.step,.plan-block{border:1px solid var(--line);border-radius:8px;padding:12px;background:#fbfcfe}.title,.plan-block strong{display:block;font-weight:700;margin-bottom:6px}table{width:100%;border-collapse:collapse;font-size:14px}th,td{border-bottom:1px solid var(--line);padding:10px 8px;text-align:left;vertical-align:top}th{color:var(--muted);font-weight:600;background:#f9fafb}.badge{display:inline-flex;align-items:center;min-height:24px;padding:2px 8px;border-radius:999px;font-size:12px;font-weight:700;white-space:nowrap}.buy{background:#e8f5ef;color:var(--strong)}.observe{background:#fff4db;color:var(--warn)}.reject{background:#fdebea;color:var(--danger)}.context{background:#eaf1ff;color:var(--info)}ul,ol{margin:0;padding-left:20px}a{color:var(--info)}@media(max-width:860px){.status-grid,.timeline,.plan{grid-template-columns:1fr}.table-wrap{overflow-x:auto}table{min-width:760px}}
 """.strip()
+
+AUTO_CONFIRM_STANDARD_BUY = False
+AUTO_UPDATE_PRIOR_LEADER = False
+FETCH_RETRIES = 4
+HARD_VETO_TERMS = (
+    "一字或准一字交易性不足",
+    "不是排除一字后的可交易最高板",
+    "尾盘回封",
+    "换手超过40%",
+    "换手偏低，分歧不足",
+    "炸板次数过多",
+    "同板块一字高标仍在，低位只能算助攻",
+    "与上一轮龙头同板块",
+)
+
+
+def fetch_json(url):
+    errors = []
+    use_system_proxy = os.environ.get("USE_SYSTEM_PROXY") == "1"
+    proxy_modes = (use_system_proxy, False) if use_system_proxy else (False, True)
+    for trust_env in proxy_modes:
+        session = requests.Session()
+        session.trust_env = trust_env
+        for attempt in range(FETCH_RETRIES):
+            try:
+                response = session.get(url, headers=HEADERS, timeout=25)
+                response.raise_for_status()
+                return response.json()
+            except requests.RequestException as exc:
+                errors.append(f"trust_env={trust_env} attempt={attempt + 1}: {exc}")
+                time.sleep(1 + attempt)
+    raise RuntimeError(f"无法获取数据：{url}\n" + "\n".join(errors[-6:]))
 
 
 def esc(value):
@@ -43,6 +78,53 @@ def to_float(text):
         return None
     match = re.search(r"-?\d+(?:\.\d+)?", str(text).replace(",", ""))
     return float(match.group(0)) if match else None
+
+
+def parse_date(value):
+    if not value:
+        return None
+    return dt.date.fromisoformat(str(value))
+
+
+def load_leader_ledger():
+    if not LEADER_LEDGER_PATH.exists():
+        return []
+    rows = json.loads(LEADER_LEDGER_PATH.read_text(encoding="utf-8"))
+    ledger = []
+    for row in rows:
+        item = dict(row)
+        item["effective_date_value"] = parse_date(item.get("effective_date"))
+        item["valid_until_value"] = parse_date(item.get("valid_until"))
+        if item["effective_date_value"]:
+            ledger.append(item)
+    return sorted(ledger, key=lambda x: x["effective_date_value"])
+
+
+def leader_state_for_date(review_date, ledger):
+    candidates = []
+    for item in ledger:
+        effective = item["effective_date_value"]
+        valid_until = item.get("valid_until_value")
+        if effective <= review_date and (valid_until is None or review_date <= valid_until):
+            candidates.append(item)
+    if not candidates:
+        return {
+            "prior_leader": "未确认",
+            "prior_code": "",
+            "prior_theme": "未确认",
+            "prior_leader_confirmed": False,
+            "prior_leader_source": "人工龙头台账未覆盖本日",
+            "prior_leader_note": "不能据此确认新旧周期，候选只能观察。",
+        }
+    item = candidates[-1]
+    return {
+        "prior_leader": item.get("leader") or "未确认",
+        "prior_code": item.get("code") or "",
+        "prior_theme": item.get("theme") or "未确认",
+        "prior_leader_confirmed": item.get("confidence") == "confirmed",
+        "prior_leader_source": item.get("source") or "人工龙头台账",
+        "prior_leader_note": item.get("note") or "",
+    }
 
 
 def time_minutes(text):
@@ -73,7 +155,7 @@ def fetch_topics():
     items = {}
     for page in range(0, 80):
         url = CATEGORY_URL if page == 0 else f"{CATEGORY_URL}?page={page}"
-        data = requests.get(url, headers=HEADERS, timeout=25).json()
+        data = fetch_json(url)
         for topic in data.get("topic_list", {}).get("topics", []):
             title = topic.get("title", "")
             if "昨日" in title:
@@ -91,7 +173,7 @@ def fetch_topics():
 
 def parse_topic(topic):
     url = f"https://wudaolu.com/t/topic/{topic['id']}"
-    data = requests.get(f"{url}.json", headers=HEADERS, timeout=25).json()
+    data = fetch_json(f"{url}.json")
     soup = BeautifulSoup(data["post_stream"]["posts"][0]["cooked"], "html.parser")
     text = soup.get_text("\n", strip=True)
     update_match = re.search(r"数据更新时间:\s*([0-9/:\s]+)", text)
@@ -252,10 +334,17 @@ def classify_day(parsed, state, previous_reports):
     theme_groups = sorted(parsed["theme_groups"], key=lambda g: len(g["rows"]), reverse=True)[:5]
     main_theme_names = [g["name"] for g in theme_groups[:3]]
 
-    old_leader = state["prior_leader"]
-    old_theme = state["prior_theme"]
-    old_live = next((r for r in ladder if stock_label(r) == old_leader or r.get("代码") == state.get("prior_code")), None)
-    old_status = f"{old_leader}未在涨停池，按旧龙未继续连板处理"
+    old_leader = state.get("prior_leader") or "未确认"
+    old_theme = state.get("prior_theme") or "未确认"
+    old_confirmed = bool(state.get("prior_leader_confirmed"))
+    old_source = state.get("prior_leader_source") or "未登记"
+    old_note = state.get("prior_leader_note") or ""
+    old_live = None
+    if old_confirmed:
+        old_live = next((r for r in ladder if stock_label(r) == old_leader or r.get("代码") == state.get("prior_code")), None)
+    old_status = "上一轮龙头未人工确认，周期判断降级为观察"
+    if old_confirmed:
+        old_status = f"{old_leader}未在涨停池，按旧龙未继续连板处理"
     if old_live:
         old_status = f"{old_leader}{old_live['board']}板仍在涨停池，旧周期未完全结束"
 
@@ -302,10 +391,24 @@ def classify_day(parsed, state, previous_reports):
         if same_theme_blocked:
             negatives.append("同板块一字高标仍在，低位只能算助攻")
 
+        if not old_confirmed:
+            negatives.append("上一轮龙头未确认，不能判定新周期窗口")
+        if old_live and old_live.get("board", 0) >= 5:
+            negatives.append("旧周期高标仍在，不能认定新周期")
+        if not AUTO_CONFIRM_STANDARD_BUY:
+            negatives.append("自动批量复盘不确认标准买点，需人工核验旧龙负反馈和板块独立性")
+
         verdict = "仅观察"
-        if "一字或准一字交易性不足" in negatives or same_theme_blocked or row["board"] != tradable_high:
+        hard_veto = any(term in negatives for term in HARD_VETO_TERMS)
+        if hard_veto or same_theme_blocked or row["board"] != tradable_high:
             verdict = "放弃"
-        elif len(positives) >= 4 and len(negatives) <= 1 and not overlap_theme(row, old_theme):
+        elif (
+            AUTO_CONFIRM_STANDARD_BUY
+            and len(positives) >= 4
+            and not negatives
+            and not overlap_theme(row, old_theme)
+            and not (old_live and old_live.get("board", 0) >= 5)
+        ):
             verdict = "标准买点"
             standard.append(row)
         candidates.append({"row": row, "role": role, "positives": positives, "negatives": negatives, "verdict": verdict})
@@ -327,13 +430,23 @@ def classify_day(parsed, state, previous_reports):
 
     if old_live and old_live.get("board", 0) >= 5:
         cycle = "旧周期延续或高位分歧期"
+    if not old_confirmed:
+        cycle = "旧龙锚点未确认的混沌试错期"
+        next_opportunity = "无标准买点；先补齐上一轮龙头和负反馈确认"
 
     current_core = "、".join(stock_label(r) + f"{r['board']}板" for r in nominal[:3]) if nominal else "无连板高度"
     tradable_high_text = "、".join(stock_label(r) + f"{r['board']}板" for r in tradable_high_rows[:3]) if tradable_high_rows else "无标准可交易4/5板买点"
+    leader_watch_rows = [
+        r for r in sorted(main_ladder, key=lambda x: x["board"], reverse=True)
+        if r["board"] >= 6 and not is_one_word(r) and not is_near_one_word(r)
+    ]
+    leader_watch = "、".join(stock_label(r) + f"{r['board']}板" for r in leader_watch_rows[:3]) if leader_watch_rows else "无"
 
     # Update state only after the report is classified, so the current report never benefits from future data.
-    confirm = next((r for r in sorted(main_ladder, key=lambda x: x["board"], reverse=True) if r["board"] >= 6 and not is_one_word(r)), None)
     next_state = dict(state)
+    confirm = None
+    if AUTO_UPDATE_PRIOR_LEADER:
+        confirm = next((r for r in sorted(main_ladder, key=lambda x: x["board"], reverse=True) if r["board"] >= 6 and not is_one_word(r)), None)
     if confirm:
         next_state["prior_leader"] = stock_label(confirm)
         next_state["prior_code"] = confirm.get("代码")
@@ -355,6 +468,10 @@ def classify_day(parsed, state, previous_reports):
         "hard_no_trade": "不顶一字，不买2/3板，不追6板首次开口，不买同板块后排替代",
         "old_leader": old_leader,
         "old_theme": old_theme,
+        "old_confirmed": old_confirmed,
+        "old_source": old_source,
+        "old_note": old_note,
+        "leader_watch": leader_watch,
         "next_state": next_state,
         "previous_reports": previous_reports,
     }
@@ -416,7 +533,10 @@ def render_report(parsed, analysis, previous_reports, next_date):
     if not prev_rows:
         prev_rows.append(["无更早归档", "无", "无", "无", "从本日开始滚动"])
 
-    old_watch = f"旧龙：{analysis['old_leader']} / {analysis['old_theme']}。{analysis['old_status']}。若继续不在涨停池或出现高位负反馈，说明旧周期压制仍在；若重新涨停，说明旧周期仍有修复。"
+    if analysis["old_confirmed"]:
+        old_watch = f"旧龙：{analysis['old_leader']} / {analysis['old_theme']}。{analysis['old_status']}。若继续不在涨停池或出现高位负反馈，说明旧周期压制仍在；若重新涨停，说明旧周期仍有修复。"
+    else:
+        old_watch = f"旧龙：未确认。原因：{analysis['old_source']}。先补齐上一轮龙头、所属题材和负反馈证据；未补齐前不确认新周期买点。"
     if analysis["standard"]:
         candidate_plan = "候选买点：" + "、".join(stock_label(r) for r in analysis["standard"]) + "。买点方式：只按计划内打板确认；不能半路、低吸或顶一字。"
     else:
@@ -426,7 +546,7 @@ def render_report(parsed, analysis, previous_reports, next_date):
 
     final_lines = [
         f"当前周期：{analysis['cycle']}。",
-        f"当前核心：上一轮龙头是{analysis['old_leader']} / {analysis['old_theme']}；当日核心为{analysis['current_core']}。",
+        f"当前核心：上一轮龙头是{analysis['old_leader']} / {analysis['old_theme']}；待确认高标为{analysis['leader_watch']}；当日核心为{analysis['current_core']}。",
         f"下一次标准买点：{analysis['next_opportunity']}。",
         f"硬性禁买：{analysis['hard_no_trade']}。",
     ]
@@ -447,6 +567,10 @@ def render_report(parsed, analysis, previous_reports, next_date):
         },
         "prior_confirmed_leader": analysis["old_leader"],
         "prior_leader_theme": analysis["old_theme"],
+        "prior_leader_confirmed": analysis["old_confirmed"],
+        "prior_leader_source": analysis["old_source"],
+        "prior_leader_note": analysis["old_note"],
+        "leader_watch": analysis["leader_watch"],
         "intermediate_trial_chain": "、".join(stock_label(r) + f"{r['board']}板" for r in parsed["ladder"] if 3 <= r["board"] <= 5)[:200],
         "old_leader_chain": f"{analysis['old_leader']} / {analysis['old_theme']}",
         "current_core": analysis["current_core"],
@@ -495,9 +619,9 @@ def render_report(parsed, analysis, previous_reports, next_date):
     <section>
       <h2>周期链路</h2>
       <div class="timeline">
-        <div class="step"><div class="title">上一龙头</div><p>{esc(analysis["old_leader"])} / {esc(analysis["old_theme"])}。{esc(analysis["old_status"])}</p></div>
+        <div class="step"><div class="title">上一龙头</div><p>{esc(analysis["old_leader"])} / {esc(analysis["old_theme"])}。{esc(analysis["old_status"])}。来源：{esc(analysis["old_source"])}。</p></div>
         <div class="step"><div class="title">题材判断</div><p>{esc("、".join(main_theme_names := [g["name"] for g in analysis["theme_groups"][:3]]) or "无明确主线")} 是当日主要涨停方向，先看是否独立于旧周期。</p></div>
-        <div class="step"><div class="title">当前核心</div><p>{esc(analysis["current_core"])}。名义最高板不等于可交易龙头。</p></div>
+        <div class="step"><div class="title">当前核心</div><p>{esc(analysis["current_core"])}。待确认高标：{esc(analysis["leader_watch"])}。名义最高板不等于可交易龙头。</p></div>
         <div class="step"><div class="title">下一触发</div><p>{esc(analysis["next_opportunity"])}</p></div>
       </div>
     </section>
@@ -560,29 +684,33 @@ def main():
     OUT_DIR.mkdir(exist_ok=True)
     topics = fetch_topics()
     parsed_days = [parse_topic(topic) for topic in topics]
+    parsed_date_keys = {p["date"].isoformat() for p in parsed_days}
     reports = load_previous_reports()
-    reports_by_date = {r.get("review_date"): r for r in reports}
-    state = {
-        "prior_leader": "豫能控股",
-        "prior_code": "001896",
-        "prior_theme": "电力 / 算电协同",
-    }
-    if "2026-03-13" in reports_by_date:
-        base = reports_by_date["2026-03-13"]
-        state["prior_leader"] = base.get("prior_confirmed_leader") or state["prior_leader"]
-        state["prior_theme"] = base.get("prior_leader_theme") or state["prior_theme"]
+    ledger = load_leader_ledger()
+    gap_reports = sorted(
+        [
+            r for r in reports
+            if START.isoformat() <= str(r.get("review_date", "")) <= END.isoformat()
+            and r.get("review_date") not in parsed_date_keys
+        ],
+        key=lambda r: r.get("review_date", ""),
+    )
 
     written = []
     rolling_reports = [r for r in reports if r.get("review_date", "") < START.isoformat()]
     for idx, parsed in enumerate(parsed_days):
+        while gap_reports and gap_reports[0].get("review_date", "") < parsed["date"].isoformat():
+            gap = gap_reports.pop(0)
+            if all(r.get("review_date") != gap.get("review_date") for r in rolling_reports):
+                rolling_reports.append(gap)
         next_date = parsed_days[idx + 1]["date"] if idx + 1 < len(parsed_days) else None
+        state = leader_state_for_date(parsed["date"], ledger)
         analysis = classify_day(parsed, state, rolling_reports)
         page, metadata = render_report(parsed, analysis, rolling_reports, next_date)
         out = OUT_DIR / f"{parsed['date'].isoformat()}.html"
         out.write_text(page, encoding="utf-8")
         written.append(out)
         rolling_reports.append(metadata)
-        state = analysis["next_state"]
 
     # Navigation page for the generated archive.
     rows = []
