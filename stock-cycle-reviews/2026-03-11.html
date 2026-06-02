@@ -1,174 +1,135 @@
 <!doctype html>
-<html lang="zh-CN">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>A股短线周期复盘 - 2026-03-11</title>
-  <style>
-    :root { --bg:#f6f7f9; --panel:#fff; --text:#1f2937; --muted:#6b7280; --line:#d9dee7; --strong:#13795b; --warn:#b26a00; --danger:#b42318; --info:#1d4ed8; }
-    * { box-sizing:border-box; }
-    body { margin:0; background:var(--bg); color:var(--text); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei",sans-serif; line-height:1.55; }
-    .page { width:min(1180px,calc(100% - 32px)); margin:0 auto; padding:28px 0 42px; }
-    header { display:grid; gap:10px; margin-bottom:16px; }
-    h1 { margin:0; font-size:clamp(24px,4vw,36px); letter-spacing:0; }
-    h2 { margin:0 0 12px; font-size:18px; letter-spacing:0; }
-    p { margin:0; }
-    .note { color:var(--muted); font-size:14px; }
-    .risk { border-left:4px solid var(--warn); background:#fff8ec; padding:10px 12px; color:#7a4b00; }
-    .grid { display:grid; gap:12px; }
-    .status-grid { grid-template-columns:repeat(6,minmax(0,1fr)); margin:16px 0; }
-    .metric, section { background:var(--panel); border:1px solid var(--line); border-radius:8px; }
-    .metric { min-height:96px; padding:12px; }
-    .metric .label { color:var(--muted); font-size:12px; margin-bottom:6px; }
-    .metric .value { font-size:17px; font-weight:700; }
-    section { padding:16px; margin-bottom:14px; }
-    .timeline,.plan { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; }
-    .plan { grid-template-columns:repeat(3,1fr); }
-    .step,.plan-block { border:1px solid var(--line); border-radius:8px; padding:12px; background:#fbfcfe; }
-    .title,.plan-block strong { display:block; font-weight:700; margin-bottom:6px; }
-    table { width:100%; border-collapse:collapse; font-size:14px; }
-    th,td { border-bottom:1px solid var(--line); padding:10px 8px; text-align:left; vertical-align:top; }
-    th { color:var(--muted); font-weight:600; background:#f9fafb; }
-    .badge { display:inline-flex; align-items:center; min-height:24px; padding:2px 8px; border-radius:999px; font-size:12px; font-weight:700; white-space:nowrap; }
-    .buy { background:#e8f5ef; color:var(--strong); }
-    .observe { background:#fff4db; color:var(--warn); }
-    .reject { background:#fdebea; color:var(--danger); }
-    .context { background:#eaf1ff; color:var(--info); }
-    ul,ol { margin:0; padding-left:20px; }
-    a { color:var(--info); }
-    @media (max-width:860px) { .status-grid,.timeline,.plan { grid-template-columns:1fr; } .table-wrap { overflow-x:auto; } table { min-width:760px; } }
-  </style>
-</head>
-<body>
-  <main class="page">
-    <header>
-      <h1>A股短线周期复盘 - 2026-03-11</h1>
-      <p class="note">次日计划对应：2026-03-12。复盘口径：历史实盘模拟，只使用 2026-03-11 收盘前后已公开信息，不使用未来数据。数据源：财联社复盘、新浪连板与涨停原因、巨潮公告。</p>
-      <p class="risk">这是复盘框架，不构成投资建议或荐股。核心问题不是每天找到股票，而是判断当下能不能出手。</p>
-    </header>
-
-    <section class="grid status-grid" aria-label="核心状态">
-      <div class="metric"><div class="label">当前周期</div><div class="value">豫能控股退潮后的混沌试错期</div></div>
-      <div class="metric"><div class="label">上一轮龙头/板块</div><div class="value">豫能控股 / 电力、算电协同</div></div>
-      <div class="metric"><div class="label">中间试错高标</div><div class="value">宁波建工、中南文化</div></div>
-      <div class="metric"><div class="label">可交易最高板</div><div class="value">宁波建工 4板</div></div>
-      <div class="metric"><div class="label">下一次标准买点</div><div class="value">暂无；只等4/5板分歧回封</div></div>
-      <div class="metric"><div class="label">硬性禁买</div><div class="value">不顶一字，不追孤高，不买2/3板</div></div>
-    </section>
-
-    <section>
-      <h2>高位情绪快照</h2>
-      <div class="table-wrap"><table><thead><tr><th>最高板</th><th>可交易最高板</th><th>昨日高标表现</th><th>断板反馈</th><th>跌停高标</th><th>炸板高标</th><th>连板晋级率</th></tr></thead>
-      <tbody><tr><td>宁波建工 4板</td><td>宁波建工 4板</td><td>豫能控股已脱离主升，风险公告后只做旧龙观察</td><td>高位没有明确新主升，资金偏试错</td><td>未核到批量高标跌停</td><td>财联社口径 18 股炸板</td><td>连板高度到4板，宽度一般</td></tr></tbody></table></div>
-    </section>
-
-    <section>
-      <h2>周期链路</h2>
-      <div class="timeline">
-        <div class="step"><div class="title">上一龙头</div><p>豫能控股属于电力、算电协同方向。3月9日公告披露其 2月11日至3月7日期间累计偏离值达 131.95%，并提示高交易风险，说明上一轮已经进入风险释放区。</p></div>
-        <div class="step"><div class="title">中间试错</div><p>宁波建工走到4板，中南文化走到3板，但两者尚未证明能从豫能控股周期中独立开新周期。</p></div>
-        <div class="step"><div class="title">当前核心</div><p>宁波建工是当日排除一字后的可交易最高板；中南文化和绿电二板链条只做盘面跟踪。</p></div>
-        <div class="step"><div class="title">下一触发</div><p>需要旧龙进一步负反馈，同时新题材在4/5板给出可交易分歧回封，才进入龙空龙窗口。</p></div>
-      </div>
-    </section>
-
-    <section>
-      <h2>最近归档对比</h2>
-      <div class="table-wrap"><table><thead><tr><th>日期</th><th>周期</th><th>核心</th><th>上次跟踪/机会</th><th>跟踪结论</th></tr></thead>
-      <tbody><tr><td>无更早归档</td><td>未找到更早的本地复盘归档</td><td>无</td><td>无</td><td>从豫能控股作为上一轮锚点重新建立周期链路</td></tr></tbody></table></div>
-    </section>
-
-    <section>
-      <h2>板块强度</h2>
-      <div class="table-wrap"><table><thead><tr><th>板块</th><th>高标核心</th><th>一字/中位助攻</th><th>容量核心</th><th>与旧周期关系</th><th>强度</th></tr></thead>
-      <tbody>
-        <tr><td>建筑装饰 / 数据中心 / 国企改革</td><td>宁波建工 4板</td><td>无清晰中位梯队</td><td>无明确容量中军</td><td>与豫能控股电力链无直接承接，偏独立试错</td><td><span class="badge observe">中等，孤高风险</span></td></tr>
-        <tr><td>绿电 / 电力 / 储能</td><td>中南文化 3板；绿发电力、华电能源 2板</td><td>绿发电力、华电能源、祥龙电业等二板跟随</td><td>中国能建、节能风电等首板活跃</td><td>与豫能控股同属电力、算电协同大链条，先按旧周期试错看</td><td><span class="badge context">有宽度，未到买点</span></td></tr>
-        <tr><td>化工 / 锂电 / 煤炭</td><td>金牛化工 8天4板</td><td>新疆天业、金浦钛业、粤桂股份等反复</td><td>宝丰能源、三友化工等</td><td>与旧龙无直接关系，更多是价格和资源分支</td><td><span class="badge context">背景活跃</span></td></tr>
-        <tr><td>算力硬件 / 光通信 / 铜箔</td><td>华工科技、光迅科技等趋势股</td><td>瑞斯康达 2板</td><td>光模块和铜箔容量票活跃</td><td>非豫能控股链，偏趋势博弈</td><td><span class="badge observe">趋势强，接力不纯</span></td></tr>
-      </tbody></table></div>
-    </section>
-
-    <section>
-      <h2>连板梯队</h2>
-      <div class="table-wrap"><table><thead><tr><th>板数</th><th>股票</th><th>题材</th><th>角色</th><th>交易性</th><th>模型结论</th></tr></thead>
-      <tbody>
-        <tr><td>4板</td><td>宁波建工</td><td>国企改革、数据中心、东数西算</td><td>试错高标</td><td>可交易，但板块助攻不够完整</td><td><span class="badge reject">放弃</span></td></tr>
-        <tr><td>3板</td><td>中南文化</td><td>国企改革、绿色电力、文化传媒</td><td>盘面跟踪</td><td>次日若到4板再检查</td><td><span class="badge observe">观察</span></td></tr>
-        <tr><td>2板</td><td>国安股份、瑞斯康达、黄河旋风、鼎信通讯、绿发电力、亚盛集团、祥龙电业、华电能源</td><td>绿电、数据中心、储能等</td><td>板块助攻和候选池</td><td>不是买点</td><td><span class="badge context">只跟踪</span></td></tr>
-      </tbody></table></div>
-    </section>
-
-    <section>
-      <h2>4/5板候选检查</h2>
-      <div class="table-wrap"><table><thead><tr><th>股票</th><th>板数</th><th>买点状态</th><th>加分项</th><th>扣分项</th><th>模型结论</th></tr></thead>
-      <tbody><tr><td>宁波建工</td><td>4</td><td>可交易最高板，但不是标准龙空龙买点</td><td>4板高度，非连续一字，题材具备数据中心辨识度</td><td>旧龙负反馈未充分兑现，板块助攻不完整，孤高试错属性重</td><td><span class="badge reject">放弃</span></td></tr></tbody></table></div>
-    </section>
-
-    <section>
-      <h2>次日盯盘预案</h2>
-      <div class="plan">
-        <div class="plan-block"><strong>一、明日重点观察</strong><p>旧龙：豫能控股 / 电力、算电协同。若继续大阴或跌停，说明旧周期负反馈加深；若修复，则新题材只能按试错处理。预案动作：只作为周期锚，不买旧龙。</p></div>
-        <div class="plan-block"><strong>二、候选买点</strong><p>股票：中南文化。板块：绿电 / 国企改革。当前3板，明日目标4板。买点方式：只有4板给出充分换手分歧回封且绿电有助攻才考虑打板；一字、秒板、尾盘板都放弃。</p></div>
-        <div class="plan-block"><strong>三、风险票</strong><p>股票/组合：宁波建工、绿发电力、华电能源。风险原因：宁波建工孤高，绿发和华电仍是2板跟踪。处理：宁波建工不追5板，绿电低位只观察是否形成梯队。</p></div>
-      </div>
-    </section>
-
-    <section>
-      <h2>最终四句话</h2>
-      <ol>
-        <li>当前周期：豫能控股退潮后的混沌试错期。</li>
-        <li>当前核心：旧龙是豫能控股 / 电力、算电协同；新试错是宁波建工和中南文化。</li>
-        <li>下一次标准买点：3月11日没有，等未来4/5板分歧换手回封。</li>
-        <li>硬性禁买：不追宁波建工5板，不买2/3板，不顶绿电一字，不在旧龙未负反馈时强认新周期。</li>
-      </ol>
-    </section>
-
-    <section>
-      <h2>数据源</h2>
-      <ul>
-        <li><a href="https://finance.sina.com.cn/jjxw/2026-03-11/doc-inhqrfck5567644.shtml">财联社3月11日焦点复盘</a></li>
-        <li><a href="https://cj.sina.com.cn/articles/view/3240851740/c12b791c00101ie0w">3月11日涨停板连板</a></li>
-        <li><a href="https://k.sina.com.cn/article_3240851740_c12b791c00101ie1i.html">3月11日涨停原因</a></li>
-        <li><a href="https://static.cninfo.com.cn/finalpage/2026-03-09/1225000676.pdf">豫能控股风险揭示公告</a></li>
-      </ul>
-    </section>
-
-    <script type="application/json" id="stock-cycle-review-data">
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>A股短线周期复盘 - 2026-03-11</title><style>:root{--bg:#f6f7f9;--panel:#fff;--text:#1f2937;--muted:#6b7280;--line:#d9dee7;--strong:#13795b;--warn:#b26a00;--danger:#b42318;--info:#1d4ed8}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei",sans-serif;line-height:1.55}.page{width:min(1180px,calc(100% - 32px));margin:0 auto;padding:28px 0 42px}header{display:grid;gap:10px;margin-bottom:16px}h1{margin:0;font-size:clamp(24px,4vw,36px);letter-spacing:0}h2{margin:0 0 12px;font-size:18px;letter-spacing:0}p{margin:0}.note{color:var(--muted);font-size:14px}.risk{border-left:4px solid var(--warn);background:#fff8ec;padding:10px 12px;color:#7a4b00}.grid{display:grid;gap:12px}.status-grid{grid-template-columns:repeat(6,minmax(0,1fr));margin:16px 0}.metric,section{background:var(--panel);border:1px solid var(--line);border-radius:8px}.metric{min-height:96px;padding:12px}.metric .label{color:var(--muted);font-size:12px;margin-bottom:6px}.metric .value{font-size:17px;font-weight:700}section{padding:16px;margin-bottom:14px}.timeline,.plan{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.plan{grid-template-columns:repeat(3,1fr)}.step,.plan-block{border:1px solid var(--line);border-radius:8px;padding:12px;background:#fbfcfe}.title,.plan-block strong{display:block;font-weight:700;margin-bottom:6px}table{width:100%;border-collapse:collapse;font-size:14px}th,td{border-bottom:1px solid var(--line);padding:10px 8px;text-align:left;vertical-align:top}th{color:var(--muted);font-weight:600;background:#f9fafb}.badge{display:inline-flex;align-items:center;min-height:24px;padding:2px 8px;border-radius:999px;font-size:12px;font-weight:700;white-space:nowrap}.buy{background:#e8f5ef;color:var(--strong)}.observe{background:#fff4db;color:var(--warn)}.reject{background:#fdebea;color:var(--danger)}.context{background:#eaf1ff;color:var(--info)}ul,ol{margin:0;padding-left:20px}a{color:var(--info)}@media(max-width:860px){.status-grid,.timeline,.plan{grid-template-columns:1fr}.table-wrap{overflow-x:auto}table{min-width:760px}}</style></head>
+<body><main class="page">
+<header><h1>A股短线周期复盘 - 2026-03-11</h1><p class="note">次日计划对应：2026-03-12。复盘口径：历史实盘模拟，只使用 2026-03-11 当天及之前数据。数据源：财联社复盘、新浪连板与涨停原因、巨潮公告</p><p class="risk">这是复盘框架，不构成投资建议或荐股。输出顺序固定为：阶段 -> 旧龙 -> 亏钱效应 -> 新方向 -> 梯队 -> 买点 -> 操作 -> 风控。</p></header>
+<section class="grid status-grid" aria-label="核心状态"><div class="metric"><div class="label">市场阶段</div><div class="value">退潮期</div></div><div class="metric"><div class="label">上一轮龙头/板块</div><div class="value">豫能控股 / 电力 / 算电协同</div></div><div class="metric"><div class="label">旧龙状态</div><div class="value">明显退潮</div></div><div class="metric"><div class="label">亏钱效应</div><div class="value">偏高</div></div><div class="metric"><div class="label">新方向</div><div class="value">手工补源观察</div></div><div class="metric"><div class="label">操作仓位</div><div class="value">空仓</div></div></section>
+<section><h2>高位情绪快照</h2><div class="table-wrap"><table><thead><tr><th>最高板</th><th>可交易最高板</th><th>昨日高标表现</th><th>断板反馈</th><th>跌停高标</th><th>炸板高标</th><th>连板晋级率</th></tr></thead><tbody><tr><td>宁波建工4板；中南文化3板和绿电二板只做盘面跟踪</td><td>宁波建工4板</td><td>豫能控股 / 电力 / 算电协同</td><td>财联社口径18股炸板，连板高度4板，未核到批量高标跌停</td><td>见当日源</td><td>见当日源</td><td>财联社口径18股炸板，连板高度4板，未核到批量高标跌停</td></tr></tbody></table></div></section>
+<section><h2>亏钱效应</h2><div class="table-wrap"><table><thead><tr><th>检查项</th><th>当前判断</th><th>处理要点</th></tr></thead><tbody><tr><td>高标是否继续A杀</td><td>需结合当日分时/跌停榜核验</td><td>手工补源不使用未来走势倒推</td></tr><tr><td>断板票是否继续跌停</td><td>财联社口径18股炸板，连板高度4板，未核到批量高标跌停</td><td>若跌停扩散，操作降级为空仓</td></tr><tr><td>昨日炸板票是否修复</td><td>手工源未完整披露</td><td>盘中补核，不在复盘中强行推断</td></tr><tr><td>连板高度是否下降</td><td>宁波建工4板；中南文化3板和绿电二板只做盘面跟踪</td><td>高度下降时优先保护仓位</td></tr><tr><td>补涨是否开始坑人</td><td>按候选表风险原因判断</td><td>旧周期补涨和无助攻默认不买</td></tr></tbody></table></div></section>
+<section><h2>周期链路</h2><div class="timeline"><div class="step"><div class="title">上一龙头</div><p>豫能控股 / 电力 / 算电协同。来源：手工补源复盘项。</p></div><div class="step"><div class="title">题材判断</div><p>建筑装饰/数据中心、绿电/电力、化工/锂电/煤炭</p></div><div class="step"><div class="title">当前核心</div><p>宁波建工4板；中南文化3板和绿电二板只做盘面跟踪</p></div><div class="step"><div class="title">下一触发</div><p>暂无标准买点；等4/5板分歧换手回封</p></div></div></section>
+<section><h2>最近归档对比</h2><div class="table-wrap"><table><thead><tr><th>日期</th><th>周期</th><th>核心</th><th>上次跟踪/机会</th><th>跟踪结论</th></tr></thead><tbody><tr><td>无更早归档</td><td>无</td><td>无</td><td>无</td><td>从本日开始</td></tr></tbody></table></div></section>
+<section><h2>板块强度</h2><div class="table-wrap"><table><thead><tr><th>板块</th><th>高标核心</th><th>一字/中位助攻</th><th>容量核心</th><th>与旧周期关系</th><th>强度</th></tr></thead><tbody><tr><td>建筑装饰/数据中心、绿电/电力、化工/锂电/煤炭</td><td>宁波建工4板；中南文化3板和绿电二板只做盘面跟踪</td><td>财联社口径18股炸板，连板高度4板，未核到批量高标跌停</td><td>未完整披露</td><td>与旧周期相关</td><td><span class="badge context">中等</span></td></tr></tbody></table></div></section>
+<section><h2>新方向判断</h2><div class="table-wrap"><table><thead><tr><th>结论</th><th>主要方向</th><th>与旧周期关系</th><th>买点状态</th></tr></thead><tbody><tr><td>手工补源：按当日主题描述观察</td><td>建筑装饰/数据中心、绿电/电力、化工/锂电/煤炭</td><td>与旧周期相关</td><td>未确认标准买点</td></tr></tbody></table></div></section>
+<section><h2>连板梯队</h2><div class="table-wrap"><table><thead><tr><th>板数</th><th>股票</th><th>题材</th><th>角色</th><th>交易性</th><th>模型结论</th></tr></thead><tbody><tr><td>4板</td><td>宁波建工</td><td>建筑装饰/数据中心、绿电/电力、化工/锂电/煤炭</td><td>试错高标</td><td>按收盘资料判断</td><td><span class="badge observe">观察</span></td></tr><tr><td>3板</td><td>中南文化</td><td>建筑装饰/数据中心、绿电/电力、化工/锂电/煤炭</td><td>盘面跟踪</td><td>按收盘资料判断</td><td><span class="badge observe">观察</span></td></tr><tr><td>2板</td><td>绿电低位</td><td>建筑装饰/数据中心、绿电/电力、化工/锂电/煤炭</td><td>助攻观察</td><td>按收盘资料判断</td><td><span class="badge observe">观察</span></td></tr></tbody></table></div></section>
+<section><h2>4/5板候选检查</h2><div class="table-wrap"><table><thead><tr><th>股票</th><th>板数</th><th>买点状态</th><th>加分项</th><th>扣分项</th><th>模型结论</th></tr></thead><tbody><tr><td>宁波建工</td><td>4</td><td>可交易最高板，但不是标准龙空龙买点</td><td>4板高度，非连续一字</td><td>旧龙负反馈未充分兑现，板块助攻不完整，孤高试错属性重</td><td><span class="badge reject">放弃</span></td></tr></tbody></table></div></section>
+<section><h2>次日盯盘预案</h2><div class="plan"><div class="plan-block"><strong>一、明日重点观察</strong><p>旧龙：豫能控股 / 电力 / 算电协同。观察其是否继续负反馈或修复。</p></div><div class="plan-block"><strong>二、候选买点</strong><p>候选买点按上表，只能打板确认，不半路低吸。</p></div><div class="plan-block"><strong>三、风险票</strong><p>风险：一字、尾盘、爆量、旧周期补涨、无助攻。处理：不买或只观察。</p></div></div></section>
+<section><h2>操作与仓位</h2><div class="table-wrap"><table><thead><tr><th>市场阶段</th><th>仓位级别</th><th>操作动作</th><th>候选处理</th></tr></thead><tbody><tr><td>退潮期</td><td>空仓</td><td>高标负反馈扩散时不试错，先等亏钱效应收敛。</td><td>不做新开仓，最多记录下一批题材强度。</td></tr></tbody></table></div></section>
+<section><h2>风控纪律</h2><div class="table-wrap"><table><thead><tr><th>项目</th><th>规则</th></tr></thead><tbody><tr><td>仓位上限</td><td>仓位上限：空仓，禁止用低位杂毛试错。</td></tr><tr><td>单笔最大亏损</td><td>计划内打板失败或次日不及预期，优先执行退出；单笔亏损不扩大。</td></tr><tr><td>当日最大亏损</td><td>当日触发账户回撤上限后停止开仓，只复盘不加戏。</td></tr><tr><td>连续试错次数</td><td>连续两次试错失败后暂停，等新方向重新给出4/5板确认。</td></tr><tr><td>卖出条件</td><td>不能弱转强、板块助攻断层、高位爆量失控、跌停负反馈，按卖点处理。</td></tr></tbody></table></div></section>
+<section><h2>最终执行结论</h2><ol><li>当前市场阶段：退潮期；周期描述：豫能控股退潮后的混沌试错期。</li><li>当前核心：宁波建工4板；中南文化3板和绿电二板只做盘面跟踪。</li><li>亏钱效应：偏高；操作仓位：空仓。</li><li>下一次标准买点：暂无标准买点；等4/5板分歧换手回封。</li><li>硬性禁买：退潮期空仓，不追6板，不买2/3板。</li></ol></section>
+<section><h2>数据源</h2><ul><li><a href="https://finance.sina.com.cn/jjxw/2026-03-11/doc-inhqrfck5567644.shtml">财联社3月11日焦点复盘</a></li><li><a href="https://cj.sina.com.cn/articles/view/3240851740/c12b791c00101ie0w">3月11日涨停板连板</a></li><li><a href="https://k.sina.com.cn/article_3240851740_c12b791c00101ie1i.html">3月11日涨停原因</a></li></ul></section>
+<script type="application/json" id="stock-cycle-review-data">
 {
   "review_date": "2026-03-11",
   "data_cutoff": "2026-03-11",
   "next_trading_day": "2026-03-12",
   "cycle_stage": "豫能控股退潮后的混沌试错期",
+  "market_phase": "退潮期",
+  "old_leader_state": "明显退潮",
+  "loss_effect": {
+    "level": "偏高",
+    "summary": "亏钱效应：偏高。手工补源页以当日源描述为准。",
+    "rows": [
+      [
+        "高标是否继续A杀",
+        "需结合当日分时/跌停榜核验",
+        "手工补源不使用未来走势倒推"
+      ],
+      [
+        "断板票是否继续跌停",
+        "财联社口径18股炸板，连板高度4板，未核到批量高标跌停",
+        "若跌停扩散，操作降级为空仓"
+      ],
+      [
+        "昨日炸板票是否修复",
+        "手工源未完整披露",
+        "盘中补核，不在复盘中强行推断"
+      ],
+      [
+        "连板高度是否下降",
+        "宁波建工4板；中南文化3板和绿电二板只做盘面跟踪",
+        "高度下降时优先保护仓位"
+      ],
+      [
+        "补涨是否开始坑人",
+        "按候选表风险原因判断",
+        "旧周期补涨和无助攻默认不买"
+      ]
+    ]
+  },
+  "new_direction": {
+    "summary": "手工补源：按当日主题描述观察",
+    "strong_independent": "建筑装饰/数据中心、绿电/电力、化工/锂电/煤炭",
+    "old_related": "与旧周期相关"
+  },
+  "operation_plan": {
+    "position": "空仓",
+    "action": "高标负反馈扩散时不试错，先等亏钱效应收敛。",
+    "candidate": "不做新开仓，最多记录下一批题材强度。"
+  },
+  "risk_control": [
+    [
+      "仓位上限",
+      "仓位上限：空仓，禁止用低位杂毛试错。"
+    ],
+    [
+      "单笔最大亏损",
+      "计划内打板失败或次日不及预期，优先执行退出；单笔亏损不扩大。"
+    ],
+    [
+      "当日最大亏损",
+      "当日触发账户回撤上限后停止开仓，只复盘不加戏。"
+    ],
+    [
+      "连续试错次数",
+      "连续两次试错失败后暂停，等新方向重新给出4/5板确认。"
+    ],
+    [
+      "卖出条件",
+      "不能弱转强、板块助攻断层、高位爆量失控、跌停负反馈，按卖点处理。"
+    ]
+  ],
   "high_level_sentiment": {
-    "nominal_highest_board": "宁波建工4板",
+    "nominal_highest_board": "宁波建工4板；中南文化3板和绿电二板只做盘面跟踪",
     "tradable_highest_board": "宁波建工4板",
-    "previous_high_board_performance": "豫能控股风险公告后作为旧龙观察",
-    "broken_board_feedback": "高位未形成新主升",
-    "high_level_limit_down_count": "未核到批量高标跌停",
-    "high_level_broken_board_count": "财联社口径18股炸板",
-    "promotion_rate": "高度4板，宽度一般"
+    "previous_high_board_performance": "豫能控股 / 电力 / 算电协同",
+    "broken_board_feedback": "财联社口径18股炸板，连板高度4板，未核到批量高标跌停",
+    "high_level_limit_down_count": "见当日源",
+    "high_level_broken_board_count": "见当日源",
+    "promotion_rate": "财联社口径18股炸板，连板高度4板，未核到批量高标跌停"
   },
   "prior_confirmed_leader": "豫能控股",
   "prior_leader_theme": "电力 / 算电协同",
-  "intermediate_trial_chain": "宁波建工4板，中南文化3板",
-  "old_leader_chain": "豫能控股 / 电力、算电协同",
+  "prior_leader_confirmed": true,
+  "prior_leader_source": "手工补源复盘项",
+  "prior_leader_note": "作为华电辽能启动前的上一轮龙头锚点；3月13日尾盘跌停后负反馈明确。",
+  "leader_watch": "无",
+  "intermediate_trial_chain": "宁波建工4板；中南文化3板和绿电二板只做盘面跟踪",
+  "old_leader_chain": "豫能控股 / 电力 / 算电协同",
   "current_core": "宁波建工4板；中南文化3板和绿电二板只做盘面跟踪",
   "tradable_high_board": "宁波建工4板",
   "next_opportunity": "暂无标准买点；等4/5板分歧换手回封",
-  "hard_no_trade": "不顶一字，不买2/3板，不追孤高5板",
+  "hard_no_trade": "退潮期空仓；不顶一字；不买2/3板；不追6板首次开口；不用未来数据倒推",
   "model_verdicts": [
-    {"stock":"宁波建工","role":"试错高标","verdict":"reject","reason":"4板高度可交易但旧龙负反馈不足、板块助攻不完整"},
-    {"stock":"中南文化","role":"3板跟踪","verdict":"observe only","reason":"不是当日4/5板候选，明日若到4板再检查"}
+    {
+      "stock": "宁波建工",
+      "role": "手工补源候选",
+      "verdict": "reject",
+      "reason": "可交易最高板，但不是标准龙空龙买点；旧龙负反馈未充分兑现，板块助攻不完整，孤高试错属性重"
+    }
   ],
   "sources": [
-    {"name":"财联社3月11日焦点复盘","url":"https://finance.sina.com.cn/jjxw/2026-03-11/doc-inhqrfck5567644.shtml"},
-    {"name":"3月11日涨停板连板","url":"https://cj.sina.com.cn/articles/view/3240851740/c12b791c00101ie0w"},
-    {"name":"3月11日涨停原因","url":"https://k.sina.com.cn/article_3240851740_c12b791c00101ie1i.html"},
-    {"name":"豫能控股风险揭示公告","url":"https://static.cninfo.com.cn/finalpage/2026-03-09/1225000676.pdf"}
+    {
+      "name": "财联社3月11日焦点复盘",
+      "url": "https://finance.sina.com.cn/jjxw/2026-03-11/doc-inhqrfck5567644.shtml"
+    },
+    {
+      "name": "3月11日涨停板连板",
+      "url": "https://cj.sina.com.cn/articles/view/3240851740/c12b791c00101ie0w"
+    },
+    {
+      "name": "3月11日涨停原因",
+      "url": "https://k.sina.com.cn/article_3240851740_c12b791c00101ie1i.html"
+    }
   ]
 }
-    </script>
-  </main>
-</body>
-</html>
+</script></main></body></html>

@@ -321,6 +321,152 @@ def overlap_theme(row, prior_theme):
     return False
 
 
+def extract_board_number(text):
+    numbers = [int(x) for x in re.findall(r"(\d+)板", str(text or ""))]
+    return max(numbers) if numbers else None
+
+
+def latest_previous_report(previous_reports):
+    return previous_reports[-1] if previous_reports else {}
+
+
+def previous_max_board(previous_reports):
+    prev = latest_previous_report(previous_reports)
+    sentiment = prev.get("high_level_sentiment") or {}
+    return extract_board_number(sentiment.get("nominal_highest_board")) or extract_board_number(prev.get("current_core"))
+
+
+def classify_market_phase(cycle, old_confirmed, old_live, standard, tradable_high_rows, max_board, previous_high):
+    if not old_confirmed:
+        return "试错期"
+    if standard:
+        return "新周期初期"
+    if old_live and old_live.get("board", 0) >= 5:
+        if broken_count(old_live) >= 3 or (turnover(old_live) or 0) >= 30:
+            return "分歧期"
+        return "主升期"
+    if previous_high and previous_high - max_board >= 2:
+        return "退潮期"
+    if tradable_high_rows:
+        return "分歧期"
+    return "试错期"
+
+
+def operation_for_phase(phase):
+    mapping = {
+        "主升期": {
+            "position": "正常仓",
+            "action": "只看龙头和核心补涨，普通后排不做。",
+            "candidate": "持仓以强弱和板块助攻为准，新开仓只接受计划内核心。",
+        },
+        "分歧期": {
+            "position": "降低仓位",
+            "action": "高位震荡期减少出手，不做普通后排，优先观察分歧后的修复质量。",
+            "candidate": "只有计划内4/5板分歧回封才可继续核验。",
+        },
+        "退潮期": {
+            "position": "空仓",
+            "action": "高标负反馈扩散时不试错，先等亏钱效应收敛。",
+            "candidate": "不做新开仓，最多记录下一批题材强度。",
+        },
+        "试错期": {
+            "position": "极小仓或空仓",
+            "action": "只观察最强辨识度，低位和后排不替代龙头买点。",
+            "candidate": "候选只能进观察池，不能因为高度或题材热度直接买。",
+        },
+        "新周期初期": {
+            "position": "小中仓",
+            "action": "只做新方向胜出后的核心确认，买点必须是计划内打板。",
+            "candidate": "标准4/5板分歧回封可执行，次日看弱转强和板块助攻。",
+        },
+    }
+    return mapping.get(phase, mapping["试错期"])
+
+
+def risk_control_for_phase(phase):
+    common = [
+        ["单笔最大亏损", "计划内打板失败或次日不及预期，优先执行退出；单笔亏损不扩大。"],
+        ["当日最大亏损", "当日触发账户回撤上限后停止开仓，只复盘不加戏。"],
+        ["连续试错次数", "连续两次试错失败后暂停，等新方向重新给出4/5板确认。"],
+        ["卖出条件", "不能弱转强、板块助攻断层、高位爆量失控、跌停负反馈，按卖点处理。"],
+    ]
+    phase_limit = {
+        "主升期": "仓位上限：正常仓，但高潮后段不盲目加仓。",
+        "分歧期": "仓位上限：降低到半仓以下，普通后排不做。",
+        "退潮期": "仓位上限：空仓，禁止用低位杂毛试错。",
+        "试错期": "仓位上限：极小仓或空仓，只允许最高辨识度试错。",
+        "新周期初期": "仓位上限：小中仓，确认后再考虑加到正常仓。",
+    }
+    return [["仓位上限", phase_limit.get(phase, phase_limit["试错期"])]] + common
+
+
+def stock_names(rows):
+    return "、".join(stock_label(row) for row in rows if stock_label(row))
+
+
+def loss_effect_analysis(ladder, previous_reports, candidates, max_board):
+    prev = latest_previous_report(previous_reports)
+    previous_high = previous_max_board(previous_reports)
+    current_names = {stock_label(row) for row in ladder}
+    prev_core = prev.get("current_core", "")
+    prev_core_names = [name for name in re.findall(r"([\u4e00-\u9fa5A-Za-zＡ-Ｚａ-ｚ]+)\d+板", prev_core) if name]
+    missing_prev = [name for name in prev_core_names if name not in current_names]
+    resealed_high = [row for row in ladder if row.get("board", 0) >= 4 and broken_count(row) > 0]
+    rejected_complements = [item["row"] for item in candidates if item["role"] == "旧周期二阶段/补涨" and item["verdict"] == "放弃"]
+
+    if previous_high is None:
+        height_text = "缺少前一日高度锚点，不能判断高度升降。"
+    elif max_board > previous_high:
+        height_text = f"连板高度从{previous_high}板升至{max_board}板，情绪有修复或延伸。"
+    elif max_board < previous_high:
+        height_text = f"连板高度从{previous_high}板降至{max_board}板，注意退潮或分歧扩散。"
+    else:
+        height_text = f"连板高度维持{max_board}板，高位仍在博弈。"
+
+    rows = [
+        ["高标是否继续A杀", "需结合分时/跌停榜核验" if missing_prev else "昨日核心仍可在当前梯队或缺少前序核心", "、".join(missing_prev) if missing_prev else "无明确失踪高标"],
+        ["断板票是否继续跌停", "当前源未完整披露断板跌停明细", "若昨日核心断板后跌停，按退潮加重处理"],
+        ["昨日炸板票是否修复", "当前源未完整披露昨日炸板修复", "只能用当日回封和板块修复做辅助判断"],
+        ["连板高度是否下降", height_text, "高度下降两档以上时，仓位直接降级"],
+        ["补涨是否开始坑人", "旧周期补涨风险偏高" if rejected_complements else "未发现被模型硬否决的旧周期补涨候选", stock_names(rejected_complements) or "无"],
+    ]
+
+    if missing_prev or (previous_high and previous_high - max_board >= 2):
+        level = "偏高"
+    elif resealed_high or rejected_complements:
+        level = "中等"
+    else:
+        level = "可控"
+    summary = f"亏钱效应：{level}。{height_text}"
+    return {"level": level, "summary": summary, "rows": rows}
+
+
+def new_direction_analysis(theme_groups, old_theme, candidates):
+    independent = []
+    old_related = []
+    for group in theme_groups:
+        related = any(group["name"] in old_theme or token in group["name"] for token in re.split(r"[ /、]+", old_theme) if len(token) >= 2)
+        if related:
+            old_related.append(group)
+        else:
+            independent.append(group)
+    strong_independent = [group for group in independent if len(group["rows"]) >= 7]
+    standard_candidates = [item for item in candidates if item["verdict"] == "标准买点"]
+    if standard_candidates:
+        summary = "新方向已进入买点核验区"
+    elif strong_independent:
+        summary = "有独立强分支，但仍需4/5板买点确认"
+    elif old_related and not independent:
+        summary = "资金仍偏旧方向延续或补涨"
+    else:
+        summary = "新方向不清晰，继续试错观察"
+    return {
+        "summary": summary,
+        "strong_independent": "、".join(group["name"] for group in strong_independent) or "无",
+        "old_related": "、".join(group["name"] for group in old_related) or "无",
+    }
+
+
 def classify_day(parsed, state, previous_reports):
     ladder = parsed["ladder"]
     max_board = max([r["board"] for r in ladder], default=0)
@@ -441,6 +587,22 @@ def classify_day(parsed, state, previous_reports):
         if r["board"] >= 6 and not is_one_word(r) and not is_near_one_word(r)
     ]
     leader_watch = "、".join(stock_label(r) + f"{r['board']}板" for r in leader_watch_rows[:3]) if leader_watch_rows else "无"
+    previous_high = previous_max_board(previous_reports)
+    market_phase = classify_market_phase(cycle, old_confirmed, old_live, standard, tradable_high_rows, max_board, previous_high)
+    if not old_confirmed:
+        old_leader_state = "未确认"
+    elif old_live and old_live.get("board", 0) >= 5 and market_phase == "主升期":
+        old_leader_state = "强势主升"
+    elif old_live:
+        old_leader_state = "高位震荡"
+    elif market_phase == "退潮期":
+        old_leader_state = "明显退潮"
+    else:
+        old_leader_state = "已经死亡或离开涨停主线，等待新方向"
+    loss_effect = loss_effect_analysis(ladder, previous_reports, candidates, max_board)
+    new_direction = new_direction_analysis(theme_groups, old_theme, candidates)
+    operation = operation_for_phase(market_phase)
+    risk_control = risk_control_for_phase(market_phase)
 
     # Update state only after the report is classified, so the current report never benefits from future data.
     next_state = dict(state)
@@ -464,8 +626,14 @@ def classify_day(parsed, state, previous_reports):
         "candidate_empty": candidate_empty,
         "standard": standard,
         "theme_groups": theme_groups,
+        "market_phase": market_phase,
+        "old_leader_state": old_leader_state,
+        "loss_effect": loss_effect,
+        "new_direction": new_direction,
+        "operation": operation,
+        "risk_control": risk_control,
         "next_opportunity": next_opportunity,
-        "hard_no_trade": "不顶一字，不买2/3板，不追6板首次开口，不买同板块后排替代",
+        "hard_no_trade": "退潮期空仓；不顶一字；不买2/3板；不追6板首次开口；不买同板块后排替代",
         "old_leader": old_leader,
         "old_theme": old_theme,
         "old_confirmed": old_confirmed,
@@ -540,13 +708,28 @@ def render_report(parsed, analysis, previous_reports, next_date):
     if analysis["standard"]:
         candidate_plan = "候选买点：" + "、".join(stock_label(r) for r in analysis["standard"]) + "。买点方式：只按计划内打板确认；不能半路、低吸或顶一字。"
     else:
-        candidate_plan = "候选买点：无。处理：空仓或只登记候选池；低位2/3板和同板块后排不替代标准4/5板。"
+        candidate_plan = f"候选买点：无。处理：{analysis['operation']['position']}，只登记候选池；低位2/3板和同板块后排不替代标准4/5板。"
     risk_names = "、".join(stock_label(r) for r in analysis["nominal"][:3]) or "当日高标"
     risk_plan = f"风险票：{risk_names}。风险原因：一字、尾盘回封、爆量、旧周期补涨或无板块助攻。处理：不买或只观察负反馈。"
+    operation_rows = [[
+        esc(analysis["market_phase"]),
+        esc(analysis["operation"]["position"]),
+        esc(analysis["operation"]["action"]),
+        esc(analysis["operation"]["candidate"]),
+    ]]
+    risk_control_rows = [[esc(name), esc(rule)] for name, rule in analysis["risk_control"]]
+    loss_rows = [[esc(a), esc(b), esc(c)] for a, b, c in analysis["loss_effect"]["rows"]]
+    new_direction_rows = [[
+        esc(analysis["new_direction"]["summary"]),
+        esc(analysis["new_direction"]["strong_independent"]),
+        esc(analysis["new_direction"]["old_related"]),
+        esc("有标准候选" if analysis["standard"] else "未确认标准买点"),
+    ]]
 
     final_lines = [
-        f"当前周期：{analysis['cycle']}。",
+        f"当前市场阶段：{analysis['market_phase']}；周期描述：{analysis['cycle']}。",
         f"当前核心：上一轮龙头是{analysis['old_leader']} / {analysis['old_theme']}；待确认高标为{analysis['leader_watch']}；当日核心为{analysis['current_core']}。",
+        f"亏钱效应：{analysis['loss_effect']['level']}；操作仓位：{analysis['operation']['position']}。",
         f"下一次标准买点：{analysis['next_opportunity']}。",
         f"硬性禁买：{analysis['hard_no_trade']}。",
     ]
@@ -556,6 +739,12 @@ def render_report(parsed, analysis, previous_reports, next_date):
         "data_cutoff": date.isoformat(),
         "next_trading_day": next_date.isoformat() if next_date else "",
         "cycle_stage": analysis["cycle"],
+        "market_phase": analysis["market_phase"],
+        "old_leader_state": analysis["old_leader_state"],
+        "loss_effect": analysis["loss_effect"],
+        "new_direction": analysis["new_direction"],
+        "operation_plan": analysis["operation"],
+        "risk_control": analysis["risk_control"],
         "high_level_sentiment": {
             "nominal_highest_board": f"{analysis['max_board']}板：" + "、".join(stock_label(r) for r in analysis["nominal"][:5]),
             "tradable_highest_board": analysis["tradable_high"],
@@ -602,19 +791,23 @@ def render_report(parsed, analysis, previous_reports, next_date):
     <header>
       <h1>{esc(title)}</h1>
       <p class="note">次日计划对应：{esc(metadata["next_trading_day"] or "下一交易日待确认")}。复盘口径：历史实盘模拟，只使用 {esc(date.isoformat())} 当天及之前数据。主数据源发布时间：{esc(parsed["created_at"])}；数据更新时间：{esc(parsed["update_time"])}。</p>
-      <p class="risk">这是复盘框架，不构成投资建议或荐股。输出顺序固定为：周期 -> 题材 -> 梯队 -> 买点。</p>
+      <p class="risk">这是复盘框架，不构成投资建议或荐股。输出顺序固定为：阶段 -> 旧龙 -> 亏钱效应 -> 新方向 -> 梯队 -> 买点 -> 操作 -> 风控。</p>
     </header>
     <section class="grid status-grid" aria-label="核心状态">
-      <div class="metric"><div class="label">当前周期</div><div class="value">{esc(analysis["cycle"])}</div></div>
+      <div class="metric"><div class="label">市场阶段</div><div class="value">{esc(analysis["market_phase"])}</div></div>
       <div class="metric"><div class="label">上一轮龙头/板块</div><div class="value">{esc(analysis["old_leader"])} / {esc(analysis["old_theme"])}</div></div>
-      <div class="metric"><div class="label">中间试错高标</div><div class="value">{esc(metadata["intermediate_trial_chain"] or "无")}</div></div>
-      <div class="metric"><div class="label">可交易最高板</div><div class="value">{esc(analysis["tradable_high"])}</div></div>
-      <div class="metric"><div class="label">下一次标准买点</div><div class="value">{esc(analysis["next_opportunity"])}</div></div>
-      <div class="metric"><div class="label">硬性禁买</div><div class="value">{esc(analysis["hard_no_trade"])}</div></div>
+      <div class="metric"><div class="label">旧龙状态</div><div class="value">{esc(analysis["old_leader_state"])}</div></div>
+      <div class="metric"><div class="label">亏钱效应</div><div class="value">{esc(analysis["loss_effect"]["level"])}</div></div>
+      <div class="metric"><div class="label">新方向</div><div class="value">{esc(analysis["new_direction"]["summary"])}</div></div>
+      <div class="metric"><div class="label">操作仓位</div><div class="value">{esc(analysis["operation"]["position"])}</div></div>
     </section>
     <section>
       <h2>高位情绪快照</h2>
       {render_table(["最高板","可交易最高板","昨日高标表现","断板反馈","跌停高标","炸板高标","连板晋级率"], [[esc(metadata["high_level_sentiment"]["nominal_highest_board"]), esc(metadata["high_level_sentiment"]["tradable_highest_board"]), esc(analysis["old_status"]), "按当日梯队和前序归档判断", "不使用未来跌停数据", "见个股炸板字段", "见连板梯队"]])}
+    </section>
+    <section>
+      <h2>亏钱效应</h2>
+      {render_table(["检查项","当前判断","处理要点"], loss_rows)}
     </section>
     <section>
       <h2>周期链路</h2>
@@ -634,6 +827,10 @@ def render_report(parsed, analysis, previous_reports, next_date):
       {render_table(["板块","高标核心","一字/中位助攻","容量核心","与旧周期关系","强度"], theme_rows)}
     </section>
     <section>
+      <h2>新方向判断</h2>
+      {render_table(["结论","独立强分支","旧方向相关","买点状态"], new_direction_rows)}
+    </section>
+    <section>
       <h2>连板梯队</h2>
       {render_table(["板数","股票","题材","角色","交易性","模型结论"], top_boards)}
     </section>
@@ -650,7 +847,15 @@ def render_report(parsed, analysis, previous_reports, next_date):
       </div>
     </section>
     <section>
-      <h2>最终四句话</h2>
+      <h2>操作与仓位</h2>
+      {render_table(["市场阶段","仓位级别","操作动作","候选处理"], operation_rows)}
+    </section>
+    <section>
+      <h2>风控纪律</h2>
+      {render_table(["项目","规则"], risk_control_rows)}
+    </section>
+    <section>
+      <h2>最终执行结论</h2>
       <ol>{"".join(f"<li>{esc(line)}</li>" for line in final_lines)}</ol>
     </section>
     <section>
@@ -719,8 +924,8 @@ def main():
         if not date:
             continue
         href = f"{date}.html"
-        rows.append([f'<a href="{href}">{esc(date)}</a>', esc(report.get("cycle_stage")), esc(report.get("current_core")), esc(report.get("next_opportunity"))])
-    index = f"""<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>A股短线周期复盘归档</title><style>{CSS}</style></head><body><main class="page"><header><h1>A股短线周期复盘归档</h1><p class="note">从本地归档逐日汇总。每个交易日页面只使用当日及之前数据。</p><p class="risk">这是复盘框架，不构成投资建议或荐股。</p></header><section><h2>归档列表</h2>{render_table(["日期","周期","核心","下一次标准买点"], rows)}</section></main></body></html>"""
+        rows.append([f'<a href="{href}">{esc(date)}</a>', esc(report.get("market_phase") or "未标注"), esc(report.get("cycle_stage")), esc(report.get("current_core")), esc(report.get("next_opportunity"))])
+    index = f"""<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>A股短线周期复盘归档</title><style>{CSS}</style></head><body><main class="page"><header><h1>A股短线周期复盘归档</h1><p class="note">从本地归档逐日汇总。每个交易日页面只使用当日及之前数据。</p><p class="risk">这是复盘框架，不构成投资建议或荐股。</p></header><section><h2>归档列表</h2>{render_table(["日期","市场阶段","周期","核心","下一次标准买点"], rows)}</section></main></body></html>"""
     (OUT_DIR / "index.html").write_text(index, encoding="utf-8")
     print(json.dumps({"written": [str(p) for p in written], "count": len(written), "index": str(OUT_DIR / "index.html")}, ensure_ascii=False, indent=2))
 

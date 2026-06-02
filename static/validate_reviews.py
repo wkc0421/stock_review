@@ -23,9 +23,21 @@ def read_report(path):
 def main():
     reports = []
     standard_buys = []
+    missing_required = []
+    required_fields = [
+        "market_phase",
+        "old_leader_state",
+        "loss_effect",
+        "new_direction",
+        "operation_plan",
+        "risk_control",
+    ]
     for path in sorted(OUT_DIR.glob("2026-*.html")):
         report = read_report(path)
         reports.append(report)
+        missing = [field for field in required_fields if field not in report]
+        if missing:
+            missing_required.append({"file": path.name, "missing": missing})
         for item in report.get("model_verdicts") or []:
             if item.get("verdict") == "standard buy":
                 standard_buys.append(
@@ -42,6 +54,8 @@ def main():
                 "reports": len(reports),
                 "standard_buy_count": len(standard_buys),
                 "standard_buys": standard_buys,
+                "missing_required_count": len(missing_required),
+                "missing_required": missing_required,
             },
             ensure_ascii=False,
             indent=2,

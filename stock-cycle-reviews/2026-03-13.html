@@ -1,184 +1,149 @@
 <!doctype html>
-<html lang="zh-CN">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>A股短线周期复盘 - 2026-03-13</title>
-  <style>
-    :root { --bg:#f6f7f9; --panel:#fff; --text:#1f2937; --muted:#6b7280; --line:#d9dee7; --strong:#13795b; --warn:#b26a00; --danger:#b42318; --info:#1d4ed8; }
-    * { box-sizing:border-box; }
-    body { margin:0; background:var(--bg); color:var(--text); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei",sans-serif; line-height:1.55; }
-    .page { width:min(1180px,calc(100% - 32px)); margin:0 auto; padding:28px 0 42px; }
-    header { display:grid; gap:10px; margin-bottom:16px; }
-    h1 { margin:0; font-size:clamp(24px,4vw,36px); letter-spacing:0; }
-    h2 { margin:0 0 12px; font-size:18px; letter-spacing:0; }
-    p { margin:0; }
-    .note { color:var(--muted); font-size:14px; }
-    .risk { border-left:4px solid var(--warn); background:#fff8ec; padding:10px 12px; color:#7a4b00; }
-    .grid { display:grid; gap:12px; }
-    .status-grid { grid-template-columns:repeat(6,minmax(0,1fr)); margin:16px 0; }
-    .metric, section { background:var(--panel); border:1px solid var(--line); border-radius:8px; }
-    .metric { min-height:96px; padding:12px; }
-    .metric .label { color:var(--muted); font-size:12px; margin-bottom:6px; }
-    .metric .value { font-size:17px; font-weight:700; }
-    section { padding:16px; margin-bottom:14px; }
-    .timeline,.plan { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; }
-    .plan { grid-template-columns:repeat(3,1fr); }
-    .step,.plan-block { border:1px solid var(--line); border-radius:8px; padding:12px; background:#fbfcfe; }
-    .title,.plan-block strong { display:block; font-weight:700; margin-bottom:6px; }
-    table { width:100%; border-collapse:collapse; font-size:14px; }
-    th,td { border-bottom:1px solid var(--line); padding:10px 8px; text-align:left; vertical-align:top; }
-    th { color:var(--muted); font-weight:600; background:#f9fafb; }
-    .badge { display:inline-flex; align-items:center; min-height:24px; padding:2px 8px; border-radius:999px; font-size:12px; font-weight:700; white-space:nowrap; }
-    .buy { background:#e8f5ef; color:var(--strong); }
-    .observe { background:#fff4db; color:var(--warn); }
-    .reject { background:#fdebea; color:var(--danger); }
-    .context { background:#eaf1ff; color:var(--info); }
-    ul,ol { margin:0; padding-left:20px; }
-    a { color:var(--info); }
-    @media (max-width:860px) { .status-grid,.timeline,.plan { grid-template-columns:1fr; } .table-wrap { overflow-x:auto; } table { min-width:760px; } }
-  </style>
-</head>
-<body>
-  <main class="page">
-    <header>
-      <h1>A股短线周期复盘 - 2026-03-13</h1>
-      <p class="note">次日计划对应：2026-03-16。复盘口径：历史实盘模拟，只使用 2026-03-13 收盘前后已公开信息，不使用未来数据。数据源：财联社复盘、东方财富、涨停原因、连板复盘、中财网封板快讯。</p>
-      <p class="risk">这是复盘框架，不构成投资建议或荐股。3月13日的重点是：旧龙豫能控股已出现明确负反馈，但华电能源是否能算标准买点仍要按4/5板质量判断。</p>
-    </header>
-
-    <section class="grid status-grid" aria-label="核心状态">
-      <div class="metric"><div class="label">当前周期</div><div class="value">旧龙负反馈后的高位分歧试错</div></div>
-      <div class="metric"><div class="label">上一轮龙头/板块</div><div class="value">豫能控股 / 电力、算电协同</div></div>
-      <div class="metric"><div class="label">中间试错高标</div><div class="value">宁波建工、中南文化、绿发电力</div></div>
-      <div class="metric"><div class="label">可交易最高板</div><div class="value">华电能源 4板</div></div>
-      <div class="metric"><div class="label">下一次标准买点</div><div class="value">华电能源仅观察，不追5板</div></div>
-      <div class="metric"><div class="label">硬性禁买</div><div class="value">不追中南一字，不把同题材二阶段当新龙</div></div>
-    </section>
-
-    <section>
-      <h2>高位情绪快照</h2>
-      <div class="table-wrap"><table><thead><tr><th>最高板</th><th>可交易最高板</th><th>昨日高标表现</th><th>断板反馈</th><th>跌停高标</th><th>炸板高标</th><th>连板晋级率</th></tr></thead>
-      <tbody><tr><td>中南文化 5板</td><td>华电能源 4板</td><td>中南文化继续一字属性；绿发电力掉队</td><td>午后高位人气股批量杀跌，豫能控股尾盘跌停</td><td>豫能控股尾盘跌停，旧龙负反馈成立</td><td>财联社口径 18 股炸板，东方财富口径 27 股触及涨停未封</td><td>财联社称连板晋级率 37.5%，3板及以上仅3只</td></tr></tbody></table></div>
-    </section>
-
-    <section>
-      <h2>周期链路</h2>
-      <div class="timeline">
-        <div class="step"><div class="title">上一龙头</div><p>豫能控股 / 电力、算电协同在尾盘跌停，旧龙负反馈终于明确。这是寻找新周期的必要条件，但不是充分条件。</p></div>
-        <div class="step"><div class="title">中间试错</div><p>宁波建工未延续；中南文化5板但一字属性强；绿发电力从3板竞争中掉队。试错链条出现分化。</p></div>
-        <div class="step"><div class="title">当前核心</div><p>华电能源10:15封住4板，成为排除中南文化一字后的可交易最高板；但它仍在电力/绿电大链条内。</p></div>
-        <div class="step"><div class="title">下一触发</div><p>3月16日不把华电能源5板当新买点。若华电与豫能链继续负反馈，才等待后续独立新题材的4/5板分歧回封。</p></div>
-      </div>
-    </section>
-
-    <section>
-      <h2>最近归档对比</h2>
-      <div class="table-wrap"><table><thead><tr><th>日期</th><th>周期</th><th>核心</th><th>上次跟踪/机会</th><th>跟踪结论</th></tr></thead>
-      <tbody>
-        <tr><td>2026-03-11</td><td>混沌试错期</td><td>宁波建工4板；中南文化3板</td><td>中南文化4板分歧回封才检查</td><td>中南文化次日偏一字，不是标准买点</td></tr>
-        <tr><td>2026-03-12</td><td>绿电加强但未确认</td><td>中南文化4板；华电能源、绿发电力3板</td><td>无标准买点；同板块3板只做助攻观察</td><td>华电能源3进4胜出，绿发掉队；因中南文化仍是一字高标，华电仍按电力二阶段观察</td></tr>
-      </tbody></table></div>
-    </section>
-
-    <section>
-      <h2>板块强度</h2>
-      <div class="table-wrap"><table><thead><tr><th>板块</th><th>高标核心</th><th>一字/中位助攻</th><th>容量核心</th><th>与旧周期关系</th><th>强度</th></tr></thead>
-      <tbody>
-        <tr><td>绿电 / 风电 / 电力</td><td>中南文化5板；华电能源4板</td><td>大金重工2板，通裕重工、天顺风能、吉鑫科技等首板</td><td>中国电建、中国核建、大金重工等容量活跃</td><td>与豫能控股同属电力、算电协同大链条，华电能源优先定义为二阶段核心</td><td><span class="badge observe">强但不纯</span></td></tr>
-        <tr><td>化工 / 煤化工 / 化肥</td><td>金牛化工3板，赤天化反包</td><td>潞化科技2板，江苏索普、红宝丽等首板</td><td>化工容量票分散活跃</td><td>与旧龙关系弱，受地缘与涨价驱动</td><td><span class="badge context">活跃分支</span></td></tr>
-        <tr><td>核电 / 海工装备 / 国企改革</td><td>中国核建、中国核建链条首板扩散</td><td>江苏神通、吉鑫科技、康达新材等</td><td>中国核建、中国电建</td><td>能源安全支线，与电力大周期有相关性</td><td><span class="badge context">支线加强</span></td></tr>
-        <tr><td>算力租赁 / 小金属 / 电网设备</td><td>无接力核心</td><td>高位人气股批量杀跌</td><td>华胜天成、中钨高新等成交大票承压</td><td>旧热门方向负反馈背景</td><td><span class="badge reject">退潮背景</span></td></tr>
-      </tbody></table></div>
-    </section>
-
-    <section>
-      <h2>连板梯队</h2>
-      <div class="table-wrap"><table><thead><tr><th>板数</th><th>股票</th><th>题材</th><th>角色</th><th>交易性</th><th>模型结论</th></tr></thead>
-      <tbody>
-        <tr><td>5板</td><td>中南文化</td><td>国企改革、海工装备、绿色电力</td><td>名义最高板</td><td>一字属性强，无法作为标准买点</td><td><span class="badge reject">放弃</span></td></tr>
-        <tr><td>4板</td><td>华电能源</td><td>国企改革、风电、绿色电力</td><td>可交易最高板 / 电力二阶段核心</td><td>10:15封板，成交13.06亿元，换手4.42%</td><td><span class="badge observe">仅观察</span></td></tr>
-        <tr><td>3板</td><td>金牛化工</td><td>煤化工、风电、国企改革</td><td>化工试错</td><td>3板不是买点</td><td><span class="badge context">只跟踪</span></td></tr>
-        <tr><td>2板</td><td>郑州煤电、潞化科技、法尔胜、大金重工、三房巷</td><td>煤炭、化工、风电、化纤</td><td>板块助攻和分支</td><td>不是买点</td><td><span class="badge context">只跟踪</span></td></tr>
-      </tbody></table></div>
-    </section>
-
-    <section>
-      <h2>4/5板候选检查</h2>
-      <div class="table-wrap"><table><thead><tr><th>股票</th><th>板数</th><th>买点状态</th><th>加分项</th><th>扣分项</th><th>模型结论</th></tr></thead>
-      <tbody>
-        <tr><td>中南文化</td><td>5</td><td>买点不成立</td><td>名义最高板，封板强</td><td>连续一字属性，交易性差；5板不是低位换手买点</td><td><span class="badge reject">放弃</span></td></tr>
-        <tr><td>华电能源</td><td>4</td><td>有可交易回封，但不确认标准龙空龙买点</td><td>旧龙豫能控股跌停，绿电/风电有助攻，排除一字后为可交易最高板，10:15前后封板</td><td>与豫能控股同属电力大链条，更像二阶段核心；换手仅4.42%，分歧不充分；市场尾盘高位杀跌</td><td><span class="badge observe">仅观察</span></td></tr>
-      </tbody></table></div>
-    </section>
-
-    <section>
-      <h2>次日盯盘预案</h2>
-      <div class="plan">
-        <div class="plan-block"><strong>一、明日重点观察</strong><p>旧龙：豫能控股 / 电力、算电协同。若继续跌停或带崩电力中位，旧周期进入强负反馈；若反抽修复，则华电能源仍可能被旧周期反拉影响。</p></div>
-        <div class="plan-block"><strong>二、候选买点</strong><p>股票：无标准新买点。华电能源已到4板，若3月16日直接冲5板，只按持仓确认或观察，不作为新打板买点。下一次买点要等独立新题材4/5板换手回封。</p></div>
-        <div class="plan-block"><strong>三、风险票</strong><p>股票/组合：中南文化、华电能源、绿发电力、豫能控股。风险原因：一字、同题材二阶段、旧龙跌停、板块尾盘分歧。处理：不追高，华电若炸板带崩助攻则标记电力负反馈。</p></div>
-      </div>
-    </section>
-
-    <section>
-      <h2>最终四句话</h2>
-      <ol>
-        <li>当前周期：旧龙豫能控股负反馈后的高位分歧试错期。</li>
-        <li>当前核心：旧龙是豫能控股 / 电力、算电协同；新候选只有华电能源，但更偏电力二阶段核心。</li>
-        <li>下一次标准买点：3月13日仍不确认，华电能源4板质量不足，3月16日5板不当新买点。</li>
-        <li>硬性禁买：不追中南文化一字，不追华电能源5板，不买绿电后排补涨，不在高位批量杀跌时扩大仓位。</li>
-      </ol>
-    </section>
-
-    <section>
-      <h2>数据源</h2>
-      <ul>
-        <li><a href="https://finance.sina.com.cn/roll/2026-03-13/doc-inhqvtih4125148.shtml">财联社3月13日焦点复盘</a></li>
-        <li><a href="https://finance.eastmoney.com/a/202603133671671653.html">东方财富3月13日涨停复盘</a></li>
-        <li><a href="https://k.sina.com.cn/article_3240851740_c12b791c00101iekg.html">3月13日涨停原因</a></li>
-        <li><a href="https://wudaolu.com/t/topic/17328">3月13日连板复盘</a></li>
-        <li><a href="https://cfi.cn/p20260313000008.html">中财网华电能源10:15封板快讯</a></li>
-      </ul>
-    </section>
-
-    <script type="application/json" id="stock-cycle-review-data">
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>A股短线周期复盘 - 2026-03-13</title><style>:root{--bg:#f6f7f9;--panel:#fff;--text:#1f2937;--muted:#6b7280;--line:#d9dee7;--strong:#13795b;--warn:#b26a00;--danger:#b42318;--info:#1d4ed8}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei",sans-serif;line-height:1.55}.page{width:min(1180px,calc(100% - 32px));margin:0 auto;padding:28px 0 42px}header{display:grid;gap:10px;margin-bottom:16px}h1{margin:0;font-size:clamp(24px,4vw,36px);letter-spacing:0}h2{margin:0 0 12px;font-size:18px;letter-spacing:0}p{margin:0}.note{color:var(--muted);font-size:14px}.risk{border-left:4px solid var(--warn);background:#fff8ec;padding:10px 12px;color:#7a4b00}.grid{display:grid;gap:12px}.status-grid{grid-template-columns:repeat(6,minmax(0,1fr));margin:16px 0}.metric,section{background:var(--panel);border:1px solid var(--line);border-radius:8px}.metric{min-height:96px;padding:12px}.metric .label{color:var(--muted);font-size:12px;margin-bottom:6px}.metric .value{font-size:17px;font-weight:700}section{padding:16px;margin-bottom:14px}.timeline,.plan{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.plan{grid-template-columns:repeat(3,1fr)}.step,.plan-block{border:1px solid var(--line);border-radius:8px;padding:12px;background:#fbfcfe}.title,.plan-block strong{display:block;font-weight:700;margin-bottom:6px}table{width:100%;border-collapse:collapse;font-size:14px}th,td{border-bottom:1px solid var(--line);padding:10px 8px;text-align:left;vertical-align:top}th{color:var(--muted);font-weight:600;background:#f9fafb}.badge{display:inline-flex;align-items:center;min-height:24px;padding:2px 8px;border-radius:999px;font-size:12px;font-weight:700;white-space:nowrap}.buy{background:#e8f5ef;color:var(--strong)}.observe{background:#fff4db;color:var(--warn)}.reject{background:#fdebea;color:var(--danger)}.context{background:#eaf1ff;color:var(--info)}ul,ol{margin:0;padding-left:20px}a{color:var(--info)}@media(max-width:860px){.status-grid,.timeline,.plan{grid-template-columns:1fr}.table-wrap{overflow-x:auto}table{min-width:760px}}</style></head>
+<body><main class="page">
+<header><h1>A股短线周期复盘 - 2026-03-13</h1><p class="note">次日计划对应：2026-03-16。复盘口径：历史实盘模拟，只使用 2026-03-13 当天及之前数据。数据源：财联社复盘、东方财富、涨停原因、连板复盘、中财网封板快讯</p><p class="risk">这是复盘框架，不构成投资建议或荐股。输出顺序固定为：阶段 -> 旧龙 -> 亏钱效应 -> 新方向 -> 梯队 -> 买点 -> 操作 -> 风控。</p></header>
+<section class="grid status-grid" aria-label="核心状态"><div class="metric"><div class="label">市场阶段</div><div class="value">退潮期</div></div><div class="metric"><div class="label">上一轮龙头/板块</div><div class="value">豫能控股 / 电力 / 算电协同</div></div><div class="metric"><div class="label">旧龙状态</div><div class="value">明显退潮</div></div><div class="metric"><div class="label">亏钱效应</div><div class="value">偏高</div></div><div class="metric"><div class="label">新方向</div><div class="value">手工补源观察</div></div><div class="metric"><div class="label">操作仓位</div><div class="value">空仓</div></div></section>
+<section><h2>高位情绪快照</h2><div class="table-wrap"><table><thead><tr><th>最高板</th><th>可交易最高板</th><th>昨日高标表现</th><th>断板反馈</th><th>跌停高标</th><th>炸板高标</th><th>连板晋级率</th></tr></thead><tbody><tr><td>华电能源4板为排除一字后的可交易最高板，但更像电力二阶段核心</td><td>华电能源4板</td><td>豫能控股 / 电力 / 算电协同</td><td>豫能控股尾盘跌停，财联社口径18股炸板，连板晋级率37.5%，3板及以上仅3只</td><td>见当日源</td><td>见当日源</td><td>豫能控股尾盘跌停，财联社口径18股炸板，连板晋级率37.5%，3板及以上仅3只</td></tr></tbody></table></div></section>
+<section><h2>亏钱效应</h2><div class="table-wrap"><table><thead><tr><th>检查项</th><th>当前判断</th><th>处理要点</th></tr></thead><tbody><tr><td>高标是否继续A杀</td><td>需结合当日分时/跌停榜核验</td><td>手工补源不使用未来走势倒推</td></tr><tr><td>断板票是否继续跌停</td><td>豫能控股尾盘跌停，财联社口径18股炸板，连板晋级率37.5%，3板及以上仅3只</td><td>若跌停扩散，操作降级为空仓</td></tr><tr><td>昨日炸板票是否修复</td><td>手工源未完整披露</td><td>盘中补核，不在复盘中强行推断</td></tr><tr><td>连板高度是否下降</td><td>华电能源4板为排除一字后的可交易最高板，但更像电力二阶段核心</td><td>高度下降时优先保护仓位</td></tr><tr><td>补涨是否开始坑人</td><td>按候选表风险原因判断</td><td>旧周期补涨和无助攻默认不买</td></tr></tbody></table></div></section>
+<section><h2>周期链路</h2><div class="timeline"><div class="step"><div class="title">上一龙头</div><p>豫能控股 / 电力 / 算电协同。来源：手工补源复盘项。</p></div><div class="step"><div class="title">题材判断</div><p>绿电/风电/电力、化工/煤化工/化肥</p></div><div class="step"><div class="title">当前核心</div><p>华电能源4板为排除一字后的可交易最高板，但更像电力二阶段核心</p></div><div class="step"><div class="title">下一触发</div><p>无标准新买点；华电能源3月16日5板不当新开仓买点</p></div></div></section>
+<section><h2>最近归档对比</h2><div class="table-wrap"><table><thead><tr><th>日期</th><th>周期</th><th>核心</th><th>上次跟踪/机会</th><th>跟踪结论</th></tr></thead><tbody><tr><td>2026-03-11</td><td>豫能控股退潮后的混沌试错期</td><td>宁波建工4板；中南文化3板和绿电二板只做盘面跟踪</td><td>暂无标准买点；等4/5板分歧换手回封</td><td>只用前序归档滚动比较</td></tr><tr><td>2026-03-12</td><td>绿电加强但未确认标准买点</td><td>中南文化4板名义高标且一字；绿发电力、华电能源3板只做同板块助攻观察</td><td>暂无标准买点；不预设同板块3进4为买点，先等一字高标断板负反馈</td><td>只用前序归档滚动比较</td></tr></tbody></table></div></section>
+<section><h2>板块强度</h2><div class="table-wrap"><table><thead><tr><th>板块</th><th>高标核心</th><th>一字/中位助攻</th><th>容量核心</th><th>与旧周期关系</th><th>强度</th></tr></thead><tbody><tr><td>绿电/风电/电力、化工/煤化工/化肥</td><td>华电能源4板为排除一字后的可交易最高板，但更像电力二阶段核心</td><td>豫能控股尾盘跌停，财联社口径18股炸板，连板晋级率37.5%，3板及以上仅3只</td><td>未完整披露</td><td>与旧周期相关</td><td><span class="badge context">中等</span></td></tr></tbody></table></div></section>
+<section><h2>新方向判断</h2><div class="table-wrap"><table><thead><tr><th>结论</th><th>主要方向</th><th>与旧周期关系</th><th>买点状态</th></tr></thead><tbody><tr><td>手工补源：按当日主题描述观察</td><td>绿电/风电/电力、化工/煤化工/化肥</td><td>与旧周期相关</td><td>未确认标准买点</td></tr></tbody></table></div></section>
+<section><h2>连板梯队</h2><div class="table-wrap"><table><thead><tr><th>板数</th><th>股票</th><th>题材</th><th>角色</th><th>交易性</th><th>模型结论</th></tr></thead><tbody><tr><td>5板</td><td>中南文化</td><td>绿电/风电/电力、化工/煤化工/化肥</td><td>名义最高板</td><td>按收盘资料判断</td><td><span class="badge observe">观察</span></td></tr><tr><td>4板</td><td>华电能源</td><td>绿电/风电/电力、化工/煤化工/化肥</td><td>电力二阶段核心</td><td>按收盘资料判断</td><td><span class="badge observe">观察</span></td></tr><tr><td>3板</td><td>金牛化工</td><td>绿电/风电/电力、化工/煤化工/化肥</td><td>试错分支</td><td>按收盘资料判断</td><td><span class="badge observe">观察</span></td></tr></tbody></table></div></section>
+<section><h2>4/5板候选检查</h2><div class="table-wrap"><table><thead><tr><th>股票</th><th>板数</th><th>买点状态</th><th>加分项</th><th>扣分项</th><th>模型结论</th></tr></thead><tbody><tr><td>中南文化</td><td>5</td><td>名义最高板但一字属性强</td><td>高度领先</td><td>一字属性强，无法作为标准买点</td><td><span class="badge reject">放弃</span></td></tr><tr><td>华电能源</td><td>4</td><td>有可交易回封，但不确认标准龙空龙买点</td><td>旧龙豫能控股跌停，绿电/风电有助攻</td><td>与豫能控股同属电力大链条，分歧不充分</td><td><span class="badge observe">仅观察</span></td></tr></tbody></table></div></section>
+<section><h2>次日盯盘预案</h2><div class="plan"><div class="plan-block"><strong>一、明日重点观察</strong><p>旧龙：豫能控股 / 电力 / 算电协同。观察其是否继续负反馈或修复。</p></div><div class="plan-block"><strong>二、候选买点</strong><p>候选买点按上表，只能打板确认，不半路低吸。</p></div><div class="plan-block"><strong>三、风险票</strong><p>风险：一字、尾盘、爆量、旧周期补涨、无助攻。处理：不买或只观察。</p></div></div></section>
+<section><h2>操作与仓位</h2><div class="table-wrap"><table><thead><tr><th>市场阶段</th><th>仓位级别</th><th>操作动作</th><th>候选处理</th></tr></thead><tbody><tr><td>退潮期</td><td>空仓</td><td>高标负反馈扩散时不试错，先等亏钱效应收敛。</td><td>不做新开仓，最多记录下一批题材强度。</td></tr></tbody></table></div></section>
+<section><h2>风控纪律</h2><div class="table-wrap"><table><thead><tr><th>项目</th><th>规则</th></tr></thead><tbody><tr><td>仓位上限</td><td>仓位上限：空仓，禁止用低位杂毛试错。</td></tr><tr><td>单笔最大亏损</td><td>计划内打板失败或次日不及预期，优先执行退出；单笔亏损不扩大。</td></tr><tr><td>当日最大亏损</td><td>当日触发账户回撤上限后停止开仓，只复盘不加戏。</td></tr><tr><td>连续试错次数</td><td>连续两次试错失败后暂停，等新方向重新给出4/5板确认。</td></tr><tr><td>卖出条件</td><td>不能弱转强、板块助攻断层、高位爆量失控、跌停负反馈，按卖点处理。</td></tr></tbody></table></div></section>
+<section><h2>最终执行结论</h2><ol><li>当前市场阶段：退潮期；周期描述：旧龙负反馈后的高位分歧试错期。</li><li>当前核心：华电能源4板为排除一字后的可交易最高板，但更像电力二阶段核心。</li><li>亏钱效应：偏高；操作仓位：空仓。</li><li>下一次标准买点：无标准新买点；华电能源3月16日5板不当新开仓买点。</li><li>硬性禁买：退潮期空仓，不追6板，不买2/3板。</li></ol></section>
+<section><h2>数据源</h2><ul><li><a href="https://finance.sina.com.cn/roll/2026-03-13/doc-inhqvtih4125148.shtml">财联社3月13日焦点复盘</a></li><li><a href="https://finance.eastmoney.com/a/202603133671671653.html">东方财富3月13日涨停复盘</a></li><li><a href="https://k.sina.com.cn/article_3240851740_c12b791c00101iekg.html">3月13日涨停原因</a></li><li><a href="https://wudaolu.com/t/topic/17328">3月13日连板复盘</a></li><li><a href="https://cfi.cn/p20260313000008.html">中财网华电能源10:15封板快讯</a></li></ul></section>
+<script type="application/json" id="stock-cycle-review-data">
 {
   "review_date": "2026-03-13",
   "data_cutoff": "2026-03-13",
   "next_trading_day": "2026-03-16",
   "cycle_stage": "旧龙负反馈后的高位分歧试错期",
+  "market_phase": "退潮期",
+  "old_leader_state": "明显退潮",
+  "loss_effect": {
+    "level": "偏高",
+    "summary": "亏钱效应：偏高。手工补源页以当日源描述为准。",
+    "rows": [
+      [
+        "高标是否继续A杀",
+        "需结合当日分时/跌停榜核验",
+        "手工补源不使用未来走势倒推"
+      ],
+      [
+        "断板票是否继续跌停",
+        "豫能控股尾盘跌停，财联社口径18股炸板，连板晋级率37.5%，3板及以上仅3只",
+        "若跌停扩散，操作降级为空仓"
+      ],
+      [
+        "昨日炸板票是否修复",
+        "手工源未完整披露",
+        "盘中补核，不在复盘中强行推断"
+      ],
+      [
+        "连板高度是否下降",
+        "华电能源4板为排除一字后的可交易最高板，但更像电力二阶段核心",
+        "高度下降时优先保护仓位"
+      ],
+      [
+        "补涨是否开始坑人",
+        "按候选表风险原因判断",
+        "旧周期补涨和无助攻默认不买"
+      ]
+    ]
+  },
+  "new_direction": {
+    "summary": "手工补源：按当日主题描述观察",
+    "strong_independent": "绿电/风电/电力、化工/煤化工/化肥",
+    "old_related": "与旧周期相关"
+  },
+  "operation_plan": {
+    "position": "空仓",
+    "action": "高标负反馈扩散时不试错，先等亏钱效应收敛。",
+    "candidate": "不做新开仓，最多记录下一批题材强度。"
+  },
+  "risk_control": [
+    [
+      "仓位上限",
+      "仓位上限：空仓，禁止用低位杂毛试错。"
+    ],
+    [
+      "单笔最大亏损",
+      "计划内打板失败或次日不及预期，优先执行退出；单笔亏损不扩大。"
+    ],
+    [
+      "当日最大亏损",
+      "当日触发账户回撤上限后停止开仓，只复盘不加戏。"
+    ],
+    [
+      "连续试错次数",
+      "连续两次试错失败后暂停，等新方向重新给出4/5板确认。"
+    ],
+    [
+      "卖出条件",
+      "不能弱转强、板块助攻断层、高位爆量失控、跌停负反馈，按卖点处理。"
+    ]
+  ],
   "high_level_sentiment": {
-    "nominal_highest_board": "中南文化5板",
+    "nominal_highest_board": "华电能源4板为排除一字后的可交易最高板，但更像电力二阶段核心",
     "tradable_highest_board": "华电能源4板",
-    "previous_high_board_performance": "中南文化一字属性延续，绿发电力掉队",
-    "broken_board_feedback": "午后高位人气股批量杀跌，豫能控股尾盘跌停",
-    "high_level_limit_down_count": "豫能控股尾盘跌停，旧龙负反馈成立",
-    "high_level_broken_board_count": "财联社18股炸板，东方财富27股触及涨停未封",
-    "promotion_rate": "财联社称连板晋级率37.5%，3板及以上仅3只"
+    "previous_high_board_performance": "豫能控股 / 电力 / 算电协同",
+    "broken_board_feedback": "豫能控股尾盘跌停，财联社口径18股炸板，连板晋级率37.5%，3板及以上仅3只",
+    "high_level_limit_down_count": "见当日源",
+    "high_level_broken_board_count": "见当日源",
+    "promotion_rate": "豫能控股尾盘跌停，财联社口径18股炸板，连板晋级率37.5%，3板及以上仅3只"
   },
   "prior_confirmed_leader": "豫能控股",
   "prior_leader_theme": "电力 / 算电协同",
-  "intermediate_trial_chain": "宁波建工、中南文化、绿发电力",
-  "old_leader_chain": "豫能控股 / 电力、算电协同",
+  "prior_leader_confirmed": true,
+  "prior_leader_source": "手工补源复盘项",
+  "prior_leader_note": "作为华电辽能启动前的上一轮龙头锚点；3月13日尾盘跌停后负反馈明确。",
+  "leader_watch": "无",
+  "intermediate_trial_chain": "华电能源4板为排除一字后的可交易最高板，但更像电力二阶段核心",
+  "old_leader_chain": "豫能控股 / 电力 / 算电协同",
   "current_core": "华电能源4板为排除一字后的可交易最高板，但更像电力二阶段核心",
   "tradable_high_board": "华电能源4板",
   "next_opportunity": "无标准新买点；华电能源3月16日5板不当新开仓买点",
-  "hard_no_trade": "不追中南文化一字，不追华电能源5板，不买绿电后排补涨",
+  "hard_no_trade": "退潮期空仓；不顶一字；不买2/3板；不追6板首次开口；不用未来数据倒推",
   "model_verdicts": [
-    {"stock":"中南文化","role":"名义最高板","verdict":"reject","reason":"5板且一字属性强，不是标准换手买点"},
-    {"stock":"华电能源","role":"电力二阶段核心","verdict":"observe only","reason":"4板可交易但同属豫能控股电力链，换手分歧不充分"},
-    {"stock":"金牛化工","role":"3板试错","verdict":"observe only","reason":"3板不是当日买点"}
+    {
+      "stock": "中南文化",
+      "role": "手工补源候选",
+      "verdict": "reject",
+      "reason": "名义最高板但一字属性强；一字属性强，无法作为标准买点"
+    },
+    {
+      "stock": "华电能源",
+      "role": "手工补源候选",
+      "verdict": "observe only",
+      "reason": "有可交易回封，但不确认标准龙空龙买点；与豫能控股同属电力大链条，分歧不充分"
+    }
   ],
   "sources": [
-    {"name":"财联社3月13日焦点复盘","url":"https://finance.sina.com.cn/roll/2026-03-13/doc-inhqvtih4125148.shtml"},
-    {"name":"东方财富3月13日涨停复盘","url":"https://finance.eastmoney.com/a/202603133671671653.html"},
-    {"name":"3月13日涨停原因","url":"https://k.sina.com.cn/article_3240851740_c12b791c00101iekg.html"},
-    {"name":"3月13日连板复盘","url":"https://wudaolu.com/t/topic/17328"},
-    {"name":"中财网华电能源10:15封板快讯","url":"https://cfi.cn/p20260313000008.html"}
+    {
+      "name": "财联社3月13日焦点复盘",
+      "url": "https://finance.sina.com.cn/roll/2026-03-13/doc-inhqvtih4125148.shtml"
+    },
+    {
+      "name": "东方财富3月13日涨停复盘",
+      "url": "https://finance.eastmoney.com/a/202603133671671653.html"
+    },
+    {
+      "name": "3月13日涨停原因",
+      "url": "https://k.sina.com.cn/article_3240851740_c12b791c00101iekg.html"
+    },
+    {
+      "name": "3月13日连板复盘",
+      "url": "https://wudaolu.com/t/topic/17328"
+    },
+    {
+      "name": "中财网华电能源10:15封板快讯",
+      "url": "https://cfi.cn/p20260313000008.html"
+    }
   ]
 }
-    </script>
-  </main>
-</body>
-</html>
+</script></main></body></html>

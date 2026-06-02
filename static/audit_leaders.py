@@ -38,10 +38,13 @@ def main():
     OUT_DIR.mkdir(exist_ok=True)
     fields = [
         "date",
+        "market_phase",
         "cycle",
         "prior",
         "prior_theme",
         "prior_confirmed",
+        "old_leader_state",
+        "loss_effect",
         "leader_watch",
         "core",
         "tradable",
@@ -64,10 +67,13 @@ def main():
         rows.append(
             {
                 "date": report.get("review_date", ""),
+                "market_phase": report.get("market_phase", ""),
                 "cycle": report.get("cycle_stage", ""),
                 "prior": report.get("prior_confirmed_leader", ""),
                 "prior_theme": report.get("prior_leader_theme", ""),
                 "prior_confirmed": report.get("prior_leader_confirmed", ""),
+                "old_leader_state": report.get("old_leader_state", ""),
+                "loss_effect": (report.get("loss_effect") or {}).get("level", ""),
                 "leader_watch": report.get("leader_watch", ""),
                 "core": report.get("current_core", ""),
                 "tradable": report.get("tradable_high_board", ""),
