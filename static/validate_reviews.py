@@ -25,6 +25,7 @@ def main():
     standard_buys = []
     missing_required = []
     required_fields = [
+        "generated_by_skill",
         "market_phase",
         "old_leader_state",
         "loss_effect",
@@ -36,6 +37,8 @@ def main():
         report = read_report(path)
         reports.append(report)
         missing = [field for field in required_fields if field not in report]
+        if "generated_by_skill" in report and (report.get("generated_by_skill") or {}).get("name") != "stock-cycle-review":
+            missing.append("generated_by_skill.name=stock-cycle-review")
         if missing:
             missing_required.append({"file": path.name, "missing": missing})
         for item in report.get("model_verdicts") or []:

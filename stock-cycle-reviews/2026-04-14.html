@@ -12,7 +12,8 @@
     <header>
       <h1>A股短线周期复盘 - 2026-04-14</h1>
       <p class="note">次日计划对应：2026-04-15。复盘口径：历史实盘模拟，只使用 2026-04-14 当天及之前数据。主数据源发布时间：2026-04-14T07:05:56.290Z；数据更新时间：2026/4/14 15:05:55。</p>
-      <p class="risk">这是复盘框架，不构成投资建议或荐股。输出顺序固定为：阶段 -> 旧龙 -> 亏钱效应 -> 新方向 -> 梯队 -> 买点 -> 操作 -> 风控。</p>
+      <p class="note">生成依据：stock-cycle-review skill；流程：阶段 -&gt; 旧龙 -&gt; 亏钱效应 -&gt; 新方向 -&gt; 梯队 -&gt; 买点 -&gt; 操作 -&gt; 风控。</p>
+      <p class="risk">这是复盘框架，不构成投资建议或荐股。输出顺序由 skill 固定为：阶段 -> 旧龙 -> 亏钱效应 -> 新方向 -> 梯队 -> 买点 -> 操作 -> 风控。</p>
     </header>
     <section class="grid status-grid" aria-label="核心状态">
       <div class="metric"><div class="label">市场阶段</div><div class="value">试错期</div></div>
@@ -88,6 +89,25 @@
   "review_date": "2026-04-14",
   "data_cutoff": "2026-04-14",
   "next_trading_day": "2026-04-15",
+  "generated_by_skill": {
+    "name": "stock-cycle-review",
+    "skill_dir": "C:\\Users\\wkc\\plugins\\stock-cycle-review\\skills\\stock-cycle-review",
+    "workflow": "阶段 -> 旧龙 -> 亏钱效应 -> 新方向 -> 梯队 -> 买点 -> 操作 -> 风控",
+    "files": {
+      "SKILL.md": {
+        "path": "C:\\Users\\wkc\\plugins\\stock-cycle-review\\skills\\stock-cycle-review\\SKILL.md",
+        "sha256": "bc352a4dac2dcb27"
+      },
+      "daily-review-template.md": {
+        "path": "C:\\Users\\wkc\\plugins\\stock-cycle-review\\skills\\stock-cycle-review\\references\\daily-review-template.md",
+        "sha256": "642ab0059d08883e"
+      },
+      "html-report-template.md": {
+        "path": "C:\\Users\\wkc\\plugins\\stock-cycle-review\\skills\\stock-cycle-review\\references\\html-report-template.md",
+        "sha256": "42adcc42f0ace48b"
+      }
+    }
+  },
   "cycle_stage": "旧龙锚点未确认的混沌试错期",
   "market_phase": "试错期",
   "old_leader_state": "未确认",

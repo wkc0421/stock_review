@@ -8,6 +8,7 @@ from generate_cycle_reviews import (
     CSS,
     esc,
     leader_state_for_date,
+    load_skill_contract,
     load_leader_ledger,
     operation_for_phase,
     render_table,
@@ -210,6 +211,7 @@ MANUAL = [
 
 
 LEADER_LEDGER = load_leader_ledger()
+SKILL_CONTRACT = load_skill_contract()
 
 
 def manual_market_phase(cycle):
@@ -295,6 +297,7 @@ def render(item):
         "review_date": item["date"],
         "data_cutoff": item["date"],
         "next_trading_day": item["next"],
+        "generated_by_skill": SKILL_CONTRACT,
         "cycle_stage": item["cycle"],
         "market_phase": phase,
         "old_leader_state": "未确认" if not prior_confirmed else ("明显退潮" if phase == "退潮期" else "按手工源观察"),
@@ -342,7 +345,7 @@ def render(item):
     page = f"""<!doctype html>
 <html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>A股短线周期复盘 - {esc(item["date"])}</title><style>{CSS}</style></head>
 <body><main class="page">
-<header><h1>A股短线周期复盘 - {esc(item["date"])}</h1><p class="note">次日计划对应：{esc(item["next"])}。复盘口径：历史实盘模拟，只使用 {esc(item["date"])} 当天及之前数据。{esc(item["source_note"])}</p><p class="risk">这是复盘框架，不构成投资建议或荐股。输出顺序固定为：阶段 -> 旧龙 -> 亏钱效应 -> 新方向 -> 梯队 -> 买点 -> 操作 -> 风控。</p></header>
+<header><h1>A股短线周期复盘 - {esc(item["date"])}</h1><p class="note">次日计划对应：{esc(item["next"])}。复盘口径：历史实盘模拟，只使用 {esc(item["date"])} 当天及之前数据。{esc(item["source_note"])}</p><p class="note">生成依据：{esc(SKILL_CONTRACT["name"])} skill；流程：{esc(SKILL_CONTRACT["workflow"])}。</p><p class="risk">这是复盘框架，不构成投资建议或荐股。输出顺序由 skill 固定为：阶段 -> 旧龙 -> 亏钱效应 -> 新方向 -> 梯队 -> 买点 -> 操作 -> 风控。</p></header>
 <section class="grid status-grid" aria-label="核心状态"><div class="metric"><div class="label">市场阶段</div><div class="value">{esc(phase)}</div></div><div class="metric"><div class="label">上一轮龙头/板块</div><div class="value">{esc(prior)} / {esc(theme)}</div></div><div class="metric"><div class="label">旧龙状态</div><div class="value">{esc(metadata["old_leader_state"])}</div></div><div class="metric"><div class="label">亏钱效应</div><div class="value">{esc(loss_effect["level"])}</div></div><div class="metric"><div class="label">新方向</div><div class="value">手工补源观察</div></div><div class="metric"><div class="label">操作仓位</div><div class="value">{esc(operation["position"])}</div></div></section>
 <section><h2>高位情绪快照</h2>{render_table(["最高板","可交易最高板","昨日高标表现","断板反馈","跌停高标","炸板高标","连板晋级率"], [[esc(item["core"]), esc(item["tradable"]), esc(f"{prior} / {theme}"), esc(item["sentiment"]), "见当日源", "见当日源", esc(item["sentiment"])]])}</section>
 <section><h2>亏钱效应</h2>{render_table(["检查项","当前判断","处理要点"], loss_rows)}</section>

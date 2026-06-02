@@ -1,4 +1,5 @@
 import datetime as dt
+import hashlib
 import html
 import json
 import os
@@ -13,6 +14,8 @@ from bs4 import BeautifulSoup
 ROOT = Path(__file__).resolve().parents[1]
 OUT_DIR = ROOT / "stock-cycle-reviews"
 LEADER_LEDGER_PATH = ROOT / "static" / "cycle_leaders.json"
+DEFAULT_SKILL_DIR = Path.home() / "plugins" / "stock-cycle-review" / "skills" / "stock-cycle-review"
+SKILL_DIR = Path(os.environ.get("STOCK_CYCLE_REVIEW_SKILL_DIR", DEFAULT_SKILL_DIR))
 START = dt.date(2026, 3, 17)
 END = dt.date(2026, 6, 1)
 CATEGORY_URL = "https://wudaolu.com/c/aguhot/8.json"
@@ -37,6 +40,42 @@ HARD_VETO_TERMS = (
     "同板块一字高标仍在，低位只能算助攻",
     "与上一轮龙头同板块",
 )
+
+SKILL_REQUIRED_MARKERS = (
+    "当前市场阶段",
+    "亏钱效应",
+    "新方向",
+    "操作仓位",
+    "风控",
+    "4/5板",
+)
+
+
+def file_sha256(path):
+    return hashlib.sha256(path.read_bytes()).hexdigest()[:16]
+
+
+def load_skill_contract():
+    files = {
+        "SKILL.md": SKILL_DIR / "SKILL.md",
+        "daily-review-template.md": SKILL_DIR / "references" / "daily-review-template.md",
+        "html-report-template.md": SKILL_DIR / "references" / "html-report-template.md",
+    }
+    missing = [str(path) for path in files.values() if not path.exists()]
+    if missing:
+        raise FileNotFoundError("缺少 stock-cycle-review skill 文件：" + "；".join(missing))
+
+    combined = "\n".join(path.read_text(encoding="utf-8") for path in files.values())
+    missing_markers = [marker for marker in SKILL_REQUIRED_MARKERS if marker not in combined]
+    if missing_markers:
+        raise ValueError("stock-cycle-review skill 缺少必要流程标记：" + "、".join(missing_markers))
+
+    return {
+        "name": "stock-cycle-review",
+        "skill_dir": str(SKILL_DIR),
+        "workflow": "阶段 -> 旧龙 -> 亏钱效应 -> 新方向 -> 梯队 -> 买点 -> 操作 -> 风控",
+        "files": {name: {"path": str(path), "sha256": file_sha256(path)} for name, path in files.items()},
+    }
 
 
 def fetch_json(url):
@@ -656,7 +695,7 @@ def render_table(headers, rows):
     return '<div class="table-wrap"><table><thead><tr>' + "".join(f"<th>{esc(h)}</th>" for h in headers) + "</tr></thead><tbody>" + "".join(body) + "</tbody></table></div>"
 
 
-def render_report(parsed, analysis, previous_reports, next_date):
+def render_report(parsed, analysis, previous_reports, next_date, skill_contract):
     date = parsed["date"]
     title = f"A股短线周期复盘 - {date.isoformat()}"
     top_boards = []
@@ -738,6 +777,7 @@ def render_report(parsed, analysis, previous_reports, next_date):
         "review_date": date.isoformat(),
         "data_cutoff": date.isoformat(),
         "next_trading_day": next_date.isoformat() if next_date else "",
+        "generated_by_skill": skill_contract,
         "cycle_stage": analysis["cycle"],
         "market_phase": analysis["market_phase"],
         "old_leader_state": analysis["old_leader_state"],
@@ -791,7 +831,8 @@ def render_report(parsed, analysis, previous_reports, next_date):
     <header>
       <h1>{esc(title)}</h1>
       <p class="note">次日计划对应：{esc(metadata["next_trading_day"] or "下一交易日待确认")}。复盘口径：历史实盘模拟，只使用 {esc(date.isoformat())} 当天及之前数据。主数据源发布时间：{esc(parsed["created_at"])}；数据更新时间：{esc(parsed["update_time"])}。</p>
-      <p class="risk">这是复盘框架，不构成投资建议或荐股。输出顺序固定为：阶段 -> 旧龙 -> 亏钱效应 -> 新方向 -> 梯队 -> 买点 -> 操作 -> 风控。</p>
+      <p class="note">生成依据：{esc(skill_contract["name"])} skill；流程：{esc(skill_contract["workflow"])}。</p>
+      <p class="risk">这是复盘框架，不构成投资建议或荐股。输出顺序由 skill 固定为：阶段 -> 旧龙 -> 亏钱效应 -> 新方向 -> 梯队 -> 买点 -> 操作 -> 风控。</p>
     </header>
     <section class="grid status-grid" aria-label="核心状态">
       <div class="metric"><div class="label">市场阶段</div><div class="value">{esc(analysis["market_phase"])}</div></div>
@@ -887,6 +928,7 @@ def load_previous_reports():
 
 def main():
     OUT_DIR.mkdir(exist_ok=True)
+    skill_contract = load_skill_contract()
     topics = fetch_topics()
     parsed_days = [parse_topic(topic) for topic in topics]
     parsed_date_keys = {p["date"].isoformat() for p in parsed_days}
@@ -911,7 +953,7 @@ def main():
         next_date = parsed_days[idx + 1]["date"] if idx + 1 < len(parsed_days) else None
         state = leader_state_for_date(parsed["date"], ledger)
         analysis = classify_day(parsed, state, rolling_reports)
-        page, metadata = render_report(parsed, analysis, rolling_reports, next_date)
+        page, metadata = render_report(parsed, analysis, rolling_reports, next_date, skill_contract)
         out = OUT_DIR / f"{parsed['date'].isoformat()}.html"
         out.write_text(page, encoding="utf-8")
         written.append(out)

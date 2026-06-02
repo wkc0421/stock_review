@@ -38,6 +38,7 @@ def main():
     OUT_DIR.mkdir(exist_ok=True)
     fields = [
         "date",
+        "skill",
         "market_phase",
         "cycle",
         "prior",
@@ -67,6 +68,7 @@ def main():
         rows.append(
             {
                 "date": report.get("review_date", ""),
+                "skill": (report.get("generated_by_skill") or {}).get("name", ""),
                 "market_phase": report.get("market_phase", ""),
                 "cycle": report.get("cycle_stage", ""),
                 "prior": report.get("prior_confirmed_leader", ""),
