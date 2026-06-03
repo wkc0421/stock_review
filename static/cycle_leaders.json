@@ -1,22 +1,38 @@
 [
   {
     "effective_date": "2026-03-11",
-    "valid_until": "2026-03-31",
+    "valid_until": "2026-03-16",
     "leader": "豫能控股",
     "code": "001896",
-    "theme": "电力 / 算电协同",
-    "confidence": "confirmed",
-    "source": "用户提示 + 3月11日至3月13日手工复盘锚点",
-    "note": "作为华电辽能启动前的上一轮龙头锚点；3月13日尾盘跌停后负反馈明确。"
+    "theme": "算力 / 算电协同",
+    "primary_theme": "算力 / 算电协同",
+    "secondary_themes": ["电力", "绿电"],
+    "confidence": "confirmed_from_current_rebuild",
+    "source": "用户指定前一轮龙头 + 2026-03-11至2026-03-16从零重建复盘",
+    "note": "2026-03-16复盘确认豫能控股连续跌停，上一轮龙头死亡。"
   },
   {
-    "effective_date": "2026-05-13",
-    "valid_until": "2026-06-01",
-    "leader": "大唐发电",
-    "code": "601991",
-    "theme": "电力 / 算电协同",
-    "confidence": "confirmed",
-    "source": "5月11日至5月15日手工补源复盘锚点",
-    "note": "5月13日6板确认容量核心；4/5板买点是否成立仍需看当时盘中换手回封，不由脚本自动确认。"
+    "effective_date": "2026-03-17",
+    "valid_until": "2026-03-20",
+    "leader": "三房巷",
+    "code": "600370",
+    "theme": "化工 / PTA / 瓶片",
+    "primary_theme": "化工 / PTA / 瓶片",
+    "secondary_themes": ["印染", "黄金"],
+    "confidence": "ended_by_negative_feedback_on_2026_03_20",
+    "source": "2026-03-17复盘确认4板试错；2026-03-18复盘确认5板晋级；2026-03-19复盘确认6板失败负反馈；2026-03-20复盘确认跌停死亡",
+    "note": "2026-03-20三房巷跌停，按龙头死亡处理；不再作为后续报告的有效现任龙头。"
+  },
+  {
+    "effective_date": "2026-03-20",
+    "valid_until": null,
+    "leader": "华电辽能",
+    "code": "600396",
+    "theme": "绿电 / 电力 / 央企",
+    "primary_theme": "绿电 / 电力 / 央企",
+    "secondary_themes": ["电力", "储能", "国企改革"],
+    "confidence": "confirmed_by_6_board_on_2026_03_23",
+    "source": "2026-03-20复盘：同花顺涨停分析 + 东方财富龙虎榜 + 财联社/东方财富焦点复盘；2026-03-23复盘：财联社连板分析 + 东方财富龙虎榜 + 证券时报盘中行情",
+    "note": "华电辽能3月20按3月19计划触发5板非一字换手回封，3月23晋级连续6板，完成空间确认；但当日全市场冰点，仍按持仓核心管理，无先手不追6/7板。"
   }
 ]

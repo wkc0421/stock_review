@@ -1,0 +1,104 @@
+[
+  {
+    "as_of": "2026-03-13",
+    "valid_until": "2026-03-16",
+    "stock": "豫能控股",
+    "code": "001896",
+    "primary_theme": "算力 / 算电协同",
+    "secondary_themes": ["电力", "绿电"],
+    "source_labels": ["算电协同", "电力"],
+    "confidence": "medium_high",
+    "manual_approved": true,
+    "evidence": [
+      {
+        "date": "2026-03-11",
+        "source": "东方财富",
+        "title": "豫能控股盘中及收盘表现复核",
+        "url": "https://finance.eastmoney.com/a/202603113668494295.html"
+      },
+      {
+        "date": "2026-03-13",
+        "source": "东方财富",
+        "title": "豫能控股盘中跌停负反馈复核",
+        "url": "https://finance.eastmoney.com/a/202603133671420422.html"
+      }
+    ],
+    "judgment_note": "服务2026-03-11至2026-03-16豫能控股旧周期复盘；2026-03-16确认旧龙死亡。"
+  },
+  {
+    "as_of": "2026-03-17",
+    "valid_until": "2026-03-20",
+    "stock": "三房巷",
+    "code": "600370",
+    "primary_theme": "化工 / PTA / 瓶片",
+    "secondary_themes": ["印染", "黄金"],
+    "source_labels": ["化工", "瓶级聚酯切片", "PTA", "印染", "黄金"],
+    "confidence": "medium_high",
+    "manual_approved": true,
+    "evidence": [
+      {
+        "date": "2026-03-17",
+        "source": "同花顺",
+        "title": "三房巷03月17日涨停分析",
+        "url": "https://news.10jqka.com.cn/20260317/c675351750.shtml"
+      },
+      {
+        "date": "2026-03-17",
+        "source": "东方财富/财联社",
+        "title": "3月17日焦点复盘",
+        "url": "https://finance.eastmoney.com/a/202603173674581019.html"
+      },
+      {
+        "date": "2026-03-20",
+        "source": "东方财富",
+        "title": "三房巷(600370)龙虎榜数据(03-20)",
+        "url": "https://finance.eastmoney.com/a/202603203678951660.html"
+      }
+    ],
+    "judgment_note": "服务2026-03-17至2026-03-20三房巷4板试错、5板确认、6板失败和跌停死亡复盘。"
+  },
+  {
+    "as_of": "2026-03-20",
+    "valid_until": null,
+    "stock": "华电辽能",
+    "code": "600396",
+    "primary_theme": "绿电 / 电力 / 央企",
+    "secondary_themes": ["电力", "储能", "国企改革"],
+    "source_labels": ["绿电", "氢能", "央企", "算电协同", "电力"],
+    "confidence": "medium_high",
+    "manual_approved": true,
+    "evidence": [
+      {
+        "date": "2026-03-20",
+        "source": "同花顺",
+        "title": "华电辽能03月20日涨停分析",
+        "url": "https://stock.10jqka.com.cn/20260320/c675442183.shtml"
+      },
+      {
+        "date": "2026-03-20",
+        "source": "东方财富",
+        "title": "华电辽能3月20日龙虎榜数据",
+        "url": "https://finance.eastmoney.com/a/202603203679004483.html"
+      },
+      {
+        "date": "2026-03-20",
+        "source": "东方财富/财联社",
+        "title": "3月20日焦点复盘",
+        "url": "https://finance.eastmoney.com/a/202603203679019028.html"
+      },
+      {
+        "date": "2026-03-23",
+        "source": "财联社",
+        "title": "3月23日连板股分析",
+        "url": "https://www.cls.cn/detail/2321420"
+      },
+      {
+        "date": "2026-03-23",
+        "source": "东方财富",
+        "title": "华电辽能(600396)龙虎榜数据(03-23)",
+        "url": "https://finance.eastmoney.com/a/202603233681116780.html"
+      }
+    ],
+    "judgment_note": "2026-03-20按5板换手试错核心记录；2026-03-23晋级6板完成空间确认。3月23盘面同时出现冰点和高位天地板，后续按龙头持仓管理，不把6/7板写成无先手新买点。"
+  }
+]

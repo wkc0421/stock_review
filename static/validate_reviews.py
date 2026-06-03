@@ -32,8 +32,11 @@ def main():
         "new_direction",
         "operation_plan",
         "risk_control",
+        "source_verification",
     ]
-    for path in sorted(OUT_DIR.glob("2026-*.html")):
+    for path in sorted(OUT_DIR.glob("20*.html")):
+        if path.name == "index.html":
+            continue
         report = read_report(path)
         reports.append(report)
         missing = [field for field in required_fields if field not in report]

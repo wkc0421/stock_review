@@ -14,9 +14,10 @@ from bs4 import BeautifulSoup
 ROOT = Path(__file__).resolve().parents[1]
 OUT_DIR = ROOT / "stock-cycle-reviews"
 LEADER_LEDGER_PATH = ROOT / "static" / "cycle_leaders.json"
+THEME_JUDGMENTS_PATH = ROOT / "static" / "theme_judgments.json"
 DEFAULT_SKILL_DIR = Path.home() / "plugins" / "stock-cycle-review" / "skills" / "stock-cycle-review"
 SKILL_DIR = Path(os.environ.get("STOCK_CYCLE_REVIEW_SKILL_DIR", DEFAULT_SKILL_DIR))
-START = dt.date(2026, 3, 17)
+START = dt.date(2026, 3, 13)
 END = dt.date(2026, 6, 1)
 CATEGORY_URL = "https://wudaolu.com/c/aguhot/8.json"
 HEADERS = {"User-Agent": "Mozilla/5.0"}
@@ -27,18 +28,16 @@ CSS = """
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei",sans-serif;line-height:1.55}.page{width:min(1180px,calc(100% - 32px));margin:0 auto;padding:28px 0 42px}header{display:grid;gap:10px;margin-bottom:16px}h1{margin:0;font-size:clamp(24px,4vw,36px);letter-spacing:0}h2{margin:0 0 12px;font-size:18px;letter-spacing:0}p{margin:0}.note{color:var(--muted);font-size:14px}.risk{border-left:4px solid var(--warn);background:#fff8ec;padding:10px 12px;color:#7a4b00}.grid{display:grid;gap:12px}.status-grid{grid-template-columns:repeat(6,minmax(0,1fr));margin:16px 0}.metric,section{background:var(--panel);border:1px solid var(--line);border-radius:8px}.metric{min-height:96px;padding:12px}.metric .label{color:var(--muted);font-size:12px;margin-bottom:6px}.metric .value{font-size:17px;font-weight:700}section{padding:16px;margin-bottom:14px}.timeline,.plan{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.plan{grid-template-columns:repeat(3,1fr)}.step,.plan-block{border:1px solid var(--line);border-radius:8px;padding:12px;background:#fbfcfe}.title,.plan-block strong{display:block;font-weight:700;margin-bottom:6px}table{width:100%;border-collapse:collapse;font-size:14px}th,td{border-bottom:1px solid var(--line);padding:10px 8px;text-align:left;vertical-align:top}th{color:var(--muted);font-weight:600;background:#f9fafb}.badge{display:inline-flex;align-items:center;min-height:24px;padding:2px 8px;border-radius:999px;font-size:12px;font-weight:700;white-space:nowrap}.buy{background:#e8f5ef;color:var(--strong)}.observe{background:#fff4db;color:var(--warn)}.reject{background:#fdebea;color:var(--danger)}.context{background:#eaf1ff;color:var(--info)}ul,ol{margin:0;padding-left:20px}a{color:var(--info)}@media(max-width:860px){.status-grid,.timeline,.plan{grid-template-columns:1fr}.table-wrap{overflow-x:auto}table{min-width:760px}}
 """.strip()
 
-AUTO_CONFIRM_STANDARD_BUY = False
+AUTO_CONFIRM_STANDARD_BUY = True
 AUTO_UPDATE_PRIOR_LEADER = False
 FETCH_RETRIES = 4
 HARD_VETO_TERMS = (
     "一字或准一字交易性不足",
     "不是排除一字后的可交易最高板",
-    "尾盘回封",
     "换手超过40%",
     "换手偏低，分歧不足",
-    "炸板次数过多",
     "同板块一字高标仍在，低位只能算助攻",
-    "与上一轮龙头同板块",
+    "与上一轮龙头主题材相同",
 )
 
 SKILL_REQUIRED_MARKERS = (
@@ -139,6 +138,53 @@ def load_leader_ledger():
     return sorted(ledger, key=lambda x: x["effective_date_value"])
 
 
+def load_theme_judgments():
+    if not THEME_JUDGMENTS_PATH.exists():
+        return []
+    rows = json.loads(THEME_JUDGMENTS_PATH.read_text(encoding="utf-8"))
+    judgments = []
+    for row in rows:
+        item = dict(row)
+        item["as_of_value"] = parse_date(item.get("as_of"))
+        item["valid_until_value"] = parse_date(item.get("valid_until"))
+        judgments.append(item)
+    return judgments
+
+
+def date_applies(item, review_date, start_key="as_of_value", end_key="valid_until_value"):
+    start = item.get(start_key)
+    end = item.get(end_key)
+    if start and review_date < start:
+        return False
+    if end and review_date > end:
+        return False
+    return True
+
+
+def theme_judgment_for(row, review_date, judgments):
+    code = str(row.get("代码") or row.get("code") or "").strip()
+    name = stock_label(row)
+    matches = []
+    for item in judgments:
+        if not date_applies(item, review_date):
+            continue
+        if code and str(item.get("code") or "").strip() == code:
+            matches.append(item)
+        elif name and item.get("stock") == name:
+            matches.append(item)
+    return matches[-1] if matches else None
+
+
+def split_theme_tokens(value):
+    return [token.strip() for token in re.split(r"[ /、,，]+", value or "") if token and len(token.strip()) >= 2]
+
+
+def themes_overlap(left, right):
+    left_tokens = split_theme_tokens(left)
+    right_tokens = split_theme_tokens(right)
+    return any(a in b or b in a for a in left_tokens for b in right_tokens)
+
+
 def leader_state_for_date(review_date, ledger):
     candidates = []
     for item in ledger:
@@ -159,7 +205,9 @@ def leader_state_for_date(review_date, ledger):
     return {
         "prior_leader": item.get("leader") or "未确认",
         "prior_code": item.get("code") or "",
-        "prior_theme": item.get("theme") or "未确认",
+        "prior_theme": item.get("primary_theme") or item.get("theme") or "未确认",
+        "prior_theme_source_label": item.get("theme") or "",
+        "prior_secondary_themes": item.get("secondary_themes") or [],
         "prior_leader_confirmed": item.get("confidence") == "confirmed",
         "prior_leader_source": item.get("source") or "人工龙头台账",
         "prior_leader_note": item.get("note") or "",
@@ -352,12 +400,35 @@ def theme_label(row):
     return row.get("所属行业") or "未归类"
 
 
-def overlap_theme(row, prior_theme):
-    text = f"{theme_label(row)} {row.get('所属行业','')}"
-    for token in re.split(r"[ /、,，]+", prior_theme or ""):
-        if token and len(token) >= 2 and token in text:
-            return True
-    return False
+def primary_theme_label(row, review_date=None, judgments=None):
+    if review_date and judgments is not None:
+        judgment = theme_judgment_for(row, review_date, judgments)
+        if judgment and judgment.get("primary_theme"):
+            return judgment["primary_theme"]
+    return theme_label(row)
+
+
+def theme_basis_label(row, review_date=None, judgments=None):
+    judgment = theme_judgment_for(row, review_date, judgments) if review_date and judgments is not None else None
+    primary = judgment.get("primary_theme") if judgment else theme_label(row)
+    source = theme_label(row)
+    confidence = judgment.get("confidence", "源帖归类") if judgment else "源帖归类"
+    if judgment:
+        secondary = "、".join(judgment.get("secondary_themes") or [])
+        approval = "人工批准" if judgment.get("manual_approved", True) is not False else "人工未批准"
+        detail = f"主题材：{primary}；源帖：{source}；置信度：{confidence}"
+        if secondary:
+            detail += f"；副题材：{secondary}"
+        detail += f"；{approval}"
+        return detail
+    return f"源帖归类：{source}；主题材待人工研判"
+
+
+def overlap_theme(row, prior_theme, review_date=None, judgments=None):
+    if review_date and judgments is not None and not theme_judgment_for(row, review_date, judgments):
+        return False
+    current_primary = primary_theme_label(row, review_date, judgments)
+    return themes_overlap(current_primary, prior_theme)
 
 
 def extract_board_number(text):
@@ -484,7 +555,7 @@ def new_direction_analysis(theme_groups, old_theme, candidates):
     independent = []
     old_related = []
     for group in theme_groups:
-        related = any(group["name"] in old_theme or token in group["name"] for token in re.split(r"[ /、]+", old_theme) if len(token) >= 2)
+        related = themes_overlap(group["name"], old_theme)
         if related:
             old_related.append(group)
         else:
@@ -506,7 +577,7 @@ def new_direction_analysis(theme_groups, old_theme, candidates):
     }
 
 
-def classify_day(parsed, state, previous_reports):
+def classify_day(parsed, state, previous_reports, theme_judgments):
     ladder = parsed["ladder"]
     max_board = max([r["board"] for r in ladder], default=0)
     nominal = board_rows(ladder, max_board)
@@ -521,6 +592,8 @@ def classify_day(parsed, state, previous_reports):
 
     old_leader = state.get("prior_leader") or "未确认"
     old_theme = state.get("prior_theme") or "未确认"
+    old_theme_source_label = state.get("prior_theme_source_label") or ""
+    old_secondary_themes = state.get("prior_secondary_themes") or []
     old_confirmed = bool(state.get("prior_leader_confirmed"))
     old_source = state.get("prior_leader_source") or "未登记"
     old_note = state.get("prior_leader_note") or ""
@@ -536,15 +609,31 @@ def classify_day(parsed, state, previous_reports):
     one_word_high = [r for r in eligible_45 if is_one_word(r) or is_near_one_word(r)]
     live_one_word_theme = one_word_high[0] if one_word_high else None
 
+    previous_standard_stocks = set()
+    for report in previous_reports:
+        for item in report.get("model_verdicts") or []:
+            if item.get("verdict") == "standard buy" and item.get("stock"):
+                previous_standard_stocks.add(item["stock"])
+
     candidates = []
     standard = []
     for row in eligible_45:
         positives = []
         negatives = []
         role = "试错高标"
-        if overlap_theme(row, old_theme):
+        judgment = theme_judgment_for(row, parsed["date"], theme_judgments)
+        primary_theme = primary_theme_label(row, parsed["date"], theme_judgments)
+        basis = theme_basis_label(row, parsed["date"], theme_judgments)
+        manual_approved = bool(judgment and judgment.get("manual_approved", True) is not False)
+        if stock_label(row) in previous_standard_stocks:
+            negatives.append("前序4/5板标准买点已确认，今日不重复作为新开仓买点")
+        if not judgment:
+            negatives.append("主题材未人工研判，不能仅凭源帖标签确认周期归属")
+        elif not manual_approved:
+            negatives.append("人工复核未批准标准买点")
+        if overlap_theme(row, old_theme, parsed["date"], theme_judgments):
             role = "旧周期二阶段/补涨"
-            negatives.append("与上一轮龙头同板块")
+            negatives.append("与上一轮龙头主题材相同")
         if is_one_word(row) or is_near_one_word(row):
             negatives.append("一字或准一字交易性不足")
         else:
@@ -554,25 +643,31 @@ def classify_day(parsed, state, previous_reports):
         else:
             negatives.append("不是排除一字后的可交易最高板")
         first = time_minutes(first_time(row))
-        last = time_minutes(last_time(row))
         if first is not None and first <= 630:
             positives.append("10:30前首次封板")
-        if last is not None and last > 870:
-            negatives.append("尾盘回封")
         turn = turnover(row)
+        turnover_confirmed = False
         if turn is not None:
-            if 15 <= turn <= 30:
-                positives.append("换手在15%-30%区间")
+            if 7 < turn <= 30:
+                positives.append("换手大于7%，满足分歧换手确认")
+                turnover_confirmed = True
+            elif 30 < turn <= 40:
+                positives.append("换手在30%-40%高分歧区间")
+                turnover_confirmed = True
             elif turn > 40:
                 negatives.append("换手超过40%")
-            elif turn < 8:
-                negatives.append("换手偏低，分歧不足")
-        if broken_count(row) >= 8:
-            negatives.append("炸板次数过多")
-        if theme_label(row) in main_theme_names or row.get("所属行业") in main_theme_names:
+            elif turn <= 7:
+                negatives.append("换手不大于7%，分歧换手确认不足")
+        else:
+            negatives.append("缺少换手数据，无法确认分歧换手")
+        if primary_theme in main_theme_names or theme_label(row) in main_theme_names or row.get("所属行业") in main_theme_names:
             positives.append("属于当日强板块")
 
-        same_theme_blocked = bool(live_one_word_theme and row is not live_one_word_theme and theme_label(row) == theme_label(live_one_word_theme))
+        same_theme_blocked = bool(
+            live_one_word_theme
+            and row is not live_one_word_theme
+            and primary_theme_label(row, parsed["date"], theme_judgments) == primary_theme_label(live_one_word_theme, parsed["date"], theme_judgments)
+        )
         if same_theme_blocked:
             negatives.append("同板块一字高标仍在，低位只能算助攻")
 
@@ -580,8 +675,8 @@ def classify_day(parsed, state, previous_reports):
             negatives.append("上一轮龙头未确认，不能判定新周期窗口")
         if old_live and old_live.get("board", 0) >= 5:
             negatives.append("旧周期高标仍在，不能认定新周期")
-        if not AUTO_CONFIRM_STANDARD_BUY:
-            negatives.append("自动批量复盘不确认标准买点，需人工核验旧龙负反馈和板块独立性")
+        if not manual_approved:
+            negatives.append("未取得人工批准，不能自动确认标准买点")
 
         verdict = "仅观察"
         hard_veto = any(term in negatives for term in HARD_VETO_TERMS)
@@ -589,14 +684,26 @@ def classify_day(parsed, state, previous_reports):
             verdict = "放弃"
         elif (
             AUTO_CONFIRM_STANDARD_BUY
+            and manual_approved
+            and turnover_confirmed
             and len(positives) >= 4
             and not negatives
-            and not overlap_theme(row, old_theme)
+            and not overlap_theme(row, old_theme, parsed["date"], theme_judgments)
             and not (old_live and old_live.get("board", 0) >= 5)
         ):
             verdict = "标准买点"
             standard.append(row)
-        candidates.append({"row": row, "role": role, "positives": positives, "negatives": negatives, "verdict": verdict})
+        candidates.append({
+            "row": row,
+            "role": role,
+            "positives": positives,
+            "negatives": negatives,
+            "verdict": verdict,
+            "primary_theme": primary_theme,
+            "theme_basis": basis,
+            "theme_judgment": judgment,
+            "manual_approved": manual_approved,
+        })
 
     if not candidates:
         candidate_empty = "当日无符合4/5板候选，低位票只做盘面跟踪"
@@ -675,6 +782,8 @@ def classify_day(parsed, state, previous_reports):
         "hard_no_trade": "退潮期空仓；不顶一字；不买2/3板；不追6板首次开口；不买同板块后排替代",
         "old_leader": old_leader,
         "old_theme": old_theme,
+        "old_theme_source_label": old_theme_source_label,
+        "old_secondary_themes": old_secondary_themes,
         "old_confirmed": old_confirmed,
         "old_source": old_source,
         "old_note": old_note,
@@ -698,6 +807,11 @@ def render_table(headers, rows):
 def render_report(parsed, analysis, previous_reports, next_date, skill_contract):
     date = parsed["date"]
     title = f"A股短线周期复盘 - {date.isoformat()}"
+    old_theme_display = analysis["old_theme"]
+    if analysis.get("old_secondary_themes"):
+        old_theme_display += "（副：" + "、".join(analysis["old_secondary_themes"]) + "）"
+    if analysis.get("old_theme_source_label") and analysis["old_theme_source_label"] != analysis["old_theme"]:
+        old_theme_display += "；源帖/原始标签：" + analysis["old_theme_source_label"]
     top_boards = []
     for board in sorted({r["board"] for r in parsed["ladder"]}, reverse=True)[:5]:
         names = "、".join(stock_label(r) for r in board_rows(parsed["ladder"], board)[:8])
@@ -708,13 +822,13 @@ def render_report(parsed, analysis, previous_reports, next_date, skill_contract)
         rows = group["rows"]
         high = sorted(rows, key=lambda r: int(to_float(r.get("连板数") or r.get("连板") or 0) or 0), reverse=True)[:3]
         high_text = "、".join((r.get("名称") or r.get("股票", "")) + (f"{int(to_float(r.get('连板数') or r.get('连板') or 0) or 0)}板" if int(to_float(r.get("连板数") or r.get("连板") or 0) or 0) > 1 else "") for r in high)
-        relation = "与旧周期相关" if any(group["name"] in analysis["old_theme"] or token in group["name"] for token in re.split(r"[ /、]+", analysis["old_theme"]) if len(token) >= 2) else "独立或背景分支"
+        relation = "与旧周期主题材相关" if themes_overlap(group["name"], analysis["old_theme"]) else "独立或背景分支"
         cls = "buy" if len(rows) >= 7 else "context" if len(rows) >= 4 else "observe"
         theme_rows.append([esc(group["name"]), esc(high_text or "无明确高标"), esc(f"{len(rows)}只涨停/封板"), esc("看容量表与成交额排序"), esc(relation), badge("强" if len(rows) >= 7 else "中等", cls)])
 
     candidate_rows = []
     if analysis["candidate_empty"]:
-        candidate_rows.append([esc(analysis["candidate_empty"]), "-", "无买点", "无", "未到4/5板或交易性不足", badge("仅观察", "observe")])
+        candidate_rows.append([esc(analysis["candidate_empty"]), "-", "无", "无买点", "无", "未到4/5板或交易性不足", badge("仅观察", "observe")])
     else:
         for item in analysis["candidates"]:
             row = item["row"]
@@ -722,7 +836,8 @@ def render_report(parsed, analysis, previous_reports, next_date, skill_contract)
             candidate_rows.append([
                 esc(stock_full(row)),
                 esc(row["board"]),
-                esc(f"{first_time(row)}首次封板，{last_time(row)}最后封板，换手{row.get('换手率','未知')}"),
+                esc(item["theme_basis"]),
+                esc(f"{first_time(row)}首次封板，换手{row.get('换手率','未知')}"),
                 esc("；".join(item["positives"]) or "无"),
                 esc("；".join(item["negatives"]) or "无"),
                 badge(item["verdict"], cls),
@@ -741,7 +856,7 @@ def render_report(parsed, analysis, previous_reports, next_date, skill_contract)
         prev_rows.append(["无更早归档", "无", "无", "无", "从本日开始滚动"])
 
     if analysis["old_confirmed"]:
-        old_watch = f"旧龙：{analysis['old_leader']} / {analysis['old_theme']}。{analysis['old_status']}。若继续不在涨停池或出现高位负反馈，说明旧周期压制仍在；若重新涨停，说明旧周期仍有修复。"
+        old_watch = f"旧龙：{analysis['old_leader']} / {old_theme_display}。{analysis['old_status']}。若继续不在涨停池或出现高位负反馈，说明旧周期压制仍在；若重新涨停，说明旧周期仍有修复。"
     else:
         old_watch = f"旧龙：未确认。原因：{analysis['old_source']}。先补齐上一轮龙头、所属题材和负反馈证据；未补齐前不确认新周期买点。"
     if analysis["standard"]:
@@ -749,7 +864,7 @@ def render_report(parsed, analysis, previous_reports, next_date, skill_contract)
     else:
         candidate_plan = f"候选买点：无。处理：{analysis['operation']['position']}，只登记候选池；低位2/3板和同板块后排不替代标准4/5板。"
     risk_names = "、".join(stock_label(r) for r in analysis["nominal"][:3]) or "当日高标"
-    risk_plan = f"风险票：{risk_names}。风险原因：一字、尾盘回封、爆量、旧周期补涨或无板块助攻。处理：不买或只观察负反馈。"
+    risk_plan = f"风险票：{risk_names}。风险原因：一字、换手失控、旧周期补涨或无板块助攻。处理：不买或只观察负反馈。"
     operation_rows = [[
         esc(analysis["market_phase"]),
         esc(analysis["operation"]["position"]),
@@ -767,7 +882,7 @@ def render_report(parsed, analysis, previous_reports, next_date, skill_contract)
 
     final_lines = [
         f"当前市场阶段：{analysis['market_phase']}；周期描述：{analysis['cycle']}。",
-        f"当前核心：上一轮龙头是{analysis['old_leader']} / {analysis['old_theme']}；待确认高标为{analysis['leader_watch']}；当日核心为{analysis['current_core']}。",
+        f"当前核心：上一轮龙头是{analysis['old_leader']} / {old_theme_display}；待确认高标为{analysis['leader_watch']}；当日核心为{analysis['current_core']}。",
         f"亏钱效应：{analysis['loss_effect']['level']}；操作仓位：{analysis['operation']['position']}。",
         f"下一次标准买点：{analysis['next_opportunity']}。",
         f"硬性禁买：{analysis['hard_no_trade']}。",
@@ -796,12 +911,15 @@ def render_report(parsed, analysis, previous_reports, next_date, skill_contract)
         },
         "prior_confirmed_leader": analysis["old_leader"],
         "prior_leader_theme": analysis["old_theme"],
+        "prior_leader_theme_display": old_theme_display,
+        "prior_leader_secondary_themes": analysis.get("old_secondary_themes", []),
+        "prior_leader_source_theme": analysis.get("old_theme_source_label", ""),
         "prior_leader_confirmed": analysis["old_confirmed"],
         "prior_leader_source": analysis["old_source"],
         "prior_leader_note": analysis["old_note"],
         "leader_watch": analysis["leader_watch"],
         "intermediate_trial_chain": "、".join(stock_label(r) + f"{r['board']}板" for r in parsed["ladder"] if 3 <= r["board"] <= 5)[:200],
-        "old_leader_chain": f"{analysis['old_leader']} / {analysis['old_theme']}",
+        "old_leader_chain": f"{analysis['old_leader']} / {old_theme_display}",
         "current_core": analysis["current_core"],
         "tradable_high_board": analysis["tradable_high"],
         "next_opportunity": analysis["next_opportunity"],
@@ -810,6 +928,7 @@ def render_report(parsed, analysis, previous_reports, next_date, skill_contract)
             {
                 "stock": stock_label(item["row"]),
                 "role": item["role"],
+                "theme_basis": item["theme_basis"],
                 "verdict": "standard buy" if item["verdict"] == "标准买点" else "reject" if item["verdict"] == "放弃" else "observe only",
                 "reason": "；".join(item["negatives"] or item["positives"]),
             }
@@ -836,7 +955,7 @@ def render_report(parsed, analysis, previous_reports, next_date, skill_contract)
     </header>
     <section class="grid status-grid" aria-label="核心状态">
       <div class="metric"><div class="label">市场阶段</div><div class="value">{esc(analysis["market_phase"])}</div></div>
-      <div class="metric"><div class="label">上一轮龙头/板块</div><div class="value">{esc(analysis["old_leader"])} / {esc(analysis["old_theme"])}</div></div>
+      <div class="metric"><div class="label">上一轮龙头/板块</div><div class="value">{esc(analysis["old_leader"])} / {esc(old_theme_display)}</div></div>
       <div class="metric"><div class="label">旧龙状态</div><div class="value">{esc(analysis["old_leader_state"])}</div></div>
       <div class="metric"><div class="label">亏钱效应</div><div class="value">{esc(analysis["loss_effect"]["level"])}</div></div>
       <div class="metric"><div class="label">新方向</div><div class="value">{esc(analysis["new_direction"]["summary"])}</div></div>
@@ -853,7 +972,7 @@ def render_report(parsed, analysis, previous_reports, next_date, skill_contract)
     <section>
       <h2>周期链路</h2>
       <div class="timeline">
-        <div class="step"><div class="title">上一龙头</div><p>{esc(analysis["old_leader"])} / {esc(analysis["old_theme"])}。{esc(analysis["old_status"])}。来源：{esc(analysis["old_source"])}。</p></div>
+        <div class="step"><div class="title">上一龙头</div><p>{esc(analysis["old_leader"])} / {esc(old_theme_display)}。{esc(analysis["old_status"])}。来源：{esc(analysis["old_source"])}。</p></div>
         <div class="step"><div class="title">题材判断</div><p>{esc("、".join(main_theme_names := [g["name"] for g in analysis["theme_groups"][:3]]) or "无明确主线")} 是当日主要涨停方向，先看是否独立于旧周期。</p></div>
         <div class="step"><div class="title">当前核心</div><p>{esc(analysis["current_core"])}。待确认高标：{esc(analysis["leader_watch"])}。名义最高板不等于可交易龙头。</p></div>
         <div class="step"><div class="title">下一触发</div><p>{esc(analysis["next_opportunity"])}</p></div>
@@ -877,7 +996,7 @@ def render_report(parsed, analysis, previous_reports, next_date, skill_contract)
     </section>
     <section>
       <h2>4/5板候选检查</h2>
-      {render_table(["股票","板数","买点状态","加分项","扣分项","模型结论"], candidate_rows)}
+      {render_table(["股票","板数","题材判断","买点状态","加分项","扣分项","模型结论"], candidate_rows)}
     </section>
     <section>
       <h2>次日盯盘预案</h2>
@@ -934,6 +1053,7 @@ def main():
     parsed_date_keys = {p["date"].isoformat() for p in parsed_days}
     reports = load_previous_reports()
     ledger = load_leader_ledger()
+    theme_judgments = load_theme_judgments()
     gap_reports = sorted(
         [
             r for r in reports
@@ -952,7 +1072,7 @@ def main():
                 rolling_reports.append(gap)
         next_date = parsed_days[idx + 1]["date"] if idx + 1 < len(parsed_days) else None
         state = leader_state_for_date(parsed["date"], ledger)
-        analysis = classify_day(parsed, state, rolling_reports)
+        analysis = classify_day(parsed, state, rolling_reports, theme_judgments)
         page, metadata = render_report(parsed, analysis, rolling_reports, next_date, skill_contract)
         out = OUT_DIR / f"{parsed['date'].isoformat()}.html"
         out.write_text(page, encoding="utf-8")

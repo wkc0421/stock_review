@@ -1,216 +1,688 @@
 <!doctype html>
 <html lang="zh-CN">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>A股短线周期复盘 - 2026-03-30</title>
-  <style>:root{--bg:#f6f7f9;--panel:#fff;--text:#1f2937;--muted:#6b7280;--line:#d9dee7;--strong:#13795b;--warn:#b26a00;--danger:#b42318;--info:#1d4ed8}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei",sans-serif;line-height:1.55}.page{width:min(1180px,calc(100% - 32px));margin:0 auto;padding:28px 0 42px}header{display:grid;gap:10px;margin-bottom:16px}h1{margin:0;font-size:clamp(24px,4vw,36px);letter-spacing:0}h2{margin:0 0 12px;font-size:18px;letter-spacing:0}p{margin:0}.note{color:var(--muted);font-size:14px}.risk{border-left:4px solid var(--warn);background:#fff8ec;padding:10px 12px;color:#7a4b00}.grid{display:grid;gap:12px}.status-grid{grid-template-columns:repeat(6,minmax(0,1fr));margin:16px 0}.metric,section{background:var(--panel);border:1px solid var(--line);border-radius:8px}.metric{min-height:96px;padding:12px}.metric .label{color:var(--muted);font-size:12px;margin-bottom:6px}.metric .value{font-size:17px;font-weight:700}section{padding:16px;margin-bottom:14px}.timeline,.plan{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.plan{grid-template-columns:repeat(3,1fr)}.step,.plan-block{border:1px solid var(--line);border-radius:8px;padding:12px;background:#fbfcfe}.title,.plan-block strong{display:block;font-weight:700;margin-bottom:6px}table{width:100%;border-collapse:collapse;font-size:14px}th,td{border-bottom:1px solid var(--line);padding:10px 8px;text-align:left;vertical-align:top}th{color:var(--muted);font-weight:600;background:#f9fafb}.badge{display:inline-flex;align-items:center;min-height:24px;padding:2px 8px;border-radius:999px;font-size:12px;font-weight:700;white-space:nowrap}.buy{background:#e8f5ef;color:var(--strong)}.observe{background:#fff4db;color:var(--warn)}.reject{background:#fdebea;color:var(--danger)}.context{background:#eaf1ff;color:var(--info)}ul,ol{margin:0;padding-left:20px}a{color:var(--info)}@media(max-width:860px){.status-grid,.timeline,.plan{grid-template-columns:1fr}.table-wrap{overflow-x:auto}table{min-width:760px}}</style>
-</head>
-<body>
-  <main class="page">
-    <header>
-      <h1>A股短线周期复盘 - 2026-03-30</h1>
-      <p class="note">次日计划对应：2026-03-31。复盘口径：历史实盘模拟，只使用 2026-03-30 当天及之前数据。主数据源发布时间：2026-03-30T07:05:57.286Z；数据更新时间：2026/3/30 15:05:56。</p>
-      <p class="note">生成依据：stock-cycle-review skill；流程：阶段 -&gt; 旧龙 -&gt; 亏钱效应 -&gt; 新方向 -&gt; 梯队 -&gt; 买点 -&gt; 操作 -&gt; 风控。</p>
-      <p class="risk">这是复盘框架，不构成投资建议或荐股。输出顺序由 skill 固定为：阶段 -> 旧龙 -> 亏钱效应 -> 新方向 -> 梯队 -> 买点 -> 操作 -> 风控。</p>
-    </header>
-    <section class="grid status-grid" aria-label="核心状态">
-      <div class="metric"><div class="label">市场阶段</div><div class="value">试错期</div></div>
-      <div class="metric"><div class="label">上一轮龙头/板块</div><div class="value">豫能控股 / 电力 / 算电协同</div></div>
-      <div class="metric"><div class="label">旧龙状态</div><div class="value">已经死亡或离开涨停主线，等待新方向</div></div>
-      <div class="metric"><div class="label">亏钱效应</div><div class="value">偏高</div></div>
-      <div class="metric"><div class="label">新方向</div><div class="value">新方向不清晰，继续试错观察</div></div>
-      <div class="metric"><div class="label">操作仓位</div><div class="value">极小仓或空仓</div></div>
-    </section>
-    <section>
-      <h2>高位情绪快照</h2>
-      <div class="table-wrap"><table><thead><tr><th>最高板</th><th>可交易最高板</th><th>昨日高标表现</th><th>断板反馈</th><th>跌停高标</th><th>炸板高标</th><th>连板晋级率</th></tr></thead><tbody><tr><td>5板：美诺华</td><td>无标准可交易4/5板买点</td><td>豫能控股未在涨停池，按旧龙未继续连板处理</td><td>按当日梯队和前序归档判断</td><td>不使用未来跌停数据</td><td>见个股炸板字段</td><td>见连板梯队</td></tr></tbody></table></div>
-    </section>
-    <section>
-      <h2>亏钱效应</h2>
-      <div class="table-wrap"><table><thead><tr><th>检查项</th><th>当前判断</th><th>处理要点</th></tr></thead><tbody><tr><td>高标是否继续A杀</td><td>需结合分时/跌停榜核验</td><td>新能泰山、融捷股份</td></tr><tr><td>断板票是否继续跌停</td><td>当前源未完整披露断板跌停明细</td><td>若昨日核心断板后跌停，按退潮加重处理</td></tr><tr><td>昨日炸板票是否修复</td><td>当前源未完整披露昨日炸板修复</td><td>只能用当日回封和板块修复做辅助判断</td></tr><tr><td>连板高度是否下降</td><td>连板高度从4板升至5板，情绪有修复或延伸。</td><td>高度下降两档以上时，仓位直接降级</td></tr><tr><td>补涨是否开始坑人</td><td>未发现被模型硬否决的旧周期补涨候选</td><td>无</td></tr></tbody></table></div>
-    </section>
-    <section>
-      <h2>周期链路</h2>
-      <div class="timeline">
-        <div class="step"><div class="title">上一龙头</div><p>豫能控股 / 电力 / 算电协同。豫能控股未在涨停池，按旧龙未继续连板处理。来源：用户提示 + 3月11日至3月13日手工复盘锚点。</p></div>
-        <div class="step"><div class="title">题材判断</div><p>工业金属、化学制药、电网设备 是当日主要涨停方向，先看是否独立于旧周期。</p></div>
-        <div class="step"><div class="title">当前核心</div><p>美诺华5板。待确认高标：无。名义最高板不等于可交易龙头。</p></div>
-        <div class="step"><div class="title">下一触发</div><p>暂无标准买点；空仓或只观察</p></div>
-      </div>
-    </section>
-    <section>
-      <h2>最近归档对比</h2>
-      <div class="table-wrap"><table><thead><tr><th>日期</th><th>周期</th><th>核心</th><th>上次跟踪/机会</th><th>跟踪结论</th></tr></thead><tbody><tr><td>2026-03-23</td><td>高位分歧试错期</td><td>华电辽能6板</td><td>暂无标准买点；可交易4/5板仍需继续观察</td><td>按今日数据滚动跟踪，不使用后续日期结论</td></tr><tr><td>2026-03-24</td><td>混沌试错期</td><td>华电辽能7板</td><td>暂无标准买点；空仓或只观察</td><td>按今日数据滚动跟踪，不使用后续日期结论</td></tr><tr><td>2026-03-25</td><td>高位分歧试错期</td><td>华电辽能8板</td><td>暂无标准买点；可交易4/5板仍需继续观察</td><td>按今日数据滚动跟踪，不使用后续日期结论</td></tr><tr><td>2026-03-26</td><td>混沌试错期</td><td>新能泰山3板、湖南发展3板、美诺华3板</td><td>暂无标准买点；空仓或只观察</td><td>按今日数据滚动跟踪，不使用后续日期结论</td></tr><tr><td>2026-03-27</td><td>高位分歧试错期</td><td>新能泰山4板、美诺华4板、融捷股份4板</td><td>暂无标准买点；可交易4/5板仍需继续观察</td><td>按今日数据滚动跟踪，不使用后续日期结论</td></tr></tbody></table></div>
-    </section>
-    <section>
-      <h2>板块强度</h2>
-      <div class="table-wrap"><table><thead><tr><th>板块</th><th>高标核心</th><th>一字/中位助攻</th><th>容量核心</th><th>与旧周期关系</th><th>强度</th></tr></thead><tbody><tr><td>工业金属</td><td>常铝股份、天山铝业、闽发铝业</td><td>6只涨停/封板</td><td>看容量表与成交额排序</td><td>独立或背景分支</td><td><span class="badge context">中等</span></td></tr><tr><td>化学制药</td><td>美诺华5板、双鹭药业2板、津药药业2板</td><td>6只涨停/封板</td><td>看容量表与成交额排序</td><td>独立或背景分支</td><td><span class="badge context">中等</span></td></tr><tr><td>电网设备</td><td>杭电股份2板、华盛昌、新宏泰</td><td>5只涨停/封板</td><td>看容量表与成交额排序</td><td>独立或背景分支</td><td><span class="badge context">中等</span></td></tr><tr><td>通信设备</td><td>亨通光电、长江通信、长飞光纤</td><td>3只涨停/封板</td><td>看容量表与成交额排序</td><td>独立或背景分支</td><td><span class="badge observe">中等</span></td></tr></tbody></table></div>
-    </section>
-    <section>
-      <h2>新方向判断</h2>
-      <div class="table-wrap"><table><thead><tr><th>结论</th><th>独立强分支</th><th>旧方向相关</th><th>买点状态</th></tr></thead><tbody><tr><td>新方向不清晰，继续试错观察</td><td>无</td><td>无</td><td>未确认标准买点</td></tr></tbody></table></div>
-    </section>
-    <section>
-      <h2>连板梯队</h2>
-      <div class="table-wrap"><table><thead><tr><th>板数</th><th>股票</th><th>题材</th><th>角色</th><th>交易性</th><th>模型结论</th></tr></thead><tbody><tr><td>5板</td><td>美诺华</td><td>化学制药</td><td>盘面跟踪</td><td>按模型筛选</td><td><span class="badge observe">观察</span></td></tr><tr><td>3板</td><td>神剑股份</td><td>塑料</td><td>盘面跟踪</td><td>按模型筛选</td><td><span class="badge observe">观察</span></td></tr><tr><td>2板</td><td>双鹭药业、津药药业、联环药业、法尔胜、杭电股份、中农联合、苏利股份、贵广网络</td><td>互联网电、化学制药、医疗器械</td><td>盘面跟踪</td><td>按模型筛选</td><td><span class="badge observe">观察</span></td></tr></tbody></table></div>
-    </section>
-    <section>
-      <h2>4/5板候选检查</h2>
-      <div class="table-wrap"><table><thead><tr><th>股票</th><th>板数</th><th>买点状态</th><th>加分项</th><th>扣分项</th><th>模型结论</th></tr></thead><tbody><tr><td>603538 美诺华</td><td>5</td><td>09:30:27首次封板，09:30:27最后封板，换手4.12%</td><td>10:30前首次封板；属于当日强板块</td><td>一字或准一字交易性不足；不是排除一字后的可交易最高板；换手偏低，分歧不足；自动批量复盘不确认标准买点，需人工核验旧龙负反馈和板块独立性</td><td><span class="badge reject">放弃</span></td></tr></tbody></table></div>
-    </section>
-    <section>
-      <h2>次日盯盘预案</h2>
-      <div class="plan">
-        <div class="plan-block"><strong>一、明日重点观察</strong><p>旧龙：豫能控股 / 电力 / 算电协同。豫能控股未在涨停池，按旧龙未继续连板处理。若继续不在涨停池或出现高位负反馈，说明旧周期压制仍在；若重新涨停，说明旧周期仍有修复。</p></div>
-        <div class="plan-block"><strong>二、候选买点</strong><p>候选买点：无。处理：极小仓或空仓，只登记候选池；低位2/3板和同板块后排不替代标准4/5板。</p></div>
-        <div class="plan-block"><strong>三、风险票</strong><p>风险票：美诺华。风险原因：一字、尾盘回封、爆量、旧周期补涨或无板块助攻。处理：不买或只观察负反馈。</p></div>
-      </div>
-    </section>
-    <section>
-      <h2>操作与仓位</h2>
-      <div class="table-wrap"><table><thead><tr><th>市场阶段</th><th>仓位级别</th><th>操作动作</th><th>候选处理</th></tr></thead><tbody><tr><td>试错期</td><td>极小仓或空仓</td><td>只观察最强辨识度，低位和后排不替代龙头买点。</td><td>候选只能进观察池，不能因为高度或题材热度直接买。</td></tr></tbody></table></div>
-    </section>
-    <section>
-      <h2>风控纪律</h2>
-      <div class="table-wrap"><table><thead><tr><th>项目</th><th>规则</th></tr></thead><tbody><tr><td>仓位上限</td><td>仓位上限：极小仓或空仓，只允许最高辨识度试错。</td></tr><tr><td>单笔最大亏损</td><td>计划内打板失败或次日不及预期，优先执行退出；单笔亏损不扩大。</td></tr><tr><td>当日最大亏损</td><td>当日触发账户回撤上限后停止开仓，只复盘不加戏。</td></tr><tr><td>连续试错次数</td><td>连续两次试错失败后暂停，等新方向重新给出4/5板确认。</td></tr><tr><td>卖出条件</td><td>不能弱转强、板块助攻断层、高位爆量失控、跌停负反馈，按卖点处理。</td></tr></tbody></table></div>
-    </section>
-    <section>
-      <h2>最终执行结论</h2>
-      <ol><li>当前市场阶段：试错期；周期描述：混沌试错期。</li><li>当前核心：上一轮龙头是豫能控股 / 电力 / 算电协同；待确认高标为无；当日核心为美诺华5板。</li><li>亏钱效应：偏高；操作仓位：极小仓或空仓。</li><li>下一次标准买点：暂无标准买点；空仓或只观察。</li><li>硬性禁买：退潮期空仓；不顶一字；不买2/3板；不追6板首次开口；不买同板块后排替代。</li></ol>
-    </section>
-    <section>
-      <h2>数据源</h2>
-      <ul><li><a href="https://wudaolu.com/t/topic/18215">涨停板复盘-2026/3/30-周一</a></li></ul>
-    </section>
-    <script type="application/json" id="stock-cycle-review-data">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>A股短线周期复盘 - 2026-03-30</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #f6f7f9;
+        --panel: #ffffff;
+        --text: #1f2937;
+        --muted: #667085;
+        --line: #d9dee7;
+        --strong: #13795b;
+        --warn: #b26a00;
+        --danger: #b42318;
+        --info: #1d4ed8;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--text);
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", sans-serif;
+        line-height: 1.55;
+      }
+      .page {
+        width: min(1180px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 28px 0 44px;
+      }
+      header {
+        display: grid;
+        gap: 10px;
+        margin-bottom: 16px;
+      }
+      h1 {
+        margin: 0;
+        font-size: clamp(24px, 4vw, 36px);
+        letter-spacing: 0;
+      }
+      h2 {
+        margin: 0 0 12px;
+        font-size: 18px;
+        letter-spacing: 0;
+      }
+      p { margin: 0; }
+      .note {
+        color: var(--muted);
+        font-size: 14px;
+      }
+      .risk {
+        border-left: 4px solid var(--warn);
+        background: #fff8ec;
+        padding: 10px 12px;
+        color: #7a4b00;
+      }
+      .status-grid {
+        display: grid;
+        grid-template-columns: repeat(6, minmax(0, 1fr));
+        gap: 12px;
+        margin: 18px 0;
+      }
+      .metric, section {
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+      }
+      .metric {
+        padding: 12px;
+        min-height: 104px;
+      }
+      .metric .label {
+        color: var(--muted);
+        font-size: 12px;
+        margin-bottom: 6px;
+      }
+      .metric .value {
+        font-size: 17px;
+        font-weight: 700;
+      }
+      section {
+        padding: 16px;
+        margin-bottom: 14px;
+      }
+      .timeline, .plan {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+      }
+      .step, .plan-block {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 12px;
+        background: #fbfcfe;
+      }
+      .step .title, .plan-block strong {
+        display: block;
+        font-weight: 700;
+        margin-bottom: 6px;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 14px;
+      }
+      th, td {
+        border-bottom: 1px solid var(--line);
+        padding: 10px 8px;
+        text-align: left;
+        vertical-align: top;
+      }
+      th {
+        color: var(--muted);
+        font-weight: 600;
+        background: #f9fafb;
+      }
+      tr:last-child td { border-bottom: 0; }
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        min-height: 24px;
+        padding: 2px 8px;
+        border-radius: 999px;
+        font-size: 12px;
+        font-weight: 700;
+        white-space: nowrap;
+      }
+      .buy { background: #e8f5ef; color: var(--strong); }
+      .observe { background: #fff4db; color: var(--warn); }
+      .reject { background: #fdebea; color: var(--danger); }
+      .context { background: #eaf1ff; color: var(--info); }
+      ul, ol {
+        margin: 0;
+        padding-left: 18px;
+      }
+      a { color: var(--info); }
+      @media (max-width: 900px) {
+        .status-grid, .timeline, .plan { grid-template-columns: 1fr; }
+        .table-wrap { overflow-x: auto; }
+        table { min-width: 820px; }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <header>
+        <h1>A股短线周期复盘 - 2026-03-30</h1>
+        <p class="note">次日计划对应：2026-03-31。历史复盘口径：只使用 2026-03-30 当日及之前已经可见的数据，不使用 2026-03-31 及之后走势。</p>
+        <p class="risk">本页是短线周期复盘框架，不构成投资建议。结论用于约束交易条件，不用于预测收益。</p>
+      </header>
+
+      <section class="status-grid" aria-label="核心状态">
+        <div class="metric">
+          <div class="label">当前龙头</div>
+          <div class="value">无有效龙头</div>
+        </div>
+        <div class="metric">
+          <div class="label">上一轮龙头 / 板块</div>
+          <div class="value">华电辽能 / 绿电、电力、央企</div>
+        </div>
+        <div class="metric">
+          <div class="label">龙头状态</div>
+          <div class="value">龙头死亡</div>
+        </div>
+        <div class="metric">
+          <div class="label">当前动作</div>
+          <div class="value">清仓，空仓观察</div>
+        </div>
+        <div class="metric">
+          <div class="label">是否允许寻找新龙</div>
+          <div class="value">允许，但只看4/5板标准点</div>
+        </div>
+        <div class="metric">
+          <div class="label">硬性禁买</div>
+          <div class="value">不追美诺华6板，不提前买3板</div>
+        </div>
+      </section>
+
+      <section>
+        <h2>先复核上一交易日计划</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>来源计划</th>
+                <th>上一计划内容</th>
+                <th>2026-03-30 复核结果</th>
+                <th>执行结论</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>2026-03-27 计划，2026-03-28 非交易日顺延</td>
+                <td>2026-03-30 只看华电辽能继续修复持仓、分歧延续继续减仓或负反馈清仓；不设计其他候选买点。</td>
+                <td>东方财富 09:37 记录华电辽能盘中跌停，报 8.09 元，成交 7.04 亿元，换手率 5.75%。财联社收评同时写到华电辽能、华电能源、金开新能、晋控电力、豫能控股等电力高标悉数跌停。</td>
+                <td><span class="badge reject">触发负反馈清仓</span> 旧绿电/电力周期死亡确认，进入无有效龙头后的试错观察。</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2>龙头锚点</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>当前有效龙头</th>
+                <th>上一轮龙头 / 板块</th>
+                <th>今日反馈</th>
+                <th>龙头状态</th>
+                <th>动作</th>
+                <th>找新龙权限</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>无有效龙头</td>
+                <td>华电辽能 / 绿电、电力、央企</td>
+                <td>华电辽能早盘跌停，电力高标批量跌停，旧周期补跌扩散。</td>
+                <td><span class="badge reject">龙头死亡</span></td>
+                <td>清仓，空仓观察</td>
+                <td>允许筛选新方向，但只能在可交易 4/5 板回封中确认。</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2>高位情绪快照</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>名义最高板</th>
+                <th>排除一字后的可交易高度</th>
+                <th>旧高标表现</th>
+                <th>断板 / 补跌反馈</th>
+                <th>高位跌停</th>
+                <th>晋级率</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>美诺华 5 连板；同花顺/财联社另有 7 天 6 板表述。</td>
+                <td>美诺华开盘一字需排除；已核到神剑股份 3 连板，但 3 板不是标准买点，且可交易性主源待复核。</td>
+                <td>华电辽能从 3 月 27 日弱修复转为 3 月 30 日跌停。</td>
+                <td>电力股集体退潮，高位抱团松动后出现批量补跌。</td>
+                <td>至少华电辽能、华电能源、金开新能、晋控电力、豫能控股等电力链高标跌停。</td>
+                <td>完整连板梯队主源缺失/待复核，不推算晋级率。</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2>亏钱效应</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>检查项</th>
+                <th>结果</th>
+                <th>模型影响</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>龙头是否跌停 / 跌破关键位</td>
+                <td>华电辽能 09:37 已触及跌停，旧龙从弱修复转为负反馈。</td>
+                <td>清仓，不再按高位震荡处理。</td>
+              </tr>
+              <tr>
+                <td>是否带崩同周期补涨</td>
+                <td>财联社收评记录电力高标批量跌停。</td>
+                <td>旧绿电/电力周期死亡，允许进入新方向筛选，但不等于立即买。</td>
+              </tr>
+              <tr>
+                <td>昨日计划是否触发候选买点</td>
+                <td>昨日计划明确不设计其他候选买点。</td>
+                <td>3 月 30 日先执行清仓分支，候选筛选只能从收盘后新计划开始。</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2>周期链路</h2>
+        <div class="timeline">
+          <div class="step">
+            <div class="title">上一轮龙头</div>
+            <p>华电辽能 / 绿电、电力、央企。3 月 27 日为高位弱修复，计划只管理它的修复、分歧或负反馈路径。</p>
+          </div>
+          <div class="step">
+            <div class="title">状态切换</div>
+            <p>3 月 30 日华电辽能跌停并带出电力高标批量跌停，状态从高位震荡转为龙头死亡。</p>
+          </div>
+          <div class="step">
+            <div class="title">试错权限</div>
+            <p>旧龙死亡后允许筛选新方向，但美诺华为一字高标，神剑股份仍是 3 板，标准 4/5 板买点当天没有成立。</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>最近归档对比</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>日期</th>
+                <th>周期状态</th>
+                <th>核心</th>
+                <th>上一计划 / 机会</th>
+                <th>本日跟踪结论</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>2026-03-26</td>
+                <td>华电辽能明显分歧</td>
+                <td>华电辽能 / 绿电、电力、央企</td>
+                <td>2026-03-27 只看修复、减仓或清仓。</td>
+                <td>3 月 27 日弱修复，保留底仓观察。</td>
+              </tr>
+              <tr>
+                <td>2026-03-27</td>
+                <td>华电辽能高位震荡，弱修复</td>
+                <td>华电辽能</td>
+                <td>2026-03-30 只管理华电辽能，不设计其他候选。</td>
+                <td>3 月 30 日跌停，负反馈清仓分支触发。</td>
+              </tr>
+              <tr>
+                <td>2026-03-28</td>
+                <td>非交易日</td>
+                <td>休市</td>
+                <td>2026-03-27 计划顺延至 2026-03-30。</td>
+                <td>今日完成复核，旧龙死亡。</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2>板块强度</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>板块</th>
+                <th>高标核心</th>
+                <th>中位助攻 / 容量表现</th>
+                <th>与旧周期关系</th>
+                <th>强度</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>创新药 / 医药</td>
+                <td>美诺华 5 连板，7 天 6 板；3 月 30 日开盘一字。</td>
+                <td>同花顺/财联社记录津药药业、联环药业、双鹭药业等助攻，医药方向反复活跃。</td>
+                <td>独立于旧绿电/电力周期，是当日最强新方向，但高标一字导致标准买点不可执行。</td>
+                <td><span class="badge context">强，观察</span></td>
+              </tr>
+              <tr>
+                <td>商业航天</td>
+                <td>神剑股份 3 连板。</td>
+                <td>航天动力、中衡设计等涨停；财联社记录商业航天概念探底回升。</td>
+                <td>独立新方向，3 月 31 日若晋级 4 板才进入标准条件检查。</td>
+                <td><span class="badge observe">中强，候选池</span></td>
+              </tr>
+              <tr>
+                <td>有色铝 / 农业 / 光纤</td>
+                <td>闽发铝业、常铝股份、长飞光纤等为当日活跃点。</td>
+                <td>财联社收评列为反弹和局部活跃方向。</td>
+                <td>背景强度，暂未形成 4/5 板标准龙头买点。</td>
+                <td><span class="badge context">背景轮动</span></td>
+              </tr>
+              <tr>
+                <td>绿电 / 电力 / 央企</td>
+                <td>华电辽能旧龙跌停。</td>
+                <td>华电能源、金开新能、晋控电力、豫能控股等批量跌停。</td>
+                <td>旧周期负反馈方向，不参与新买点设计。</td>
+                <td><span class="badge reject">退潮</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2>新龙搜索闸门</h2>
+        <p>允许寻找新龙，因为旧龙华电辽能已经从高位震荡转为跌停负反馈，并拖累电力链高标。但当日没有可执行的标准 4/5 板买点：美诺华虽然是 5 连板高标，但同花顺记录其开盘一字，标准买点不可执行；神剑股份是 3 连板，只能作为 3 月 31 日 3 进 4 条件观察，不能提前写成买点。</p>
+      </section>
+
+      <section>
+        <h2>连板梯队</h2>
+        <p class="note">完整连板梯队主源缺失/待复核；下表只列同日来源已经确认的关键高标，不把 N 天 M 板压缩成连续板。</p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>板数</th>
+                <th>股票</th>
+                <th>连续板数</th>
+                <th>几天几板 / 非连续形态</th>
+                <th>题材</th>
+                <th>角色</th>
+                <th>交易性</th>
+                <th>模型结论</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>5</td>
+                <td>美诺华</td>
+                <td>5 连板（新浪涨停分析确认）</td>
+                <td>7 天 6 板（同花顺/财联社表述）</td>
+                <td>创新药 / 医药</td>
+                <td>当日名义最高板，新方向情绪高标</td>
+                <td>同花顺记录开盘一字；东方财富个股分时主源未取得，按一字排除标准买点。</td>
+                <td><span class="badge reject">放弃标准买点</span></td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>神剑股份</td>
+                <td>3 连板</td>
+                <td>无</td>
+                <td>商业航天</td>
+                <td>3 进 4 条件观察，不是当日买点</td>
+                <td>同花顺/财联社确认 3 连板；东方财富个股交易路径待复核。</td>
+                <td><span class="badge observe">仅观察</span></td>
+              </tr>
+              <tr>
+                <td>2 / N 天 M 板</td>
+                <td>津药药业、联环药业、双鹭药业、再升科技、长飞光纤等</td>
+                <td>仅按来源标注，不并入连续高板</td>
+                <td>双鹭药业 4 天 3 板、再升科技 4 天 3 板、长飞光纤 5 天 3 板等为非连续或低位助攻表述</td>
+                <td>医药 / 商业航天 / 光纤</td>
+                <td>板块助攻和盘面跟踪</td>
+                <td>不进入 4/5 板候选表。</td>
+                <td><span class="badge context">盘面跟踪</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2>4/5板候选检查</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>股票</th>
+                <th>板数</th>
+                <th>买点状态</th>
+                <th>加分项</th>
+                <th>扣分项</th>
+                <th>模型结论</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>美诺华</td>
+                <td>5 连板；同时存在 7 天 6 板高位形态</td>
+                <td>同花顺记录开盘一字涨停，标准打板买点不可执行；若次日继续晋级到 6 板，也不能改写成新的标准买点。</td>
+                <td>旧龙已死亡，创新药当日强度高，板块有 2 板和多股涨停助攻。</td>
+                <td>一字排除；个股同日东方财富分时主源未能核到；买点已过且高度偏高。</td>
+                <td><span class="badge reject">放弃</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2>下一交易日计划：2026-03-31</h2>
+        <div class="plan">
+          <div class="plan-block">
+            <strong>一、旧龙复核：只作为风险锚</strong>
+            <p>华电辽能若继续跌停或弱修复失败，确认旧电力周期仍在释放亏钱效应；不做旧周期反抽，不做电力后排。</p>
+          </div>
+          <div class="plan-block">
+            <strong>二、候选买点：无已确认标准点</strong>
+            <p>美诺华如果继续晋级，已进入 6 板路径，不能把 6 板当新买点；只观察创新药高度和负反馈，不追一字或高位加速。</p>
+          </div>
+          <div class="plan-block">
+            <strong>三、3进4条件池：神剑股份</strong>
+            <p>只有神剑股份在 3 月 31 日晋级 4 板，且不是一字，东方财富可核到真实换手/成交额回封，商业航天仍有助攻时，才允许极小仓试错；否则空仓。</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>操作与仓位</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>阶段</th>
+                <th>仓位</th>
+                <th>执行动作</th>
+                <th>候选处理</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>旧龙死亡后的无龙试错期</td>
+                <td>空仓为主，单次试错不超过 2 成。</td>
+                <td>华电辽能按负反馈清仓；等待新方向 4/5 板可交易回封。</td>
+                <td>美诺华放弃标准买点；神剑股份只做 3 月 31 日 3 进 4 条件观察。</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2>风险控制</h2>
+        <div class="table-wrap">
+          <table>
+            <tbody>
+              <tr>
+                <th>单笔最大亏损</th>
+                <td>试错单笔 -3% 左右必须处理，不允许从试错变成持仓幻想。</td>
+              </tr>
+              <tr>
+                <th>当日最大亏损</th>
+                <td>当日 -5% 或连续两笔失败停止交易。</td>
+              </tr>
+              <tr>
+                <th>连续试错次数</th>
+                <td>最多 1 次；旧龙跌停释放期不连续追多个方向。</td>
+              </tr>
+              <tr>
+                <th>仓位上限</th>
+                <td>无有效龙头阶段总仓不超过 2 成，只有新 4/5 板换手回封确认后再讨论加仓。</td>
+              </tr>
+              <tr>
+                <th>卖出条件</th>
+                <td>候选 4 板若炸板后不能快速回封、板块助攻断层、旧龙继续扩大跌停负反馈，立即放弃或退出。</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2>最终五句话</h2>
+        <ol>
+          <li>当前龙头：无有效龙头；上一轮龙头是华电辽能，所属绿电 / 电力 / 央企。</li>
+          <li>龙头状态：华电辽能跌停并带出电力高标批量跌停，旧周期死亡确认。</li>
+          <li>当前动作：执行上一计划的负反馈清仓分支，空仓观察。</li>
+          <li>是否允许寻找新龙：允许，但 3 月 30 日没有可执行标准 4/5 板买点。</li>
+          <li>下一触发：2026-03-31 只看神剑股份是否给出可交易 4 板换手回封；美诺华 6 板不作为新买点。</li>
+        </ol>
+      </section>
+
+      <section>
+        <h2>数据源</h2>
+        <ul>
+          <li><a href="https://finance.eastmoney.com/a/202603303688267138.html">东方财富Choice数据：华电辽能3月30日盘中跌停，2026-03-30 09:39</a></li>
+          <li><a href="https://stock.10jqka.com.cn/20260330/c675627453.shtml">同花顺转载上海证券报：603538，7天6板，2026-03-30 12:49</a></li>
+          <li><a href="https://finance.sina.com.cn/stock/ztbfp/2026-03-30/doc-inhsueew9639160.shtml">新浪财经：3月30日沪深两市涨停分析，美诺华5连板，2026-03-30 15:16</a></li>
+          <li><a href="https://cn.investing.com/news/stock-market-news/article-3287375">财联社收评转载：医药、商业航天领涨，电力股批量跌停，2026-03-30 16:48</a></li>
+        </ul>
+      </section>
+
+      <script type="application/json" id="stock-cycle-review-data">
 {
   "review_date": "2026-03-30",
   "data_cutoff": "2026-03-30",
+  "is_trading_day": true,
   "next_trading_day": "2026-03-31",
-  "generated_by_skill": {
-    "name": "stock-cycle-review",
-    "skill_dir": "C:\\Users\\wkc\\plugins\\stock-cycle-review\\skills\\stock-cycle-review",
-    "workflow": "阶段 -> 旧龙 -> 亏钱效应 -> 新方向 -> 梯队 -> 买点 -> 操作 -> 风控",
-    "files": {
-      "SKILL.md": {
-        "path": "C:\\Users\\wkc\\plugins\\stock-cycle-review\\skills\\stock-cycle-review\\SKILL.md",
-        "sha256": "bc352a4dac2dcb27"
-      },
-      "daily-review-template.md": {
-        "path": "C:\\Users\\wkc\\plugins\\stock-cycle-review\\skills\\stock-cycle-review\\references\\daily-review-template.md",
-        "sha256": "642ab0059d08883e"
-      },
-      "html-report-template.md": {
-        "path": "C:\\Users\\wkc\\plugins\\stock-cycle-review\\skills\\stock-cycle-review\\references\\html-report-template.md",
-        "sha256": "42adcc42f0ace48b"
-      }
-    }
-  },
-  "cycle_stage": "混沌试错期",
-  "market_phase": "试错期",
-  "old_leader_state": "已经死亡或离开涨停主线，等待新方向",
+  "market_phase": "旧龙死亡后的无龙试错期",
+  "cycle_stage": "龙空龙：旧龙清仓后等待新4/5板",
+  "old_leader_state": "华电辽能跌停并带出电力高标批量跌停，旧绿电/电力周期死亡确认",
+  "current_leader": "无有效龙头",
+  "current_leader_theme": "无",
+  "leader_state": "龙头死亡",
+  "position_action": "清仓，空仓观察",
+  "new_leader_search_allowed": "允许",
+  "next_trigger": "2026-03-31只看神剑股份是否给出可交易4板换手回封；美诺华若继续晋级到6板不作为新买点",
   "loss_effect": {
     "level": "偏高",
-    "summary": "亏钱效应：偏高。连板高度从4板升至5板，情绪有修复或延伸。",
+    "summary": "华电辽能跌停，华电能源、金开新能、晋控电力、豫能控股等电力高标同步跌停，旧周期负反馈扩散。",
     "rows": [
-      [
-        "高标是否继续A杀",
-        "需结合分时/跌停榜核验",
-        "新能泰山、融捷股份"
-      ],
-      [
-        "断板票是否继续跌停",
-        "当前源未完整披露断板跌停明细",
-        "若昨日核心断板后跌停，按退潮加重处理"
-      ],
-      [
-        "昨日炸板票是否修复",
-        "当前源未完整披露昨日炸板修复",
-        "只能用当日回封和板块修复做辅助判断"
-      ],
-      [
-        "连板高度是否下降",
-        "连板高度从4板升至5板，情绪有修复或延伸。",
-        "高度下降两档以上时，仓位直接降级"
-      ],
-      [
-        "补涨是否开始坑人",
-        "未发现被模型硬否决的旧周期补涨候选",
-        "无"
-      ]
+      ["旧龙反馈", "华电辽能09:37盘中跌停，报8.09元，成交7.04亿元，换手率5.75%"],
+      ["同周期反馈", "财联社收评记录电力高标批量跌停"],
+      ["计划复核", "触发2026-03-27计划中的负反馈清仓分支"]
     ]
   },
   "new_direction": {
-    "summary": "新方向不清晰，继续试错观察",
-    "strong_independent": "无",
-    "old_related": "无"
+    "summary": "创新药和商业航天为当日独立新方向；创新药高标美诺华一字不可交易，商业航天神剑股份仍是3板观察。",
+    "strong_independent": "创新药/医药、商业航天",
+    "old_related": "绿电/电力/央企退潮，不参与新买点"
   },
   "operation_plan": {
-    "position": "极小仓或空仓",
-    "action": "只观察最强辨识度，低位和后排不替代龙头买点。",
-    "candidate": "候选只能进观察池，不能因为高度或题材热度直接买。"
+    "position": "空仓为主，若3月31日出现合格4板回封，单次试错不超过2成",
+    "action": "华电辽能清仓；不做旧周期反抽；等待新4/5板可交易回封",
+    "candidate": "美诺华放弃标准买点；神剑股份只作为3进4条件观察"
   },
   "risk_control": [
-    [
-      "仓位上限",
-      "仓位上限：极小仓或空仓，只允许最高辨识度试错。"
-    ],
-    [
-      "单笔最大亏损",
-      "计划内打板失败或次日不及预期，优先执行退出；单笔亏损不扩大。"
-    ],
-    [
-      "当日最大亏损",
-      "当日触发账户回撤上限后停止开仓，只复盘不加戏。"
-    ],
-    [
-      "连续试错次数",
-      "连续两次试错失败后暂停，等新方向重新给出4/5板确认。"
-    ],
-    [
-      "卖出条件",
-      "不能弱转强、板块助攻断层、高位爆量失控、跌停负反馈，按卖点处理。"
-    ]
+    ["仓位上限", "无有效龙头阶段总仓不超过2成"],
+    ["单笔最大亏损", "试错单笔约-3%必须处理"],
+    ["当日最大亏损", "当日-5%或连续两笔失败停止交易"],
+    ["连续试错次数", "最多1次"],
+    ["卖出条件", "候选4板炸板不能快速回封、板块助攻断层、旧龙继续扩大负反馈即退出或放弃"]
   ],
   "high_level_sentiment": {
-    "nominal_highest_board": "5板：美诺华",
-    "tradable_highest_board": "无标准可交易4/5板买点",
-    "previous_high_board_performance": "豫能控股未在涨停池，按旧龙未继续连板处理",
-    "broken_board_feedback": "以当日涨停复盘和前序归档滚动判断",
-    "high_level_limit_down_count": "未使用未来跌停数据",
-    "high_level_broken_board_count": "见当日炸板字段",
-    "promotion_rate": "见当日连板梯队"
+    "nominal_highest_board": "美诺华5连板；同花顺/财联社另有7天6板表述",
+    "tradable_highest_board": "美诺华开盘一字排除后，无已确认4/5板标准可交易高板；神剑股份3连板仅观察",
+    "previous_high_board_performance": "华电辽能由2026-03-27弱修复转为2026-03-30跌停",
+    "broken_board_feedback": "电力股集体退潮，高位抱团松动后批量补跌",
+    "high_level_limit_down_count": "至少华电辽能、华电能源、金开新能、晋控电力、豫能控股等电力高标跌停",
+    "high_level_broken_board_count": "完整主源缺失/待复核",
+    "promotion_rate": "完整连板梯队主源缺失/待复核，不推算"
   },
-  "prior_confirmed_leader": "豫能控股",
-  "prior_leader_theme": "电力 / 算电协同",
-  "prior_leader_confirmed": true,
-  "prior_leader_source": "用户提示 + 3月11日至3月13日手工复盘锚点",
-  "prior_leader_note": "作为华电辽能启动前的上一轮龙头锚点；3月13日尾盘跌停后负反馈明确。",
-  "leader_watch": "无",
-  "intermediate_trial_chain": "美诺华5板、神剑股份3板",
-  "old_leader_chain": "豫能控股 / 电力 / 算电协同",
-  "current_core": "美诺华5板",
-  "tradable_high_board": "无标准可交易4/5板买点",
-  "next_opportunity": "暂无标准买点；空仓或只观察",
-  "hard_no_trade": "退潮期空仓；不顶一字；不买2/3板；不追6板首次开口；不买同板块后排替代",
+  "prior_confirmed_leader": "华电辽能",
+  "prior_leader_theme": "绿电 / 电力 / 央企",
+  "intermediate_trial_chain": "美诺华5连板但开盘一字，标准买点不可执行；神剑股份3连板，作为3月31日3进4条件观察",
+  "old_leader_chain": "华电辽能2026-03-27高位弱修复，2026-03-30跌停并带崩电力链",
+  "current_core": "无有效龙头；美诺华为创新药情绪高标但一字排除，神剑股份为商业航天3板观察",
+  "tradable_high_board": "无已确认4/5板标准可交易高板；神剑股份3板不是当日买点",
+  "next_opportunity": "无已确认标准买点；2026-03-31仅看神剑股份3进4是否满足非一字、真实换手/成交额回封、商业航天助攻三个条件",
+  "hard_no_trade": "不把美诺华6板当新买点；不把美诺华7天6板混写为普通低风险5板；不把神剑股份3板提前买；不做电力旧周期反抽；不使用2026-03-31及之后数据",
+  "source_verification": {
+    "sector_theme": "同花顺2026-03-30 12:49确认医药/创新药、美诺华7天6板、神剑股份3连板；财联社2026-03-30 16:48确认医药、商业航天领涨及电力股批量跌停。",
+    "individual_intraday": "华电辽能使用东方财富Choice同日盘中数据；美诺华个股东方财富分时主源未取得，同花顺同日记录开盘一字，候选降级为放弃标准买点/仅观察。",
+    "archive_usage": "本地归档只用于复核上一交易日计划，不作为3月30日市场事实来源。"
+  },
+  "board_sequence_verification": {
+    "status": "主源缺失/待复核",
+    "consecutive_ladder_source": "新浪财经2026-03-30涨停分析确认美诺华5连板；同花顺/财联社确认神剑股份3连板。",
+    "non_consecutive_patterns": "美诺华7天6板、双鹭药业4天3板、再升科技4天3板、长飞光纤5天3板等单独列为非连续/助攻，不压缩进连续梯队。",
+    "notes": "未取得同花顺或开盘啦完整当日连板梯队表，因此不计算完整晋级率，也不补全未核实股票。"
+  },
   "model_verdicts": [
     {
-      "stock": "美诺华",
-      "role": "试错高标",
+      "stock": "华电辽能",
+      "role": "上一轮龙头 / 旧绿电电力核心",
       "verdict": "reject",
-      "reason": "一字或准一字交易性不足；不是排除一字后的可交易最高板；换手偏低，分歧不足；自动批量复盘不确认标准买点，需人工核验旧龙负反馈和板块独立性"
+      "reason": "3月30日盘中跌停并带出电力高标批量跌停，触发清仓分支。"
+    },
+    {
+      "stock": "美诺华",
+      "role": "创新药情绪高标 / 5连板",
+      "verdict": "reject",
+      "reason": "同花顺记录开盘一字，标准打板买点不可执行；若次日到6板也不是新的标准买点。"
+    },
+    {
+      "stock": "神剑股份",
+      "role": "商业航天3连板观察",
+      "verdict": "observe only",
+      "reason": "3板不是当日标准买点，只能等3月31日非一字4板换手回封并复核主题助攻。"
     }
   ],
   "sources": [
     {
-      "name": "涨停板复盘-2026/3/30-周一",
-      "url": "https://wudaolu.com/t/topic/18215"
+      "name": "东方财富Choice数据：华电辽能3月30日盘中跌停，2026-03-30 09:39",
+      "url": "https://finance.eastmoney.com/a/202603303688267138.html"
+    },
+    {
+      "name": "同花顺转载上海证券报：603538，7天6板，2026-03-30 12:49",
+      "url": "https://stock.10jqka.com.cn/20260330/c675627453.shtml"
+    },
+    {
+      "name": "新浪财经：3月30日沪深两市涨停分析，美诺华5连板，2026-03-30 15:16",
+      "url": "https://finance.sina.com.cn/stock/ztbfp/2026-03-30/doc-inhsueew9639160.shtml"
+    },
+    {
+      "name": "财联社收评转载：医药、商业航天领涨，电力股批量跌停，2026-03-30 16:48",
+      "url": "https://cn.investing.com/news/stock-market-news/article-3287375"
     }
   ]
 }
-    </script>
-  </main>
-</body>
+      </script>
+    </main>
+  </body>
 </html>
