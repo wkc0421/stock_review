@@ -1,0 +1,812 @@
+﻿<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>A股短线周期复盘 - 2026-04-03</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #f6f7f9;
+        --panel: #ffffff;
+        --text: #1f2937;
+        --muted: #667085;
+        --line: #d9dee7;
+        --strong: #13795b;
+        --warn: #b26a00;
+        --danger: #b42318;
+        --info: #1d4ed8;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--text);
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", sans-serif;
+        line-height: 1.55;
+      }
+      .page {
+        width: min(1180px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 28px 0 44px;
+      }
+      header {
+        display: grid;
+        gap: 10px;
+        margin-bottom: 16px;
+      }
+      h1 {
+        margin: 0;
+        font-size: clamp(24px, 4vw, 36px);
+        letter-spacing: 0;
+      }
+      h2 {
+        margin: 0 0 12px;
+        font-size: 18px;
+        letter-spacing: 0;
+      }
+      p { margin: 0; }
+      .note {
+        color: var(--muted);
+        font-size: 14px;
+      }
+      .risk {
+        border-left: 4px solid var(--warn);
+        background: #fff8ec;
+        padding: 10px 12px;
+        color: #7a4b00;
+      }
+      .status-grid {
+        display: grid;
+        grid-template-columns: repeat(6, minmax(0, 1fr));
+        gap: 12px;
+        margin: 18px 0;
+      }
+      .metric, section {
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+      }
+      .metric {
+        padding: 12px;
+        min-height: 104px;
+      }
+      .metric .label {
+        color: var(--muted);
+        font-size: 12px;
+        margin-bottom: 6px;
+      }
+      .metric .value {
+        font-size: 17px;
+        font-weight: 700;
+      }
+      section {
+        padding: 16px;
+        margin-bottom: 14px;
+      }
+      .table-wrap { overflow-x: auto; }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 14px;
+      }
+      th, td {
+        border-bottom: 1px solid var(--line);
+        padding: 10px 8px;
+        text-align: left;
+        vertical-align: top;
+      }
+      th {
+        color: var(--muted);
+        background: #f9fafb;
+        font-weight: 600;
+      }
+      tr:last-child td { border-bottom: 0; }
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        min-height: 24px;
+        padding: 2px 8px;
+        border-radius: 999px;
+        font-size: 12px;
+        font-weight: 700;
+        white-space: nowrap;
+      }
+      .buy { background: #e8f5ef; color: var(--strong); }
+      .observe { background: #fff4db; color: var(--warn); }
+      .reject { background: #fdebea; color: var(--danger); }
+      .context { background: #eaf1ff; color: var(--info); }
+      .timeline, .plan {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+      }
+      .step, .plan-block {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 12px;
+        background: #fbfcfe;
+      }
+      .step strong, .plan-block strong {
+        display: block;
+        margin-bottom: 6px;
+      }
+      .list {
+        margin: 0;
+        padding-left: 18px;
+      }
+      a { color: var(--info); text-decoration: none; }
+      a:hover { text-decoration: underline; }
+      @media (max-width: 860px) {
+        .status-grid,
+        .timeline,
+        .plan {
+          grid-template-columns: 1fr;
+        }
+        table { min-width: 860px; }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <header>
+        <h1>A股短线周期复盘 - 2026-04-03</h1>
+        <p class="note">复盘口径：历史实盘模拟。数据截止：2026-04-03 收盘后已公开信息；清明节后下一交易日计划对应 2026-04-07。严格不使用 2026-04-07 及之后数据。</p>
+        <p class="risk">本页先复核 2026-04-02 已归档计划，再生成 2026-04-07 计划。复核计划时只拿 4 月 3 日结果检验 4 月 2 日计划是否触发；下一交易日计划只基于 2026-04-01、2026-04-02、2026-04-03 三个交易日链条和 2026-04-03 及以前来源。</p>
+      </header>
+      <section class="grid status-grid" aria-label="核心状态">
+        <div class="metric">
+          <div class="label">当前有效龙头</div>
+          <div class="value">无有效龙头</div>
+        </div>
+        <div class="metric">
+          <div class="label">当前龙头锚点</div>
+          <div class="value">华电辽能 / 绿电 / 电力 / 央企（旧锚点）</div>
+        </div>
+        <div class="metric">
+          <div class="label">当前试错核心</div>
+          <div class="value">无合格试错核心；津药药业6板买点错过</div>
+        </div>
+        <div class="metric">
+          <div class="label">状态</div>
+          <div class="value">无龙，试错失败后空仓</div>
+        </div>
+        <div class="metric">
+          <div class="label">当前动作</div>
+          <div class="value">清仓后空仓观察</div>
+        </div>
+        <div class="metric">
+          <div class="label">是否允许寻找新龙</div>
+          <div class="value">允许，但无合格4/5板</div>
+        </div>
+        <div class="metric">
+          <div class="label">下一触发</div>
+          <div class="value">节后等新4/5板</div>
+        </div>
+      </section>
+      <section class="rule-fix">
+        <h2>新规则复核</h2>
+        <p><strong>修订口径：</strong>神剑股份从未通过6板+高潮日确认，4月3日应写“试错失败后的负反馈”，不是确认龙头负反馈。津药药业已到6板，且4/5板阶段没有合格可交易标准试错买点，不能把6板或节后7板写成新买点。</p>
+      </section>
+
+      <section>
+        <h2>上一交易日计划复核</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>计划来源</th>
+                <th>4月3日盘前计划边界</th>
+                <th>4月3日实际核验</th>
+                <th>复核结论</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>本地 2026-04-02 归档，仅用于复核上一交易日计划，不作为 4 月 3 日行情证据。</td>
+                <td>当前无有效龙头；津药药业5板不合格，通达股份、新中港、北大医药等3板只作盘面跟踪，等待新的合格4/5板。</td>
+                <td>东方财富Choice 4月3日 16:26 数据：神剑股份收 15.74 元，跌 8.96%，换手 37.90%，成交额 49.82 亿元，因日换手率达到20%的前5只证券上榜。</td>
+                <td><span class="badge reject">试错负反馈</span> 神剑股份确认试错失败后的负反馈；津药药业6板买点已错过，不能倒推为新买点。</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2>前三交易日约束</h2>
+        <div class="timeline">
+          <div class="step">
+            <strong>2026-04-01</strong>
+            <p>神剑股份未晋级5板，收涨 3.03%，换手 50.64%，成交高分歧。按新规则它未过6板+高潮日，不能作为确认锚点。</p>
+          </div>
+          <div class="step">
+            <strong>2026-04-02</strong>
+            <p>神剑股份红盘弱修复，收 17.29 元，涨 1.71%，换手 42.44%，成交额 59.78 亿元。结论是继续分歧，保留底仓观察。</p>
+          </div>
+          <div class="step">
+            <strong>2026-04-03</strong>
+            <p>神剑股份跌 8.96%，大阴接近跌停，仍有 37.90% 换手和 49.82 亿元成交额。触发负反馈清仓，节后先确认能否修复。</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>龙头锚点</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>当前龙头锚点</th>
+                <th>锚点题材</th>
+                <th>当前试错链反馈</th>
+                <th>市场状态</th>
+                <th>动作</th>
+                <th>是否找新龙</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>华电辽能（旧锚点）</td>
+                <td>绿电 / 电力 / 央企</td>
+                <td>神剑股份连续两天高位巨量分歧后，4月3日收跌 8.96%，属于试错失败后的负反馈；津药药业6板买点已错过。</td>
+                <td><span class="badge reject">无有效龙头，试错链负反馈</span></td>
+                <td>清仓后空仓观察；神剑不再作为锚点，只作为失败试错样本复核。</td>
+                <td><span class="badge observe">允许筛选</span> 但必须等待新的合格4/5板，不能用津药6板或神剑负反馈替代华电旧锚点。</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2>高位情绪快照</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>名义最高板</th>
+                <th>排除一字和买点错过后的可交易高度</th>
+                <th>昨日高标表现</th>
+                <th>炸板/跌停反馈</th>
+                <th>连板晋级</th>
+                <th>口径差异</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>津药药业 6连板；新能泰山 9天7板。</td>
+                <td>无合格4/5板标准试错买点。津药药业已经到6板，4/5板买点已错过；新能泰山是9天7板，不能压缩成连续7板买点。</td>
+                <td>神剑股份由4月2日红盘弱修复转为4月3日大阴负反馈，旧核心先按风险处理。</td>
+                <td>财联社口径：36股涨停、12股炸板、封板率75%，全市场超4700股下跌；东方财富/证券时报口径：上涨716只、下跌4746只、涨停39只、跌停46只。</td>
+                <td>财联社称连板晋级率降至16.66%，昨日连板股中仅津药药业晋级，昨日首板仅2只晋级。</td>
+                <td>涨停数量在财联社36只、东方财富Choice 38只、证券时报/数据宝39只之间有口径差异；本报告记录差异，不用更乐观口径设计计划。</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2>亏钱效应</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>检查项</th>
+                <th>4月3日证据</th>
+                <th>结论</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>龙头是否负反馈</td>
+                <td>神剑股份收跌 8.96%，此前两日换手分别为 50.64%、42.44%，4月3日仍有 37.90% 换手。</td>
+                <td><span class="badge reject">明确负反馈</span></td>
+              </tr>
+              <tr>
+                <td>旧电力/绿电链是否修复</td>
+                <td>财联社记录新中港盘中几乎上演“天地板”，深南电A、闽东电力、乐山电力封死跌停，绿电概念继续承压。</td>
+                <td><span class="badge reject">旧链继续拖累</span></td>
+              </tr>
+              <tr>
+                <td>低位接力是否改善</td>
+                <td>财联社称昨日连板股仅最高标津药药业晋级，昨日首板仅2只晋级成功。</td>
+                <td><span class="badge reject">接力低迷</span></td>
+              </tr>
+              <tr>
+                <td>是否进入无脑切新龙阶段</td>
+                <td>旧龙头刚出现首日明确负反馈，且清明节后有交易间隔，4月7日必须先验证修复或死亡延续。</td>
+                <td><span class="badge observe">空仓等确认</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2>最近归档对比</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>日期</th>
+                <th>核心</th>
+                <th>状态</th>
+                <th>计划</th>
+                <th>4月3日变化</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>2026-03-30</td>
+                <td>无有效龙头；华电辽能死亡</td>
+                <td>空仓观察</td>
+                <td>只看神剑股份能否给出非一字4板换手回封。</td>
+                <td>神剑股份这条试错链已走到负反馈清仓阶段。</td>
+              </tr>
+              <tr>
+                <td>2026-03-31</td>
+                <td>神剑股份 / 商业航天</td>
+                <td>4板标准试错核心，待确认</td>
+                <td>4月1日先管理神剑试错核心，不写确认龙头。</td>
+                <td>4月1日未晋级5板，先转明显分歧。</td>
+              </tr>
+              <tr>
+                <td>2026-04-01</td>
+                <td>神剑股份 / 商业航天</td>
+                <td>无龙，神剑试错失败</td>
+                <td>4月2日等待新的合格4/5板，神剑只作失败试错修复观察。</td>
+                <td>4月2日只是红盘弱修复，未给加仓理由。</td>
+              </tr>
+              <tr>
+                <td>2026-04-02</td>
+                <td>神剑股份 / 商业航天</td>
+                <td>无龙，标准试错缺失</td>
+                <td>4月3日不追津药加速，等待新的合格4/5板。</td>
+                <td>4月3日神剑大阴负反馈；津药6板买点已错过。</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2>板块强度</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>板块</th>
+                <th>高标核心</th>
+                <th>一字 / 中位助攻</th>
+                <th>容量核心</th>
+                <th>与旧周期关系</th>
+                <th>模型处理</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>商业航天</td>
+                <td>神剑股份</td>
+                <td>4月3日未取得可靠同日助攻主源，且龙头自身大阴。</td>
+                <td>神剑股份仍是成交核心，但已经从承接转为负反馈。</td>
+                <td>未确认试错链方向，已转负反馈。</td>
+                <td><span class="badge reject">清仓处理</span></td>
+              </tr>
+              <tr>
+                <td>光通信 / CPO / 光纤</td>
+                <td>新能泰山 9天7板，汇源通信 2连板；同花顺转载中证报午间记录光通信产业链逆势走强。</td>
+                <td>德科立、腾景科技、光库科技、长光华芯等刷新历史高点；威腾电气、易天股份、华盛昌等涨停。</td>
+                <td>中际旭创、新易盛、亨通光电、长飞光纤等容量或趋势核心活跃。</td>
+                <td>更像容量抱团和趋势主线，不等于龙空龙4/5板标准新龙。</td>
+                <td><span class="badge context">强背景</span> 只能等标准试错买点出现。</td>
+              </tr>
+              <tr>
+                <td>医药 / 创新药</td>
+                <td>津药药业 6连板</td>
+                <td>重药控股 2连板，莱美药业、中国医药涨停。</td>
+                <td>财联社记录医药产业链表现分化，联环药业、中源协和、润都股份跌停。</td>
+                <td>独立强方向，但津药药业买点已到6板，且板块分化。</td>
+                <td><span class="badge reject">不追高</span> 不把6板写成新龙买点。</td>
+              </tr>
+              <tr>
+                <td>油气 / 化工 / 煤炭</td>
+                <td>前一日事件驱动方向。</td>
+                <td>财联社称受益高油价方向反而大面积调整。</td>
+                <td>金煤科技、云煤能源、兴化股份跌停。</td>
+                <td>事件刺激失败，亏钱效应释放。</td>
+                <td><span class="badge reject">风险背景</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+      <section>
+        <h2>新龙搜索闸门</h2>
+        <p><strong>允许寻找新龙，但没有合格候选。</strong> 神剑股份只是未确认试错失败后的负反馈样本，不是确认龙头。津药药业已到6板，标准4/5板试错买点已错过；新能泰山是9天7板，不能压缩成连续板；汇源通信、重药控股只是2板跟踪。</p>
+      </section>
+
+      <section>
+        <h2>连板梯队</h2>
+        <p class="note">连板梯队主源：财联社 2026-04-03 17:17 焦点复盘、东方财富/证券时报 2026-04-03 15:34 涨停表、东方财富Choice 2026-04-03 16:22 涨停复盘。未取得同花顺或开盘啦完整当日梯队表，完整低位梯队标为主源缺失/待复核。</p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>板数</th>
+                <th>股票</th>
+                <th>连续板数</th>
+                <th>几天几板/非连续形态</th>
+                <th>题材</th>
+                <th>角色</th>
+                <th>交易性</th>
+                <th>模型结论</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>6板</td>
+                <td>津药药业</td>
+                <td>6</td>
+                <td>无</td>
+                <td>医药生物 / 化学制药</td>
+                <td>名义最高连续板。</td>
+                <td>东方财富/证券时报表：收 6.97 元，换手 8.59%，封单资金约 1.85 亿元。</td>
+                <td><span class="badge reject">放弃</span> 6板不是标准4/5板买点，节后不做7板预案。</td>
+              </tr>
+              <tr>
+                <td>2板</td>
+                <td>汇源通信、重药控股</td>
+                <td>2</td>
+                <td>无</td>
+                <td>通信、医药生物</td>
+                <td>低位助攻。</td>
+                <td>不是4/5板高度。</td>
+                <td><span class="badge observe">跟踪</span> 不能提前写成买点。</td>
+              </tr>
+              <tr>
+                <td>非连续高位</td>
+                <td>新能泰山、苏利股份</td>
+                <td>不压缩</td>
+                <td>新能泰山 9天7板；苏利股份 6天3板。</td>
+                <td>光纤/电力设备、基础化工</td>
+                <td>N天N板背景。</td>
+                <td>新能泰山换手 23.45%，但形态不是连续7板；苏利股份6天3板不是连续3板候选。</td>
+                <td><span class="badge reject">不作为N进N+1买点</span></td>
+              </tr>
+              <tr>
+                <td>完整梯队</td>
+                <td>主源缺失/待复核</td>
+                <td>待复核</td>
+                <td>待复核</td>
+                <td>多题材</td>
+                <td>低位完整表未确认。</td>
+                <td>不根据零散文章补全。</td>
+                <td><span class="badge reject">不生成候选</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2>4/5板候选检查</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>股票</th>
+                <th>板数</th>
+                <th>买点状态</th>
+                <th>加分项</th>
+                <th>扣分项</th>
+                <th>模型结论</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>津药药业</td>
+                <td>6板</td>
+                <td>标准4/5板买点已错过。</td>
+                <td>医药方向有高度，封单资金居前。</td>
+                <td>已经6板；财联社同时记录医药产业链分化，联环药业、中源协和、润都股份跌停；节后不能用4月7日结果倒推。</td>
+                <td><span class="badge reject">放弃</span></td>
+              </tr>
+              <tr>
+                <td>新能泰山</td>
+                <td>9天7板</td>
+                <td>非连续高位，不是连续4/5板买点。</td>
+                <td>光纤和光通信方向强，换手 23.45%，有成交。</td>
+                <td>N天N板必须单列，不能压缩为连续板；也不属于主板4/5板标准试错买点。</td>
+                <td><span class="badge reject">放弃</span></td>
+              </tr>
+              <tr>
+                <td>汇源通信、重药控股</td>
+                <td>2板</td>
+                <td>低位助攻，不是4/5板买点。</td>
+                <td>分别对应通信、医药方向强度。</td>
+                <td>不能提前写成 2026-04-07 的3进4或4板标准试错买点。</td>
+                <td><span class="badge observe">跟踪，不买</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="note">结论：2026-04-03 收盘后无合格4/5板标准试错买点。下一交易日只先复核神剑股份是否修复；若确认旧龙死亡，也只能等待盘中新出现的非一字4/5板换手回封，不能用4月3日结果预先指定。</p>
+      </section>
+
+      <section>
+        <h2>2026-04-07 龙头预案</h2>
+        <div class="plan">
+          <div class="plan-block">
+            <strong>一、神剑股份强修复：只处理底仓</strong>
+            <p>若神剑股份节后快速红盘修复、收复大阴线核心位置，说明4月3日负反馈暂未扩散为死亡；已有底仓只做减亏或观察处理，不加仓，不开商业航天后排。</p>
+          </div>
+          <div class="plan-block">
+            <strong>二、弱修复或横盘：空仓等待</strong>
+            <p>若只是弱红弱绿、缩量横盘或冲高回落，按负反馈后的弱修复看待，仍以空仓为主，不把津药药业、新能泰山或2板助攻写成标准试错买点。</p>
+          </div>
+          <div class="plan-block">
+            <strong>三、负反馈延续：确认死亡后再筛</strong>
+            <p>若神剑股份继续低开下杀、大阴、跌停或带崩同周期，才确认旧龙死亡。确认后只等待新的非一字4/5板换手回封；4月3日没有可提前指定的候选。</p>
+          </div>
+        </div>
+        <p class="note">2026-04-04 至 2026-04-06 为清明休市，计划顺延至 2026-04-07 执行；本报告不读取也不引用 2026-04-07 盘面结果。</p>
+      </section>
+
+      <section>
+        <h2>操作与仓位</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>阶段</th>
+                <th>仓位</th>
+                <th>执行动作</th>
+                <th>候选处理</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>试错链负反馈首日</td>
+                <td>清仓后空仓观察；若遗留底仓，4月7日只按修复或继续负反馈处理。</td>
+                <td>4月3日触发清仓。4月7日先复核神剑股份，不做盘前换龙。</td>
+                <td>无新的标准试错买点。津药药业6板、N天N板、2板助攻均不参与。</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2>风险控制</h2>
+        <div class="table-wrap">
+          <table>
+            <tbody>
+              <tr>
+                <th>单笔最大亏损</th>
+                <td>试错链负反馈阶段不再扩大风险；未清底仓若节后不能快速修复，优先处理。</td>
+              </tr>
+              <tr>
+                <th>当日最大亏损</th>
+                <td>4月7日若神剑股份继续弱转弱，当日不再做第二笔试错。</td>
+              </tr>
+              <tr>
+                <th>连续试错次数</th>
+                <td>神剑股份失败后至少等待一个清晰的4/5板非一字换手回封，不连续追津药药业或新能泰山。</td>
+              </tr>
+              <tr>
+                <th>仓位上限</th>
+                <td>旧龙负反馈未完全释放前，保持空仓或极低仓观察；没有标准试错买点不恢复仓位。</td>
+              </tr>
+              <tr>
+                <th>卖出条件</th>
+                <td>神剑股份节后低开下杀、弱修复失败、继续大阴、跌停或同周期补涨继续批量杀跌。</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+      <section>
+        <h2>最终六问</h2>
+        <ol>
+          <li>当前有效龙头：无有效龙头；当前龙头锚点：华电辽能 / 绿电、电力、央企（旧锚点，已死亡）。</li>
+          <li>当前试错核心：无合格试错核心；神剑股份试错失败并负反馈，津药药业6板买点错过。</li>
+          <li>当前动作：清仓后空仓观察。</li>
+          <li>是否允许寻找新龙：允许，但4月3日收盘后没有合格4/5板标准试错买点。</li>
+          <li>4/5板候选是否合格：无。津药药业已6板，新能泰山是9天7板，2板助攻不是标准试错买点。</li>
+          <li>下一触发：2026-04-07只等待新的非一字4/5板换手回封；不追津药药业7板预期或N天M板。</li>
+        </ol>
+      </section>
+
+      <section>
+        <h2>数据源</h2>
+        <ul class="list">
+          <li><a href="https://finance.eastmoney.com/a/202604033694940455.html">东方财富Choice：神剑股份(002361)龙虎榜数据(04-03)，2026-04-03 16:26</a></li>
+          <li><a href="https://finance.sina.com.cn/roll/2026-04-03/doc-inhtfkwz8803399.shtml">财联社焦点复盘：创业板指缩量调整录得4连阴，2026-04-03 17:17</a></li>
+          <li><a href="https://finance.eastmoney.com/a/202604033694921342.html">东方财富/证券时报数据宝：涨停股复盘，2026-04-03 15:34</a></li>
+          <li><a href="https://finance.eastmoney.com/a/202604033694934810.html">东方财富Choice：4月3日涨停复盘，2026-04-03 16:22</a></li>
+          <li><a href="https://stock.10jqka.com.cn/20260403/c675750697.shtml">同花顺转载中国证券报：两大板块，联手上涨，2026-04-03 12:44</a></li>
+          <li><a href="https://finance.eastmoney.com/a/202604013692067113.html">东方财富/21世纪经济报道：神剑股份4月1日龙虎榜数据，2026-04-01 18:36</a></li>
+          <li><a href="https://finance.eastmoney.com/a/202604023693446298.html">东方财富Choice：神剑股份(002361)龙虎榜数据(04-02)，2026-04-02 16:27</a></li>
+          <li><a href="https://www.stcn.com/article/detail/3717493.html">证券时报人民财讯：沪深交易所公布2026年清明节休市安排，2026-03-31 17:24</a></li>
+        </ul>
+      </section>
+
+      <script type="application/json" id="stock-cycle-review-data">
+{
+    "review_date":  "2026-04-03",
+    "data_cutoff":  "2026-04-03",
+    "generated_by_skill":  {
+                               "name":  "stock-cycle-review",
+                               "version":  "0.1.0+codex.20260602143920"
+                           },
+    "is_trading_day":  true,
+    "previous_trading_day":  "2026-04-02",
+    "next_trading_day":  "2026-04-07",
+    "current_leader":  "无有效龙头",
+    "current_leader_theme":  "无",
+    "leader_state":  "无龙，试错失败后空仓",
+    "position_action":  "清仓后空仓观察",
+    "new_leader_search_allowed":  "允许，但无合格4/5板标准试错买点",
+    "next_trigger":  "2026-04-07先复核神剑股份是否强修复、弱修复或负反馈延续；只有旧龙死亡确认后，才等待新的非一字4/5板换手回封",
+    "market_phase":  "试错链负反馈首日，旧锚点仍为华电辽能",
+    "cycle_stage":  "华电辽能旧周期死亡 -\u003e 神剑股份2026-03-31四板试错成立 -\u003e 2026-04-01与2026-04-02连续高位巨量分歧 -\u003e 2026-04-03大阴负反馈清仓",
+    "old_leader_state":  "华电辽能旧周期已死亡；神剑股份为未确认试错失败样本",
+    "loss_effect":  {
+                        "level":  "高",
+                        "summary":  "神剑股份收跌8.96%，换手37.90%，成交额49.82亿元；财联社称全市场超4700只个股下跌，连板晋级率降至16.66%，昨日首板仅2只晋级。",
+                        "rows":  [
+                                     [
+                                         "神剑股份",
+                                         "收15.74元，跌8.96%，换手37.90%，成交额49.82亿元"
+                                     ],
+                                     [
+                                         "市场",
+                                         "财联社口径36股涨停、12股炸板、封板率75%，全市场超4700股下跌"
+                                     ],
+                                     [
+                                         "接力",
+                                         "连板晋级率16.66%，昨日连板股仅津药药业晋级，昨日首板仅2只晋级"
+                                     ]
+                                 ]
+                    },
+    "new_direction":  {
+                          "summary":  "光通信/CPO/光纤和医药仍有活跃度，但无确认龙头；4月3日盘后没有合格4/5板标准试错买点。",
+                          "strong_independent":  "光通信/CPO/光纤",
+                          "old_related":  "商业航天试错链负反馈；旧绿电/电力链继续承压"
+                      },
+    "operation_plan":  {
+                           "position":  "清仓后空仓观察；若遗留底仓，2026-04-07只按神剑股份修复或负反馈延续处理",
+                           "action":  "不做盘前换龙，不追津药药业6板后的加速，不把N天N板或2板助攻写成候选",
+                           "candidate":  "无标准试错买点；等待新的非一字4/5板换手回封"
+                       },
+    "risk_control":  [
+                         [
+                             "单笔最大亏损",
+                             "试错链负反馈阶段不再扩大风险；未清底仓若节后不能快速修复，优先处理"
+                         ],
+                         [
+                             "当日最大亏损",
+                             "2026-04-07若神剑股份继续弱转弱，当日不再做第二笔试错"
+                         ],
+                         [
+                             "连续试错次数",
+                             "神剑股份失败后至少等待一个清晰的4/5板非一字换手回封"
+                         ],
+                         [
+                             "仓位上限",
+                             "旧龙负反馈未完全释放前，保持空仓或极低仓观察"
+                         ],
+                         [
+                             "卖出条件",
+                             "神剑股份节后低开下杀、弱修复失败、继续大阴、跌停或同周期补涨继续批量杀跌"
+                         ]
+                     ],
+    "high_level_sentiment":  {
+                                 "nominal_highest_board":  "津药药业6连板；新能泰山9天7板",
+                                 "tradable_highest_board":  "无合格4/5板标准试错买点；津药药业已6板，买点错过；新能泰山为9天7板，不能压缩为连续板候选",
+                                 "previous_high_board_performance":  "神剑股份由4月2日红盘弱修复转为4月3日大阴负反馈，收跌8.96%",
+                                 "broken_board_feedback":  "财联社口径12股炸板，封板率75%；证券时报/数据宝口径跌停46只",
+                                 "high_level_limit_down_count":  "证券时报/数据宝口径跌停46只",
+                                 "high_level_broken_board_count":  "12股炸板",
+                                 "promotion_rate":  "财联社称连板晋级率16.66%"
+                             },
+    "prior_confirmed_leader":  "华电辽能",
+    "prior_leader_theme":  "绿电 / 电力 / 央企",
+    "intermediate_trial_chain":  "神剑股份2026-03-31完成4板试错买点；2026-04-01未晋级5板且换手50.64%；2026-04-02红盘弱修复但换手42.44%；2026-04-03收跌8.96%触发负反馈清仓",
+    "old_leader_chain":  "华电辽能 / 绿电电力央企 -\u003e 神剑股份 / 商业航天",
+    "current_core":  "无合格试错核心；神剑股份试错失败并负反馈，津药药业6板买点错过",
+    "tradable_high_board":  "津药药业名义6连板但标准4/5板试错买点已错过；无合格4/5板标准试错买点",
+    "next_opportunity":  "无标准试错买点；2026-04-07等待新的非一字4/5板换手回封，不追津药药业7板预期",
+    "hard_no_trade":  "不把神剑股份写成确认龙头；不追津药药业6板后的7板预期；不把新能泰山9天7板或2板助攻写成4/5板买点",
+    "source_verification":  {
+                                "sector_theme_primary_sources":  "同花顺转载中国证券报2026-04-03 12:44用于光通信/CPO/光纤强度背景；同花顺或开盘啦完整当日梯队主源未取得/待复核。",
+                                "individual_primary_sources":  "东方财富Choice 2026-04-03 16:26神剑股份龙虎榜数据核验收盘价、涨跌幅、换手率、成交额；东方财富2026-04-01与2026-04-02页面核验前三日链条中的神剑股份数据。",
+                                "local_archive_use":  "本地2026-04-02归档只用于复核上一交易日计划，不作为2026-04-03行情事实来源。"
+                            },
+    "board_sequence_verification":  {
+                                        "status":  "主要高标梯队已由财联社/东方财富/证券时报核验；同花顺或开盘啦完整低位梯队主源缺失/待复核",
+                                        "consecutive_ladder_source":  "财联社2026-04-03焦点复盘、东方财富/证券时报数据宝2026-04-03涨停股复盘、东方财富Choice2026-04-03涨停复盘",
+                                        "continuous_6_board":  "津药药业",
+                                        "continuous_2_board":  "汇源通信、重药控股",
+                                        "non_consecutive_patterns":  "新能泰山9天7板；苏利股份6天3板",
+                                        "notes":  "连续板与N天N板分列。没有合格4/5板标准试错买点；2板不写入候选买点；不使用2026-04-07及之后结果。"
+                                    },
+    "model_verdicts":  [
+                           {
+                               "stock":  "神剑股份",
+                               "role":  "未确认试错核心 / 失败反馈",
+                               "verdict":  "reject",
+                               "reason":  "神剑股份未过6板+高潮日确认，不能作为确认龙头；后续按试错失败或负反馈处理。"
+                           },
+                           {
+                               "stock":  "津药药业",
+                               "role":  "医药6连板名义最高板",
+                               "verdict":  "reject",
+                               "reason":  "4/5板阶段未给出合格标准试错买点；到6板后不能补写为新买点。"
+                           },
+                           {
+                               "stock":  "新能泰山、苏利股份",
+                               "role":  "非连续N天N板背景",
+                               "verdict":  "reject",
+                               "reason":  "N天N板单列，不压缩为连续板候选。"
+                           },
+                           {
+                               "stock":  "汇源通信、重药控股",
+                               "role":  "2连板助攻",
+                               "verdict":  "observe only",
+                               "reason":  "2板不是4/5板标准试错买点，不能提前写成2026-04-07候选。"
+                           }
+                       ],
+    "sources":  [
+                    {
+                        "name":  "东方财富Choice：神剑股份(002361)龙虎榜数据(04-03)",
+                        "published_at":  "2026-04-03 16:26",
+                        "url":  "https://finance.eastmoney.com/a/202604033694940455.html"
+                    },
+                    {
+                        "name":  "财联社焦点复盘：创业板指缩量调整录得4连阴",
+                        "published_at":  "2026-04-03 17:17",
+                        "url":  "https://finance.sina.com.cn/roll/2026-04-03/doc-inhtfkwz8803399.shtml"
+                    },
+                    {
+                        "name":  "东方财富/证券时报数据宝：涨停股复盘",
+                        "published_at":  "2026-04-03 15:34",
+                        "url":  "https://finance.eastmoney.com/a/202604033694921342.html"
+                    },
+                    {
+                        "name":  "东方财富Choice：4月3日涨停复盘",
+                        "published_at":  "2026-04-03 16:22",
+                        "url":  "https://finance.eastmoney.com/a/202604033694934810.html"
+                    },
+                    {
+                        "name":  "同花顺转载中国证券报：两大板块，联手上涨",
+                        "published_at":  "2026-04-03 12:44",
+                        "url":  "https://stock.10jqka.com.cn/20260403/c675750697.shtml"
+                    },
+                    {
+                        "name":  "东方财富/21世纪经济报道：神剑股份4月1日龙虎榜数据",
+                        "published_at":  "2026-04-01 18:36",
+                        "url":  "https://finance.eastmoney.com/a/202604013692067113.html"
+                    },
+                    {
+                        "name":  "东方财富Choice：神剑股份(002361)龙虎榜数据(04-02)",
+                        "published_at":  "2026-04-02 16:27",
+                        "url":  "https://finance.eastmoney.com/a/202604023693446298.html"
+                    },
+                    {
+                        "name":  "证券时报人民财讯：沪深交易所公布2026年清明节休市安排",
+                        "published_at":  "2026-03-31 17:24",
+                        "url":  "https://www.stcn.com/article/detail/3717493.html"
+                    }
+                ],
+    "rule_revision_note":  "2026-06-04按新规则修复：4/5板只算试错核心，需6板+板块高潮日才确认龙头。",
+    "leader_anchor":  "华电辽能",
+    "leader_anchor_theme":  "绿电 / 电力 / 央企",
+    "leader_anchor_state":  "华电辽能旧周期已死亡；神剑股份为未确认试错失败样本"
+}
+      </script>
+    </main>
+  </body>
+</html>

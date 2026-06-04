@@ -1,0 +1,617 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>A股短线周期复盘 - 2026-05-14</title>
+    <style>
+      :root {
+        --bg: #f6f7f9;
+        --panel: #ffffff;
+        --text: #1f2937;
+        --muted: #6b7280;
+        --line: #d9dee7;
+        --strong: #13795b;
+        --warn: #b26a00;
+        --danger: #b42318;
+        --info: #1d4ed8;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--text);
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        line-height: 1.5;
+      }
+      .page {
+        width: min(1180px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 28px 0 40px;
+      }
+      header {
+        display: grid;
+        gap: 12px;
+        margin-bottom: 18px;
+      }
+      h1 {
+        margin: 0;
+        font-size: clamp(24px, 4vw, 38px);
+      }
+      h2 {
+        margin: 0 0 12px;
+        font-size: 18px;
+      }
+      p { margin: 0; }
+      .note { color: var(--muted); font-size: 14px; }
+      .risk {
+        border-left: 4px solid var(--warn);
+        background: #fff8ec;
+        padding: 10px 12px;
+        color: #7a4b00;
+      }
+      .status-grid {
+        display: grid;
+        grid-template-columns: repeat(6, minmax(0, 1fr));
+        gap: 12px;
+        margin: 18px 0;
+      }
+      .metric, section {
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+      }
+      .metric {
+        padding: 12px;
+        min-height: 104px;
+      }
+      .metric .label {
+        color: var(--muted);
+        font-size: 12px;
+        margin-bottom: 6px;
+      }
+      .metric .value {
+        font-size: 18px;
+        font-weight: 700;
+      }
+      section {
+        padding: 16px;
+        margin-bottom: 14px;
+      }
+      .timeline, .plan {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+      }
+      .step, .plan-block {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 12px;
+        background: #fbfcfe;
+      }
+      .step .title, .plan-block strong {
+        display: block;
+        font-weight: 700;
+        margin-bottom: 6px;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 14px;
+      }
+      th, td {
+        border-bottom: 1px solid var(--line);
+        padding: 10px 8px;
+        text-align: left;
+        vertical-align: top;
+      }
+      th {
+        color: var(--muted);
+        font-weight: 600;
+        background: #f9fafb;
+      }
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        min-height: 24px;
+        padding: 2px 8px;
+        border-radius: 999px;
+        font-size: 12px;
+        font-weight: 700;
+        white-space: nowrap;
+      }
+      .buy { background: #e8f5ef; color: var(--strong); }
+      .observe { background: #fff4db; color: var(--warn); }
+      .reject { background: #fdebea; color: var(--danger); }
+      .context { background: #eaf1ff; color: var(--info); }
+      ul { margin: 0; padding-left: 18px; }
+      li + li { margin-top: 4px; }
+      a { color: var(--info); }
+      @media (max-width: 860px) {
+        .status-grid, .timeline, .plan { grid-template-columns: 1fr; }
+        .table-wrap { overflow-x: auto; }
+        table { min-width: 760px; }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <header>
+        <h1>A股短线周期复盘 - 2026-05-14</h1>
+        <p class="note">复盘口径：历史实盘模拟。数据截止 2026-05-14 收盘后当日公开信息；下一交易日为 2026-05-15。严格不使用 2026-05-15 盘中、收盘及之后的数据。</p>
+        <p class="risk">本页先复核 2026-05-13 计划，再生成 2026-05-15 条件计划。计划设计只允许使用 5月12日、5月13日、5月14日三日链条与 5月14日当日可见主源，不把 5月15日结果反写回 5月14日判断。</p>
+      </header>
+
+      <section class="status-grid" aria-label="核心状态">
+        <div class="metric">
+          <div class="label">当前有效龙头</div>
+          <div class="value">大唐发电</div>
+        </div>
+        <div class="metric">
+          <div class="label">当前龙头锚点</div>
+          <div class="value">大唐发电 / 电力绿电算电协同</div>
+        </div>
+        <div class="metric">
+          <div class="label">当前试错核心</div>
+          <div class="value">无新试错核心</div>
+        </div>
+        <div class="metric">
+          <div class="label">龙头状态</div>
+          <div class="value">龙头明显分歧</div>
+        </div>
+        <div class="metric">
+          <div class="label">当前动作</div>
+          <div class="value">减仓观察修复</div>
+        </div>
+        <div class="metric">
+          <div class="label">下一触发</div>
+          <div class="value">5月15日只看大唐修复/负反馈</div>
+        </div>
+      </section>
+
+      <section>
+        <h2>上一交易日计划复核</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>2026-05-13 计划</th>
+                <th>2026-05-14 当日可见事实</th>
+                <th>复核结论</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>只管理大唐发电 6进7。若继续强势晋级并维持电力/绿电/算电协同助攻，则按确认龙头主升处理；若断板或负反馈扩散，则减仓或清仓。</td>
+                <td>东方财富 10:34 同日源显示大唐发电早盘打出 7 连板、绿电概念股走高；但财联社 17:33 收盘复盘明确写到，大唐发电涨停开盘后放量炸板回落收出长阴，令绿电板块承压。</td>
+                <td><span class="badge observe">分歧分支触发</span> 龙头没有完成稳健 6进7，按计划应从主升持有切到减仓观察修复，不把早盘 7 板当作新的买点。</td>
+              </tr>
+              <tr>
+                <td>无先手不追 7 板新开，不切交大昂立、蒙娜丽莎，不追华电辽能、华电能源、宝光股份等 N天M板 或二波修复。</td>
+                <td>收盘连续最高板变为蒙娜丽莎 5 连板、利仁科技 4 连板、合肥城建/可川科技/花王股份 3 连板；华电辽能、华电能源双双放量收阴。</td>
+                <td><span class="badge reject">不切新龙</span> 当前确认龙头只是高位分歧，还不能直接判定死亡。蒙娜丽莎虽成为收盘连续最高板，但不是前一计划对象，且不是在大唐死亡后筛出的新 4/5 板试错。</td>
+              </tr>
+              <tr>
+                <td>若大唐负反馈扩散，停止同主题追涨。</td>
+                <td>财联社收盘复盘称众合科技、通达股份断板跌停，中国长城、中国卫星两只大额成交股跌停，亏钱效应向前期热点后排扩散。</td>
+                <td><span class="badge reject">风险扩散</span> 绿电和容量抱团同时承压，5月15日只能先看大唐能否修复或确认负反馈，不能开新仓追后排。</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2>龙头锚点与状态</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>当前确认龙头</th>
+                <th>当前龙头锚点</th>
+                <th>当前试错核心</th>
+                <th>今日反馈</th>
+                <th>状态</th>
+                <th>动作</th>
+                <th>找新龙</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>大唐发电 / 电力、绿电、算电协同</td>
+                <td>大唐发电</td>
+                <td>当前不设新的试错核心。</td>
+                <td>大唐发电早盘一度 7 连板，但涨停开盘后放量炸板回落收长阴；绿电二波人气股华电辽能、华电能源双双放量收阴，板块助攻明显削弱。</td>
+                <td><span class="badge observe">龙头明显分歧</span></td>
+                <td>对 5月12日试错先手执行减仓，保留观察仓等 5月15日修复或负反馈确认；无先手不追。</td>
+                <td>不允许。确认龙头尚未被跌停或连续负反馈确认死亡，当前只管理龙头分歧，不筛新龙。</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2>高位情绪快照</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>名义早盘最高</th>
+                <th>收盘连续最高</th>
+                <th>龙头反馈</th>
+                <th>断板与跌停</th>
+                <th>市场环境</th>
+                <th>结论</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>大唐发电早盘一度 7 连板。</td>
+                <td>蒙娜丽莎 5 连板，利仁科技 4 连板，合肥城建、可川科技、花王股份 3 连板。</td>
+                <td>大唐发电放量炸板回落收长阴，华电辽能、华电能源放量收阴，绿电承压。</td>
+                <td>众合科技、通达股份断板跌停；中国长城、中国卫星大额成交股跌停。</td>
+                <td>财联社口径：55 股涨停、31 股炸板、封板率 64%；同花顺口径：1019 股上涨、4329 股下跌。</td>
+                <td>从确认龙头主升转为高位明显分歧日，风险优先级高于新机会。</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2>周期时间线</h2>
+        <div class="timeline">
+          <div class="step">
+            <span class="title">5月12日</span>
+            大唐发电完成非一字 4进5 标准试错，升为 5 板试错核心。
+          </div>
+          <div class="step">
+            <span class="title">5月13日</span>
+            大唐发电开盘 87 秒直线涨停并收成 6 连板，叠加电力/绿电涨停潮，升级为确认龙头。
+          </div>
+          <div class="step">
+            <span class="title">5月14日</span>
+            大唐发电早盘 7 板后放量炸板长阴，绿电助攻转弱，进入龙头高位分歧管理阶段。
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>板块强度</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>方向</th>
+                <th>当日证据</th>
+                <th>对周期判断的意义</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>电力 / 绿电 / 算电协同</td>
+                <td>早盘东方财富仍显示绿电活跃、大唐发电 7 连板；收盘财联社显示大唐长阴、华电辽能和华电能源放量收阴。</td>
+                <td>板块从高潮转入分歧，大唐仍是锚点，但不再是加仓主升日。</td>
+              </tr>
+              <tr>
+                <td>工业气体 / 半导体材料 / 碳化硅</td>
+                <td>中船特气 20cm 4天3板，科创新材、晶升股份、天富能源、露笑科技等涨停。</td>
+                <td>属于指数调整中的新强分支，但确认龙头未死前不能切换为新龙计划。</td>
+              </tr>
+              <tr>
+                <td>小票独立逻辑</td>
+                <td>蒙娜丽莎 5 连板，利仁科技 4 连板。</td>
+                <td>是大唐分歧后的收盘高度背景，不是 5月14日可设计的新买点。</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2>连板梯队核验</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>梯队</th>
+                <th>个股</th>
+                <th>连续板数</th>
+                <th>N天M板 / 非连续形态</th>
+                <th>备注</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>确认龙头分歧</td>
+                <td>大唐发电</td>
+                <td>早盘一度 7 连板，收盘断板</td>
+                <td>否</td>
+                <td>仍是当前龙头锚点，但进入明显分歧管理，不是新买点。</td>
+              </tr>
+              <tr>
+                <td>收盘连续最高</td>
+                <td>蒙娜丽莎</td>
+                <td>5 连板</td>
+                <td>否</td>
+                <td>仅作为收盘高度背景，不能在大唐未确认死亡前写成新龙。</td>
+              </tr>
+              <tr>
+                <td>次高连续板</td>
+                <td>利仁科技</td>
+                <td>4 连板</td>
+                <td>否</td>
+                <td>只跟踪，不替代龙头管理。</td>
+              </tr>
+              <tr>
+                <td>低位连续板</td>
+                <td>合肥城建、可川科技、花王股份</td>
+                <td>3 连板</td>
+                <td>否</td>
+                <td>不进入 5月15日主计划。</td>
+              </tr>
+              <tr>
+                <td>非连续高标</td>
+                <td>华电辽能、华电能源等</td>
+                <td>无</td>
+                <td>二波 / N天M板</td>
+                <td>同主题人气分歧样本，不能当作连续梯队买点。</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2>候选判断</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>标的</th>
+                <th>定位</th>
+                <th>结论</th>
+                <th>原因</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>大唐发电</td>
+                <td>确认龙头高位分歧</td>
+                <td><span class="badge observe">减仓观察</span></td>
+                <td>早盘一度 7 连板，但收盘复盘明确为放量炸板回落长阴；5月15日先看强修复、弱修复还是负反馈扩散。</td>
+              </tr>
+              <tr>
+                <td>蒙娜丽莎</td>
+                <td>收盘 5 连板</td>
+                <td><span class="badge observe">仅观察</span></td>
+                <td>虽成为收盘连续最高板，但不是前一交易日计划对象，且大唐还未确认死亡，不允许切换新龙。</td>
+              </tr>
+              <tr>
+                <td>利仁科技</td>
+                <td>收盘 4 连板</td>
+                <td><span class="badge observe">仅观察</span></td>
+                <td>低于蒙娜丽莎与大唐锚点，只能作为情绪背景。</td>
+              </tr>
+              <tr>
+                <td>华电辽能、华电能源、众合科技、通达股份</td>
+                <td>同主题二波 / 后排负反馈</td>
+                <td><span class="badge reject">排除</span></td>
+                <td>华电辽能、华电能源放量收阴；众合科技、通达股份断板跌停，是风险样本，不是买点。</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2>2026-05-15 计划</h2>
+        <div class="plan">
+          <div class="plan-block">
+            <strong>强修复分支</strong>
+            只看大唐发电能否快速红盘修复、收回分歧并带动电力/绿电修复。若成立，只持有剩余先手，不追新开。
+          </div>
+          <div class="plan-block">
+            <strong>弱修复或负反馈</strong>
+            若大唐发电低开走弱、继续放量下杀、跌破关键承接或拖累华电辽能、华电能源继续走弱，则清掉剩余仓位，等待龙头死亡确认。
+          </div>
+          <div class="plan-block">
+            <strong>禁做项</strong>
+            不切蒙娜丽莎 5进6，不追利仁科技 4进5，不低吸众合科技、通达股份、中国长城、中国卫星，不把 5月15日结果倒灌回 5月14日判断。
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>风控纪律</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>项目</th>
+                <th>纪律</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>仓位上限</td>
+                <td>大唐已从主升转入高位分歧，只能保留观察仓；无先手不追、不补。</td>
+              </tr>
+              <tr>
+                <td>单笔最大亏损</td>
+                <td>5月15日若大唐继续走弱，剩余仓位直接清掉，不等待后排修复。</td>
+              </tr>
+              <tr>
+                <td>当日最大亏损</td>
+                <td>若大唐负反馈扩散，当日停止同主题和容量抱团接力。</td>
+              </tr>
+              <tr>
+                <td>新试错条件</td>
+                <td>大唐未确认死亡前不筛新龙；即便蒙娜丽莎收成 5 板，也不构成 5月15日主计划。</td>
+              </tr>
+              <tr>
+                <td>卖出条件</td>
+                <td>断板后弱修复、继续大阴、跌停、板块助攻断层或容量抱团继续跌停扩散时清仓。</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2>最终结论</h2>
+        <p>5月14日不是新周期筛选日，而是大唐发电确认龙头后的首个高位大分歧日。早盘 7 连板不能作为追加买点，收盘长阴说明 5月13日计划里的分歧分支已经触发。</p>
+        <p>所以当前有效龙头仍是大唐发电，但状态从已确认龙头主升降为龙头明显分歧。5月15日只看大唐发电修复或负反馈，不切蒙娜丽莎、利仁科技，也不做绿电二波和容量抱团反核。</p>
+      </section>
+
+      <section>
+        <h2>数据源</h2>
+        <ul>
+          <li><a href="https://news.10jqka.com.cn/20260514/c676689582.shtml">同花顺：A股每日行情复盘（5月14日）</a></li>
+          <li><a href="https://finance.eastmoney.com/a/202605143737114964.html">东方财富：601991，7连板！688146，4天3个“20cm”涨停！</a></li>
+          <li><a href="https://finance.eastmoney.com/a/202605143737532162.html">东方财富转载财联社：焦点复盘，AI硬件股分歧加剧，光伏概念逆势活跃</a></li>
+          <li><a href="https://finance.sina.com.cn/roll/2026-05-14/doc-inhxwenm3981225.shtml">财联社：焦点复盘创业板指、科创50双双跌逾2%</a></li>
+          <li><a href="https://finance.sina.com.cn/stock/relnews/cn/2026-05-14/doc-inhxwenh8684511.shtml">新浪财经：A股今日共82只个股涨停，蒙娜丽莎收获5连板</a></li>
+        </ul>
+      </section>
+
+      <script type="application/json" id="stock-cycle-review-data">
+{
+  "review_date": "2026-05-14",
+  "data_cutoff": "2026-05-14",
+  "generated_by_skill": {
+    "name": "stock-cycle-review"
+  },
+  "previous_trading_day": "2026-05-13",
+  "next_trading_day": "2026-05-15",
+  "current_leader": "大唐发电",
+  "current_leader_theme": "电力 / 绿电 / 算电协同",
+  "leader_anchor": "大唐发电",
+  "leader_anchor_theme": "电力 / 绿电 / 算电协同",
+  "leader_anchor_state": "大唐发电5月14日早盘一度7连板，但涨停开盘后放量炸板回落收出长阴，当前由确认龙头主升转为龙头明显分歧",
+  "leader_state": "龙头明显分歧",
+  "position_action": "减仓观察修复",
+  "new_leader_search_allowed": "不允许。当前确认龙头大唐发电只是高位明显分歧，尚未确认死亡，5月15日只管理龙头修复或负反馈",
+  "next_trigger": "2026-05-15只看大唐发电修复或负反馈：若快速红盘修复并带动电力/绿电回流，则持有剩余先手；若低开走弱、继续放量下杀或负反馈扩散，则清掉剩余仓位，不切蒙娜丽莎、利仁科技",
+  "market_phase": "大唐发电确认龙头后的首个高位大分歧日，绿电板块由高潮转承压，容量抱团与前期热点后排亏钱效应扩散，市场从龙头主升进入分歧观察阶段",
+  "cycle_stage": "华电辽能旧周期死亡 -> 汇源通信试错失败 -> 中恒电气试错失败 -> 圣阳股份5板试错并6板确认 -> 圣阳股份死亡 -> 株冶集团5板试错失败 -> 金螳螂5板试错失败 -> 水发燃气5板试错失败 -> 越剑智能4板失败 -> 宝光股份4板失败 -> 福达合金5板未给买点 -> 大唐发电5板试错 -> 大唐发电6板确认 -> 大唐发电7板炸板长阴分歧",
+  "old_leader_state": "圣阳股份旧周期已被大唐发电接棒；当前锚点仍是大唐发电，不因蒙娜丽莎5板而切换",
+  "loss_effect": {
+    "level": "偏强转分歧",
+    "summary": "同花顺显示5月14日1019只个股上涨、4329只下跌，70只涨停、32只跌停；财联社口径显示55股涨停、31股炸板、封板率64%。大唐发电长阴后，绿电和容量抱团负反馈扩散。",
+    "rows": [
+      ["上一日主计划", "只管理大唐发电6进7；5月14日早盘7板后炸板长阴，分歧分支触发"],
+      ["收盘连续梯队", "蒙娜丽莎5板，利仁科技4板，合肥城建、可川科技、花王股份3板"],
+      ["高位负反馈", "大唐发电长阴，华电辽能、华电能源放量收阴，众合科技、通达股份断板跌停"],
+      ["容量抱团冲击", "中国长城、中国卫星双双跌停，成交前20个股仅有6只翻红"]
+    ]
+  },
+  "new_direction": {
+    "summary": "工业气体、半导体材料、碳化硅和部分独立小票逆势活跃，但当前确认龙头大唐发电尚未确认死亡，这些方向只能作为盘面背景，不能直接写新龙计划。",
+    "strong_independent": "工业气体 / 半导体材料 / 碳化硅；陶瓷基板小票",
+    "old_related": "电力 / 绿电 / 算电协同从高潮转分歧，华电辽能、华电能源等二波样本不能当作新入口"
+  },
+  "operation_plan": {
+    "position": "减仓观察修复",
+    "action": "5月15日只管理大唐发电强修复、弱修复或负反馈清仓三条路径，不筛新龙",
+    "candidate": "当前无新的标准买点；蒙娜丽莎、利仁科技只作收盘梯队观察；华电辽能、华电能源、众合科技、通达股份、中国长城、中国卫星均回避"
+  },
+  "risk_control": [
+    ["仓位上限", "大唐已从主升转入高位分歧，只能保留观察仓；无先手不追、不补"],
+    ["单笔最大亏损", "5月15日若大唐继续走弱，剩余仓位直接清掉，不等待后排修复"],
+    ["当日最大亏损", "若大唐负反馈扩散，当日停止同主题和容量抱团接力"],
+    ["新试错条件", "大唐未确认死亡前不筛新龙；即便蒙娜丽莎收成5板，也不构成5月15日主计划"],
+    ["卖出条件", "断板后弱修复、继续大阴、跌停、板块助攻断层或容量抱团继续跌停扩散时清仓"]
+  ],
+  "high_level_sentiment": {
+    "nominal_intraday_highest_board": "大唐发电早盘一度7连板",
+    "closing_highest_board": "蒙娜丽莎5连板，利仁科技4连板，合肥城建、可川科技、花王股份3连板",
+    "tradable_highest_board": "大唐发电仍是确认龙头锚点，但5月14日放量炸板长阴，不是新买点；蒙娜丽莎只是收盘连续最高板背景",
+    "previous_high_board_performance": "大唐发电6板确认后次日炸板长阴，华电辽能、华电能源放量收阴",
+    "broken_board_feedback": "众合科技、通达股份断板跌停，中国长城、中国卫星双双跌停，亏钱效应向前期热点后排扩散",
+    "high_level_limit_down_count": "同花顺口径32只跌停",
+    "high_level_broken_board_count": "财联社口径31股炸板",
+    "promotion_rate": "29.41%"
+  },
+  "prior_confirmed_leader": "大唐发电",
+  "prior_leader_theme": "电力 / 绿电 / 算电协同",
+  "intermediate_trial_chain": "大唐发电5月12日5板标准试错，5月13日6板确认，5月14日7板炸板长阴进入明显分歧",
+  "old_leader_chain": "华电辽能 / 绿电电力央企 -> 神剑股份 / 商业航天试错失败 -> 汇源通信 / 光通信5板试错失败 -> 中恒电气4板试错失败 -> 圣阳股份 / 储能电池6板确认 -> 圣阳股份死亡 -> 株冶集团5板试错失败 -> 金螳螂5板试错失败 -> 水发燃气5板试错失败 -> 越剑智能4板失败 -> 宝光股份4板失败 -> 大唐发电 / 电力绿电算电协同6板确认后高位分歧",
+  "current_core": "当前无新试错核心；大唐发电仍是确认龙头锚点，但状态转为龙头明显分歧",
+  "tradable_high_board": "大唐发电早盘一度7连板，收盘放量炸板回落长阴；蒙娜丽莎收成5连板但不是当前主计划买点",
+  "next_opportunity": "无新的标准买点；2026-05-15只管理大唐发电修复或负反馈，不寻找新龙",
+  "hard_no_trade": "不切蒙娜丽莎5进6；不追利仁科技4进5；不低吸众合科技、通达股份、中国长城、中国卫星；不追华电辽能、华电能源二波；不使用2026-05-15盘面结果",
+  "source_verification": {
+    "sector_theme_primary_sources": "同花顺2026-05-14收盘复盘用于市场涨跌家数、涨跌停数和行业表现；财联社2026-05-14焦点复盘用于连板梯队、晋级率、板块承压和负反馈判断",
+    "individual_primary_sources": "东方财富2026-05-14早盘资讯用于确认大唐发电早盘7连板；财联社2026-05-14收盘复盘用于确认大唐发电炸板长阴和华电辽能、华电能源放量收阴",
+    "local_archive_use": "本地2026-05-13归档仅用于复核上一交易日计划，不作为2026-05-14事实来源"
+  },
+  "board_sequence_verification": {
+    "status": "完整",
+    "consecutive_ladder_source": "财联社2026-05-14焦点复盘与新浪2026-05-14涨停统计：蒙娜丽莎5连板，利仁科技4连板，合肥城建、可川科技、花王股份3连板；大唐发电为早盘7板后收盘断板",
+    "intraday_7_board_failed": "大唐发电",
+    "continuous_5_board": "蒙娜丽莎",
+    "continuous_4_board": "利仁科技",
+    "continuous_3_board": "合肥城建、可川科技、花王股份",
+    "non_consecutive_patterns": "华电辽能、华电能源等二波分歧；中船特气20cm 4天3板",
+    "notes": "大唐发电虽断连板但仍是当前确认龙头锚点；蒙娜丽莎5连板只能记录为收盘高度背景，不能在大唐未确认死亡前替代主计划"
+  },
+  "model_verdicts": [
+    {
+      "stock": "大唐发电",
+      "role": "确认龙头高位分歧",
+      "verdict": "reduce",
+      "reason": "5月14日早盘一度7连板，但涨停开盘后放量炸板回落收出长阴，绿电助攻转弱，按龙头明显分歧处理；5月15日只看修复或负反馈"
+    },
+    {
+      "stock": "蒙娜丽莎",
+      "role": "收盘5连板高度背景",
+      "verdict": "observe only",
+      "reason": "虽然收成5连板，但大唐发电尚未确认死亡，且蒙娜丽莎不是上一计划对象，不能写成新龙买点"
+    },
+    {
+      "stock": "利仁科技",
+      "role": "4连板背景梯队",
+      "verdict": "observe only",
+      "reason": "低于蒙娜丽莎和大唐锚点，只能作为情绪背景，不进入5月15日主计划"
+    },
+    {
+      "stock": "华电辽能、华电能源、众合科技、通达股份、中国长城、中国卫星",
+      "role": "同主题二波 / 后排负反馈 / 容量抱团冲击",
+      "verdict": "reject",
+      "reason": "华电辽能、华电能源放量收阴；众合科技、通达股份断板跌停；中国长城、中国卫星跌停，均是风险样本而非买点"
+    }
+  ],
+  "sources": [
+    {
+      "name": "同花顺：A股每日行情复盘（5月14日）",
+      "published_at": "2026-05-14 15:30",
+      "url": "https://news.10jqka.com.cn/20260514/c676689582.shtml"
+    },
+    {
+      "name": "东方财富：601991，7连板！688146，4天3个20cm涨停",
+      "published_at": "2026-05-14 10:34",
+      "url": "https://finance.eastmoney.com/a/202605143737114964.html"
+    },
+    {
+      "name": "东方财富转载财联社：焦点复盘，AI硬件股分歧加剧，光伏概念逆势活跃",
+      "published_at": "2026-05-14 17:33",
+      "url": "https://finance.eastmoney.com/a/202605143737532162.html"
+    },
+    {
+      "name": "财联社：焦点复盘创业板指、科创50双双跌逾2%",
+      "published_at": "2026-05-14 17:33",
+      "url": "https://finance.sina.com.cn/roll/2026-05-14/doc-inhxwenm3981225.shtml"
+    },
+    {
+      "name": "新浪财经：A股今日共82只个股涨停，蒙娜丽莎收获5连板",
+      "published_at": "2026-05-14 16:26",
+      "url": "https://finance.sina.com.cn/stock/relnews/cn/2026-05-14/doc-inhxwenh8684511.shtml"
+    }
+  ]
+}
+      </script>
+    </main>
+  </body>
+</html>

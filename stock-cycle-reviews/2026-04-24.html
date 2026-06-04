@@ -1,0 +1,838 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>A股短线周期复盘 - 2026-04-24</title>
+    <style>
+      :root {
+        --bg: #f6f7f9;
+        --panel: #ffffff;
+        --text: #1f2937;
+        --muted: #6b7280;
+        --line: #d9dee7;
+        --strong: #13795b;
+        --warn: #b26a00;
+        --danger: #b42318;
+        --info: #1d4ed8;
+      }
+
+      * { box-sizing: border-box; }
+
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--text);
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        line-height: 1.5;
+      }
+
+      .page {
+        width: min(1180px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 28px 0 40px;
+      }
+
+      header {
+        display: grid;
+        gap: 12px;
+        margin-bottom: 18px;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: clamp(24px, 4vw, 38px);
+        letter-spacing: 0;
+      }
+
+      h2 {
+        margin: 0 0 12px;
+        font-size: 18px;
+        letter-spacing: 0;
+      }
+
+      p { margin: 0; }
+
+      .note {
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      .risk {
+        border-left: 4px solid var(--warn);
+        background: #fff8ec;
+        padding: 10px 12px;
+        color: #7a4b00;
+      }
+
+      .status-grid {
+        display: grid;
+        grid-template-columns: repeat(6, minmax(0, 1fr));
+        gap: 12px;
+        margin: 18px 0;
+      }
+
+      .metric, section {
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+      }
+
+      .metric {
+        padding: 12px;
+        min-height: 104px;
+      }
+
+      .metric .label {
+        color: var(--muted);
+        font-size: 12px;
+        margin-bottom: 6px;
+      }
+
+      .metric .value {
+        font-size: 18px;
+        font-weight: 700;
+      }
+
+      section {
+        padding: 16px;
+        margin-bottom: 14px;
+      }
+
+      .timeline,
+      .plan {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+      }
+
+      .step,
+      .plan-block {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 12px;
+        background: #fbfcfe;
+      }
+
+      .step .title,
+      .plan-block strong {
+        display: block;
+        font-weight: 700;
+        margin-bottom: 6px;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 14px;
+      }
+
+      th,
+      td {
+        border-bottom: 1px solid var(--line);
+        padding: 10px 8px;
+        text-align: left;
+        vertical-align: top;
+      }
+
+      th {
+        color: var(--muted);
+        font-weight: 600;
+        background: #f9fafb;
+      }
+
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        min-height: 24px;
+        padding: 2px 8px;
+        border-radius: 999px;
+        font-size: 12px;
+        font-weight: 700;
+        white-space: nowrap;
+      }
+
+      .buy { background: #e8f5ef; color: var(--strong); }
+      .observe { background: #fff4db; color: var(--warn); }
+      .reject { background: #fdebea; color: var(--danger); }
+      .context { background: #eaf1ff; color: var(--info); }
+
+      ul {
+        margin: 0;
+        padding-left: 18px;
+      }
+
+      li + li { margin-top: 4px; }
+      a { color: var(--info); }
+
+      @media (max-width: 860px) {
+        .status-grid,
+        .timeline,
+        .plan {
+          grid-template-columns: 1fr;
+        }
+
+        .table-wrap {
+          overflow-x: auto;
+        }
+
+        table {
+          min-width: 760px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <header>
+        <h1>A股短线周期复盘 - 2026-04-24</h1>
+        <p class="note">复盘口径：历史实盘模拟。数据截止：2026-04-24 收盘后已公开信息；下一交易日计划对应 2026-04-27。严格不使用 2026-04-27 盘中、收盘及之后数据。</p>
+        <p class="risk">本页先复核 2026-04-23 已归档计划，再生成 2026-04-27 条件计划。4月25日、4月26日为周末休市，4月27日计划只基于 4月22日、4月23日、4月24日三日约束和 4月24日以前公开源；这只是复盘框架，不构成投资建议或荐股。</p>
+      </header>
+
+      <section class="status-grid" aria-label="核心状态">
+        <div class="metric">
+          <div class="label">当前有效龙头</div>
+          <div class="value">无有效龙头</div>
+        </div>
+        <div class="metric">
+          <div class="label">当前龙头锚点</div>
+          <div class="value">圣阳股份 / 储能电池</div>
+        </div>
+        <div class="metric">
+          <div class="label">当前试错核心</div>
+          <div class="value">无</div>
+        </div>
+        <div class="metric">
+          <div class="label">龙头状态</div>
+          <div class="value">无龙</div>
+        </div>
+        <div class="metric">
+          <div class="label">当前动作</div>
+          <div class="value">清掉试错仓，空仓观察</div>
+        </div>
+        <div class="metric">
+          <div class="label">下一触发</div>
+          <div class="value">4月27日只看 3进4 条件</div>
+        </div>
+      </section>
+
+      <section>
+        <h2>上一交易日计划复核</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>2026-04-23 计划</th>
+                <th>2026-04-24 当日可见事实</th>
+                <th>复核结论</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>金螳螂若5进6弱转强或高位强承接，且苏州高新等助攻不断层，则持有试错仓，并视板块放大程度决定是否进入待确认高标。</td>
+                <td>财联社09:28竞价显示金螳螂仅高开0.37%；第一财经09:32快讯显示其盘中跌停；财联社17:21确认其断板封死跌停、止步5连板。</td>
+                <td><span class="badge reject">未满足</span> 没有走出弱转强或高位强承接，直接触发失败路径。</td>
+              </tr>
+              <tr>
+                <td>金螳螂若冲高回落、放量长上影、T字后再度大分歧但未跌停，则只保留最小试错仓或清大部分，不在同板块低位临时切换。</td>
+                <td>金螳螂没有停留在“分歧但未死”的状态，而是直接跌停；搜狐转证券之星显示其收盘4.89元，跌9.94%，换手18.28%，成交24.32亿元。</td>
+                <td><span class="badge reject">越过中间态</span> 不是减仓观察，直接进入清仓回无龙。</td>
+              </tr>
+              <tr>
+                <td>金螳螂若低开低走、跌停、断板后继续杀，或苏州高新等助攻断层，则清掉试错仓，回到无有效龙头，不把苏州高新3进4和N天M板写成替代买点。</td>
+                <td>金螳螂断板封死跌停，连板高度降至2只3连板个股；苏州高新未晋级为高位核心，市场转为水发燃气、泰慕士双3连板。</td>
+                <td><span class="badge reject">触发</span> 清掉金螳螂试错仓，回无龙观察；4月24日不临时切换苏州高新或华电辽能等非连续高度。</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2>龙头锚点与状态</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>当前确认龙头</th>
+                <th>当前龙头锚点</th>
+                <th>当前试错核心</th>
+                <th>今日反馈</th>
+                <th>状态</th>
+                <th>动作</th>
+                <th>找新龙</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>无有效龙头</td>
+                <td>圣阳股份 / 储能电池、液冷储能、算力中心电源</td>
+                <td>无</td>
+                <td>金螳螂5板试错核心次日直接断板跌停；圣阳股份旧周期负反馈仍是高标风险锚点。</td>
+                <td><span class="badge reject">无龙</span></td>
+                <td>清掉试错仓，空仓观察。</td>
+                <td>允许，但4月24日收盘没有有效4/5板核心，只能看次日3进4条件。</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2>高位情绪快照</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>名义最高板</th>
+                <th>可交易最高板</th>
+                <th>昨日高标表现</th>
+                <th>断板反馈</th>
+                <th>高位跌停</th>
+                <th>炸板反馈</th>
+                <th>连板晋级率</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>金螳螂盘前为5板焦点股，收盘后高度降至水发燃气、泰慕士双3连板。</td>
+                <td>金螳螂曾是唯一5板试错核心，但当日开盘后即走弱并封死跌停；收盘没有有效4/5板可交易核心。</td>
+                <td>金螳螂从5板试错核心直接跌停失败；安诺其此前3日一字后也巨量长阴分歧。</td>
+                <td>财联社称金螳螂断板封死跌停后，连板接力方向显著降温。</td>
+                <td>同花顺口径全市场跌停22只；财联社称非ST跌停股家数接近20只。</td>
+                <td>财联社口径20股炸板、封板率75%；证券时报Choice口径68股涨停、40股跌停，统计口径存在差异。</td>
+                <td>财联社口径连板晋级率22.22%，连板高度降至2只3连板。</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2>亏钱效应</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>检查项</th>
+                <th>事实</th>
+                <th>结论</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>试错核心是否直接失败</td>
+                <td>金螳螂4月24日09:32盘中跌停，收盘仍跌停，止步5连板。</td>
+                <td><span class="badge reject">确认试错失败</span></td>
+              </tr>
+              <tr>
+                <td>连板高度是否下降</td>
+                <td>财联社称连板高度从5板直接降到2只3连板个股。</td>
+                <td><span class="badge reject">高度压缩两档以上</span></td>
+              </tr>
+              <tr>
+                <td>趋势抱团是否同步降温</td>
+                <td>财联社称西部材料跌停、商业航天二波人气股补跌；CPO、液冷服务器等继续承压。</td>
+                <td><span class="badge reject">亏钱效应扩散</span></td>
+              </tr>
+              <tr>
+                <td>低位是否出现新可跟踪样本</td>
+                <td>水发燃气、泰慕士收盘双3连板；泰慕士09:46涨停时成交3.30亿元、换手10.64%，水发燃气09:47录得5天4板。</td>
+                <td><span class="badge observe">仅能作为次日3进4条件池</span></td>
+              </tr>
+              <tr>
+                <td>亏钱效应结论</td>
+                <td>5板试错核心直接跌停失败，市场重新回到无龙观察，短线只剩低位3板候选池。</td>
+                <td><span class="badge reject">偏高</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2>周期链路</h2>
+        <div class="timeline">
+          <div class="step">
+            <div class="title">4月22日</div>
+            <p>株冶集团盘中5板标准试错触发，但午后炸板失败，市场仍在无龙状态。</p>
+          </div>
+          <div class="step">
+            <div class="title">4月23日</div>
+            <p>金螳螂完成放量T字5板，转成新的试错核心，但尚未通过6板+高潮日确认。</p>
+          </div>
+          <div class="step">
+            <div class="title">4月24日</div>
+            <p>金螳螂次日直接断板跌停，试错失败；收盘只剩水发燃气、泰慕士双3连板，市场回无龙观察。</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>最近归档对比</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>日期</th>
+                <th>周期状态</th>
+                <th>核心</th>
+                <th>上次计划</th>
+                <th>本日跟踪结论</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>2026-04-21</td>
+                <td>无有效龙头，株冶集团4板仅观察</td>
+                <td>株冶集团4板</td>
+                <td>4月22日只看株冶4进5。</td>
+                <td>株冶集团盘中触发试错但收盘炸板。</td>
+              </tr>
+              <tr>
+                <td>2026-04-22</td>
+                <td>无龙试错失败</td>
+                <td>株冶集团失败；金富、金螳螂4板观察</td>
+                <td>4月23日优先看金富4进5，金螳螂次级观察。</td>
+                <td>金富触板失败，金螳螂补量5板转正。</td>
+              </tr>
+              <tr>
+                <td>2026-04-23</td>
+                <td>金螳螂5板试错核心待确认</td>
+                <td>金螳螂5板</td>
+                <td>4月24日只管理金螳螂5进6。</td>
+                <td>金螳螂直接断板跌停，试错失败，回无龙观察。</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2>板块强度</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>板块</th>
+                <th>高标核心</th>
+                <th>助攻与容量</th>
+                <th>主源核验</th>
+                <th>与旧周期关系</th>
+                <th>强度</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>国产算力 / 半导体 / 昇腾超节点</td>
+                <td>深圳华强3天2板、盛视科技9天5板；海光信息、寒武纪、浙数文化等容量核心活跃。</td>
+                <td>财联社称DeepSeek-V4上线后国产算力链盘中逆势爆发；同花顺行业榜半导体涨1.08%。</td>
+                <td>同花顺、财联社。</td>
+                <td>独立强方向，但主板连板高度没有给出4/5板有效核心。</td>
+                <td><span class="badge context">强方向，弱接力</span></td>
+              </tr>
+              <tr>
+                <td>锂矿 / 能源金属 / 电池</td>
+                <td>锂矿和能源金属逆势走强。</td>
+                <td>财联社称锂矿盘中大放异彩；同花顺行业涨幅第一为能源金属，第三为电池。</td>
+                <td>同花顺、财联社。</td>
+                <td>与圣阳旧储能主线有产业链邻近，但不是连板接力核心。</td>
+                <td><span class="badge context">强背景</span></td>
+              </tr>
+              <tr>
+                <td>燃气 / 工业气体 / 掺氢线</td>
+                <td>水发燃气收盘3连板，同时具备5天4板非连续形态。</td>
+                <td>竞价看龙头显示其为4天3板燃气轮机概念股，9:25竞价涨停；副源涨停分析将其归入燃气/氦气线。</td>
+                <td>财联社、第一财经、副源待复核。</td>
+                <td>与圣阳旧周期无直接延续，可作为次日3进4条件观察。</td>
+                <td><span class="badge observe">仅候选池</span></td>
+              </tr>
+              <tr>
+                <td>服装家纺 / 消费制造</td>
+                <td>泰慕士3连板。</td>
+                <td>东方财富Choice显示其09:46涨停时成交3.30亿元、换手10.64%；副源涨停分析将其列为双3连板之一。</td>
+                <td>东方财富、副源待复核。</td>
+                <td>与圣阳旧周期无关，但板块主源支撑相对不足，只能作次日3进4条件观察。</td>
+                <td><span class="badge observe">仅候选池</span></td>
+              </tr>
+              <tr>
+                <td>建筑装饰 / 苏州本地股</td>
+                <td>金螳螂断板跌停；苏州高新未形成高位承接。</td>
+                <td>4月23日的试错线在4月24日被金螳螂跌停证伪。</td>
+                <td>财联社、第一财经。</td>
+                <td>上一日试错线失败，不能再拿同线低位做替代。</td>
+                <td><span class="badge reject">失败线</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2>新龙搜索闸门</h2>
+        <p><strong>允许，但4月24日收盘没有有效4/5板核心。</strong> 金螳螂5板试错核心直接跌停失败，必须回到无龙观察。4月27日盘前不设“必做对象”，只把水发燃气、泰慕士列为 `3进4` 条件池；若继续一字、秒板、板块无助攻或成交/换手不达标，则继续空仓。</p>
+      </section>
+
+      <section>
+        <h2>连板梯队</h2>
+        <p class="note">连板口径以财联社2026-04-24 17:21焦点复盘为主；同花顺用于指数和行业强弱；东方财富用于泰慕士和水发燃气盘中交易性核验。水发燃气同时保留“3连板”和“5天4板”两个字段，不压缩口径。</p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>板数</th>
+                <th>股票</th>
+                <th>连续板数</th>
+                <th>几天几板/非连续形态</th>
+                <th>题材</th>
+                <th>角色</th>
+                <th>交易性</th>
+                <th>模型结论</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>旧龙负反馈</td>
+                <td>圣阳股份</td>
+                <td>止步7连板</td>
+                <td>旧确认龙头死亡后仍是风险锚点</td>
+                <td>储能电池 / 液冷储能 / 算力中心电源</td>
+                <td>上一轮确认龙头锚点</td>
+                <td>不低吸，不恢复地位。</td>
+                <td><span class="badge reject">放弃</span></td>
+              </tr>
+              <tr>
+                <td>失败高标</td>
+                <td>金螳螂</td>
+                <td>止步5连板</td>
+                <td>无</td>
+                <td>建筑装饰 / 苏州本地股 / 数据中心概念</td>
+                <td>昨日试错核心</td>
+                <td>09:32盘中跌停，收盘跌停，换手18.28%、成交24.32亿元。</td>
+                <td><span class="badge reject">试错失败</span></td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>水发燃气</td>
+                <td>3</td>
+                <td>5天4板</td>
+                <td>燃气 / 工业气体 / 掺氢线</td>
+                <td>次日3进4候选池</td>
+                <td>09:47录得5天4板，当前仍可交易，但板块主源待复核。</td>
+                <td><span class="badge observe">仅观察</span></td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>泰慕士</td>
+                <td>3</td>
+                <td>无</td>
+                <td>服装家纺 / 消费制造</td>
+                <td>次日3进4候选池</td>
+                <td>09:46涨停时成交3.30亿元、换手10.64%，交易性达标，但板块主源支撑偏弱。</td>
+                <td><span class="badge observe">仅观察</span></td>
+              </tr>
+              <tr>
+                <td>非连续高度</td>
+                <td>盛视科技、维科技术、深圳华强、华特气体、新宏泰等</td>
+                <td>非连续或低位</td>
+                <td>盛视科技9天5板；维科技术10天4板；深圳华强3天2板；华特气体、新宏泰4天2板。</td>
+                <td>国产算力 / 半导体 / 工业气体</td>
+                <td>趋势或低位背景</td>
+                <td>N天M板和2板只作跟踪，不写成次日标准买点。</td>
+                <td><span class="badge context">背景跟踪</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2>4/5板候选检查</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>股票</th>
+                <th>板数</th>
+                <th>买点状态</th>
+                <th>加分项</th>
+                <th>扣分项</th>
+                <th>模型结论</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>当日无收盘有效4/5板候选</td>
+                <td>不适用</td>
+                <td>金螳螂5板试错核心当日断板跌停，收盘已失效；水发燃气、泰慕士仅为3连板，只能进入次日3进4条件池。</td>
+                <td>存在次日可观察的3板候选池。</td>
+                <td>收盘没有任何4板或5板的有效标准试错买点；金螳螂失败后不能临时用苏州高新或N天M板替代。</td>
+                <td><span class="badge reject">无标准买点</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2>2026-04-27 无龙观察计划</h2>
+        <div class="plan">
+          <div class="plan-block">
+            <strong>一、失败票处理</strong>
+            <p>金螳螂：若4月24日有试错仓，4月27日继续按失败票处理，不低吸、不反包博弈；圣阳股份旧龙同样不低吸。</p>
+          </div>
+          <div class="plan-block">
+            <strong>二、候选买点</strong>
+            <p>只观察水发燃气、泰慕士两只 `3进4`。只有非一字开盘后给出真实换手回封，换手大于7%或成交额大于25亿元，并且各自方向出现明确助攻时，才可写成标准试错买点；若继续一字、秒板或板块无助攻，则无买点。</p>
+          </div>
+          <div class="plan-block">
+            <strong>三、风险观察</strong>
+            <p>不买金螳螂断板修复，不买苏州高新3进4替代，不追盛视科技9天5板、维科技术10天4板、华电辽能9天5板等N天M板；国产算力、锂矿和半导体只看容量背景，不当主板4/5板买点。</p>
+          </div>
+        </div>
+        <p class="note">4月27日计划只使用4月22日至4月24日已知事实，不使用 2026-04-27 盘面结果。</p>
+      </section>
+
+      <section>
+        <h2>操作与仓位</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>阶段</th>
+                <th>仓位</th>
+                <th>执行</th>
+                <th>候选处理</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>试错核心失败后的无龙观察</td>
+                <td>空仓为主；若出现合格3进4标准试错，也只做极小仓。</td>
+                <td>金螳螂和圣阳不低吸，不做失败票修复。</td>
+                <td>水发燃气、泰慕士只作条件筛选，不满足非一字、真实换手回封和助攻条件，就继续空仓。</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2>风控纪律</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>项目</th>
+                <th>规则</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>单笔最大亏损</td>
+                <td>3进4若不是真实换手回封，直接放弃；若试错后次日不能弱转强，立即退出。</td>
+              </tr>
+              <tr>
+                <td>当日最大亏损</td>
+                <td>若水发燃气、泰慕士同日冲高回落坑人，则当日停止高位接力。</td>
+              </tr>
+              <tr>
+                <td>连续试错次数</td>
+                <td>株冶集团、金螳螂均计失败，下一次试错必须更谨慎，只允许一个最强4板核心。</td>
+              </tr>
+              <tr>
+                <td>仓位上限</td>
+                <td>无确认龙头阶段空仓为主；4板试错也只能极小仓，未过6板+高潮日前不重仓。</td>
+              </tr>
+              <tr>
+                <td>卖出条件</td>
+                <td>次日不能弱转强、板块助攻断层、放量失控、断板后继续杀、跌停负反馈，均退出或放弃。</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2>最终结论</h2>
+        <ol>
+          <li>当前确认龙头：无有效龙头；当前龙头锚点为圣阳股份 / 储能电池、液冷储能、钠电池、固态电池、算力中心电源。</li>
+          <li>当前试错核心：无。金螳螂5板试错核心在4月24日直接断板跌停，确认试错失败。</li>
+          <li>龙头状态：无龙。</li>
+          <li>当前动作：清掉金螳螂试错仓，空仓观察；不低吸圣阳和金螳螂，不追失败反包。</li>
+          <li>是否允许寻找新龙：允许，但4月24日收盘没有有效4/5板核心，只能等待次日3进4条件筛选。</li>
+          <li>下一触发：2026-04-27 只观察水发燃气、泰慕士 3进4 是否给出非一字、真实换手回封和板块助攻；否则继续空仓。</li>
+        </ol>
+      </section>
+
+      <section>
+        <h2>数据源</h2>
+        <ul>
+          <li><a href="https://news.10jqka.com.cn/20260424/c676254709.shtml">同花顺金融研究中心：A股每日行情复盘(4月24日)，2026-04-24 15:30</a></li>
+          <li><a href="https://finance.sina.com.cn/roll/2026-04-24/doc-inhvqfhk4820899.shtml">财联社：竞价看龙头，2026-04-24 09:28</a></li>
+          <li><a href="https://www.yicai.com/brief/103150114.html">第一财经：金螳螂盘中跌停，2026-04-24 09:32</a></li>
+          <li><a href="https://api3.cls.cn/share/article/2354937?app=&os=CailianpressWeb&sv=867">财联社：焦点复盘，2026-04-24 17:21</a></li>
+          <li><a href="https://finance.eastmoney.com/a/202604243717469589.html">东方财富Choice：泰慕士4月24日盘中涨停，2026-04-24 09:56</a></li>
+          <li><a href="https://finance.eastmoney.com/a/202604243717544837.html">东方财富证券时报：水发燃气录得5天4板，2026-04-24 09:47</a></li>
+          <li><a href="https://www.sohu.com/a/1014017536_122014422">搜狐转新浪财经：4月24日沪深两市涨停分析，2026-04-24 15:25</a></li>
+          <li><a href="https://www.sohu.com/a/1014106509_115377">搜狐转证券之星：金螳螂4月24日龙虎榜数据，2026-04-24 18:13</a></li>
+        </ul>
+      </section>
+
+      <script type="application/json" id="stock-cycle-review-data">
+{
+  "review_date": "2026-04-24",
+  "data_cutoff": "2026-04-24",
+  "generated_by_skill": {
+    "name": "stock-cycle-review"
+  },
+  "previous_trading_day": "2026-04-23",
+  "next_trading_day": "2026-04-27",
+  "current_leader": "无有效龙头",
+  "current_leader_theme": "无",
+  "leader_anchor": "圣阳股份",
+  "leader_anchor_theme": "储能电池 / 液冷储能 / 钠电池 / 固态电池 / 算力中心电源",
+  "leader_anchor_state": "圣阳股份旧周期死亡后仍是高标风险锚点，4月24日没有恢复迹象",
+  "leader_state": "无龙",
+  "position_action": "清掉金螳螂试错仓，空仓观察",
+  "new_leader_search_allowed": "允许，但4月24日收盘没有有效4/5板核心，只能等待次日3进4条件筛选",
+  "next_trigger": "2026-04-27只观察水发燃气、泰慕士 3进4 是否给出非一字、真实换手回封和板块助攻；否则继续空仓",
+  "market_phase": "试错核心失败后的无龙观察",
+  "cycle_stage": "圣阳股份确认龙头死亡 -> 株冶集团5板试错失败 -> 金螳螂5板试错核心 -> 金螳螂次日断板跌停失败 -> 回到无龙观察",
+  "old_leader_state": "圣阳股份旧确认龙头死亡；金螳螂5板试错核心在4月24日次日直接失败，未通过6板确认",
+  "loss_effect": {
+    "level": "偏高",
+    "summary": "金螳螂5板试错核心次日直接断板跌停，连板高度压缩到双3连板，市场重新回到无龙观察。",
+    "rows": [
+      ["试错核心", "金螳螂09:32盘中跌停，收盘跌停，止步5连板"],
+      ["高度", "连板高度从5板压缩到水发燃气、泰慕士双3连板"],
+      ["趋势抱团", "西部材料跌停，CPO和液冷服务器方向继续承压"],
+      ["候选池", "水发燃气、泰慕士仅能作为次日3进4条件观察"]
+    ]
+  },
+  "new_direction": {
+    "summary": "国产算力、半导体、锂矿等方向强，但主板连板接力没有形成新的4/5板核心；水发燃气和泰慕士只保留在次日3进4候选池。",
+    "strong_independent": "国产算力 / 半导体 / 能源金属 / 锂矿 / 电池",
+    "old_related": "建筑装饰 / 苏州本地股的金螳螂试错线失败；液冷服务器与圣阳旧属性有重叠，不可做后排替代"
+  },
+  "operation_plan": {
+    "position": "空仓为主；若出现合格3进4标准试错，也只做极小仓",
+    "action": "金螳螂和圣阳不低吸；4月27只条件筛选水发燃气、泰慕士 3进4",
+    "candidate": "水发燃气、泰慕士均需非一字、真实换手回封和板块助攻；不满足则无买点"
+  },
+  "risk_control": [
+    ["仓位上限", "无确认龙头阶段空仓为主；4板试错也只能极小仓，未过6板+高潮日前不重仓"],
+    ["单笔最大亏损", "3进4若不是真实换手回封，直接放弃；若试错后次日不能弱转强，立即退出"],
+    ["当日最大亏损", "若水发燃气、泰慕士同日冲高回落坑人，则当日停止高位接力"],
+    ["连续试错次数", "株冶集团、金螳螂均计失败，下一次试错必须更谨慎，只允许一个最强4板核心"],
+    ["卖出条件", "次日不能弱转强、板块助攻断层、放量失控、断板后继续杀、跌停负反馈，均退出或放弃"]
+  ],
+  "high_level_sentiment": {
+    "nominal_highest_board": "金螳螂盘前为5板焦点股，收盘后高度降至水发燃气、泰慕士双3连板",
+    "tradable_highest_board": "金螳螂曾是唯一5板试错核心，但当日断板跌停；收盘没有有效4/5板可交易核心",
+    "previous_high_board_performance": "金螳螂5板试错核心次日断板跌停，金富科技未成为替代核心",
+    "broken_board_feedback": "金螳螂断板封死跌停，连板接力方向显著降温",
+    "high_level_limit_down_count": "同花顺口径跌停22只；财联社称非ST跌停接近20只",
+    "high_level_broken_board_count": "财联社口径20股炸板；Choice统计口径40股跌停、68股涨停，存在统计差异",
+    "promotion_rate": "财联社口径连板晋级率22.22%"
+  },
+  "prior_confirmed_leader": "圣阳股份",
+  "prior_leader_theme": "储能电池 / 液冷储能 / 钠电池 / 固态电池 / 算力中心电源",
+  "intermediate_trial_chain": "汇源通信5板试错失败；中恒电气4板试错失败；株冶集团5板试错失败；金螳螂5板试错核心次日失败",
+  "old_leader_chain": "华电辽能旧周期死亡 -> 圣阳股份5板试错并6板确认 -> 圣阳股份死亡 -> 株冶集团5板试错失败 -> 金螳螂5板试错失败 -> 回无龙观察",
+  "current_core": "无标准试错核心；金螳螂5板试错核心在4月24日断板跌停后失效，水发燃气和泰慕士仅保留为4月27的3进4条件池",
+  "tradable_high_board": "收盘没有有效4/5板；水发燃气3连板且5天4板，泰慕士3连板，二者只构成次日3进4条件池",
+  "next_opportunity": "2026-04-27不预设必做买点，只观察水发燃气、泰慕士 3进4 是否非一字真实换手回封并有板块助攻",
+  "hard_no_trade": "不低吸金螳螂跌停和圣阳旧龙；不追苏州高新3进4替代；不买盛视科技9天5板、维科技术10天4板、华电辽能9天5板等N天M板；不使用2026-04-27盘面结果",
+  "source_verification": {
+    "sector_theme_primary_sources": "同花顺2026-04-24 15:30用于指数和行业强弱；财联社2026-04-24 17:21用于连板接力降温、双3连板和主线热点判断。",
+    "individual_primary_sources": "第一财经09:32用于金螳螂盘中跌停时间核验；搜狐转证券之星18:13用于金螳螂收盘价、换手和成交额核验；东方财富Choice 09:46/09:47用于泰慕士和水发燃气盘中交易性核验。",
+    "local_archive_use": "本地2026-04-23归档只用于复核上一交易日计划，不作为2026-04-24行情事实来源。"
+  },
+  "board_sequence_verification": {
+    "status": "部分完整；高位和候选已核验，低位完整梯队待开盘啦补充复核",
+    "consecutive_ladder_source": "财联社2026-04-24 17:21：连板高度降至2只3连板个股，水发燃气、泰慕士3连板；同花顺收盘复盘用于指数和行业验证",
+    "continuous_3_board": "水发燃气、泰慕士",
+    "non_consecutive_patterns": "水发燃气同时为5天4板；盛视科技9天5板；维科技术10天4板；深圳华强3天2板；华特气体、新宏泰4天2板",
+    "notes": "金螳螂断板跌停，不再计入连续高度。水发燃气保留“3连板”和“5天4板”两个字段，不压缩口径。"
+  },
+  "model_verdicts": [
+    {
+      "stock": "金螳螂",
+      "role": "前一日5板试错核心",
+      "verdict": "reject",
+      "reason": "4月24日09:32盘中跌停，收盘跌停，直接触发4月23日报告的试错失败清仓分支。"
+    },
+    {
+      "stock": "水发燃气",
+      "role": "次日3进4候选池",
+      "verdict": "observe only",
+      "reason": "4月24日收盘为3连板，同时具备5天4板形态，可作为4月27日的3进4条件观察；但当日不是4/5板标准试错买点，且板块主源支撑待复核。"
+    },
+    {
+      "stock": "泰慕士",
+      "role": "次日3进4候选池",
+      "verdict": "observe only",
+      "reason": "4月24日09:46涨停时成交3.30亿元、换手10.64%，交易性达标并收盘3连板；但当日仍只是3板，板块主源支撑偏弱，只能作次日条件观察。"
+    },
+    {
+      "stock": "苏州高新",
+      "role": "前一日中位助攻",
+      "verdict": "reject",
+      "reason": "金螳螂试错失败后，不能把同线低位票当替代买点。"
+    },
+    {
+      "stock": "盛视科技、维科技术、华电辽能、深圳华强",
+      "role": "非连续高度或低位背景",
+      "verdict": "reject",
+      "reason": "属于9天5板、10天4板、9天5板、3天2板等N天M板或低位形态，不能压缩成当日或次日标准买点。"
+    }
+  ],
+  "sources": [
+    {
+      "name": "同花顺金融研究中心：A股每日行情复盘(4月24日)",
+      "published_at": "2026-04-24 15:30",
+      "url": "https://news.10jqka.com.cn/20260424/c676254709.shtml"
+    },
+    {
+      "name": "财联社：竞价看龙头",
+      "published_at": "2026-04-24 09:28",
+      "url": "https://finance.sina.com.cn/roll/2026-04-24/doc-inhvqfhk4820899.shtml"
+    },
+    {
+      "name": "第一财经：金螳螂盘中跌停",
+      "published_at": "2026-04-24 09:32",
+      "url": "https://www.yicai.com/brief/103150114.html"
+    },
+    {
+      "name": "财联社：焦点复盘",
+      "published_at": "2026-04-24 17:21",
+      "url": "https://api3.cls.cn/share/article/2354937?app=&os=CailianpressWeb&sv=867"
+    },
+    {
+      "name": "东方财富Choice：泰慕士4月24日盘中涨停",
+      "published_at": "2026-04-24 09:56",
+      "url": "https://finance.eastmoney.com/a/202604243717469589.html"
+    },
+    {
+      "name": "东方财富证券时报：水发燃气录得5天4板",
+      "published_at": "2026-04-24 09:47",
+      "url": "https://finance.eastmoney.com/a/202604243717544837.html"
+    },
+    {
+      "name": "搜狐转新浪财经：4月24日沪深两市涨停分析",
+      "published_at": "2026-04-24 15:25",
+      "url": "https://www.sohu.com/a/1014017536_122014422"
+    },
+    {
+      "name": "搜狐转证券之星：金螳螂4月24日龙虎榜数据",
+      "published_at": "2026-04-24 18:13",
+      "url": "https://www.sohu.com/a/1014106509_115377"
+    }
+  ]
+}
+      </script>
+    </main>
+  </body>
+</html>

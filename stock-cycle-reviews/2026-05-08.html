@@ -1,0 +1,779 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>A股短线周期复盘 - 2026-05-08</title>
+    <style>
+      :root {
+        --bg: #f6f7f9;
+        --panel: #ffffff;
+        --text: #1f2937;
+        --muted: #6b7280;
+        --line: #d9dee7;
+        --strong: #13795b;
+        --warn: #b26a00;
+        --danger: #b42318;
+        --info: #1d4ed8;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--text);
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        line-height: 1.5;
+      }
+      .page {
+        width: min(1180px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 28px 0 40px;
+      }
+      header {
+        display: grid;
+        gap: 12px;
+        margin-bottom: 18px;
+      }
+      h1 {
+        margin: 0;
+        font-size: clamp(24px, 4vw, 38px);
+      }
+      h2 {
+        margin: 0 0 12px;
+        font-size: 18px;
+      }
+      p { margin: 0; }
+      .note { color: var(--muted); font-size: 14px; }
+      .risk {
+        border-left: 4px solid var(--warn);
+        background: #fff8ec;
+        padding: 10px 12px;
+        color: #7a4b00;
+      }
+      .status-grid {
+        display: grid;
+        grid-template-columns: repeat(6, minmax(0, 1fr));
+        gap: 12px;
+        margin: 18px 0;
+      }
+      .metric, section {
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+      }
+      .metric {
+        padding: 12px;
+        min-height: 104px;
+      }
+      .metric .label {
+        color: var(--muted);
+        font-size: 12px;
+        margin-bottom: 6px;
+      }
+      .metric .value {
+        font-size: 18px;
+        font-weight: 700;
+      }
+      section {
+        padding: 16px;
+        margin-bottom: 14px;
+      }
+      .timeline, .plan {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+      }
+      .step, .plan-block {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 12px;
+        background: #fbfcfe;
+      }
+      .step .title, .plan-block strong {
+        display: block;
+        font-weight: 700;
+        margin-bottom: 6px;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 14px;
+      }
+      th, td {
+        border-bottom: 1px solid var(--line);
+        padding: 10px 8px;
+        text-align: left;
+        vertical-align: top;
+      }
+      th {
+        color: var(--muted);
+        font-weight: 600;
+        background: #f9fafb;
+      }
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        min-height: 24px;
+        padding: 2px 8px;
+        border-radius: 999px;
+        font-size: 12px;
+        font-weight: 700;
+        white-space: nowrap;
+      }
+      .buy { background: #e8f5ef; color: var(--strong); }
+      .observe { background: #fff4db; color: var(--warn); }
+      .reject { background: #fdebea; color: var(--danger); }
+      .context { background: #eaf1ff; color: var(--info); }
+      ul { margin: 0; padding-left: 18px; }
+      li + li { margin-top: 4px; }
+      a { color: var(--info); }
+      @media (max-width: 860px) {
+        .status-grid, .timeline, .plan { grid-template-columns: 1fr; }
+        .table-wrap { overflow-x: auto; }
+        table { min-width: 760px; }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <header>
+        <h1>A股短线周期复盘 - 2026-05-08</h1>
+        <p class="note">复盘口径：历史实盘模拟。数据截止 2026-05-08 收盘后已公开信息；下一交易日为 2026-05-11。严格不使用 2026-05-11 盘中、收盘及之后数据。</p>
+        <p class="risk">本页先复核 2026-05-07 已归档计划，再生成 2026-05-11 条件计划。计划只基于 5月6日、5月7日、5月8日三个交易日约束与 5月8日以前公开源；这只是复盘框架，不构成投资建议。</p>
+      </header>
+
+      <section class="status-grid" aria-label="核心状态">
+        <div class="metric">
+          <div class="label">当前有效龙头</div>
+          <div class="value">无有效龙头</div>
+        </div>
+        <div class="metric">
+          <div class="label">当前龙头锚点</div>
+          <div class="value">圣阳股份 / 储能电池</div>
+        </div>
+        <div class="metric">
+          <div class="label">当前试错核心</div>
+          <div class="value">无标准试错核心</div>
+        </div>
+        <div class="metric">
+          <div class="label">龙头状态</div>
+          <div class="value">无龙观察</div>
+        </div>
+        <div class="metric">
+          <div class="label">当前动作</div>
+          <div class="value">空仓观察</div>
+        </div>
+        <div class="metric">
+          <div class="label">下一触发</div>
+          <div class="value">5月11日只看福达 4进5</div>
+        </div>
+      </section>
+
+      <section>
+        <h2>上一交易日计划复核</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>2026-05-07 计划</th>
+                <th>2026-05-08 当日可见事实</th>
+                <th>复核结论</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>只观察中国长城 3进4 是否给出非一字、真实换手回封并有 AI 主线助攻。</td>
+                <td>东方财富 09:59 仅记录中国长城早盘快速反弹，涨幅一度回升至 4.95%；但财联社 17:38 焦点复盘的收盘连续梯队已不含中国长城，且同日晚间市场综述明确写到中国长城收跌。</td>
+                <td><span class="badge reject">失败</span> 中国长城没有完成 3进4，上一交易日的主观察路径失效。</td>
+              </tr>
+              <tr>
+                <td>若中国长城不给机会，再看福达合金 3进4 是否出现真实换手回封；否则继续空仓。</td>
+                <td>新浪收盘涨停分析、东方财富连板分析与焦点复盘均确认福达合金收盘 4 连板。</td>
+                <td><span class="badge observe">晋级但不回写</span> 福达合金收盘成了唯一连续 4 板，但同日主源未给出足够完整的可交易换手路径，只能升格为 5月11日 4进5 首个真实换手观察对象，不把 5月8 日直接记成已触发的标准试错买点。</td>
+              </tr>
+              <tr>
+                <td>继续回避宝光、永杉、越剑、水发、飞马、圣阳以及金螳螂、华电辽能等 N天M板 修复。</td>
+                <td>宝光股份和永杉锂业的高位失败并未修复成新一轮连续主升；焦点复盘里高位修复票继续以 N天M板 形态存在。</td>
+                <td><span class="badge reject">纪律有效</span> 失败链与修复链继续放在回避栏，不写成替代主做。</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2>龙头锚点与状态</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>当前确认龙头</th>
+                <th>当前龙头锚点</th>
+                <th>当前试错核心</th>
+                <th>今日反馈</th>
+                <th>状态</th>
+                <th>动作</th>
+                <th>找新龙</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>无有效龙头</td>
+                <td>圣阳股份 / 储能电池</td>
+                <td>无标准试错核心；福达合金 4 连板仅保留为 5月11日 4进5 首个换手观察对象，杭电股份、通鼎互联、大业股份、波导股份为 3 板跟踪梯队。</td>
+                <td>中国长城 3进4 失败；福达合金成为唯一收盘连续 4 板，但当日没有足够可交易换手证据；市场仍处无龙状态。</td>
+                <td><span class="badge observe">无龙</span></td>
+                <td>继续空仓观察。</td>
+                <td>允许，但 5月8日收盘没有可确认的标准 4/5 板试错核心，只能把福达合金放入下一交易日的 4进5 观察位。</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2>高位情绪快照</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>名义最高板</th>
+                <th>可交易最高板</th>
+                <th>昨日高标表现</th>
+                <th>断板反馈</th>
+                <th>高位跌停</th>
+                <th>炸板反馈</th>
+                <th>连板晋级率</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>连续高度升至福达合金 4 连板；金螳螂、华电辽能、越剑智能等仍属 N天M板 或修复形态，不纳入连续高度。</td>
+                <td>福达合金是排除 ST 和 N天M板 后的收盘连续最高板，但同日主源未提供足够完整的可交易换手证据，因此不能直接记成当日标准试错点。</td>
+                <td>中国长城未能完成 3进4；5月7日失败的宝光股份、永杉锂业没有形成连续修复承接。</td>
+                <td>财联社连板分析称 6 只昨日连板股中仅 1 只晋级，晋级率不足三成，高位股表现仍然偏弱。</td>
+                <td>中国长城和宁德时代收跌被同日晚间市场综述点名，说明宽度主线内部也有明显分歧。</td>
+                <td>财联社口径 93 股涨停、35 股炸板、封板率 73%，炸板率继续抬升。</td>
+                <td>财联社口径 16.67%。</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2>亏钱效应</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>检查项</th>
+                <th>事实</th>
+                <th>结论</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>前一日主观察票是否兑现</td>
+                <td>中国长城盘中一度反弹，但收盘未进入连续 4 板梯队。</td>
+                <td><span class="badge reject">主观察失败</span></td>
+              </tr>
+              <tr>
+                <td>连续高度是否给出新标准试错</td>
+                <td>福达合金收盘 4 连板，但同日主源只确认了它的涨停结果与板块位置，未给出足够完整的分时换手过程。</td>
+                <td><span class="badge reject">不回写买点</span></td>
+              </tr>
+              <tr>
+                <td>市场整体情绪</td>
+                <td>同花顺复盘显示上证涨 0.31%、深成指跌 0.19%、创业板跌 0.63%，机器人、军工、高压快充走强，市场宽度一般。</td>
+                <td><span class="badge context">宽度一般</span></td>
+              </tr>
+              <tr>
+                <td>高位接力环境</td>
+                <td>财联社口径封板率降到 73%，晋级率仅 16.67%，高位股表现不佳。</td>
+                <td><span class="badge reject">接力偏弱</span></td>
+              </tr>
+              <tr>
+                <td>亏钱效应结论</td>
+                <td>市场没有完全冰点，但高位接力质量依旧不足，必须继续按无龙环境处理。</td>
+                <td><span class="badge observe">中等，继续空仓</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2>周期链路</h2>
+        <div class="timeline">
+          <div class="step">
+            <div class="title">5月6日</div>
+            <p>宝光股份完成非一字 3进4 标准试错，成为新的 4 板试错核心。</p>
+          </div>
+          <div class="step">
+            <div class="title">5月7日</div>
+            <p>宝光股份与永杉锂业双双冲 5 板失败，市场回到无龙观察，只剩中国长城、福达合金双 3 板条件池。</p>
+          </div>
+          <div class="step">
+            <div class="title">5月8日</div>
+            <p>中国长城 3进4 失败，福达合金收盘升到唯一连续 4 板，但同日主源没有给足可交易换手证据，因此仍不确认新的标准试错核心。</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>最近归档对比</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>日期</th>
+                <th>周期状态</th>
+                <th>核心</th>
+                <th>上次计划</th>
+                <th>本日跟踪结论</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>2026-05-06</td>
+                <td>无龙下的 4 板试错核心</td>
+                <td>宝光股份 4 板</td>
+                <td>5月7日只管理宝光 4进5。</td>
+                <td>5月7日宝光试错失败，市场回无龙。</td>
+              </tr>
+              <tr>
+                <td>2026-05-07</td>
+                <td>无龙观察</td>
+                <td>中国长城、福达合金 3 板条件池</td>
+                <td>5月8日只看中国长城 3进4，福达合金次级观察。</td>
+                <td>中国长城失败；福达合金收盘 4 板但不回写成已触发试错。</td>
+              </tr>
+              <tr>
+                <td>2026-05-08</td>
+                <td>无龙观察</td>
+                <td>无标准试错核心；福达合金 4 板待换手</td>
+                <td>5月11日只观察福达合金 4进5 是否给出首个真实换手窗口。</td>
+                <td>待下一交易日复核。</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2>板块强度</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>板块</th>
+                <th>高标核心</th>
+                <th>助攻与容量</th>
+                <th>主源核验</th>
+                <th>与旧周期关系</th>
+                <th>强度</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>机器人 / 军工 / 高压快充</td>
+                <td>板块宽度最强，但连续高度并不集中在这些容量方向。</td>
+                <td>同花顺复盘与财联社焦点复盘都把机器人、军工和高压快充列为领涨方向。</td>
+                <td>同花顺、财联社</td>
+                <td>与圣阳旧储能主周期无关。</td>
+                <td><span class="badge context">最强宽度</span></td>
+              </tr>
+              <tr>
+                <td>有色金属新材料 / 高端导体</td>
+                <td>福达合金 4 连板。</td>
+                <td>同日连板分析和焦点复盘均把福达合金放在连续高度首位，说明有色金属新材料分支具备高度辨识度。</td>
+                <td>东方财富、财联社</td>
+                <td>与旧周期无关，是当前唯一收盘连续 4 板所在分支。</td>
+                <td><span class="badge observe">有高度，交易性待确认</span></td>
+              </tr>
+              <tr>
+                <td>AI 产业链 / 算力硬件</td>
+                <td>中国长城 3进4 失败。</td>
+                <td>虽然仍是最有容量的主线之一，但中国长城未能借主线完成 3进4，说明宽度主线没有自然推升高位连续板。</td>
+                <td>同花顺、财联社、东方财富</td>
+                <td>独立于旧周期，但高位接力承接不足。</td>
+                <td><span class="badge reject">主线强，接力弱</span></td>
+              </tr>
+              <tr>
+                <td>旧失败链 / N天M板 修复</td>
+                <td>宝光股份、永杉锂业、金螳螂、华电辽能、越剑智能</td>
+                <td>高位修复更多仍以失败链反复和 N天M板 形态存在，不能构成新的连续板主升。</td>
+                <td>财联社</td>
+                <td>就是上一轮失败链和修复链，继续放弃。</td>
+                <td><span class="badge reject">放弃</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2>新龙搜索闸门</h2>
+        <p><strong>允许，但 5月8日收盘仍没有可以直接确认的标准试错核心。</strong> 福达合金虽然收盘是唯一连续 4 板，但同日主源只确认了它的涨停结果与板块位置，没有给足可交易换手细节。基于技能的保守口径，这里只能把它放进 5月11日的 <code>4进5 首个真实换手窗口</code>，而不是把 5月8 日直接记成已经触发的试错买点。中国长城已经失败，低位 3 板如杭电股份、通鼎互联、大业股份、波导股份都只做跟踪，不在开盘前越级替代。</p>
+      </section>
+
+      <section>
+        <h2>连板梯队</h2>
+        <p class="note">连板口径主用财联社 2026-05-08 连板股分析与焦点复盘，辅以同花顺收盘复盘、东方财富板块快照和个股异动核验。连续板与 N天M板 分列，不压缩。</p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>板数</th>
+                <th>股票</th>
+                <th>连续板数</th>
+                <th>几天几板/非连续形态</th>
+                <th>题材</th>
+                <th>角色</th>
+                <th>交易性</th>
+                <th>模型结论</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>旧龙 / 失败链</td>
+                <td>圣阳股份、宝光股份、永杉锂业、中国长城、越剑智能、水发燃气</td>
+                <td>旧龙或失败</td>
+                <td>旧周期与失败试错链</td>
+                <td>储能电池；电网设备；锂矿；AI 硬件；高端纺机；天然气</td>
+                <td>风险锚点</td>
+                <td>中国长城 3进4 失败，宝光和永杉高位失败继续回避。</td>
+                <td><span class="badge reject">继续回避</span></td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td>福达合金</td>
+                <td>4</td>
+                <td>无</td>
+                <td>有色金属新材料 / 高端导体</td>
+                <td>5月11日 4进5 主观察对象</td>
+                <td>同日主源确认其收盘 4 连板并处于板块前排，但未给足完整换手路径，因此只作下一交易日首个换手观察。</td>
+                <td><span class="badge observe">观察</span></td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>杭电股份、通鼎互联、大业股份、波导股份</td>
+                <td>3</td>
+                <td>无</td>
+                <td>电力设备 / 光通信 / 新材料 / 电子</td>
+                <td>低一级跟踪梯队</td>
+                <td>只作跟踪，不在福达合金未失败前提前替代主做。</td>
+                <td><span class="badge observe">跟踪</span></td>
+              </tr>
+              <tr>
+                <td>非连续高度</td>
+                <td>金螳螂、华电辽能、越剑智能、华电能源等</td>
+                <td>非连续</td>
+                <td>金螳螂 13天11板；华电辽能 11天7板；越剑智能 7天6板；华电能源 9天6板等</td>
+                <td>修复线 / 旧题材反抽</td>
+                <td>背景或修复票</td>
+                <td>N天M板 与反包修复统一单列，不写成连续板接力机会。</td>
+                <td><span class="badge reject">放弃</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2>4/5板候选检查</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>股票</th>
+                <th>板数</th>
+                <th>买点状态</th>
+                <th>加分项</th>
+                <th>扣分项</th>
+                <th>结论</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>福达合金</td>
+                <td>4 连板</td>
+                <td>不直接确认</td>
+                <td>收盘唯一连续 4 板；同日连板分析与涨停分析都确认其处于连续高度前排。</td>
+                <td>同日主源未给足非一字、真实换手回封的完整证据，不能直接把 5月8 日写成已触发试错。</td>
+                <td><span class="badge observe">5月11日首个换手观察</span></td>
+              </tr>
+              <tr>
+                <td>中国长城</td>
+                <td>3进4 失败</td>
+                <td>淘汰</td>
+                <td>AI 主线最强、成交量足。</td>
+                <td>5月8日未进入收盘连板梯队，主路径失败。</td>
+                <td><span class="badge reject">淘汰</span></td>
+              </tr>
+              <tr>
+                <td>杭电股份、通鼎互联、大业股份、波导股份</td>
+                <td>3 连板</td>
+                <td>今日不适用</td>
+                <td>属于低一级 3 板跟踪梯队。</td>
+                <td>5月8日仍只有 3 板，不属于当日 4/5 板标准买点。</td>
+                <td><span class="badge observe">只跟踪</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="note">当日收盘有效 4/5 板候选：无直接确认对象。福达合金收盘虽为唯一连续 4 板，但因主源交易性证据不足，只能留待 5月11日观察其首个真实换手窗口。</p>
+      </section>
+
+      <section>
+        <h2>2026-05-11 无龙观察计划</h2>
+        <div class="plan">
+          <div class="plan-block">
+            <strong>主路径：福达合金 4进5</strong>
+            <p>只看福达合金能否给出首个非一字、真实换手回封。若继续一字、准一字，或者开板后量价失控，就继续空仓，不把它写成已触发试错。</p>
+          </div>
+          <div class="plan-block">
+            <strong>次级跟踪：3 板梯队</strong>
+            <p>杭电股份、通鼎互联、大业股份、波导股份只跟踪，不提前替代福达合金。只有在福达 4进5 明确失败后，后续交易日才重新评估它们的顺位。</p>
+          </div>
+          <div class="plan-block">
+            <strong>放弃路径</strong>
+            <p>不低吸宝光、永杉、中国长城、越剑、水发、飞马、圣阳；不追金螳螂、华电辽能、华电能源等 N天M板 修复；不把 5月11日结果反写回 5月8日判断。</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>操作与仓位</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>场景</th>
+                <th>仓位</th>
+                <th>执行</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>福达合金 4进5 给出首个标准换手窗口</td>
+                <td>极小仓试错</td>
+                <td>只做首个真实换手窗口，不追继续一字后的结果板。</td>
+              </tr>
+              <tr>
+                <td>福达合金继续一字或失败，低位 3 板不给明确信号</td>
+                <td>空仓</td>
+                <td>继续等待下一个可交易 4/5 板，不强行切换到低位跟风。</td>
+              </tr>
+              <tr>
+                <td>福达合金失败后低位票出现结果板</td>
+                <td>空仓</td>
+                <td>先记录失败，不在同一天临时切换后排接力。</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2>风控纪律</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>项目</th>
+                <th>纪律</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>仓位上限</td>
+                <td>无龙环境延续，5月11日即使出现标准窗口也只允许极小仓试错。</td>
+              </tr>
+              <tr>
+                <td>单笔最大亏损</td>
+                <td>福达 4进5 若回封失败、助攻断层或明显放量失控，直接放弃。</td>
+              </tr>
+              <tr>
+                <td>当日最大亏损</td>
+                <td>若福达不给标准交易性，当日停止高位接力尝试，不切换低位 3 板。</td>
+              </tr>
+              <tr>
+                <td>连续试错次数</td>
+                <td>株冶集团、金螳螂、水发燃气、宝光股份都已记入失败试错链，当前继续谨慎。</td>
+              </tr>
+              <tr>
+                <td>卖出条件</td>
+                <td>失败票不低吸；N天M板 修复统一不纳入主计划；主源缺乏交易性证据时一律降级为观察。</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2>最终结论</h2>
+        <p>5月8日的关键不在于确认新龙，而在于确认上一日主路径中国长城失败，以及收盘虽然出现了福达合金 4 连板，但同日主源仍不足以把它直接记成已触发的标准试错点。</p>
+        <p>因此当前有效龙头仍然是无，圣阳股份继续只作为旧锚点存在。5月11日的计划只观察福达合金 4进5 是否给出首个真实换手窗口；低位 3 板梯队只跟踪，不提前替代，其他失败链和 N天M板 修复继续回避。</p>
+      </section>
+
+      <section>
+        <h2>数据源</h2>
+        <ul>
+          <li><a href="https://finance.eastmoney.com/a/202605083731173948.html">东方财富：中国长城5月8日快速反弹</a></li>
+          <li><a href="https://news.10jqka.com.cn/20260508/c676541233.shtml">同花顺：A股每日行情复盘（5月8日）</a></li>
+          <li><a href="https://finance.sina.com.cn/stock/ztbfp/2026-05-08/doc-inhxemqi4424896.shtml">新浪财经：5月8日沪深两市涨停分析，福达合金4连板</a></li>
+          <li><a href="https://finance.eastmoney.com/a/202605083731473035.html">东方财富：5月8日连板股分析，连板股晋级率不足三成</a></li>
+          <li><a href="https://finance.eastmoney.com/a/202605083731611851.html">东方财富转载财联社：5月8日焦点复盘</a></li>
+          <li><a href="https://finance.eastmoney.com/a/202605083731898551.html">东方财富：下周A股，追还是撤？文中提到中国长城、宁德时代收跌</a></li>
+        </ul>
+      </section>
+
+      <script type="application/json" id="stock-cycle-review-data">
+{
+  "review_date": "2026-05-08",
+  "data_cutoff": "2026-05-08",
+  "generated_by_skill": {
+    "name": "stock-cycle-review"
+  },
+  "previous_trading_day": "2026-05-07",
+  "next_trading_day": "2026-05-11",
+  "current_leader": "无有效龙头",
+  "current_leader_theme": "无",
+  "leader_anchor": "圣阳股份",
+  "leader_anchor_theme": "储能电池 / 液冷储能 / 钠电池 / 固态电池 / 算力中心电源",
+  "leader_anchor_state": "圣阳股份旧周期已死亡，5月8日仍未恢复成市场有效龙头",
+  "leader_state": "无龙",
+  "position_action": "空仓观察",
+  "new_leader_search_allowed": "允许，但5月8日收盘没有可以直接确认的标准4/5板试错核心，只能把福达合金放入5月11日4进5首个换手观察位",
+  "next_trigger": "2026-05-11只观察福达合金4进5是否给出首个非一字、真实换手回封；若继续一字或失败，则继续空仓，不把低位3板提前替代为主做",
+  "market_phase": "宝光失败后的无龙观察阶段继续延续，收盘只留下福达合金4连板待换手与多只3连板跟踪梯队",
+  "cycle_stage": "华电辽能旧周期死亡 -> 汇源通信试错失败 -> 中恒电气试错失败 -> 圣阳股份5板试错并6板确认 -> 圣阳股份死亡 -> 株冶集团5板试错失败 -> 金螳螂5板试错失败 -> 水发燃气5板试错失败 -> 越剑智能4进5失败 -> 宝光股份4进5失败 -> 中国长城3进4失败 -> 福达合金4板待换手",
+  "old_leader_state": "圣阳股份旧周期未恢复；中国长城主路径失败，福达合金虽收盘4板但仍待确认首个真实换手窗口",
+  "loss_effect": {
+    "level": "中等",
+    "summary": "市场没有完全冰点，但高位接力质量依旧不足，中国长城3进4失败，福达合金虽收盘4板但同日交易性证据不足，仍按无龙处理。",
+    "rows": [
+      ["前一日主观察票", "中国长城3进4失败，收盘未进入连续4板梯队"],
+      ["连续高度", "福达合金收盘升到唯一连续4板，但同日主源未给足完整换手路径"],
+      ["低位梯队", "杭电股份、通鼎互联、大业股份、波导股份收盘3连板"],
+      ["市场背景", "上证涨0.31%，深成指跌0.19%，创业板跌0.63%，机器人、军工、高压快充走强"]
+    ]
+  },
+  "new_direction": {
+    "summary": "机器人、军工和高压快充是最强宽度方向，但连续高度票集中在福达合金及低位3板梯队，尚未形成可确认的新龙主升。AI产业链容量仍强，但中国长城没有完成3进4。",
+    "strong_independent": "机器人 / 军工 / 高压快充；有色金属新材料 / 高端导体",
+    "old_related": "AI产业链宽度仍在但高位接力失败；旧失败链和N天M板修复继续回避；圣阳旧储能线未恢复"
+  },
+  "operation_plan": {
+    "position": "空仓观察",
+    "action": "5月11日只看福达合金4进5是否给出首个标准换手窗口；低位3板只跟踪，不提前替代",
+    "candidate": "主观察为福达合金；杭电股份、通鼎互联、大业股份、波导股份只做跟踪；宝光股份、永杉锂业、中国长城、越剑智能、飞马国际、水发燃气、华电能源、华电辽能、金螳螂和各类N天M板继续回避"
+  },
+  "risk_control": [
+    ["仓位上限", "无龙环境延续，5月11日即使出现标准窗口也只允许极小仓试错"],
+    ["单笔最大亏损", "福达4进5若回封失败、助攻断层或明显放量失控，直接放弃"],
+    ["当日最大亏损", "若福达不给标准交易性，当日停止高位接力尝试，不切换低位3板"],
+    ["连续试错次数", "株冶集团、金螳螂、水发燃气、宝光股份都已记入失败试错链，当前继续谨慎"],
+    ["卖出条件", "失败票不低吸；N天M板修复统一不纳入主计划；主源缺乏交易性证据时一律降级为观察"]
+  ],
+  "high_level_sentiment": {
+    "nominal_highest_board": "连续高度升至福达合金4连板；金螳螂、华电辽能、越剑智能等仍属N天M板或修复形态，不纳入连续高度",
+    "tradable_highest_board": "福达合金是排除ST和N天M板后的收盘连续最高板，但同日主源未提供足够完整的可交易换手证据，因此不能直接记成当日标准试错点",
+    "previous_high_board_performance": "中国长城3进4失败，宝光股份与永杉锂业失败后没有形成连续修复承接",
+    "broken_board_feedback": "财联社称6只昨日连板股中仅1只晋级，晋级率不足三成，高位股表现仍然偏弱",
+    "high_level_limit_down_count": "中国长城和宁德时代收跌被同日晚间市场综述点名，说明宽度主线内部也有明显分歧",
+    "high_level_broken_board_count": "财联社口径93股涨停、35股炸板、封板率73%",
+    "promotion_rate": "财联社口径16.67%"
+  },
+  "prior_confirmed_leader": "圣阳股份",
+  "prior_leader_theme": "储能电池 / 液冷储能 / 钠电池 / 固态电池 / 算力中心电源",
+  "intermediate_trial_chain": "汇源通信5板试错失败；中恒电气4板试错失败；圣阳股份5板试错并6板确认；株冶集团5板试错失败；金螳螂5板试错失败；水发燃气5板试错失败；越剑智能4进5失败；宝光股份4进5失败",
+  "old_leader_chain": "华电辽能 / 绿电电力央企 -> 神剑股份 / 商业航天试错失败 -> 汇源通信 / 光通信5板试错失败 -> 中恒电气4板试错失败 -> 圣阳股份 / 储能电池6板确认 -> 圣阳股份死亡 -> 株冶集团5板试错失败 -> 金螳螂5板试错失败 -> 水发燃气5板试错失败 -> 越剑智能4进5失败 -> 宝光股份4进5失败",
+  "current_core": "无标准试错核心；福达合金4连板仅保留为5月11日4进5首个真实换手观察对象，杭电股份、通鼎互联、大业股份、波导股份为3板跟踪梯队",
+  "tradable_high_board": "中国长城盘中一度反弹至+4.95%但收盘未进入连续4板梯队；福达合金10:50板块快照已显示涨停并最终收盘4连板；杭电股份、通鼎互联、大业股份、波导股份收盘3连板",
+  "next_opportunity": "2026-05-11只观察福达合金4进5是否给出首个非一字真实换手回封；低位3板只跟踪，不提前替代",
+  "hard_no_trade": "不低吸宝光股份、永杉锂业、中国长城、越剑智能、飞马国际、水发燃气、华电能源、华电辽能和圣阳股份；不追金螳螂、华电辽能、越剑智能等N天M板和修复票；不把5月11日结果反写回5月8日判断",
+  "source_verification": {
+    "sector_theme_primary_sources": "同花顺2026-05-08收盘复盘用于指数、领涨方向和市场宽度；财联社2026-05-08连板股分析与焦点复盘用于连续梯队、晋级率和高位情绪判断。",
+    "individual_primary_sources": "东方财富用于5月8日中国长城盘中反弹、福达合金板块前排位置等个股与板块核验。",
+    "local_archive_use": "本地2026-05-07归档只用于复核上一交易日计划，不作为2026-05-08行情事实来源。"
+  },
+  "board_sequence_verification": {
+    "status": "完整",
+    "consecutive_ladder_source": "财联社2026-05-08连板股分析与17:38焦点复盘：福达合金4连板；杭电股份、通鼎互联、大业股份、波导股份3连板",
+    "continuous_4_board": "福达合金",
+    "continuous_3_board": "杭电股份、通鼎互联、大业股份、波导股份",
+    "non_consecutive_patterns": "金螳螂13天11板；华电辽能11天7板；越剑智能7天6板；华电能源9天6板等",
+    "notes": "5月8日收盘虽然有福达合金4连板，但同日主源未给足完整可交易换手证据，因此不把它直接记成当日标准试错买点，只保留为5月11日4进5首个换手观察对象。"
+  },
+  "model_verdicts": [
+    {
+      "stock": "圣阳股份",
+      "role": "上一轮确认龙头锚点",
+      "verdict": "reject",
+      "reason": "旧龙仍只作为风险锚点，不因市场宽度变化而自动恢复市场有效龙头地位。"
+    },
+    {
+      "stock": "中国长城",
+      "role": "3进4主观察对象",
+      "verdict": "reject",
+      "reason": "5月8日没有完成3进4，收盘未进入连续4板梯队，主观察路径失败。"
+    },
+    {
+      "stock": "福达合金",
+      "role": "唯一连续4板",
+      "verdict": "observe only",
+      "reason": "收盘成为唯一连续4板，且处于有色金属新材料板块前排；但同日主源未给足非一字、真实换手回封的完整证据，因此只保留为5月11日4进5首个换手观察对象。"
+    },
+    {
+      "stock": "杭电股份、通鼎互联、大业股份、波导股份",
+      "role": "3板跟踪梯队",
+      "verdict": "observe only",
+      "reason": "都只是连续3板，只具备后续跟踪资格，不属于5月8日当日标准买点。"
+    },
+    {
+      "stock": "宝光股份、永杉锂业、金螳螂、华电辽能、越剑智能等",
+      "role": "失败链 / N天M板修复",
+      "verdict": "reject",
+      "reason": "属于失败试错链或N天M板修复，不能压缩成新的连续板接力机会。"
+    }
+  ],
+  "sources": [
+    {
+      "name": "东方财富：中国长城5月8日快速反弹",
+      "published_at": "2026-05-08 09:59",
+      "url": "https://finance.eastmoney.com/a/202605083731173948.html"
+    },
+    {
+      "name": "同花顺：A股每日行情复盘（5月8日）",
+      "published_at": "2026-05-08 15:30",
+      "url": "https://news.10jqka.com.cn/20260508/c676541233.shtml"
+    },
+    {
+      "name": "新浪财经：5月8日沪深两市涨停分析，福达合金4连板",
+      "published_at": "2026-05-08 15:21",
+      "url": "https://finance.sina.com.cn/stock/ztbfp/2026-05-08/doc-inhxemqi4424896.shtml"
+    },
+    {
+      "name": "东方财富：5月8日连板股分析，连板股晋级率不足三成",
+      "published_at": "2026-05-08 15:58",
+      "url": "https://finance.eastmoney.com/a/202605083731473035.html"
+    },
+    {
+      "name": "东方财富转载财联社：5月8日焦点复盘",
+      "published_at": "2026-05-08 17:38",
+      "url": "https://finance.eastmoney.com/a/202605083731611851.html"
+    },
+    {
+      "name": "东方财富：下周A股，追还是撤？文中提到中国长城、宁德时代收跌",
+      "published_at": "2026-05-08 23:42",
+      "url": "https://finance.eastmoney.com/a/202605083731898551.html"
+    }
+  ]
+}
+      </script>
+    </main>
+  </body>
+</html>

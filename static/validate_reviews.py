@@ -33,6 +33,9 @@ def main():
         "operation_plan",
         "risk_control",
         "source_verification",
+        "leader_anchor",
+        "leader_anchor_theme",
+        "leader_anchor_state",
     ]
     for path in sorted(OUT_DIR.glob("20*.html")):
         if path.name == "index.html":
@@ -42,6 +45,8 @@ def main():
         missing = [field for field in required_fields if field not in report]
         if "generated_by_skill" in report and (report.get("generated_by_skill") or {}).get("name") != "stock-cycle-review":
             missing.append("generated_by_skill.name=stock-cycle-review")
+        if not report.get("leader_anchor"):
+            missing.append("leader_anchor=nonempty")
         if missing:
             missing_required.append({"file": path.name, "missing": missing})
         for item in report.get("model_verdicts") or []:

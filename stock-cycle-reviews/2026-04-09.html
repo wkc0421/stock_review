@@ -1,0 +1,760 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>A股短线周期复盘 - 2026-04-09</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #f6f7f9;
+        --panel: #ffffff;
+        --text: #1f2937;
+        --muted: #667085;
+        --line: #d9dee7;
+        --strong: #13795b;
+        --warn: #b26a00;
+        --danger: #b42318;
+        --info: #1d4ed8;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--text);
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", sans-serif;
+        line-height: 1.55;
+      }
+      .page {
+        width: min(1180px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 28px 0 44px;
+      }
+      header { display: grid; gap: 10px; margin-bottom: 16px; }
+      h1 {
+        margin: 0;
+        font-size: clamp(24px, 4vw, 36px);
+        letter-spacing: 0;
+      }
+      h2 { margin: 0 0 12px; font-size: 18px; letter-spacing: 0; }
+      p { margin: 0; }
+      .note { color: var(--muted); font-size: 14px; }
+      .risk {
+        border-left: 4px solid var(--warn);
+        background: #fff8ec;
+        padding: 10px 12px;
+        color: #7a4b00;
+      }
+      .status-grid {
+        display: grid;
+        grid-template-columns: repeat(7, minmax(0, 1fr));
+        gap: 12px;
+        margin: 18px 0;
+      }
+      .metric, section {
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+      }
+      .metric { padding: 12px; min-height: 104px; }
+      .metric .label {
+        color: var(--muted);
+        font-size: 12px;
+        margin-bottom: 6px;
+      }
+      .metric .value { font-size: 16px; font-weight: 700; }
+      section { padding: 16px; margin-bottom: 14px; }
+      .table-wrap { overflow-x: auto; }
+      table { width: 100%; border-collapse: collapse; font-size: 14px; }
+      th, td {
+        border-bottom: 1px solid var(--line);
+        padding: 10px 8px;
+        text-align: left;
+        vertical-align: top;
+      }
+      th { color: var(--muted); background: #f9fafb; font-weight: 600; }
+      tr:last-child td { border-bottom: 0; }
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        min-height: 24px;
+        padding: 2px 8px;
+        border-radius: 999px;
+        font-size: 12px;
+        font-weight: 700;
+        white-space: nowrap;
+      }
+      .buy { background: #e8f5ef; color: var(--strong); }
+      .observe { background: #fff4db; color: var(--warn); }
+      .reject { background: #fdebea; color: var(--danger); }
+      .context { background: #eaf1ff; color: var(--info); }
+      .timeline, .plan {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+      }
+      .step, .plan-block {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 12px;
+        background: #fbfcfe;
+      }
+      .step strong, .plan-block strong {
+        display: block;
+        margin-bottom: 6px;
+      }
+      .list { margin: 0; padding-left: 18px; }
+      a { color: var(--info); text-decoration: none; }
+      a:hover { text-decoration: underline; }
+      @media (max-width: 980px) {
+        .status-grid, .timeline, .plan { grid-template-columns: 1fr; }
+        table { min-width: 900px; }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <header>
+        <h1>A股短线周期复盘 - 2026-04-09</h1>
+        <p class="note">复盘口径：历史实盘模拟。数据截止：2026-04-09 收盘后已公开信息；下一交易日计划对应 2026-04-10。严格不使用 2026-04-10 盘中、收盘及之后数据。</p>
+        <p class="risk">本页先复核 2026-04-08 已归档计划，再生成 2026-04-10 条件计划。上一计划的触发检查只按 4月8日盘前写好的条件判定，不把 4月9日结果倒推成无条件买点。</p>
+      </header>
+
+      <section class="status-grid" aria-label="核心状态">
+        <div class="metric">
+          <div class="label">当前有效龙头</div>
+          <div class="value">无有效龙头</div>
+        </div>
+        <div class="metric">
+          <div class="label">当前龙头锚点</div>
+          <div class="value">华电辽能 / 旧锚点</div>
+        </div>
+        <div class="metric">
+          <div class="label">当前试错核心</div>
+          <div class="value">汇源通信5板</div>
+        </div>
+        <div class="metric">
+          <div class="label">周期状态</div>
+          <div class="value">试错核心待确认</div>
+        </div>
+        <div class="metric">
+          <div class="label">当前动作</div>
+          <div class="value">极小仓试错 / 无先手不追</div>
+        </div>
+        <div class="metric">
+          <div class="label">是否寻找新龙</div>
+          <div class="value">允许，但先管理试错核心</div>
+        </div>
+        <div class="metric">
+          <div class="label">下一触发</div>
+          <div class="value">6板+光通信高潮才确认</div>
+        </div>
+      </section>
+
+      <section>
+        <h2>上一交易日计划复核</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>计划来源</th>
+                <th>2026-04-09 盘前条件</th>
+                <th>2026-04-09 当日核验</th>
+                <th>复核结论</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>本地 2026-04-08 归档，仅用于复核上一交易日计划。</td>
+                <td>汇源通信4进5只有“首次可交易分歧回封”才重新检查；必须有换手或成交额门槛、光纤/通信方向助攻、容量核心不负反馈。中安科3进4必须非一字、封住4板并有AI/算力支持。</td>
+                <td>东方财富Choice 13:17 记录汇源通信盘中打开涨停，成交9.16亿元、换手18.92%，此前9:30涨停；财联社16:00称其午后一度炸板，最终放量回封涨停走出5连板。中安科早盘据每经9:57触及4连板，但财联社和东方财富收盘连板统计未把它列入3板及以上。</td>
+                <td><span class="badge buy">汇源触发试错</span> 汇源通信符合上一计划的5板首次可交易分歧回封，只能记为标准试错核心；中安科未封住，不成立。</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2>前三交易日约束</h2>
+        <div class="timeline">
+          <div class="step">
+            <strong>2026-04-07</strong>
+            <p>节后普修复但连续4/5板断层，汇源通信只是3板条件跟踪；不追津药药业和新能泰山。</p>
+          </div>
+          <div class="step">
+            <strong>2026-04-08</strong>
+            <p>指数强修复，汇源通信4板仍是一字低换手，不能作为4板标准试错；中安科3板转入4月9日条件跟踪。</p>
+          </div>
+          <div class="step">
+            <strong>2026-04-09</strong>
+            <p>指数缩量调整，连板晋级率降至18.18%；汇源通信打开涨停后放量回封5板，成为试错核心但未到确认龙头阈值。</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>龙头锚点</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>当前龙头锚点</th>
+                <th>有效龙头</th>
+                <th>当前试错核心</th>
+                <th>状态</th>
+                <th>动作</th>
+                <th>是否找新龙</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>华电辽能 / 绿电、电力、央企（上一轮已确认龙头，当前旧锚点）</td>
+                <td>无有效龙头。汇源通信只有5板试错，不满足“连续6板以上+板块高潮日”确认阈值。</td>
+                <td>汇源通信 / 光纤、光通信。5板首次可交易分歧回封，属于标准试错核心，不是确认龙头。</td>
+                <td><span class="badge observe">试错核心待确认</span> 需要2026-04-10走出6板并带动光通信/OCS高潮。</td>
+                <td>计划内5板回封先手为极小仓试错；无先手不追6板加速。</td>
+                <td><span class="badge observe">允许但降级</span> 先管理汇源通信；只有汇源失败后再看新的4/5板。</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2>高位情绪快照</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>名义最高板</th>
+                <th>可交易最高板</th>
+                <th>昨日高标表现</th>
+                <th>炸板/跌停反馈</th>
+                <th>连板晋级</th>
+                <th>口径差异</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>汇源通信5连板；华远控股3连板；柏诚股份6天3板、诚志股份和航天电器3天2板为非连续项。</td>
+                <td>汇源通信5板。排除一字路径后，4月9日午后打开涨停并放量回封，具备试错交易性。</td>
+                <td>新能泰山触及跌停，新中港跌超8%；中工国际、美诺华盘中炸板回落。</td>
+                <td>财联社口径53股涨停、16股炸板、封板率77%；东方财富/界面新闻口径61只涨停、13只跌停。</td>
+                <td>财联社称连板股总数12只，3板及以上2只，晋级率18.18%。</td>
+                <td>涨停数在财联社53只、第一财经/Wind 64只、东方财富/界面新闻61只之间有口径差异；不影响汇源5板回封和中安科未封住的模型判断。</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2>亏钱效应</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>检查项</th>
+                <th>4月9日证据</th>
+                <th>结论</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>旧高标是否继续杀</td>
+                <td>财联社16:00称人气股新能泰山触及跌停，新中港跌超8%；4月8日高位修复后的非连续股开始补跌。</td>
+                <td><span class="badge reject">高标分化偏高</span></td>
+              </tr>
+              <tr>
+                <td>连板晋级是否改善</td>
+                <td>连板晋级率降至18.18%，昨日连板股仅汇源通信、华远控股两只晋级。</td>
+                <td><span class="badge reject">接力弱</span></td>
+              </tr>
+              <tr>
+                <td>主题是否有独立强度</td>
+                <td>光模块+光纤仍是绝对主线，长飞光纤、特发信息、长江通信、光迅科技等走强，汇源通信5板回封。</td>
+                <td><span class="badge buy">光通信独强</span></td>
+              </tr>
+              <tr>
+                <td>整体市场</td>
+                <td>财联社和同花顺转载源均显示两市成交2.13万亿元、较上日缩量3004亿元，全市场超4200只个股下跌。</td>
+                <td><span class="badge observe">指数回落，结构抱团</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2>最近归档对比</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>日期</th>
+                <th>核心</th>
+                <th>状态</th>
+                <th>上一计划</th>
+                <th>4月9日跟踪</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>2026-04-02</td>
+                <td>有效龙头无；旧锚点华电辽能</td>
+                <td>津药药业5板一字低换手</td>
+                <td>不把津药5板一字转成标准试错。</td>
+                <td>津药后续负反馈已验证“一字高标不补票”的纪律。</td>
+              </tr>
+              <tr>
+                <td>2026-04-03</td>
+                <td>有效龙头无；旧锚点华电辽能</td>
+                <td>神剑试错失败，津药6板买点错过</td>
+                <td>等待新的非一字4/5板换手回封。</td>
+                <td>汇源通信直到4月9日5板首次出现可交易分歧回封。</td>
+              </tr>
+              <tr>
+                <td>2026-04-07</td>
+                <td>有效龙头无；旧锚点华电辽能</td>
+                <td>节后普修复但4/5板断层</td>
+                <td>汇源3进4仅条件检查，一字不追。</td>
+                <td>4月8日汇源仍一字，按计划放弃。</td>
+              </tr>
+              <tr>
+                <td>2026-04-08</td>
+                <td>有效龙头无；旧锚点华电辽能；汇源4板待确认高标</td>
+                <td>指数强修复，但汇源4板一字低换手</td>
+                <td>4月9日只看汇源4进5首次可交易分歧或中安科3进4非一字回封。</td>
+                <td>汇源触发标准试错；中安科未封住，不成立。</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2>板块强度</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>板块</th>
+                <th>高标核心</th>
+                <th>一字 / 中位助攻</th>
+                <th>容量核心</th>
+                <th>与旧周期关系</th>
+                <th>模型处理</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>光纤 / 光模块 / OCS / 光通信</td>
+                <td>汇源通信5连板，长飞光纤、特发信息、长江通信、光迅科技等涨停或创新高。</td>
+                <td>东山精密、华懋科技2连板；航天电器3天2板；板块呈趋势抱团和中位助攻共振。</td>
+                <td>中际旭创盘中再创新高；长飞光纤总市值突破3000亿元；同花顺转载源称多只光通信概念股创历史新高。</td>
+                <td>4月8日通信强修复后的延续，脱离旧电力周期。</td>
+                <td><span class="badge buy">试错主线</span> 支撑汇源通信5板标准试错，但未确认龙头。</td>
+              </tr>
+              <tr>
+                <td>算力硬件 / 消费电子 / 半导体设备</td>
+                <td>东山精密、华懋科技2连板；柏诚股份6天3板；亚翔集成涨停。</td>
+                <td>光迅科技涨停，航天电器3天2板。</td>
+                <td>硬件端强于AI应用端，资金继续偏机构抱团和产业趋势。</td>
+                <td>与光通信同属科技硬件链，是当日强分支。</td>
+                <td><span class="badge context">助攻背景</span> 主要增强汇源通信板块支撑。</td>
+              </tr>
+              <tr>
+                <td>商业航天</td>
+                <td>巨力索具2连板，航天电器3天2板。</td>
+                <td>天通股份、长江通信等涨停，板块有局部消息催化。</td>
+                <td>睿创微纳、欧科亿等跟涨。</td>
+                <td>神剑股份失败试错链后的修复方向，不重新确认神剑。</td>
+                <td><span class="badge observe">跟踪修复</span> 不作为当前标准买点。</td>
+              </tr>
+              <tr>
+                <td>AI应用 / 算力租赁</td>
+                <td>中安科早盘触及4板但未封至收盘。</td>
+                <td>昨日一字涨停的杭钢股份高开低走；财联社称AI应用端大面积退潮。</td>
+                <td>部分趋势股刷新高点，但题材轮动特征更明显。</td>
+                <td>4月8日强修复后退潮。</td>
+                <td><span class="badge reject">不做试错</span> 中安科未封住，4板买点失败。</td>
+              </tr>
+              <tr>
+                <td>地产 / 国企 / 资产重组</td>
+                <td>华远控股3连板。</td>
+                <td>主题主源不完整，东方财富/界面新闻只确认连板，不足以确认强板块潮。</td>
+                <td>无明确容量核心。</td>
+                <td>与华电辽能旧电力周期无关，但不是当日主线。</td>
+                <td><span class="badge observe">备选观察</span> 只有汇源失败后才检查3进4。</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2>新龙搜索闸门</h2>
+        <p><strong>当前无确认龙头，但已有汇源通信5板标准试错核心。</strong> 这意味着新龙搜索不再空白扫描，而是先管理汇源通信是否能在 2026-04-10 完成连续6板并带动光通信/OCS继续高潮。只有它失败或给出明显负反馈后，才重新筛下一只可交易4/5板；华远控股3板只能作为失败后的备选条件检查，不能抢在汇源确认或失败之前替代主线核心。</p>
+      </section>
+
+      <section>
+        <h2>连板梯队</h2>
+        <p class="note">连板梯队主源：财联社 2026-04-09 17:27 焦点复盘、财联社 16:00 连板股分析、东方财富/界面新闻 15:08 涨跌停股分析、第一财经/Wind 15:51 连板股追踪。连续板与N天N板分列。</p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>板数</th>
+                <th>股票</th>
+                <th>连续板数</th>
+                <th>几天几板/非连续形态</th>
+                <th>题材</th>
+                <th>角色</th>
+                <th>交易性</th>
+                <th>模型结论</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>5板</td>
+                <td>汇源通信</td>
+                <td>5</td>
+                <td>无</td>
+                <td>光纤 / 光通信</td>
+                <td>标准试错核心，待6板+高潮确认。</td>
+                <td>13:17打开涨停时成交9.16亿元、换手18.92%，随后放量回封。</td>
+                <td><span class="badge buy">标准试错买点</span></td>
+              </tr>
+              <tr>
+                <td>3板</td>
+                <td>华远控股</td>
+                <td>3</td>
+                <td>无</td>
+                <td>地产 / 国企 / 重组口径待复核</td>
+                <td>备选观察，不抢汇源主线。</td>
+                <td>4月9日不是4/5板，不能当日买点；4月10日才可能进入3进4检查。</td>
+                <td><span class="badge observe">仅观察</span></td>
+              </tr>
+              <tr>
+                <td>2板</td>
+                <td>东山精密、华懋科技、飞龙股份、巨力索具、博杰股份、大元泵业等</td>
+                <td>2</td>
+                <td>部分源只列示样本，不保证低位梯队完整</td>
+                <td>光模块、液冷、商业航天等</td>
+                <td>中低位助攻。</td>
+                <td>不是4/5板买点高度。</td>
+                <td><span class="badge observe">盘面跟踪</span></td>
+              </tr>
+              <tr>
+                <td>非连续高度</td>
+                <td>柏诚股份、诚志股份、航天电器、ST英飞拓等</td>
+                <td>不压缩</td>
+                <td>柏诚股份6天3板；诚志股份、航天电器3天2板；ST英飞拓7天5板。</td>
+                <td>半导体设备、连接器、ST等</td>
+                <td>N天N板或非标准样本。</td>
+                <td>不能压缩成连续4/5板候选。</td>
+                <td><span class="badge reject">不作为N进N+1买点</span></td>
+              </tr>
+              <tr>
+                <td>盘中失败</td>
+                <td>中安科</td>
+                <td>收盘未确认4连板</td>
+                <td>盘中触及4板</td>
+                <td>AI应用 / 算力口径</td>
+                <td>上一计划候选失败。</td>
+                <td>每经9:57称其涨停走出4连板，但收盘连板统计未入3板及以上；按未封住处理。</td>
+                <td><span class="badge reject">放弃</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2>4/5板候选检查</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>股票</th>
+                <th>板数</th>
+                <th>买点状态</th>
+                <th>加分项</th>
+                <th>扣分项</th>
+                <th>模型结论</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>汇源通信</td>
+                <td>连续5板</td>
+                <td>合格。4月9日午后打开涨停，成交额和换手均达到模型门槛，随后放量回封5板。</td>
+                <td>光纤/光模块/OCS仍是绝对主线；长飞光纤、特发信息、长江通信、光迅科技等助攻；东山精密、华懋科技2板；容量核心中际旭创、长飞光纤等维持高辨识度。</td>
+                <td>前面多日一字路径导致先手筹码获利大；同花顺18:25转载公司公告，提示其不存在算力数据中心相关光纤光缆、光模块业务；5板后只能等6板确认，不适合无先手追高。</td>
+                <td><span class="badge buy">标准试错买点</span> 但不是确认龙头。</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="note">中安科未入本表：它只是盘中触及4板，收盘连板统计不确认4连板，按上一计划失败处理。华远控股只有3板，不是4/5板当日候选。</p>
+      </section>
+
+      <section>
+        <h2>2026-04-10 条件计划</h2>
+        <div class="plan">
+          <div class="plan-block">
+            <strong>一、汇源通信晋级6板并带动高潮</strong>
+            <p>若汇源通信封住6板，且光纤/光模块/OCS继续有涨停潮、中位助攻和容量核心共振，计划内5板回封先手可持有试错仓并观察是否确认龙头。无5板先手不把6板当新买点。</p>
+          </div>
+          <div class="plan-block">
+            <strong>二、汇源通信分歧加大</strong>
+            <p>若高开冲板失败、放量烂板、板块助攻断层但没有跌停负反馈，5板试错仓减仓或降到观察仓；不切换同板块低位替代。</p>
+          </div>
+          <div class="plan-block">
+            <strong>三、汇源通信负反馈</strong>
+            <p>若断板大阴、跌停、或带崩光通信高位核心，清掉试错仓，回到无龙空仓。届时才检查华远控股3进4是否非一字换手回封且板块助攻明确；否则没有新买点。</p>
+          </div>
+        </div>
+        <p class="note">硬性约束：不追汇源通信6板加速，不把中安科盘中4板失败写成买点，不把柏诚股份6天3板、航天电器3天2板等压缩成连续板候选。本计划不读取 2026-04-10 盘面结果。</p>
+      </section>
+
+      <section>
+        <h2>操作与仓位</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>阶段</th>
+                <th>仓位</th>
+                <th>执行动作</th>
+                <th>候选处理</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>无确认龙头，汇源通信5板标准试错</td>
+                <td>计划内5板回封先手最多极小仓；无先手继续空仓观察。</td>
+                <td>4月10日先看汇源能否6板+光通信高潮确认；确认前不重仓，不写龙头主升。</td>
+                <td>华远控股3进4仅作汇源失败后的备选检查；中安科、N天N板和2板票不进入买点。</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2>风险控制</h2>
+        <div class="table-wrap">
+          <table>
+            <tbody>
+              <tr>
+                <th>单笔最大亏损</th>
+                <td>汇源通信5板试错仓若次日不能封住6板或封后快速破板，单笔亏损控制在约 -3% 内，弱修复不格局。</td>
+              </tr>
+              <tr>
+                <th>当日最大亏损</th>
+                <td>当日亏损达到 -5% 或汇源试错失败后，不再做第二笔同方向切换。</td>
+              </tr>
+              <tr>
+                <th>连续试错次数</th>
+                <td>神剑失败、津药一字放弃后，汇源是新的计划内试错；若汇源失败，至少等待下一只清晰4/5板再试。</td>
+              </tr>
+              <tr>
+                <th>仓位上限</th>
+                <td>确认龙头前最多极小仓试错；6板确认日前不重仓，不加普通后排。</td>
+              </tr>
+              <tr>
+                <th>卖出条件</th>
+                <td>汇源不能6板、6板爆量失控、光通信容量核心集体冲高回落、公司公告风险被市场放大、旧高标负反馈扩散。</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2>最终六问</h2>
+        <ol>
+          <li>当前有效龙头：无有效龙头；当前龙头锚点：华电辽能 / 绿电、电力、央企（旧锚点，已死亡）。</li>
+          <li>当前试错核心：汇源通信 / 光纤、光通信，5板首次可交易分歧回封，待6板+高潮日确认。</li>
+          <li>龙头状态：试错核心，尚未确认龙头。</li>
+          <li>当前动作：计划内5板回封先手为极小仓试错；无先手空仓观察。</li>
+          <li>是否允许寻找新龙：允许，但先管理汇源通信；它未失败前不切换低位替代。</li>
+          <li>下一触发：2026-04-10 汇源通信6板且光通信/OCS高潮才确认；失败则清试错仓，重新等待新的非一字4/5板。</li>
+        </ol>
+      </section>
+
+      <section>
+        <h2>数据源</h2>
+        <ul class="list">
+          <li><a href="https://finance.sina.com.cn/roll/2026-04-09/doc-inhtwxpa0961598.shtml">财联社焦点复盘：沪指窄幅震荡收十字星，2026-04-09 17:27</a></li>
+          <li><a href="https://finance.sina.com.cn/roll/2026-04-09/doc-inhtwtfe1019720.shtml">财联社连板股分析：连板股晋级率不足二成，2026-04-09 16:00</a></li>
+          <li><a href="https://finance.eastmoney.com/a/202604093699368960.html">东方财富Choice：汇源通信4月9日打开涨停，2026-04-09 13:17</a></li>
+          <li><a href="https://finance.eastmoney.com/a/202604093699514988.html">东方财富/界面新闻：今日涨跌停股分析，2026-04-09 15:08</a></li>
+          <li><a href="https://finance.sina.com.cn/jjxw/2026-04-09/doc-inhtwtex8864819.shtml">第一财经/Wind：连板股追踪，2026-04-09 15:51</a></li>
+          <li><a href="https://finance.sina.com.cn/jjxw/2026-04-09/doc-inhtwtfe0992526.shtml">每日经济新闻：A股震荡调整，光纤股走强，2026-04-09 15:35</a></li>
+          <li><a href="https://stock.10jqka.com.cn/20260409/c675871824.shtml">同花顺转载潮新闻：光通信概念多股逆市拉涨停，2026-04-09 18:26</a></li>
+          <li><a href="https://stock.10jqka.com.cn/20260409/c675871785.shtml">同花顺转载大河财立方：汇源通信异动公告风险，2026-04-09 18:25</a></li>
+          <li><a href="https://www.nbd.com.cn/articles/2026-04-09/4331031.html">每日经济新闻：中安科涨停走出4连板，2026-04-09 09:57</a></li>
+        </ul>
+      </section>
+
+      <script type="application/json" id="stock-cycle-review-data">
+{
+  "review_date": "2026-04-09",
+  "data_cutoff": "2026-04-09",
+  "generated_by_skill": {
+    "name": "stock-cycle-review"
+  },
+  "is_trading_day": true,
+  "previous_trading_day": "2026-04-08",
+  "next_trading_day": "2026-04-10",
+  "current_leader": "无有效龙头",
+  "current_leader_theme": "无",
+  "leader_anchor": "华电辽能",
+  "leader_anchor_theme": "绿电 / 电力 / 央企",
+  "leader_anchor_state": "旧确认龙头已死亡；汇源通信尚未通过6板+高潮日确认，不能替代锚点",
+  "leader_state": "试错核心，尚未确认龙头",
+  "position_action": "极小仓试错 / 无先手空仓观察",
+  "new_leader_search_allowed": "允许，但先管理汇源通信试错核心；它失败后才重新筛新的4/5板",
+  "next_trigger": "2026-04-10汇源通信6板且光纤/光模块/OCS板块高潮才确认龙头；失败则清试错仓，回无龙空仓",
+  "market_phase": "无确认龙头后的标准试错阶段",
+  "cycle_stage": "华电辽能旧周期死亡 -> 神剑股份试错失败 -> 津药药业一字高标负反馈 -> 汇源通信5板放量回封成为标准试错核心",
+  "old_leader_state": "华电辽能旧周期已死亡；当前有效龙头仍为空",
+  "loss_effect": {
+    "level": "中等偏高，光通信结构抱团强于全市场",
+    "summary": "4月9日市场缩量调整，全市场超4200股下跌；财联社口径53股涨停、16股炸板、封板率77%，连板晋级率18.18%。新能泰山触及跌停、新中港跌超8%，但光纤/光模块方向继续强势，汇源通信5板放量回封。",
+    "rows": [
+      ["市场", "沪指跌0.72%，深成指跌0.33%，创业板指跌0.73%，两市成交2.13万亿元，较上日缩量3004亿元"],
+      ["高标风险", "新能泰山触及跌停，新中港跌超8%，中工国际、美诺华盘中炸板回落"],
+      ["试错核心", "汇源通信13:17打开涨停时成交9.16亿元、换手18.92%，随后放量回封5板"]
+    ]
+  },
+  "new_direction": {
+    "summary": "光纤/光模块/OCS成为当日绝对主线；算力硬件和半导体设备为助攻背景；AI应用退潮，商业航天局部修复。",
+    "strong_independent": "光纤 / 光模块 / OCS / 光通信",
+    "old_related": "商业航天为神剑失败试错链后的修复方向；医药和新能泰山等旧高标负反馈"
+  },
+  "operation_plan": {
+    "position": "计划内5板回封先手最多极小仓；无先手继续空仓观察",
+    "action": "2026-04-10先管理汇源通信6板确认、分歧减仓或负反馈清仓三种路径",
+    "candidate": "华远控股3进4只有在汇源通信失败后才作为备选条件检查；中安科未封住，放弃"
+  },
+  "risk_control": [
+    ["单笔最大亏损", "汇源通信5板试错仓若次日不能封住6板或封后快速破板，单笔亏损约-3%内处理"],
+    ["当日最大亏损", "当日亏损达到-5%或汇源试错失败后，不再做第二笔同方向切换"],
+    ["连续试错次数", "若汇源失败，至少等待下一只清晰4/5板再试"],
+    ["仓位上限", "确认龙头前最多极小仓试错；6板确认日前不重仓"],
+    ["卖出条件", "汇源不能6板、6板爆量失控、光通信容量核心集体冲高回落、公司公告风险被市场放大、旧高标负反馈扩散"]
+  ],
+  "high_level_sentiment": {
+    "nominal_highest_board": "汇源通信5连板；华远控股3连板；柏诚股份6天3板、诚志股份和航天电器3天2板为非连续项",
+    "tradable_highest_board": "汇源通信5板放量回封，具备标准试错交易性，但尚未确认龙头",
+    "previous_high_board_performance": "新能泰山触及跌停，新中港跌超8%，中工国际和美诺华盘中炸板回落",
+    "broken_board_feedback": "财联社口径16股炸板，封板率77%；东方财富/界面新闻口径13只跌停",
+    "high_level_limit_down_count": "东方财富/界面新闻口径13只跌停",
+    "high_level_broken_board_count": "16股炸板",
+    "promotion_rate": "财联社称连板股晋级率18.18%"
+  },
+  "prior_confirmed_leader": "华电辽能",
+  "prior_leader_theme": "绿电 / 电力 / 央企",
+  "intermediate_trial_chain": "神剑股份4板试错失败；津药药业5板一字低换手后高位负反馈；汇源通信4月9日5板放量回封成为新的标准试错核心",
+  "old_leader_chain": "华电辽能 / 绿电电力央企 -> 神剑股份 / 商业航天试错失败 -> 汇源通信 / 光纤光通信5板标准试错 -> 待6板+高潮日确认",
+  "current_core": "汇源通信 / 光纤、光通信，5板放量回封，标准试错核心",
+  "tradable_high_board": "汇源通信5板，13:17打开涨停时成交9.16亿元、换手18.92%，随后放量回封",
+  "next_opportunity": "无新的当日买点；2026-04-10先看汇源通信6板+光通信高潮确认。若汇源失败，再检查华远控股3进4是否非一字换手回封且板块助攻明确",
+  "hard_no_trade": "不把汇源通信写成确认龙头；不追6板加速；不把中安科盘中4板失败写成买点；不把柏诚股份6天3板、航天电器3天2板等压缩为连续板候选；不使用2026-04-10盘面结果",
+  "source_verification": {
+    "sector_theme_primary_sources": "同花顺2026-04-09 18:26转载潮新闻用于光通信和商业航天板块强度；财联社2026-04-09焦点复盘和连板分析用于主题、涨停、连板晋级率。",
+    "individual_primary_sources": "东方财富Choice 2026-04-09 13:17用于汇源通信盘中打开涨停、成交额和换手率核验；每日经济新闻9:57用于中安科盘中触及4板，财联社和东方财富收盘连板统计用于判定其未封住。",
+    "local_archive_use": "本地2026-04-08归档只用于复核上一交易日计划，不作为2026-04-09行情事实来源。"
+  },
+  "board_sequence_verification": {
+    "status": "主要高标梯队已由财联社/东方财富/第一财经核验；完整低位梯队主源仍待复核",
+    "consecutive_ladder_source": "财联社2026-04-09焦点复盘、财联社2026-04-09连板股分析、东方财富/界面新闻2026-04-09涨跌停股分析、第一财经/Wind 2026-04-09连板股追踪",
+    "continuous_5_board": "汇源通信",
+    "continuous_4_board": "无收盘确认",
+    "continuous_3_board": "华远控股（*ST原尚为ST样本，模型排除）",
+    "continuous_2_board": "东山精密、华懋科技、飞龙股份、巨力索具、博杰股份、大元泵业等，低位梯队口径不完整",
+    "non_consecutive_patterns": "柏诚股份6天3板；诚志股份、航天电器3天2板；ST英飞拓7天5板",
+    "notes": "连续板与N天N板分列。汇源通信为连续5板并出现可交易分歧回封，是标准试错核心；中安科盘中触4但收盘未确认4连板，放弃；华远控股3板只能作为下一交易日条件跟踪。"
+  },
+  "model_verdicts": [
+    {
+      "stock": "汇源通信",
+      "role": "光纤/光通信5板标准试错核心",
+      "verdict": "standard buy",
+      "reason": "上一计划要求4进5首次可交易分歧回封；4月9日13:17打开涨停时成交9.16亿元、换手18.92%，随后放量回封5板，且光通信板块助攻明确。"
+    },
+    {
+      "stock": "中安科",
+      "role": "3进4失败候选",
+      "verdict": "reject",
+      "reason": "早盘触及4板但收盘连板统计未确认4连板，不满足封住4板的标准试错要求。"
+    },
+    {
+      "stock": "华远控股",
+      "role": "3板备选观察",
+      "verdict": "observe only",
+      "reason": "4月9日仅3板，不是当日4/5板买点；且主题主源和板块助攻不足，只能在汇源失败后作为3进4条件检查。"
+    },
+    {
+      "stock": "新能泰山、新中港、中工国际、美诺华",
+      "role": "旧高标和非连续高位风险",
+      "verdict": "reject",
+      "reason": "4月9日出现触跌停、跌超8%或炸板回落等负反馈，不作为新周期买点。"
+    }
+  ],
+  "sources": [
+    {
+      "name": "财联社焦点复盘：沪指窄幅震荡收十字星，AI应用端大面积退潮，OCS产业链获持续热捧",
+      "published_at": "2026-04-09 17:27",
+      "url": "https://finance.sina.com.cn/roll/2026-04-09/doc-inhtwxpa0961598.shtml"
+    },
+    {
+      "name": "财联社连板股分析：连板股晋级率不足二成，光模块+光纤强者恒强",
+      "published_at": "2026-04-09 16:00",
+      "url": "https://finance.sina.com.cn/roll/2026-04-09/doc-inhtwtfe1019720.shtml"
+    },
+    {
+      "name": "东方财富Choice：汇源通信4月9日打开涨停",
+      "published_at": "2026-04-09 13:17",
+      "url": "https://finance.eastmoney.com/a/202604093699368960.html"
+    },
+    {
+      "name": "东方财富/界面新闻：今日涨跌停股分析",
+      "published_at": "2026-04-09 15:08",
+      "url": "https://finance.eastmoney.com/a/202604093699514988.html"
+    },
+    {
+      "name": "第一财经/Wind：连板股追踪",
+      "published_at": "2026-04-09 15:51",
+      "url": "https://finance.sina.com.cn/jjxw/2026-04-09/doc-inhtwtex8864819.shtml"
+    },
+    {
+      "name": "每日经济新闻：A股震荡调整，光纤股走强，汇源通信5连板",
+      "published_at": "2026-04-09 15:35",
+      "url": "https://finance.sina.com.cn/jjxw/2026-04-09/doc-inhtwtfe0992526.shtml"
+    },
+    {
+      "name": "同花顺转载潮新闻：光通信概念多股逆市拉涨停",
+      "published_at": "2026-04-09 18:26",
+      "url": "https://stock.10jqka.com.cn/20260409/c675871824.shtml"
+    },
+    {
+      "name": "同花顺转载大河财立方：5连板汇源通信异动公告风险",
+      "published_at": "2026-04-09 18:25",
+      "url": "https://stock.10jqka.com.cn/20260409/c675871785.shtml"
+    },
+    {
+      "name": "每日经济新闻：中安科涨停走出4连板",
+      "published_at": "2026-04-09 09:57",
+      "url": "https://www.nbd.com.cn/articles/2026-04-09/4331031.html"
+    }
+  ]
+}
+      </script>
+    </main>
+  </body>
+</html>

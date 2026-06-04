@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="zh-CN">
   <head>
     <meta charset="utf-8" />
@@ -197,32 +197,39 @@
         <p class="note">复盘口径：历史实盘模拟。数据截止：2026-03-17 收盘后同日公开资料。下一交易日计划对应：2026-03-18。</p>
         <p class="risk">本报告只使用 2026-03-17 及以前可见资料。3月17日盘前计划来自 3月16日复盘；3月17日收盘结果只用于复核该计划和生成 3月18日计划，不用于倒推盘前买入理由。</p>
       </header>
-
       <section class="grid status-grid" aria-label="核心状态">
         <div class="metric">
-          <div class="label">当前核心</div>
-          <div class="value">三房巷 / 化工、PTA、瓶片</div>
+          <div class="label">当前有效龙头</div>
+          <div class="value">无有效龙头</div>
         </div>
         <div class="metric">
-          <div class="label">龙头状态</div>
-          <div class="value">无龙转4板试错</div>
+          <div class="label">当前龙头锚点</div>
+          <div class="value">豫能控股 / 算力、算电协同，电力为副题材（旧锚点）</div>
+        </div>
+        <div class="metric">
+          <div class="label">当前试错核心</div>
+          <div class="value">三房巷4板观察 / 未达标准试错门槛</div>
+        </div>
+        <div class="metric">
+          <div class="label">状态</div>
+          <div class="value">无龙，4板观察</div>
         </div>
         <div class="metric">
           <div class="label">当前动作</div>
-          <div class="value">建仓试错</div>
+          <div class="value">空仓观察</div>
         </div>
         <div class="metric">
           <div class="label">是否允许寻找新龙</div>
-          <div class="value">允许，但只限计划内4/5板</div>
+          <div class="value">允许，仅核验合格4/5板</div>
         </div>
         <div class="metric">
           <div class="label">下一触发</div>
-          <div class="value">三房巷5板确认或失败</div>
+          <div class="value">等待新的合格4/5板</div>
         </div>
-        <div class="metric">
-          <div class="label">硬性禁买</div>
-          <div class="value">不追后排，不把N天M板写成连板</div>
-        </div>
+      </section>
+      <section class="rule-fix">
+        <h2>新规则复核</h2>
+        <p><strong>修订口径：</strong>三房巷只是4板观察，不是确认龙头；本页旧口径中的建仓和买点表述按新规则降级。报告自身记录三房巷换手约6.52%、成交额约8.05亿元，未满足换手>7%或成交额>25亿元的标准试错门槛；法尔胜虽4板但板块支撑不足。</p>
       </section>
 
       <section>
@@ -244,13 +251,13 @@
               </tr>
               <tr>
                 <td>候选必须非一字，盘中可见主动封板或回封，成交额或换手达到模型门槛。</td>
-                <td>三房巷 9:34:49涨停、开板4次；东方财富K线口径显示成交额约8.05亿元、换手约6.52%，成交额通过容量门槛。法尔胜 10:46:16涨停、开板1次；成交额约12.43亿元、换手约22.96%。</td>
-                <td><span class="badge buy">交易性可核验</span></td>
+                <td>三房巷 9:34:49涨停、开板4次；东方财富K线口径显示成交额约8.05亿元、换手约6.52%，未过换手和25亿元容量门槛。法尔胜 10:46:16涨停、开板1次；成交额约12.43亿元、换手约22.96%。</td>
+                <td><span class="badge observe">三房巷流动性未达标</span></td>
               </tr>
               <tr>
                 <td>必须有板块助攻；旧龙豫能控股已经死亡后才允许4板试错。</td>
                 <td>豫能控股3月17日收平但没有恢复龙头带动，且算力硬件集体走弱。化工股局部活跃，三房巷4连板，并有赤天化、双欣环保、潞化科技、中复神鹰等同方向表现；法尔胜对应光纤/环保设备方向支撑不足，同花顺还提示公司常规业务不包括光纤产品生产。</td>
-                <td>三房巷触发标准4板试错；法尔胜只观察。</td>
+                <td>三房巷只作4板观察；法尔胜虽有交易性但板块支撑不足，也只观察。</td>
               </tr>
             </tbody>
           </table>
@@ -275,8 +282,8 @@
                 <td>豫能控股 / 算力、算电协同，电力为副题材</td>
                 <td>东方财富K线口径：3月17日收13.90元，涨跌幅0%，成交额约26.58亿元，换手约12.45%。两日跌停后止跌，但没有重新封板或恢复板块主导。</td>
                 <td>否。旧龙已在3月16日确认死亡，3月17日只算止跌震荡。</td>
-                <td>三房巷为计划内连续3进4后的试错核心，题材为化工/PTA/瓶片。</td>
-                <td><span class="badge buy">建仓试错</span></td>
+                <td>三房巷为计划内连续3进4后的观察项，题材为化工/PTA/瓶片。</td>
+                <td><span class="badge observe">空仓观察</span></td>
               </tr>
             </tbody>
           </table>
@@ -324,7 +331,7 @@
           </div>
           <div class="step">
             <div class="title">新核心筛选</div>
-            <p>三房巷得到化工/PTA局部助攻，且非一字、成交额达标；法尔胜题材支撑弱，不能因为同为4板而并列标准买点。</p>
+            <p>三房巷得到化工/PTA局部助攻，且非一字、成交额达标；法尔胜题材支撑弱，不能因为同为4板而并列标准试错买点。</p>
           </div>
           <div class="step">
             <div class="title">下一触发</div>
@@ -415,7 +422,7 @@
               <tr>
                 <td>基建地产 / 设备制造</td>
                 <td>京投发展、亚翔集成、锡华科技为3连板跟踪。</td>
-                <td>有局部连板，但仍低于4/5板标准买点。</td>
+                <td>有局部连板，但仍低于4/5板标准试错买点。</td>
                 <td>主源未确认容量中军。</td>
                 <td>与旧周期关系弱，仅作盘面跟踪。</td>
                 <td><span class="badge context">跟踪，不写买点</span></td>
@@ -427,7 +434,7 @@
 
       <section>
         <h2>新龙搜索闸门</h2>
-        <p>旧龙豫能控股已在3月16日确认死亡，3月17允许寻找新龙，但只允许从3月16已核验的连续3板晋级4板、且非一字、成交达标、板块有助攻的股票中筛选。3板、2板、N天M板不得写成当日标准买点。</p>
+        <p>旧龙豫能控股已在3月16日确认死亡，3月17允许寻找新龙，但只允许从3月16已核验的连续3板晋级4板、且非一字、成交达标、板块有助攻的股票中筛选。3板、2板、N天M板不得写成当日标准试错买点。</p>
       </section>
 
       <section>
@@ -456,7 +463,7 @@
                 <td>化工、PTA、瓶片</td>
                 <td>计划内3进4试错核心</td>
                 <td>9:34:49涨停，开板4次；成交额约8.05亿元，容量门槛通过。</td>
-                <td><span class="badge buy">标准买点</span></td>
+                <td><span class="badge buy">标准试错买点</span></td>
               </tr>
               <tr>
                 <td>4板</td>
@@ -514,7 +521,7 @@
                 <td>计划内3进4，非一字，盘中可交易，成交额达标。</td>
                 <td>旧龙死亡后出现；化工/PTA局部助攻；同日4板高度；不是N天M板误判。</td>
                 <td>换手约6.52%低于7%，但成交额约8.05亿元通过容量门槛；封板结构一般，必须小仓。</td>
-                <td><span class="badge buy">标准买点，小仓试错</span></td>
+                <td><span class="badge buy">标准试错买点，小仓试错</span></td>
               </tr>
               <tr>
                 <td>法尔胜</td>
@@ -522,7 +529,7 @@
                 <td>有交易性，但板块支撑不足。</td>
                 <td>同为计划内3进4；非一字；成交额和换手达标。</td>
                 <td>题材助攻弱，光纤概念口径被公司公告降权；封板结构一般且偏人气独立。</td>
-                <td><span class="badge observe">仅观察，不列标准买点</span></td>
+                <td><span class="badge observe">仅观察，不列标准试错买点</span></td>
               </tr>
             </tbody>
           </table>
@@ -601,15 +608,14 @@
           </table>
         </div>
       </section>
-
       <section>
         <h2>最终五句话</h2>
         <ol>
-          <li>当前龙头：三房巷，所属题材为化工、PTA、瓶片；它是3月17日计划内4板试错核心，尚需5板/6板继续确认空间。</li>
-          <li>龙头状态：无龙转4板试错；上一轮豫能控股旧周期仍按死亡处理，3月17日收平不等于恢复龙头。</li>
-          <li>当前动作：建仓试错，只限三房巷这种计划内、非一字、板块有助攻、成交额达标的4板回封。</li>
-          <li>是否允许寻找新龙：允许，但3月17已经只筛出三房巷；法尔胜因板块支撑不足仅观察，N天M板不得当连续板买点。</li>
-          <li>下一触发：2026-03-18只看三房巷能否5板主动回封并保持化工/PTA助攻；失败则减仓或清仓。</li>
+          <li>当前有效龙头：无有效龙头；当前龙头锚点：豫能控股 / 算力、算电协同（旧锚点，已死亡）。</li>
+          <li>当前试错核心：三房巷4板只能观察，未达标准试错买点流动性门槛。</li>
+          <li>当前动作：空仓观察，不建仓，不把4板观察票写成龙头。</li>
+          <li>是否允许寻找新龙：允许，但只能等新的合格4/5板标准试错买点。</li>
+          <li>下一触发：2026-03-18若无合格4/5板继续空仓；任何试错核心必须到6板+高潮日才可确认龙头。</li>
         </ol>
       </section>
 
@@ -632,145 +638,168 @@
 
       <script type="application/json" id="stock-cycle-review-data">
 {
-  "review_date": "2026-03-17",
-  "data_cutoff": "2026-03-17",
-  "previous_trading_day": "2026-03-16",
-  "next_trading_day": "2026-03-18",
-  "current_leader": "三房巷",
-  "current_leader_theme": "化工、PTA、瓶片",
-  "leader_state": "无龙转4板试错",
-  "old_leader_state": "豫能控股旧龙死亡后止跌震荡，未恢复有效龙头",
-  "position_action": "建仓试错",
-  "new_leader_search_allowed": "允许，但只限计划内4/5板",
-  "next_trigger": "2026-03-18只看三房巷5板主动回封和化工/PTA助攻；失败则减仓或清仓",
-  "market_phase": "旧龙死亡后的新核心4板试错",
-  "cycle_stage": "豫能控股死亡 -> 3月16无龙观察 -> 三房巷计划内3进4试错",
-  "loss_effect": {
-    "level": "中等偏高",
-    "summary": "豫能控股止跌但未恢复龙头，算力硬件走弱，指数和个股广度偏弱；连板高度抬升到4板但封板结构一般。"
-  },
-  "new_direction": {
-    "summary": "化工/PTA局部活跃支持三房巷4板试错；光纤/环保设备方向支撑不足，法尔胜仅观察。",
-    "strong_independent": "化工、PTA、瓶片",
-    "old_related": "算力硬件、算电协同方向仍按旧周期风险处理"
-  },
-  "operation_plan": {
-    "position": "单票试错不超过2成，总仓不超过3成",
-    "action": "三房巷按4板试错或次日5板确认处理",
-    "candidate": "法尔胜观察；3板和N天M板不进入买点区"
-  },
-  "risk_control": [
-    ["仓位上限", "4板试错单票不超过2成，总仓不超过3成"],
-    ["单笔最大亏损", "-3%到-5%触发处理"],
-    ["当日最大亏损", "达到-5%停止当日试错"],
-    ["连续试错次数", "连续两次失败后回到空仓观察"],
-    ["卖出条件", "次日不能弱转强、板块助攻断层、高位断板无法修复、跌停负反馈"]
-  ],
-  "high_level_sentiment": {
-    "nominal_highest_board": "法尔胜、三房巷连续4板；法尔胜同时为17天10板",
-    "tradable_highest_board": "三房巷4板为计划内可交易试错；法尔胜4板仅观察",
-    "previous_high_board_performance": "3月16连续3板法尔胜、三房巷均晋级4板；鼎信通讯5天3板不按连续3进4处理",
-    "broken_board_feedback": "市场超过4500股下跌，算力硬件走弱，高位风险仍在",
-    "high_level_limit_down_count": "主源未完整量化，待复核",
-    "high_level_broken_board_count": "东方财富涨停复盘显示17股炸板",
-    "promotion_rate": "东方财富涨停复盘显示40股涨停、17股炸板，封板率70.18%"
-  },
-  "prior_confirmed_leader": "豫能控股",
-  "prior_leader_theme": "算力、算电协同，电力为副题材",
-  "intermediate_trial_chain": "3月16法尔胜、三房巷为连续3板；3月17二者晋级4板，三房巷通过板块助攻和交易性筛选，法尔胜降级观察。",
-  "old_leader_chain": "3月11高位震荡 -> 3月12高位震荡 -> 3月13龙头负反馈 -> 3月16继续跌停确认死亡 -> 3月17止跌但不恢复龙头",
-  "current_core": "三房巷4板试错核心",
-  "tradable_high_board": "三房巷4板",
-  "next_opportunity": "2026-03-18只看三房巷5板主动换手回封；未满足则无新标准买点",
-  "hard_no_trade": "不追低位后排；不把赤天化8天5板、顺钠股份10天6板、卓郎智能10天5板等N天M板压缩成连续板；不使用2026-03-18及之后数据",
-  "board_sequence_verification": {
-    "status": "三板及以上已交叉核验，2板以下主源缺失不展开",
-    "consecutive_ladder_source": "新浪财经2026-03-17 15:19涨停分析；东方财富/财联社2026-03-17 17:28焦点复盘；财联社2026-03-17 17:35连板股分析",
-    "continuous_4_board": "三房巷、法尔胜",
-    "continuous_3_board": "亚翔集成、京投发展、锡华科技",
-    "non_consecutive_patterns": "法尔胜同时为17天10板；赤天化8天5板；顺钠股份10天6板；卓郎智能10天5板；潞化科技4天3板；中复神鹰4天2板",
-    "notes": "连续板数与N天M板分列；鼎信通讯不作为3月17连续3进4候选。"
-  },
-  "model_verdicts": [
-    {
-      "stock": "三房巷",
-      "role": "计划内4板试错核心",
-      "verdict": "standard buy",
-      "reason": "连续4板、非一字、成交额约8.05亿元通过容量门槛，化工/PTA方向有助攻，旧龙已死亡。"
-    },
-    {
-      "stock": "法尔胜",
-      "role": "4板人气高标",
-      "verdict": "observe only",
-      "reason": "虽为连续4板且成交达标，但题材助攻不足，光纤业务口径被同花顺引用的公司公告降权。"
-    },
-    {
-      "stock": "赤天化",
-      "role": "8天5板非连续高度",
-      "verdict": "observe only",
-      "reason": "N天M板只作情绪观察，不能压缩成连续5板买点。"
-    },
-    {
-      "stock": "鼎信通讯",
-      "role": "前日5天3板关注项",
-      "verdict": "reject",
-      "reason": "3月16已确认不是三连板，3月17计划不允许作为连续3进4主候选。"
-    }
-  ],
-  "source_verification": {
-    "used_after_review_date_data": false,
-    "source_time_policy": "只使用2026-03-17及以前公开资料；3月18及之后走势排除。",
-    "sector_primary_sources": "同花顺个股涨停分析与同日复盘已核验；开盘啦历史直链未核到，标记为主源缺失/待复核。",
-    "individual_primary_sources": "候选股涨停结构使用同花顺同日个股分析；收盘价、成交额、换手使用东方财富历史K线接口，查询日期止于2026-03-17。",
-    "local_archive_use": "本地归档仅用于复核上一交易日计划，不作为3月17行情事实来源。"
-  },
-  "sources": [
-    {
-      "name": "新浪财经：3月17日沪深两市涨停分析",
-      "published_at": "2026-03-17 15:19",
-      "url": "https://finance.sina.com.cn/stock/ztbfp/2026-03-17/doc-inhrhttr8092151.shtml"
-    },
-    {
-      "name": "东方财富/财联社：3月17日焦点复盘",
-      "published_at": "2026-03-17 17:28",
-      "url": "https://finance.eastmoney.com/a/202603173674581019.html"
-    },
-    {
-      "name": "财联社：3月17日连板股分析",
-      "published_at": "2026-03-17 17:35",
-      "url": "https://finance.sina.com.cn/roll/2026-03-17/doc-inhrhttu3928319.shtml"
-    },
-    {
-      "name": "同花顺：三房巷03月17日涨停分析",
-      "published_at": "2026-03-17 17:00",
-      "url": "https://news.10jqka.com.cn/20260317/c675351750.shtml"
-    },
-    {
-      "name": "同花顺：法尔胜03月17日涨停分析",
-      "published_at": "2026-03-17 17:00",
-      "url": "https://news.10jqka.com.cn/20260317/c675351754.shtml"
-    },
-    {
-      "name": "东方财富：3月17日涨停复盘",
-      "published_at": "2026-03-17 16:32",
-      "url": "https://finance.eastmoney.com/a/202603173674339326.html"
-    },
-    {
-      "name": "东方财富历史K线接口：豫能控股，查询止于2026-03-17",
-      "published_at": "query_end=2026-03-17",
-      "url": "https://push2his.eastmoney.com/api/qt/stock/kline/get?secid=0.001896&fields1=f1,f2,f3,f4,f5,f6&fields2=f51,f52,f53,f54,f55,f56,f57,f58,f59,f60,f61&klt=101&fqt=1&beg=20260311&end=20260317"
-    },
-    {
-      "name": "东方财富历史K线接口：法尔胜，查询止于2026-03-17",
-      "published_at": "query_end=2026-03-17",
-      "url": "https://push2his.eastmoney.com/api/qt/stock/kline/get?secid=0.000890&fields1=f1,f2,f3,f4,f5,f6&fields2=f51,f52,f53,f54,f55,f56,f57,f58,f59,f60,f61&klt=101&fqt=1&beg=20260313&end=20260317"
-    },
-    {
-      "name": "东方财富历史K线接口：三房巷，查询止于2026-03-17",
-      "published_at": "query_end=2026-03-17",
-      "url": "https://push2his.eastmoney.com/api/qt/stock/kline/get?secid=1.600370&fields1=f1,f2,f3,f4,f5,f6&fields2=f51,f52,f53,f54,f55,f56,f57,f58,f59,f60,f61&klt=101&fqt=1&beg=20260313&end=20260317"
-    }
-  ]
+    "review_date":  "2026-03-17",
+    "generated_by_skill":  {
+                               "name":  "stock-cycle-review",
+                               "version":  "0.1.0+codex.20260602143920"
+                           },
+    "data_cutoff":  "2026-03-17",
+    "previous_trading_day":  "2026-03-16",
+    "next_trading_day":  "2026-03-18",
+    "current_leader":  "无有效龙头",
+    "current_leader_theme":  "无",
+    "leader_state":  "无龙，4板观察",
+    "old_leader_state":  "豫能控股旧龙死亡后止跌震荡，未恢复有效龙头",
+    "position_action":  "空仓观察",
+    "new_leader_search_allowed":  "允许，仅核验合格4/5板",
+    "next_trigger":  "2026-03-18只看三房巷5板主动回封和化工/PTA助攻；失败则减仓或清仓",
+    "market_phase":  "旧龙死亡后的新核心4板试错",
+    "cycle_stage":  "豫能控股死亡 -\u003e 3月16无龙观察 -\u003e 三房巷计划内3进4试错",
+    "loss_effect":  {
+                        "level":  "中等偏高",
+                        "summary":  "豫能控股止跌但未恢复龙头，算力硬件走弱，指数和个股广度偏弱；连板高度抬升到4板但封板结构一般。"
+                    },
+    "new_direction":  {
+                          "summary":  "化工/PTA局部活跃支持三房巷4板试错；光纤/环保设备方向支撑不足，法尔胜仅观察。",
+                          "strong_independent":  "化工、PTA、瓶片",
+                          "old_related":  "算力硬件、算电协同方向仍按旧周期风险处理"
+                      },
+    "operation_plan":  {
+                           "position":  "单票试错不超过2成，总仓不超过3成",
+                           "action":  "三房巷按4板试错或次日5板确认处理",
+                           "candidate":  "法尔胜观察；3板和N天M板不进入买点区"
+                       },
+    "risk_control":  [
+                         [
+                             "仓位上限",
+                             "4板试错单票不超过2成，总仓不超过3成"
+                         ],
+                         [
+                             "单笔最大亏损",
+                             "-3%到-5%触发处理"
+                         ],
+                         [
+                             "当日最大亏损",
+                             "达到-5%停止当日试错"
+                         ],
+                         [
+                             "连续试错次数",
+                             "连续两次失败后回到空仓观察"
+                         ],
+                         [
+                             "卖出条件",
+                             "次日不能弱转强、板块助攻断层、高位断板无法修复、跌停负反馈"
+                         ]
+                     ],
+    "high_level_sentiment":  {
+                                 "nominal_highest_board":  "法尔胜、三房巷连续4板；法尔胜同时为17天10板",
+                                 "tradable_highest_board":  "三房巷4板观察，换手约6.52%、成交额约8.05亿元，未达标准试错门槛；法尔胜板块支撑不足；无合格标准试错买点",
+                                 "previous_high_board_performance":  "3月16连续3板法尔胜、三房巷均晋级4板；鼎信通讯5天3板不按连续3进4处理",
+                                 "broken_board_feedback":  "市场超过4500股下跌，算力硬件走弱，高位风险仍在",
+                                 "high_level_limit_down_count":  "主源未完整量化，待复核",
+                                 "high_level_broken_board_count":  "东方财富涨停复盘显示17股炸板",
+                                 "promotion_rate":  "东方财富涨停复盘显示40股涨停、17股炸板，封板率70.18%"
+                             },
+    "prior_confirmed_leader":  "豫能控股",
+    "prior_leader_theme":  "算力、算电协同，电力为副题材",
+    "intermediate_trial_chain":  "3月16法尔胜、三房巷为连续3板；3月17二者晋级4板，三房巷通过板块助攻和交易性筛选，法尔胜降级观察。",
+    "old_leader_chain":  "3月11高位震荡 -\u003e 3月12高位震荡 -\u003e 3月13龙头负反馈 -\u003e 3月16继续跌停确认死亡 -\u003e 3月17止跌但不恢复龙头",
+    "current_core":  "三房巷4板观察 / 化工、PTA、瓶片；换手约6.52%、成交额约8.05亿元，未达标准试错门槛",
+    "tradable_high_board":  "法尔胜、三房巷4连板；三房巷流动性门槛未过，法尔胜板块支撑不足；无合格标准试错买点",
+    "next_opportunity":  "无标准试错买点；等待新的4/5板满足换手\u003e7%或成交额\u003e25亿元、板块助攻和可交易回封",
+    "hard_no_trade":  "不把三房巷4板写成确认龙头；不把成交额8.05亿元误写成容量通过；不追低位后排或N天M板",
+    "board_sequence_verification":  {
+                                        "status":  "三板及以上已交叉核验，2板以下主源缺失不展开",
+                                        "consecutive_ladder_source":  "新浪财经2026-03-17 15:19涨停分析；东方财富/财联社2026-03-17 17:28焦点复盘；财联社2026-03-17 17:35连板股分析",
+                                        "continuous_4_board":  "三房巷、法尔胜",
+                                        "continuous_3_board":  "亚翔集成、京投发展、锡华科技",
+                                        "non_consecutive_patterns":  "法尔胜同时为17天10板；赤天化8天5板；顺钠股份10天6板；卓郎智能10天5板；潞化科技4天3板；中复神鹰4天2板",
+                                        "notes":  "连续板数与N天M板分列；鼎信通讯不作为3月17连续3进4候选。"
+                                    },
+    "model_verdicts":  [
+                           {
+                               "stock":  "三房巷",
+                               "role":  "计划内4板试错核心",
+                               "verdict":  "observe only",
+                               "reason":  "按新规则复核：未通过标准试错买点或未过6板+高潮日确认，不能写成确认龙头。"
+                           },
+                           {
+                               "stock":  "法尔胜",
+                               "role":  "4板人气高标",
+                               "verdict":  "observe only",
+                               "reason":  "虽为连续4板且成交达标，但题材助攻不足，光纤业务口径被同花顺引用的公司公告降权。"
+                           },
+                           {
+                               "stock":  "赤天化",
+                               "role":  "8天5板非连续高度",
+                               "verdict":  "observe only",
+                               "reason":  "N天M板只作情绪观察，不能压缩成连续5板买点。"
+                           },
+                           {
+                               "stock":  "鼎信通讯",
+                               "role":  "前日5天3板关注项",
+                               "verdict":  "reject",
+                               "reason":  "3月16已确认不是三连板，3月17计划不允许作为连续3进4主候选。"
+                           }
+                       ],
+    "source_verification":  {
+                                "used_after_review_date_data":  false,
+                                "source_time_policy":  "只使用2026-03-17及以前公开资料；3月18及之后走势排除。",
+                                "sector_primary_sources":  "同花顺个股涨停分析与同日复盘已核验；开盘啦历史直链未核到，标记为主源缺失/待复核。",
+                                "individual_primary_sources":  "候选股涨停结构使用同花顺同日个股分析；收盘价、成交额、换手使用东方财富历史K线接口，查询日期止于2026-03-17。",
+                                "local_archive_use":  "本地归档仅用于复核上一交易日计划，不作为3月17行情事实来源。"
+                            },
+    "sources":  [
+                    {
+                        "name":  "新浪财经：3月17日沪深两市涨停分析",
+                        "published_at":  "2026-03-17 15:19",
+                        "url":  "https://finance.sina.com.cn/stock/ztbfp/2026-03-17/doc-inhrhttr8092151.shtml"
+                    },
+                    {
+                        "name":  "东方财富/财联社：3月17日焦点复盘",
+                        "published_at":  "2026-03-17 17:28",
+                        "url":  "https://finance.eastmoney.com/a/202603173674581019.html"
+                    },
+                    {
+                        "name":  "财联社：3月17日连板股分析",
+                        "published_at":  "2026-03-17 17:35",
+                        "url":  "https://finance.sina.com.cn/roll/2026-03-17/doc-inhrhttu3928319.shtml"
+                    },
+                    {
+                        "name":  "同花顺：三房巷03月17日涨停分析",
+                        "published_at":  "2026-03-17 17:00",
+                        "url":  "https://news.10jqka.com.cn/20260317/c675351750.shtml"
+                    },
+                    {
+                        "name":  "同花顺：法尔胜03月17日涨停分析",
+                        "published_at":  "2026-03-17 17:00",
+                        "url":  "https://news.10jqka.com.cn/20260317/c675351754.shtml"
+                    },
+                    {
+                        "name":  "东方财富：3月17日涨停复盘",
+                        "published_at":  "2026-03-17 16:32",
+                        "url":  "https://finance.eastmoney.com/a/202603173674339326.html"
+                    },
+                    {
+                        "name":  "东方财富历史K线接口：豫能控股，查询止于2026-03-17",
+                        "published_at":  "query_end=2026-03-17",
+                        "url":  "https://push2his.eastmoney.com/api/qt/stock/kline/get?secid=0.001896\u0026fields1=f1,f2,f3,f4,f5,f6\u0026fields2=f51,f52,f53,f54,f55,f56,f57,f58,f59,f60,f61\u0026klt=101\u0026fqt=1\u0026beg=20260311\u0026end=20260317"
+                    },
+                    {
+                        "name":  "东方财富历史K线接口：法尔胜，查询止于2026-03-17",
+                        "published_at":  "query_end=2026-03-17",
+                        "url":  "https://push2his.eastmoney.com/api/qt/stock/kline/get?secid=0.000890\u0026fields1=f1,f2,f3,f4,f5,f6\u0026fields2=f51,f52,f53,f54,f55,f56,f57,f58,f59,f60,f61\u0026klt=101\u0026fqt=1\u0026beg=20260313\u0026end=20260317"
+                    },
+                    {
+                        "name":  "东方财富历史K线接口：三房巷，查询止于2026-03-17",
+                        "published_at":  "query_end=2026-03-17",
+                        "url":  "https://push2his.eastmoney.com/api/qt/stock/kline/get?secid=1.600370\u0026fields1=f1,f2,f3,f4,f5,f6\u0026fields2=f51,f52,f53,f54,f55,f56,f57,f58,f59,f60,f61\u0026klt=101\u0026fqt=1\u0026beg=20260313\u0026end=20260317"
+                    }
+                ],
+    "rule_revision_note":  "2026-06-04按新规则修复：4/5板只算试错核心，需6板+板块高潮日才确认龙头。",
+    "leader_anchor":  "豫能控股",
+    "leader_anchor_theme":  "算力、算电协同，电力为副题材",
+    "leader_anchor_state":  "豫能控股旧龙死亡后止跌震荡，未恢复有效龙头"
 }
       </script>
     </main>

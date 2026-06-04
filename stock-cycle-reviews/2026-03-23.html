@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="zh-CN">
   <head>
     <meta charset="utf-8" />
@@ -201,7 +201,7 @@
         </div>
         <div class="metric">
           <div class="label">龙头状态</div>
-          <div class="value">龙头主升，冰点抱团</div>
+          <div class="value">已确认龙头主升，冰点抱团</div>
         </div>
         <div class="metric">
           <div class="label">当前动作</div>
@@ -278,7 +278,7 @@
                 <td>绿电、电力、央企；算电协同只作为前序标签，不作为3月23增强依据</td>
                 <td>连续6板</td>
                 <td>早盘涨停并收涨停，换手11.43%、成交额11.48亿元；电力板块反复活跃。</td>
-                <td>龙头主升，但处在全市场冰点抱团环境</td>
+                <td>已确认龙头主升，但处在全市场冰点抱团环境</td>
                 <td>持仓，不加后排；无先手不追高</td>
                 <td>不允许</td>
               </tr>
@@ -645,7 +645,7 @@
         <h2>最终五句话</h2>
         <ol>
           <li>当前龙头：华电辽能，绿电、电力、央企方向，3月23晋级连续6板，仍有效。</li>
-          <li>龙头状态：龙头主升，但处于全市场冰点抱团环境。</li>
+          <li>龙头状态：已确认龙头主升，但处于全市场冰点抱团环境。</li>
           <li>当前动作：3月20先手试错仓持仓确认，不加后排；无先手不追6板或7板。</li>
           <li>是否允许寻找新龙：不允许，其他梯队只作背景。</li>
           <li>下一触发：2026-03-24只看华电辽能继续主升持仓、分歧减仓或负反馈清仓三条路径。</li>
@@ -665,130 +665,164 @@
 
       <script type="application/json" id="stock-cycle-review-data">
 {
-  "review_date": "2026-03-23",
-  "data_cutoff": "2026-03-23",
-  "previous_trading_day": "2026-03-20",
-  "next_trading_day": "2026-03-24",
-  "current_leader": "华电辽能",
-  "current_leader_theme": "绿电 / 电力 / 央企",
-  "leader_state": "龙头主升",
-  "position_action": "持仓，不加后排",
-  "new_leader_search_allowed": "不允许",
-  "next_trigger": "2026-03-24只看华电辽能继续主升持仓、分歧减仓或负反馈清仓；不设计其他候选买点",
-  "market_phase": "华电辽能6板空间确认，但市场冰点抱团",
-  "cycle_stage": "豫能控股死亡 -> 三房巷4板试错 -> 三房巷5板确认 -> 三房巷失败死亡 -> 华电辽能5板试错 -> 华电辽能6板确认",
-  "old_leader_state": "三房巷2连跌停，旧化工周期死亡确认",
-  "loss_effect": {
-    "level": "偏高",
-    "summary": "华电辽能晋级6板，但全市场超5100股下跌、133股跌停，深华发A天地板，三房巷2连跌停。龙头抱团有效，但只能持核心，不能扩散。",
-    "rows": [
-      ["华电辽能", "6连板，换手率11.43%，成交额11.48亿元"],
-      ["三房巷", "2连跌停，旧确认龙头死亡延续"],
-      ["深华发A", "5连板后天地板，高位分歧极强"],
-      ["市场", "28股涨停、15股炸板、封板率65%，全市场超5100股下跌"]
-    ]
-  },
-  "new_direction": {
-    "summary": "不寻找新方向。华电辽能仍为有效龙头，电力/绿电只用于判断龙头支撑，不用于新开后排。",
-    "strong_independent": "华电辽能6板确认",
-    "old_related": "豫能控股旧算力/算电链不作为3月23增强依据；三房巷化工线已退潮"
-  },
-  "operation_plan": {
-    "position": "保留3月20计划内试错仓，不新增普通仓",
-    "action": "3月24只按华电辽能强弱持有、减仓或清仓",
-    "candidate": "其他梯队只观察，不进入2026-03-24执行计划"
-  },
-  "risk_control": [
-    ["仓位上限", "已有试错仓以持有管理为主，不新增普通仓，冰点行情不扩大总仓位"],
-    ["单笔最大亏损", "从持仓成本回撤到-3%至-5%或盘中弱转弱，优先处理"],
-    ["当日最大亏损", "若龙头负反馈导致账户单日回撤超过-2%，停止新开"],
-    ["连续试错次数", "华电辽能若失败，等待新的4/5板结构，不连续补做后排"],
-    ["卖出条件", "7板不及预期、反复炸板、爆量长上影、低开杀跌、跌停、板块助攻断层或高位天地板扩散"]
-  ],
-  "high_level_sentiment": {
-    "nominal_highest_board": "华电辽能6连板",
-    "tradable_highest_board": "华电辽能为持仓确认核心；6板不是无先手新买点",
-    "previous_high_board_performance": "3月20华电辽能5板试错后3月23晋级6板；深华发A5连板后天地板",
-    "broken_board_feedback": "三房巷、合肥城建、雪龙集团2连跌停；深华发A天地板",
-    "high_level_limit_down_count": "全市场133股跌停；财联社连板股分析写近70股跌停",
-    "high_level_broken_board_count": "财联社/东方财富焦点复盘写15股炸板",
-    "promotion_rate": "连板股总数5只，三连板及以上3只，上一交易日7只连板股，晋级率42.85%"
-  },
-  "prior_confirmed_leader": "华电辽能",
-  "prior_leader_theme": "绿电 / 电力 / 央企",
-  "intermediate_trial_chain": "3月16法尔胜、三房巷3板观察；3月17三房巷4板试错；3月18三房巷5板确认；3月19三房巷失败；3月20华电辽能5板试错；3月23华电辽能6板确认",
-  "old_leader_chain": "豫能控股 / 算力、算电协同 -> 三房巷 / 化工、PTA、瓶片 -> 华电辽能 / 绿电、电力、央企",
-  "current_core": "华电辽能",
-  "tradable_high_board": "华电辽能6连板，持仓确认；大胜达4板仅跟踪",
-  "next_opportunity": "无新的标准买点；2026-03-24只管理华电辽能，未在3月20建试错仓者不追7板",
-  "hard_no_trade": "不追华电辽能6/7板无先手新开；不把大胜达4板写成新龙买点；不追深华发A天地板修复；不把正泰电源9天5板、瑞斯康达10天5板、东方新能6天4板压缩为连续板；不使用2026-03-24及之后数据",
-  "source_verification": {
-    "sector_primary_sources": "财联社连板股分析和焦点复盘核验电力/绿电反复活跃。未稳定核到同花顺/开盘啦完整题材热度，板块强度按强分支但不满格处理。",
-    "individual_primary_sources": "东方财富转载龙虎榜数据核验华电辽能收盘价、涨幅、换手率、成交额；证券时报盘中行情核验9:34涨停、封单金额。东方财富历史K线接口访问失败，K线字段主源缺失/待复核。",
-    "local_archive_use": "本地归档只用于复核2026-03-20计划，不作为2026-03-23行情事实来源。"
-  },
-  "board_sequence_verification": {
-    "status": "主要高标已由财联社核验；完整同花顺/开盘啦天梯主源缺失/待复核",
-    "consecutive_ladder_source": "财联社2026-03-23连板股分析；财联社/新浪财经2026-03-23焦点复盘",
-    "continuous_6_board": "华电辽能",
-    "continuous_4_board": "大胜达",
-    "continuous_3_board": "财联社写三连板及以上个股3只，但完整名单主源缺失/待复核；3板不进入买点",
-    "non_consecutive_patterns": "正泰电源9天5板；瑞斯康达10天5板；东方新能6天4板；立新能源3天2板",
-    "notes": "连续板数与N天M板分列。华电辽能已是当前龙头，3月24计划只管理龙头，不写其他N进N+1买点。"
-  },
-  "model_verdicts": [
-    {
-      "stock": "华电辽能",
-      "role": "6连板当前龙头",
-      "verdict": "observe only",
-      "reason": "3月20的5板试错买点已触发，3月23晋级6板属于持仓确认；无先手者不能把6板或次日7板当新标准买点。"
-    },
-    {
-      "stock": "大胜达",
-      "role": "4连板高位跟踪",
-      "verdict": "observe only",
-      "reason": "华电辽能龙头未死，不允许寻找新龙；大胜达只作梯队背景。"
-    },
-    {
-      "stock": "深华发A",
-      "role": "5板后天地板风险票",
-      "verdict": "reject",
-      "reason": "3月23天地板，释放高位亏钱效应，不做修复买点。"
-    },
-    {
-      "stock": "正泰电源、瑞斯康达、东方新能",
-      "role": "N天M板背景",
-      "verdict": "observe only",
-      "reason": "N天M板单列，不压缩为连续板买点。"
-    }
-  ],
-  "sources": [
-    {
-      "name": "财联社：3月23日连板股分析",
-      "published_at": "2026-03-23 15:52",
-      "url": "https://www.cls.cn/detail/2321420"
-    },
-    {
-      "name": "新浪财经/财联社：3月23日焦点复盘",
-      "published_at": "2026-03-23 17:25",
-      "url": "https://finance.sina.com.cn/roll/2026-03-23/doc-inhrynrt4102410.shtml?froms=ggmp"
-    },
-    {
-      "name": "新浪财经/财联社：3月23日每日收评",
-      "published_at": "2026-03-23 16:43",
-      "url": "https://finance.sina.com.cn/roll/2026-03-23/doc-inhryhit8024149.shtml"
-    },
-    {
-      "name": "东方财富网：华电辽能(600396)龙虎榜数据(03-23)",
-      "published_at": "2026-03-23 19:37",
-      "url": "https://finance.eastmoney.com/a/202603233681116780.html"
-    },
-    {
-      "name": "证券时报：华电辽能连收6个涨停板",
-      "published_at": "2026-03-23 10:06",
-      "url": "https://www.stcn.com/article/detail/3691196.html"
-    }
-  ]
+    "review_date":  "2026-03-23",
+    "generated_by_skill":  {
+                               "name":  "stock-cycle-review",
+                               "version":  "0.1.0+codex.20260602143920"
+                           },
+    "data_cutoff":  "2026-03-23",
+    "previous_trading_day":  "2026-03-20",
+    "next_trading_day":  "2026-03-24",
+    "current_leader":  "华电辽能",
+    "current_leader_theme":  "绿电 / 电力 / 央企",
+    "leader_state":  "已确认龙头主升",
+    "position_action":  "持仓，不加后排",
+    "new_leader_search_allowed":  "不允许",
+    "next_trigger":  "2026-03-24只看华电辽能继续主升持仓、分歧减仓或负反馈清仓；不设计其他候选买点",
+    "market_phase":  "华电辽能6板空间确认，但市场冰点抱团",
+    "cycle_stage":  "豫能控股死亡 -\u003e 三房巷4板试错 -\u003e 三房巷5板确认 -\u003e 三房巷失败死亡 -\u003e 华电辽能5板试错 -\u003e 华电辽能6板确认",
+    "old_leader_state":  "三房巷2连跌停，旧化工周期死亡确认",
+    "loss_effect":  {
+                        "level":  "偏高",
+                        "summary":  "华电辽能晋级6板，但全市场超5100股下跌、133股跌停，深华发A天地板，三房巷2连跌停。龙头抱团有效，但只能持核心，不能扩散。",
+                        "rows":  [
+                                     [
+                                         "华电辽能",
+                                         "6连板，换手率11.43%，成交额11.48亿元"
+                                     ],
+                                     [
+                                         "三房巷",
+                                         "2连跌停，旧确认龙头死亡延续"
+                                     ],
+                                     [
+                                         "深华发A",
+                                         "5连板后天地板，高位分歧极强"
+                                     ],
+                                     [
+                                         "市场",
+                                         "28股涨停、15股炸板、封板率65%，全市场超5100股下跌"
+                                     ]
+                                 ]
+                    },
+    "new_direction":  {
+                          "summary":  "不寻找新方向。华电辽能仍为有效龙头，电力/绿电只用于判断龙头支撑，不用于新开后排。",
+                          "strong_independent":  "华电辽能6板确认",
+                          "old_related":  "豫能控股旧算力/算电链不作为3月23增强依据；三房巷化工线已退潮"
+                      },
+    "operation_plan":  {
+                           "position":  "保留3月20计划内试错仓，不新增普通仓",
+                           "action":  "3月24只按华电辽能强弱持有、减仓或清仓",
+                           "candidate":  "其他梯队只观察，不进入2026-03-24执行计划"
+                       },
+    "risk_control":  [
+                         [
+                             "仓位上限",
+                             "已有试错仓以持有管理为主，不新增普通仓，冰点行情不扩大总仓位"
+                         ],
+                         [
+                             "单笔最大亏损",
+                             "从持仓成本回撤到-3%至-5%或盘中弱转弱，优先处理"
+                         ],
+                         [
+                             "当日最大亏损",
+                             "若龙头负反馈导致账户单日回撤超过-2%，停止新开"
+                         ],
+                         [
+                             "连续试错次数",
+                             "华电辽能若失败，等待新的4/5板结构，不连续补做后排"
+                         ],
+                         [
+                             "卖出条件",
+                             "7板不及预期、反复炸板、爆量长上影、低开杀跌、跌停、板块助攻断层或高位天地板扩散"
+                         ]
+                     ],
+    "high_level_sentiment":  {
+                                 "nominal_highest_board":  "华电辽能6连板",
+                                 "tradable_highest_board":  "华电辽能为持仓确认核心；6板不是无先手新买点",
+                                 "previous_high_board_performance":  "3月20华电辽能5板试错后3月23晋级6板；深华发A5连板后天地板",
+                                 "broken_board_feedback":  "三房巷、合肥城建、雪龙集团2连跌停；深华发A天地板",
+                                 "high_level_limit_down_count":  "全市场133股跌停；财联社连板股分析写近70股跌停",
+                                 "high_level_broken_board_count":  "财联社/东方财富焦点复盘写15股炸板",
+                                 "promotion_rate":  "连板股总数5只，三连板及以上3只，上一交易日7只连板股，晋级率42.85%"
+                             },
+    "prior_confirmed_leader":  "华电辽能",
+    "prior_leader_theme":  "绿电 / 电力 / 央企",
+    "intermediate_trial_chain":  "3月16法尔胜、三房巷3板观察；3月17三房巷4板试错；3月18三房巷5板确认；3月19三房巷失败；3月20华电辽能5板试错；3月23华电辽能6板确认",
+    "old_leader_chain":  "豫能控股 / 算力、算电协同 -\u003e 三房巷 / 化工、PTA、瓶片 -\u003e 华电辽能 / 绿电、电力、央企",
+    "current_core":  "华电辽能",
+    "tradable_high_board":  "华电辽能6连板，持仓确认；大胜达4板仅跟踪",
+    "next_opportunity":  "无新的标准试错买点；2026-03-24只管理华电辽能，未在3月20建试错仓者不追7板",
+    "hard_no_trade":  "不追华电辽能6/7板无先手新开；不把大胜达4板写成新龙买点；不追深华发A天地板修复；不把正泰电源9天5板、瑞斯康达10天5板、东方新能6天4板压缩为连续板；不使用2026-03-24及之后数据",
+    "source_verification":  {
+                                "sector_primary_sources":  "财联社连板股分析和焦点复盘核验电力/绿电反复活跃。未稳定核到同花顺/开盘啦完整题材热度，板块强度按强分支但不满格处理。",
+                                "individual_primary_sources":  "东方财富转载龙虎榜数据核验华电辽能收盘价、涨幅、换手率、成交额；证券时报盘中行情核验9:34涨停、封单金额。东方财富历史K线接口访问失败，K线字段主源缺失/待复核。",
+                                "local_archive_use":  "本地归档只用于复核2026-03-20计划，不作为2026-03-23行情事实来源。"
+                            },
+    "board_sequence_verification":  {
+                                        "status":  "主要高标已由财联社核验；完整同花顺/开盘啦天梯主源缺失/待复核",
+                                        "consecutive_ladder_source":  "财联社2026-03-23连板股分析；财联社/新浪财经2026-03-23焦点复盘",
+                                        "continuous_6_board":  "华电辽能",
+                                        "continuous_4_board":  "大胜达",
+                                        "continuous_3_board":  "财联社写三连板及以上个股3只，但完整名单主源缺失/待复核；3板不进入买点",
+                                        "non_consecutive_patterns":  "正泰电源9天5板；瑞斯康达10天5板；东方新能6天4板；立新能源3天2板",
+                                        "notes":  "连续板数与N天M板分列。华电辽能已是当前龙头，3月24计划只管理龙头，不写其他N进N+1买点。"
+                                    },
+    "model_verdicts":  [
+                           {
+                               "stock":  "华电辽能",
+                               "role":  "6连板当前龙头",
+                               "verdict":  "observe only",
+                               "reason":  "3月20的5板试错买点已触发，3月23晋级6板属于持仓确认；无先手者不能把6板或次日7板当新标准试错买点。"
+                           },
+                           {
+                               "stock":  "大胜达",
+                               "role":  "4连板高位跟踪",
+                               "verdict":  "observe only",
+                               "reason":  "华电辽能龙头未死，不允许寻找新龙；大胜达只作梯队背景。"
+                           },
+                           {
+                               "stock":  "深华发A",
+                               "role":  "5板后天地板风险票",
+                               "verdict":  "reject",
+                               "reason":  "3月23天地板，释放高位亏钱效应，不做修复买点。"
+                           },
+                           {
+                               "stock":  "正泰电源、瑞斯康达、东方新能",
+                               "role":  "N天M板背景",
+                               "verdict":  "observe only",
+                               "reason":  "N天M板单列，不压缩为连续板买点。"
+                           }
+                       ],
+    "sources":  [
+                    {
+                        "name":  "财联社：3月23日连板股分析",
+                        "published_at":  "2026-03-23 15:52",
+                        "url":  "https://www.cls.cn/detail/2321420"
+                    },
+                    {
+                        "name":  "新浪财经/财联社：3月23日焦点复盘",
+                        "published_at":  "2026-03-23 17:25",
+                        "url":  "https://finance.sina.com.cn/roll/2026-03-23/doc-inhrynrt4102410.shtml?froms=ggmp"
+                    },
+                    {
+                        "name":  "新浪财经/财联社：3月23日每日收评",
+                        "published_at":  "2026-03-23 16:43",
+                        "url":  "https://finance.sina.com.cn/roll/2026-03-23/doc-inhryhit8024149.shtml"
+                    },
+                    {
+                        "name":  "东方财富网：华电辽能(600396)龙虎榜数据(03-23)",
+                        "published_at":  "2026-03-23 19:37",
+                        "url":  "https://finance.eastmoney.com/a/202603233681116780.html"
+                    },
+                    {
+                        "name":  "证券时报：华电辽能连收6个涨停板",
+                        "published_at":  "2026-03-23 10:06",
+                        "url":  "https://www.stcn.com/article/detail/3691196.html"
+                    }
+                ],
+    "leader_anchor":  "华电辽能",
+    "leader_anchor_theme":  "绿电 / 电力 / 央企",
+    "leader_anchor_state":  "已确认龙头主升"
 }
       </script>
     </main>

@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="zh-CN">
   <head>
     <meta charset="utf-8" />
@@ -142,49 +142,78 @@
 
       <script type="application/json" id="stock-cycle-review-data">
 {
-  "review_date": "2026-03-14",
-  "data_cutoff": "2026-03-14",
-  "review_day_type": "非交易日/周六休市",
-  "previous_trading_day": "2026-03-13",
-  "next_trading_day": "2026-03-16",
-  "current_leader": "非交易日，沿用上一交易日锚点：豫能控股",
-  "current_leader_theme": "非交易日，沿用上一交易日口径：算力、算电协同",
-  "leader_state": "非交易日",
-  "position_action": "不交易",
-  "new_leader_search_allowed": "不适用",
-  "next_trigger": "沿用2026-03-13计划，待2026-03-16复核",
-  "cycle_stage": "非交易日",
-  "high_level_sentiment": {
-    "nominal_highest_board": "非交易日，无新增",
-    "tradable_highest_board": "非交易日，无新增",
-    "previous_high_board_performance": "未到执行日",
-    "broken_board_feedback": "未到执行日",
-    "high_level_limit_down_count": "非交易日，无新增",
-    "high_level_broken_board_count": "非交易日，无新增",
-    "promotion_rate": "非交易日，无新增"
-  },
-  "prior_confirmed_leader": "豫能控股",
-  "prior_leader_theme": "算力、算电协同",
-  "intermediate_trial_chain": "非交易日，无新增",
-  "old_leader_chain": "非交易日，沿用2026-03-13计划待复核",
-  "current_core": "非交易日，无新增",
-  "tradable_high_board": "非交易日，无新增",
-  "next_opportunity": "非交易日，无标准买点",
-  "hard_no_trade": "非交易日不交易；不使用2026-03-16及之后数据",
-  "model_verdicts": [
-    {
-      "stock": "非交易日",
-      "role": "休市",
-      "verdict": "observe only",
-      "reason": "无A股交易数据，不生成梯队、候选或买点"
-    }
-  ],
-  "source_verification": {
-    "used_after_review_date_data": false,
-    "review_date_has_a_share_trading": false,
-    "previous_plan_status": "未到执行日，待2026-03-16复核"
-  },
-  "sources": []
+    "review_date":  "2026-03-14",
+    "generated_by_skill":  {
+                               "name":  "stock-cycle-review",
+                               "version":  "0.1.0+codex.20260602143920"
+                           },
+    "data_cutoff":  "2026-03-14",
+    "review_day_type":  "非交易日/周六休市",
+    "previous_trading_day":  "2026-03-13",
+    "next_trading_day":  "2026-03-16",
+    "current_leader":  "非交易日，沿用上一交易日锚点：豫能控股",
+    "current_leader_theme":  "非交易日，沿用上一交易日口径：算力、算电协同",
+    "leader_state":  "非交易日",
+    "position_action":  "不交易",
+    "new_leader_search_allowed":  "不适用",
+    "next_trigger":  "沿用2026-03-13计划，待2026-03-16复核",
+    "market_phase":  "非交易日",
+    "old_leader_state":  "非交易日，上一交易日计划未到执行日",
+    "loss_effect":  {
+                        "level":  "非交易日",
+                        "summary":  "休市，无新增亏钱效应复核"
+                    },
+    "new_direction":  {
+                          "summary":  "非交易日，无新增题材强度判断"
+                      },
+    "operation_plan":  {
+                           "position":  "不交易",
+                           "action":  "沿用上一交易日计划待复核",
+                           "candidate":  "非交易日无候选"
+                       },
+    "risk_control":  [
+                         [
+                             "非交易日",
+                             "不交易，不新增计划，不使用未来数据"
+                         ]
+                     ],
+    "cycle_stage":  "非交易日",
+    "high_level_sentiment":  {
+                                 "nominal_highest_board":  "非交易日，无新增",
+                                 "tradable_highest_board":  "非交易日，无新增",
+                                 "previous_high_board_performance":  "未到执行日",
+                                 "broken_board_feedback":  "未到执行日",
+                                 "high_level_limit_down_count":  "非交易日，无新增",
+                                 "high_level_broken_board_count":  "非交易日，无新增",
+                                 "promotion_rate":  "非交易日，无新增"
+                             },
+    "prior_confirmed_leader":  "豫能控股",
+    "prior_leader_theme":  "算力、算电协同",
+    "intermediate_trial_chain":  "非交易日，无新增",
+    "old_leader_chain":  "非交易日，沿用2026-03-13计划待复核",
+    "current_core":  "非交易日，无新增",
+    "tradable_high_board":  "非交易日，无新增",
+    "next_opportunity":  "非交易日，无标准试错买点",
+    "hard_no_trade":  "非交易日不交易；不使用2026-03-16及之后数据",
+    "model_verdicts":  [
+                           {
+                               "stock":  "非交易日",
+                               "role":  "休市",
+                               "verdict":  "observe only",
+                               "reason":  "无A股交易数据，不生成梯队、候选或买点"
+                           }
+                       ],
+    "source_verification":  {
+                                "used_after_review_date_data":  false,
+                                "review_date_has_a_share_trading":  false,
+                                "previous_plan_status":  "未到执行日，待2026-03-16复核"
+                            },
+    "sources":  [
+
+                ],
+    "leader_anchor":  "豫能控股",
+    "leader_anchor_theme":  "算力、算电协同",
+    "leader_anchor_state":  "非交易日，上一交易日计划未到执行日"
 }
       </script>
     </main>

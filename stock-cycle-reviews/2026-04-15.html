@@ -1,0 +1,765 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>A股短线周期复盘 - 2026-04-15</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #f6f7f9;
+        --panel: #ffffff;
+        --text: #1f2937;
+        --muted: #667085;
+        --line: #d9dee7;
+        --strong: #13795b;
+        --warn: #b26a00;
+        --danger: #b42318;
+        --info: #1d4ed8;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--text);
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", sans-serif;
+        line-height: 1.55;
+      }
+      .page {
+        width: min(1180px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 28px 0 44px;
+      }
+      header { display: grid; gap: 10px; margin-bottom: 16px; }
+      h1 { margin: 0; font-size: clamp(24px, 4vw, 36px); letter-spacing: 0; }
+      h2 { margin: 0 0 12px; font-size: 18px; letter-spacing: 0; }
+      p { margin: 0; }
+      .note { color: var(--muted); font-size: 14px; }
+      .risk {
+        border-left: 4px solid var(--warn);
+        background: #fff8ec;
+        padding: 10px 12px;
+        color: #7a4b00;
+      }
+      .status-grid {
+        display: grid;
+        grid-template-columns: repeat(7, minmax(0, 1fr));
+        gap: 12px;
+        margin: 18px 0;
+      }
+      .metric, section {
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+      }
+      .metric { padding: 12px; min-height: 104px; }
+      .metric .label { color: var(--muted); font-size: 12px; margin-bottom: 6px; }
+      .metric .value { font-size: 16px; font-weight: 700; }
+      section { padding: 16px; margin-bottom: 14px; }
+      .table-wrap { overflow-x: auto; }
+      table { width: 100%; border-collapse: collapse; font-size: 14px; }
+      th, td {
+        border-bottom: 1px solid var(--line);
+        padding: 10px 8px;
+        text-align: left;
+        vertical-align: top;
+      }
+      th { color: var(--muted); background: #f9fafb; font-weight: 600; }
+      tr:last-child td { border-bottom: 0; }
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        min-height: 24px;
+        padding: 2px 8px;
+        border-radius: 999px;
+        font-size: 12px;
+        font-weight: 700;
+        white-space: nowrap;
+      }
+      .buy { background: #e8f5ef; color: var(--strong); }
+      .observe { background: #fff4db; color: var(--warn); }
+      .reject { background: #fdebea; color: var(--danger); }
+      .context { background: #eaf1ff; color: var(--info); }
+      .timeline, .plan {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+      }
+      .step, .plan-block {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 12px;
+        background: #fbfcfe;
+      }
+      .step strong, .plan-block strong { display: block; margin-bottom: 6px; }
+      .list { margin: 0; padding-left: 18px; }
+      a { color: var(--info); text-decoration: none; }
+      a:hover { text-decoration: underline; }
+      @media (max-width: 980px) {
+        .status-grid, .timeline, .plan { grid-template-columns: 1fr; }
+        table { min-width: 900px; }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <header>
+        <h1>A股短线周期复盘 - 2026-04-15</h1>
+        <p class="note">复盘口径：历史实盘模拟。数据截止：2026-04-15 收盘后已公开信息；下一交易日计划对应 2026-04-16。严格不使用 2026-04-16 盘中、收盘及之后数据。</p>
+        <p class="risk">本页先复核 2026-04-14 已归档计划，再生成 2026-04-16 条件计划。4月16日计划只基于 4月13日、4月14日、4月15日三日约束和 4月15日以前公开源，不读取下一交易日结果。</p>
+      </header>
+
+      <section class="status-grid" aria-label="核心状态">
+        <div class="metric">
+          <div class="label">当前有效龙头</div>
+          <div class="value">无有效龙头</div>
+        </div>
+        <div class="metric">
+          <div class="label">当前龙头锚点</div>
+          <div class="value">华电辽能 / 旧锚点</div>
+        </div>
+        <div class="metric">
+          <div class="label">当前试错核心</div>
+          <div class="value">圣阳股份5板</div>
+        </div>
+        <div class="metric">
+          <div class="label">名义高标</div>
+          <div class="value">圣阳股份5板</div>
+        </div>
+        <div class="metric">
+          <div class="label">中恒复核</div>
+          <div class="value">4进5失败</div>
+        </div>
+        <div class="metric">
+          <div class="label">当前动作</div>
+          <div class="value">清中恒；圣阳极小试错</div>
+        </div>
+        <div class="metric">
+          <div class="label">下一触发</div>
+          <div class="value">圣阳6板+高潮日</div>
+        </div>
+      </section>
+
+      <section>
+        <h2>上一交易日计划复核</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>计划来源</th>
+                <th>2026-04-15 盘前条件</th>
+                <th>2026-04-15 当日核验</th>
+                <th>复核结论</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>本地 2026-04-14 归档，仅用于复核上一交易日计划。</td>
+                <td>中恒电气4进5是主线试错管理：有先手只看5板能否非一字主动回封，且储能、算力硬件、电池方向继续助攻；若放量失控或低开不修复，退出试错。</td>
+                <td>东方财富09:45记录中恒电气快速回调，报42.49元、成交23.08亿元、换手9.68%；同花顺4月15日复盘显示中恒电气收43.40元、涨2.14%、换手27.794%。财联社连板梯队没有把中恒列入5板。</td>
+                <td><span class="badge reject">中恒试错失败</span> 4进5没有封板确认，且放量分歧明显，按计划退出试错，不做低吸修复。</td>
+              </tr>
+              <tr>
+                <td>圣阳股份4进5对照分支</td>
+                <td>只作为中恒电气同题材强弱对照；只有中恒明显掉队且圣阳主动换手回封、板块更强，才观察，不直接升确认龙头。</td>
+                <td>东方财富09:54记录圣阳股份截至9:33涨停，5连板，换手11.59%、成交13.12亿元、封单4.19亿元；17:35数据称全天换手23.86%、成交27.08亿元。财联社16:13称圣阳股份弱转强晋级5连板。</td>
+                <td><span class="badge buy">转为试错核心</span> 圣阳满足5板可交易和弱转强，但仍不是确认龙头；只能极小试错或无先手观察。</td>
+              </tr>
+              <tr>
+                <td>华远控股6进7风险标尺</td>
+                <td>只看情绪温度，不作为新买点；若高位断板大阴，连板情绪降温，中恒和圣阳同步降低仓位或放弃。</td>
+                <td>新浪证券17:13记录华远控股跌停，日振幅19.94%、换手19.20%、成交额14.05亿元。财联社称其上演天地板，连板高度降至圣阳股份5板。</td>
+                <td><span class="badge reject">高标负反馈</span> 华远风险标尺兑现，确认高位分歧加重，试错仓位必须保持极低。</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2>前三交易日约束</h2>
+        <div class="timeline">
+          <div class="step">
+            <strong>2026-04-13</strong>
+            <p>华远控股5板低流动性不合格；长源东谷4板重组复牌路径不干净；圣阳股份和中恒电气只是3板候选池。</p>
+          </div>
+          <div class="step">
+            <strong>2026-04-14</strong>
+            <p>中恒电气4板被列为标准试错核心；圣阳股份4板高换手弱封，仅作为同题材对照；华远控股6板仍不追。</p>
+          </div>
+          <div class="step">
+            <strong>2026-04-15</strong>
+            <p>中恒电气4进5失败；圣阳股份弱转强5板，成为新的试错核心；华远控股天地板，连板晋级率降至30%。</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>龙头锚点</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>当前龙头锚点</th>
+                <th>有效龙头</th>
+                <th>当前试错核心</th>
+                <th>状态</th>
+                <th>动作</th>
+                <th>是否找新龙</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>华电辽能 / 绿电、电力、央企（上一轮已确认龙头，当前旧锚点）</td>
+                <td>无有效龙头。圣阳股份只有5连板，尚未满足6板+主题高潮日确认；华远控股天地板后不能作为锚点。</td>
+                <td>圣阳股份 / 储能、电网设备、液冷储能，5板弱转强，当前为试错核心。</td>
+                <td><span class="badge observe">试错核心待确认</span> 还没有确认新龙。</td>
+                <td>中恒电气试错仓清掉；圣阳股份只允许极小试错或无先手观察。</td>
+                <td><span class="badge observe">允许但先管理试错</span> 圣阳失败前不扩散到普通后排。</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2>高位情绪快照</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>名义最高板</th>
+                <th>可交易最高板</th>
+                <th>昨日高标表现</th>
+                <th>炸板/跌停反馈</th>
+                <th>连板晋级</th>
+                <th>口径差异</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>圣阳股份5连板；天邦食品、博云新材3连板；中嘉博创、长源东谷为6天5板非连续高度。</td>
+                <td>圣阳股份5板弱转强是可交易高标，但只属于试错核心，未确认龙头。</td>
+                <td>华远控股天地板跌停，美能能源断板跌停；中恒电气4进5失败；长源东谷反包但属于6天5板，不压缩为连续5板。</td>
+                <td>财联社口径57股涨停、24股炸板、封板率70%；东方财富/界面口径68股涨停、14股跌停。</td>
+                <td>财联社称连板晋级率降至30%，高位股内部分歧再现。</td>
+                <td>连板结构以财联社、同花顺为主；个股盘中成交和换手以东方财富为主；低位涨跌停数存在口径差异。</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2>亏钱效应</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>检查项</th>
+                <th>4月15日证据</th>
+                <th>结论</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>高标A杀</td>
+                <td>华远控股盘中天地板并以跌停收盘，日振幅19.94%、换手19.20%；美能能源断板跌停。</td>
+                <td><span class="badge reject">高位负反馈明显</span></td>
+              </tr>
+              <tr>
+                <td>试错核心是否晋级</td>
+                <td>中恒电气未晋级5板，09:45已经快速回调，收盘只涨2.14%，换手27.794%。</td>
+                <td><span class="badge reject">中恒失败</span></td>
+              </tr>
+              <tr>
+                <td>新试错是否出现</td>
+                <td>圣阳股份9:33封5板，盘中换手11.59%、成交13.12亿元，全天换手23.86%、成交27.08亿元。</td>
+                <td><span class="badge observe">圣阳接力试错</span></td>
+              </tr>
+              <tr>
+                <td>指数和板块</td>
+                <td>创业板指盘中创近11年新高后收跌1.22%，超3500只个股下跌；创新药、电网设备领涨，锂电池、算力硬件跌幅靠前。</td>
+                <td><span class="badge observe">指数分歧，题材切换</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2>最近归档对比</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>日期</th>
+                <th>核心</th>
+                <th>状态</th>
+                <th>上一计划</th>
+                <th>4月15日跟踪</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>2026-04-09</td>
+                <td>汇源通信5板标准试错核心</td>
+                <td>试错核心，待6板确认</td>
+                <td>4月10日看6板确认或失败清仓。</td>
+                <td>该链已失败，4月15日不再恢复。</td>
+              </tr>
+              <tr>
+                <td>2026-04-10</td>
+                <td>汇源通信失败；华远4板观察</td>
+                <td>清仓，空仓观察</td>
+                <td>4月13日看华远4进5或3板股进4。</td>
+                <td>华远最终6板后天地板，验证不能因高度倒推买点。</td>
+              </tr>
+              <tr>
+                <td>2026-04-13</td>
+                <td>华远5板、长源4板观察</td>
+                <td>空仓观察</td>
+                <td>4月14日看长源4进5或圣阳/中恒3进4。</td>
+                <td>长源4进5失败后反包，仍为非连续；中恒和圣阳走成双4板。</td>
+              </tr>
+              <tr>
+                <td>2026-04-14</td>
+                <td>中恒电气4板试错核心；圣阳高风险对照</td>
+                <td>试错核心</td>
+                <td>4月15日只管理中恒4进5；圣阳只作对照；华远作风险标尺。</td>
+                <td>中恒失败，圣阳弱转强5板，华远天地板。试错核心从中恒切到圣阳，但仍未确认龙头。</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2>板块强度</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>板块</th>
+                <th>高标核心</th>
+                <th>一字 / 中位助攻</th>
+                <th>容量核心</th>
+                <th>与旧周期关系</th>
+                <th>模型处理</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>储能 / 电网设备 / 液冷储能</td>
+                <td>圣阳股份5连板；华菱线缆、汉缆股份、起帆电缆等电网设备方向涨停或活跃。</td>
+                <td>同花顺早盘材料称电池产业链、智能电网反复活跃，特高压方向大连电瓷、汉缆股份双双涨停。</td>
+                <td>电网设备为资金承接方向，但锂电池整体回吐，容量主线并不完整。</td>
+                <td>与华电辽能有宽泛能源属性重叠，但圣阳主驱动是储能、电源和电网设备，不按旧绿电补涨处理。</td>
+                <td><span class="badge observe">支持试错，不支持确认</span></td>
+              </tr>
+              <tr>
+                <td>创新药 / 医药商业</td>
+                <td>哈药股份2连板，津药药业反抽涨停，北大医药、金陵药业等涨停。</td>
+                <td>同花顺收评称创新药、医药电商、仿制药一致性评价为资金净流入前列方向。</td>
+                <td>博瑞医药等20cm品种强，港股创新药也有映射。</td>
+                <td>独立低位防御方向，不属于圣阳同题材。</td>
+                <td><span class="badge context">主线切换观察</span></td>
+              </tr>
+              <tr>
+                <td>算力租赁 / 国产算力</td>
+                <td>中嘉博创6天5板，奥尼电子20cm 2连板，利通电子6天3板。</td>
+                <td>财联社称算力租赁概念反复活跃，但算力硬件整体分化。</td>
+                <td>协创数据、宏景科技等趋势品种强；CPO硬件权重回落。</td>
+                <td>与4月14日中恒的数据中心电源有交集，但当日主线从硬件高位切到租赁和低位国产算力。</td>
+                <td><span class="badge context">非连续高度，不作买点</span></td>
+              </tr>
+              <tr>
+                <td>并购重组 / 房地产</td>
+                <td>华远控股天地板跌停；长源东谷反包涨停、6天5板。</td>
+                <td>长源东谷不是连续5板；华远从空间板转负反馈。</td>
+                <td>缺少容量中军。</td>
+                <td>事件驱动抱团退潮，不能作为新周期确认方向。</td>
+                <td><span class="badge reject">风险线</span></td>
+              </tr>
+              <tr>
+                <td>商业航天 / 航空新材料</td>
+                <td>博云新材3连板，神剑股份涨停创历史新高。</td>
+                <td>同花顺早盘和财联社均提到商业航天活跃。</td>
+                <td>缺少持续容量核心，更多是低位轮动和事件催化。</td>
+                <td>神剑股份旧试错失败链曾出现，当前只做低位跟踪。</td>
+                <td><span class="badge context">候选池观察</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2>新龙搜索闸门</h2>
+        <p><strong>允许寻找新龙，但当前仍只能写圣阳股份为试错核心。</strong> 中恒电气4进5失败，华远控股天地板，高标负反馈已经出现；圣阳股份5板弱转强具备5板试错核心资格。但它还没有通过连续6板和主题高潮日确认，且4月15日锂电池、算力硬件整体调整，只有储能/电网设备局部支撑，因此不能写成当前确认龙头。</p>
+      </section>
+
+      <section>
+        <h2>连板梯队</h2>
+        <p class="note">连板梯队主源：财联社 2026-04-15 焦点复盘、财联社 15:24 涨停分析、东方财富/界面新闻 15:10 涨跌停股分析、同花顺 15:01 收评。连续板与N天N板分列。</p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>板数</th>
+                <th>股票</th>
+                <th>连续板数</th>
+                <th>几天几板/非连续形态</th>
+                <th>题材</th>
+                <th>角色</th>
+                <th>交易性</th>
+                <th>模型结论</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>5板</td>
+                <td>圣阳股份</td>
+                <td>5</td>
+                <td>11天6板</td>
+                <td>储能 / 电网设备 / 液冷储能</td>
+                <td>当前试错核心，待6板+高潮日确认。</td>
+                <td>9:33涨停时换手11.59%、成交13.12亿元、封单4.19亿元；全天换手23.86%、成交27.08亿元。</td>
+                <td><span class="badge buy">标准试错买点</span></td>
+              </tr>
+              <tr>
+                <td>3板</td>
+                <td>天邦食品</td>
+                <td>3</td>
+                <td>无</td>
+                <td>养殖 / 猪肉</td>
+                <td>低位独立方向候选池。</td>
+                <td>不是4/5板买点高度；若圣阳失败，才在下一交易日检查3进4。</td>
+                <td><span class="badge observe">盘面跟踪</span></td>
+              </tr>
+              <tr>
+                <td>3板</td>
+                <td>博云新材</td>
+                <td>3</td>
+                <td>无</td>
+                <td>商业航天 / 航空新材料</td>
+                <td>低位独立方向候选池。</td>
+                <td>不是4/5板买点高度；若圣阳失败，才在下一交易日检查3进4。</td>
+                <td><span class="badge observe">盘面跟踪</span></td>
+              </tr>
+              <tr>
+                <td>非连续高度</td>
+                <td>中嘉博创、长源东谷、中工国际、和胜股份、沃格光电、利通电子</td>
+                <td>不压缩</td>
+                <td>中嘉博创、长源东谷6天5板；中工国际9天5板；和胜股份、沃格光电5天3板；利通电子6天3板。</td>
+                <td>算力租赁 / 并购重组 / 基建 / 玻璃基板</td>
+                <td>N天N板背景。</td>
+                <td>不能压缩为连续4/5板候选，也不能写N进N+1买点。</td>
+                <td><span class="badge reject">不作为连续买点</span></td>
+              </tr>
+              <tr>
+                <td>断板风险</td>
+                <td>华远控股、美能能源、中恒电气</td>
+                <td>无</td>
+                <td>华远由6板天地板跌停；美能能源3板后跌停；中恒4进5失败。</td>
+                <td>并购重组 / 燃气 / 储能电源</td>
+                <td>高标负反馈与失败试错。</td>
+                <td>不低吸，不做修复买点。</td>
+                <td><span class="badge reject">放弃</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2>4/5板候选检查</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>股票</th>
+                <th>板数</th>
+                <th>买点状态</th>
+                <th>加分项</th>
+                <th>扣分项</th>
+                <th>模型结论</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>圣阳股份</td>
+                <td>连续5板</td>
+                <td>中恒掉队后弱转强5板，且非一字可交易，符合5板试错核心标准。</td>
+                <td>东方财富显示9:33封板时成交13.12亿元、换手11.59%、封单4.19亿元；财联社称弱转强晋级5连板；电网设备和储能局部有助攻。</td>
+                <td>4月14日曾高换手弱封；4月15日锂电池和算力硬件整体调整，主题高潮不完整；华远天地板压制高标情绪。</td>
+                <td><span class="badge buy">标准试错买点</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2>2026-04-16 条件计划</h2>
+        <div class="plan">
+          <div class="plan-block">
+            <strong>一、圣阳股份5进6：确认条件</strong>
+            <p>有先手只看6板能否主动封板，并带出储能、电网设备、电池线的涨停潮或容量核心回流。只有连续6板加板块高潮日成立，才从试错核心升级为确认龙头。</p>
+          </div>
+          <div class="plan-block">
+            <strong>二、中恒电气：失败链处理</strong>
+            <p>中恒电气不做低吸修复。若继续下杀或弱修复，确认4月14日试错失败；若强修复，只能作为圣阳股份的板块助攻，不重新写买点。</p>
+          </div>
+          <div class="plan-block">
+            <strong>三、华远控股：风险标尺</strong>
+            <p>华远控股若继续跌停或大阴，高标负反馈扩散，圣阳股份试错仓也要降到最低或退出。若反核修复，只当情绪降温缓和，不作为买点。</p>
+          </div>
+        </div>
+        <p class="note">备选候选池：天邦食品、博云新材都是连续3板，只能在圣阳股份先失败或明显负反馈后，才按3进4非一字换手回封检查；中嘉博创、长源东谷等N天N板不压缩为连续候选。本计划不读取 2026-04-16 盘面结果。</p>
+      </section>
+
+      <section>
+        <h2>操作与仓位</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>阶段</th>
+                <th>仓位</th>
+                <th>执行动作</th>
+                <th>候选处理</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>中恒试错失败后，圣阳股份5板试错</td>
+                <td>极小仓试错；无先手不追6板一字或秒板。</td>
+                <td>清中恒电气；圣阳股份只管理5进6确认路径。没有6板+高潮日前不重仓。</td>
+                <td>天邦食品、博云新材只做候选池；华远控股和美能能源做负反馈标尺；N天N板全部按非连续处理。</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2>风险控制</h2>
+        <div class="table-wrap">
+          <table>
+            <tbody>
+              <tr>
+                <th>单笔最大亏损</th>
+                <td>圣阳试错仓单笔亏损约 -3% 且不能快速修复即处理；中恒失败后不补仓。</td>
+              </tr>
+              <tr>
+                <th>当日最大亏损</th>
+                <td>当日亏损达到 -5% 或圣阳5进6封板失败后，不切换到天邦、博云或同题材后排。</td>
+              </tr>
+              <tr>
+                <th>连续试错次数</th>
+                <td>汇源、中恒已先后失败；圣阳若不能确认，重新回到空仓等待下一只合格4/5板。</td>
+              </tr>
+              <tr>
+                <th>仓位上限</th>
+                <td>没有6板+高潮日确认前不重仓；有先手也只按试错仓管理。</td>
+              </tr>
+              <tr>
+                <th>卖出条件</th>
+                <td>圣阳股份不能弱转强、储能/电网设备助攻断层、华远控股继续跌停、美能能源跌停扩散、创业板继续放量下杀。</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2>最终六问</h2>
+        <ol>
+          <li>当前有效龙头：无有效龙头；当前龙头锚点：华电辽能 / 绿电、电力、央企（旧锚点，已死亡）。</li>
+          <li>当前试错核心：圣阳股份5板弱转强，储能/电网设备方向，仍待6板+高潮日确认。</li>
+          <li>龙头状态：试错核心；中恒电气试错失败，华远控股天地板负反馈。</li>
+          <li>当前动作：清中恒，圣阳只保留极小试错或无先手空仓观察。</li>
+          <li>是否允许寻找新龙：允许，但先管理圣阳股份；未失败前不扩散到普通后排。</li>
+          <li>下一触发：2026-04-16 看圣阳股份能否6板并带动储能/电网设备高潮；不满足则回无龙空仓。</li>
+        </ol>
+      </section>
+
+      <section>
+        <h2>数据源</h2>
+        <ul class="list">
+          <li><a href="https://www.cls.cn/detail/2344971">财联社焦点复盘：创指创10年新高后跳水翻绿，2026-04-15 17:28</a></li>
+          <li><a href="https://www.cls.cn/detail/2344767">财联社：4月15日涨停分析，2026-04-15 15:24</a></li>
+          <li><a href="https://finance.eastmoney.com/a/202604153705914810.html">东方财富转载财联社：4月15日连板股分析，2026-04-15 16:13</a></li>
+          <li><a href="https://stock.10jqka.com.cn/20260415/c676005219.shtml">同花顺7x24：A股收评，2026-04-15 15:01</a></li>
+          <li><a href="https://stock.10jqka.com.cn/20260415/c676000630.shtml">同花顺转载中国基金报：电力设备板块活跃，2026-04-15 10:55</a></li>
+          <li><a href="https://finance.eastmoney.com/a/202604153705604132.html">东方财富/证券时报：圣阳股份连收5个涨停板，2026-04-15 09:54</a></li>
+          <li><a href="https://finance.eastmoney.com/a/202604153706037972.html">东方财富/证券时报：圣阳股份涨停龙虎榜，2026-04-15 17:35</a></li>
+          <li><a href="https://finance.eastmoney.com/a/202604153705554547.html">东方财富Choice：中恒电气4月15日快速回调，2026-04-15 09:45</a></li>
+          <li><a href="https://finance.sina.com.cn/stock/aiassist/lgbzz/2026-04-15/doc-inhuqnax8429782.shtml">新浪证券：华远控股跌停龙虎榜，2026-04-15 17:13</a></li>
+          <li><a href="https://finance.eastmoney.com/a/202604153705852754.html">东方财富/界面新闻：今日涨跌停股分析，2026-04-15 15:10</a></li>
+        </ul>
+      </section>
+
+      <script type="application/json" id="stock-cycle-review-data">
+{
+  "review_date": "2026-04-15",
+  "data_cutoff": "2026-04-15",
+  "generated_by_skill": {
+    "name": "stock-cycle-review"
+  },
+  "is_trading_day": true,
+  "previous_trading_day": "2026-04-14",
+  "next_trading_day": "2026-04-16",
+  "current_leader": "无有效龙头",
+  "current_leader_theme": "无",
+  "leader_anchor": "华电辽能",
+  "leader_anchor_theme": "绿电 / 电力 / 央企",
+  "leader_anchor_state": "旧确认龙头已死亡；中恒电气4进5试错失败；圣阳股份5板弱转强但未过6板+高潮日",
+  "leader_state": "试错核心",
+  "position_action": "清中恒试错仓；圣阳股份极小仓试错 / 无先手空仓观察",
+  "new_leader_search_allowed": "允许，但先管理圣阳股份试错核心；未过6板+高潮日不确认",
+  "next_trigger": "2026-04-16看圣阳股份能否6板并带动储能/电网设备高潮；不满足则回无龙空仓",
+  "market_phase": "中恒试错失败后，圣阳股份5板接力试错",
+  "cycle_stage": "华电辽能旧周期死亡 -> 汇源通信5板试错失败 -> 华远控股6板天地板负反馈 -> 中恒电气4板试错失败 -> 圣阳股份5板试错核心",
+  "old_leader_state": "华电辽能旧周期已死亡；华远控股天地板确认事件高标负反馈",
+  "loss_effect": {
+    "level": "偏高，高标天地板和试错核心失败并存",
+    "summary": "4月15日创业板指冲高回落，超3500只个股下跌，连板晋级率降至30%。华远控股天地板、美能能源跌停，中恒电气4进5失败。圣阳股份弱转强5板转为试错核心，但仍未通过6板+高潮日确认。",
+    "rows": [
+      ["市场", "沪指涨0.01%，深成指跌0.97%，创业板指跌1.22%，两市成交2.42万亿元，放量315亿元"],
+      ["高标风险", "华远控股天地板跌停，日振幅19.94%、换手19.20%；美能能源断板跌停"],
+      ["试错", "中恒电气4进5失败；圣阳股份5板弱转强，9:33封板时成交13.12亿元、换手11.59%"]
+    ]
+  },
+  "new_direction": {
+    "summary": "创新药、医药商业、电网设备、养殖是当日强势方向；储能/电网设备由圣阳股份保持高度，但锂电池和算力硬件整体调整，题材高潮不完整。",
+    "strong_independent": "创新药 / 医药商业 / 电网设备 / 养殖",
+    "old_related": "圣阳股份与华电辽能有宽泛能源属性重叠，但主驱动是储能、电网设备和液冷储能，不按旧绿电后排处理"
+  },
+  "operation_plan": {
+    "position": "清中恒试错仓；圣阳股份最多极小仓试错；无先手空仓观察",
+    "action": "只管理圣阳股份5进6确认路径，不追6板一字或秒板；中恒不低吸，华远只作风险标尺",
+    "candidate": "圣阳股份6板+储能/电网设备高潮才确认龙头；若圣阳失败，天邦食品/博云新材3进4才进入下一轮检查"
+  },
+  "risk_control": [
+    ["单笔最大亏损", "圣阳试错仓单笔亏损约-3%且不能快速修复即处理；中恒失败后不补仓"],
+    ["当日最大亏损", "当日亏损达到-5%或圣阳5进6封板失败后，不切换到天邦、博云或同题材后排"],
+    ["连续试错次数", "汇源、中恒已先后失败；圣阳若不能确认，重新回到空仓等待下一只合格4/5板"],
+    ["仓位上限", "没有6板+高潮日确认前不重仓；有先手也只按试错仓管理"],
+    ["卖出条件", "圣阳股份不能弱转强、储能/电网设备助攻断层、华远控股继续跌停、美能能源跌停扩散、创业板继续放量下杀"]
+  ],
+  "high_level_sentiment": {
+    "nominal_highest_board": "圣阳股份5连板；天邦食品、博云新材3连板；中嘉博创、长源东谷6天5板为非连续高度",
+    "tradable_highest_board": "圣阳股份5板弱转强，具备试错核心资格；未过6板+高潮日不确认龙头",
+    "previous_high_board_performance": "华远控股天地板跌停；中恒电气4进5失败；美能能源断板跌停",
+    "broken_board_feedback": "财联社24股炸板，封板率70%；东方财富/界面口径14只跌停",
+    "high_level_limit_down_count": "华远控股、美能能源为主要高标跌停负反馈",
+    "high_level_broken_board_count": "24股炸板",
+    "promotion_rate": "财联社称连板晋级率降至30%"
+  },
+  "prior_confirmed_leader": "华电辽能",
+  "prior_leader_theme": "绿电 / 电力 / 央企",
+  "intermediate_trial_chain": "神剑股份试错失败；津药药业一字高标负反馈；汇源通信5板试错失败；华远控股6板天地板负反馈；中恒电气4板试错失败；圣阳股份5板接力试错",
+  "old_leader_chain": "华电辽能 / 绿电电力央企 -> 神剑股份 / 商业航天试错失败 -> 汇源通信 / 光纤光通信5板试错失败 -> 华远控股6板天地板 -> 中恒电气4板试错失败 -> 圣阳股份5板试错核心",
+  "current_core": "圣阳股份5板弱转强，储能/电网设备方向，标准试错核心但未确认龙头",
+  "tradable_high_board": "圣阳股份5板，9:33封板时换手11.59%、成交13.12亿元，全天换手23.86%、成交27.08亿元",
+  "next_opportunity": "无新的标准买点；2026-04-16只管理圣阳股份5进6确认路径，天邦食品/博云新材3进4只在圣阳失败后进入检查",
+  "hard_no_trade": "不低吸中恒电气；不追圣阳6板一字或秒板；不把圣阳5板直接确认龙头；不做华远控股反核；不压缩中嘉博创、长源东谷、中工国际等N天N板为连续候选",
+  "source_verification": {
+    "sector_theme_primary_sources": "同花顺2026-04-15收评用于创新药、猪肉、电网设备、旅游、电池和算力硬件强弱；同花顺早盘材料用于电池产业链、智能电网、特高压和商业航天；财联社焦点复盘用于连板情绪和主线热点。",
+    "individual_primary_sources": "东方财富Choice用于中恒电气09:45快速回调；东方财富/证券时报用于圣阳股份9:33封板成交换手和17:35全天成交换手；新浪证券补充华远控股跌停、振幅、换手和成交额。",
+    "local_archive_use": "本地2026-04-14归档只用于复核上一交易日计划，不作为2026-04-15行情事实来源。"
+  },
+  "board_sequence_verification": {
+    "status": "核心高标梯队完整；连续板与N天N板已分列",
+    "consecutive_ladder_source": "财联社2026-04-15焦点复盘、财联社2026-04-15涨停分析、东方财富/界面新闻2026-04-15涨跌停股分析、同花顺2026-04-15收评",
+    "continuous_5_board": "圣阳股份",
+    "continuous_3_board": "天邦食品、博云新材",
+    "non_consecutive_patterns": "中嘉博创、长源东谷6天5板；中工国际9天5板；和胜股份、沃格光电5天3板；利通电子6天3板",
+    "failed_high_board": "华远控股天地板跌停；美能能源断板跌停；中恒电气4进5失败",
+    "notes": "圣阳股份是连续5板且同时为11天6板，连续板数按5板处理；长源东谷和中嘉博创6天5板不压缩为连续5板。"
+  },
+  "model_verdicts": [
+    {
+      "stock": "中恒电气",
+      "role": "前一日4板试错核心",
+      "verdict": "reject",
+      "reason": "4月15日未晋级5板，东方财富09:45记录快速回调，成交23.08亿元、换手9.68%，收盘只涨2.14%，4进5试错失败。"
+    },
+    {
+      "stock": "圣阳股份",
+      "role": "储能/电网设备5板试错核心",
+      "verdict": "standard buy",
+      "reason": "中恒掉队后弱转强晋级5连板，9:33封板时换手11.59%、成交13.12亿元、封单4.19亿元，全天换手23.86%、成交27.08亿元；但仍需6板+高潮日确认。"
+    },
+    {
+      "stock": "华远控股",
+      "role": "并购重组/房地产前6板高标",
+      "verdict": "reject",
+      "reason": "4月15日天地板跌停，日振幅19.94%、换手19.20%、成交额14.05亿元，成为高标负反馈标尺。"
+    },
+    {
+      "stock": "天邦食品、博云新材",
+      "role": "连续3板候选池",
+      "verdict": "observe only",
+      "reason": "4月15日只是3板，不是当日4/5板标准买点；只有圣阳股份失败后，下一交易日非一字4板才进入检查。"
+    }
+  ],
+  "sources": [
+    {
+      "name": "财联社焦点复盘：创指创10年新高后跳水翻绿",
+      "published_at": "2026-04-15 17:28",
+      "url": "https://www.cls.cn/detail/2344971"
+    },
+    {
+      "name": "财联社：4月15日涨停分析",
+      "published_at": "2026-04-15 15:24",
+      "url": "https://www.cls.cn/detail/2344767"
+    },
+    {
+      "name": "东方财富转载财联社：4月15日连板股分析",
+      "published_at": "2026-04-15 16:13",
+      "url": "https://finance.eastmoney.com/a/202604153705914810.html"
+    },
+    {
+      "name": "同花顺7x24：A股收评",
+      "published_at": "2026-04-15 15:01",
+      "url": "https://stock.10jqka.com.cn/20260415/c676005219.shtml"
+    },
+    {
+      "name": "同花顺转载中国基金报：电力设备板块活跃",
+      "published_at": "2026-04-15 10:55",
+      "url": "https://stock.10jqka.com.cn/20260415/c676000630.shtml"
+    },
+    {
+      "name": "东方财富/证券时报：圣阳股份连收5个涨停板",
+      "published_at": "2026-04-15 09:54",
+      "url": "https://finance.eastmoney.com/a/202604153705604132.html"
+    },
+    {
+      "name": "东方财富/证券时报：圣阳股份涨停龙虎榜",
+      "published_at": "2026-04-15 17:35",
+      "url": "https://finance.eastmoney.com/a/202604153706037972.html"
+    },
+    {
+      "name": "东方财富Choice：中恒电气4月15日快速回调",
+      "published_at": "2026-04-15 09:45",
+      "url": "https://finance.eastmoney.com/a/202604153705554547.html"
+    },
+    {
+      "name": "新浪证券：华远控股跌停龙虎榜",
+      "published_at": "2026-04-15 17:13",
+      "url": "https://finance.sina.com.cn/stock/aiassist/lgbzz/2026-04-15/doc-inhuqnax8429782.shtml"
+    },
+    {
+      "name": "东方财富/界面新闻：今日涨跌停股分析",
+      "published_at": "2026-04-15 15:10",
+      "url": "https://finance.eastmoney.com/a/202604153705852754.html"
+    }
+  ]
+}
+      </script>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,835 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>A股短线周期复盘 - 2026-04-23</title>
+    <style>
+      :root {
+        --bg: #f6f7f9;
+        --panel: #ffffff;
+        --text: #1f2937;
+        --muted: #6b7280;
+        --line: #d9dee7;
+        --strong: #13795b;
+        --warn: #b26a00;
+        --danger: #b42318;
+        --info: #1d4ed8;
+      }
+
+      * { box-sizing: border-box; }
+
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--text);
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        line-height: 1.5;
+      }
+
+      .page {
+        width: min(1180px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 28px 0 40px;
+      }
+
+      header {
+        display: grid;
+        gap: 12px;
+        margin-bottom: 18px;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: clamp(24px, 4vw, 38px);
+        letter-spacing: 0;
+      }
+
+      h2 {
+        margin: 0 0 12px;
+        font-size: 18px;
+        letter-spacing: 0;
+      }
+
+      p { margin: 0; }
+
+      .note {
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      .risk {
+        border-left: 4px solid var(--warn);
+        background: #fff8ec;
+        padding: 10px 12px;
+        color: #7a4b00;
+      }
+
+      .status-grid {
+        display: grid;
+        grid-template-columns: repeat(6, minmax(0, 1fr));
+        gap: 12px;
+        margin: 18px 0;
+      }
+
+      .metric, section {
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+      }
+
+      .metric {
+        padding: 12px;
+        min-height: 104px;
+      }
+
+      .metric .label {
+        color: var(--muted);
+        font-size: 12px;
+        margin-bottom: 6px;
+      }
+
+      .metric .value {
+        font-size: 18px;
+        font-weight: 700;
+      }
+
+      section {
+        padding: 16px;
+        margin-bottom: 14px;
+      }
+
+      .timeline,
+      .plan {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+      }
+
+      .step,
+      .plan-block {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 12px;
+        background: #fbfcfe;
+      }
+
+      .step .title,
+      .plan-block strong {
+        display: block;
+        font-weight: 700;
+        margin-bottom: 6px;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 14px;
+      }
+
+      th,
+      td {
+        border-bottom: 1px solid var(--line);
+        padding: 10px 8px;
+        text-align: left;
+        vertical-align: top;
+      }
+
+      th {
+        color: var(--muted);
+        font-weight: 600;
+        background: #f9fafb;
+      }
+
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        min-height: 24px;
+        padding: 2px 8px;
+        border-radius: 999px;
+        font-size: 12px;
+        font-weight: 700;
+        white-space: nowrap;
+      }
+
+      .buy { background: #e8f5ef; color: var(--strong); }
+      .observe { background: #fff4db; color: var(--warn); }
+      .reject { background: #fdebea; color: var(--danger); }
+      .context { background: #eaf1ff; color: var(--info); }
+
+      ul {
+        margin: 0;
+        padding-left: 18px;
+      }
+
+      li + li { margin-top: 4px; }
+      a { color: var(--info); }
+
+      @media (max-width: 860px) {
+        .status-grid,
+        .timeline,
+        .plan {
+          grid-template-columns: 1fr;
+        }
+
+        .table-wrap {
+          overflow-x: auto;
+        }
+
+        table {
+          min-width: 760px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <header>
+        <h1>A股短线周期复盘 - 2026-04-23</h1>
+        <p class="note">复盘口径：历史实盘模拟。数据截止：2026-04-23 收盘后已公开信息；下一交易日计划对应 2026-04-24。严格不使用 2026-04-24 盘中、收盘及之后数据。</p>
+        <p class="risk">本页先复核 2026-04-22 已归档计划，再生成 2026-04-24 条件计划。4月24日计划只基于 4月21日、4月22日、4月23日三日约束和 4月23日以前公开源；这只是复盘框架，不构成投资建议或荐股。</p>
+      </header>
+
+      <section class="status-grid" aria-label="核心状态">
+        <div class="metric">
+          <div class="label">当前有效龙头</div>
+          <div class="value">无有效龙头</div>
+        </div>
+        <div class="metric">
+          <div class="label">当前龙头锚点</div>
+          <div class="value">圣阳股份 / 储能电池</div>
+        </div>
+        <div class="metric">
+          <div class="label">当前试错核心</div>
+          <div class="value">金螳螂 5板</div>
+        </div>
+        <div class="metric">
+          <div class="label">龙头状态</div>
+          <div class="value">试错核心待确认</div>
+        </div>
+        <div class="metric">
+          <div class="label">当前动作</div>
+          <div class="value">极小仓试错 / 无先手观察</div>
+        </div>
+        <div class="metric">
+          <div class="label">下一触发</div>
+          <div class="value">4月24日看金螳螂 5进6</div>
+        </div>
+      </section>
+
+      <section>
+        <h2>上一交易日计划复核</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>2026-04-22 计划</th>
+                <th>2026-04-23 当日可见事实</th>
+                <th>复核结论</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>株冶集团若有4月22日计划内先手，4月23日先按失败仓处理：弱开、低开低走、不能快速反包，直接退出；强反包也不新增仓。</td>
+                <td>同花顺显示有色金属板块跌幅居前；财联社收评主线转向CPO、光通信，株冶集团未再成为高标核心。</td>
+                <td><span class="badge reject">风险线延续</span> 株冶集团试错失败后未回到核心，不再作为4月23日买点。</td>
+              </tr>
+              <tr>
+                <td>金富科技4进5只有非一字开盘、真实换手分歧回封、换手大于7%或成交额大于25亿元，且CPO/液冷服务器/算力硬件有助攻时，才可写标准试错买点。</td>
+                <td>东方财富14:18记录金富科技打开涨停，成交12.21亿元、换手率9.58%；14:19又记录其打开涨停，封单仅38手，回封质量弱。财联社收盘高标聚焦中未把金富科技列为成功晋级核心。</td>
+                <td><span class="badge reject">未成立</span> 主计划候选虽在午后触板并达成交/换手门槛，但封单过弱、当场即开，不能作为有效标准试错核心。</td>
+              </tr>
+              <tr>
+                <td>金螳螂只做次级观察，只有首次真实补量回封且建筑装饰/数据中心方向有助攻时再核验。</td>
+                <td>财联社15:15称金螳螂放量T字板晋级5连板；东方财富证券时报收盘复盘显示其收于4.32元，涨9.92%，成交17.90亿元，换手率12.50%，并有苏州高新3连板助攻。</td>
+                <td><span class="badge buy">转正</span> 次级观察项在4月23日完成首次真实补量回封，升级为标准试错核心，但仍不是确认龙头。</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2>龙头锚点与状态</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>当前确认龙头</th>
+                <th>当前龙头锚点</th>
+                <th>当前试错核心</th>
+                <th>今日反馈</th>
+                <th>状态</th>
+                <th>动作</th>
+                <th>找新龙</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>无有效龙头</td>
+                <td>圣阳股份 / 储能电池</td>
+                <td>金螳螂 / 建筑装饰、苏州本地股、数据中心概念</td>
+                <td>圣阳股份继续2连跌停压制旧周期；金螳螂放量T字板晋级5连板，成为新的5板试错核心；金富科技午后触板但回封失败。</td>
+                <td><span class="badge buy">试错核心待6板+高潮日确认</span></td>
+                <td>极小仓试错；无先手不追高位加速。</td>
+                <td>允许，但先管理金螳螂试错核心；若其失败，立即回无龙观察。</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2>高位情绪快照</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>名义最高板</th>
+                <th>可交易最高板</th>
+                <th>昨日高标表现</th>
+                <th>断板反馈</th>
+                <th>高位跌停</th>
+                <th>炸板反馈</th>
+                <th>连板晋级率</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>金螳螂5连板；安诺其20CM 3连板；华电辽能9天5板属非连续高度。</td>
+                <td>金螳螂是排除ST和N天M板后的可交易5板核心；金富科技盘中冲5失败。</td>
+                <td>圣阳股份继续2连跌停；株冶集团4进5失败后退场；金富科技未能接过核心。</td>
+                <td>财联社称炸板个股数量较前两日明显减少，活跃资金再度尝试回流连板博弈。</td>
+                <td>同花顺口径跌停22只，亏钱效应仍重；主要风险锚点仍是圣阳股份旧周期。</td>
+                <td>财联社口径20股炸板，封板率71%；东方财富Choice口径58股涨停、26股触及涨停后打开，统计口径有差异。</td>
+                <td>财联社口径连板股9只，晋级率50%；同花顺口径4板以上仅金螳螂5连板、安诺其3连板、苏州高新3连板等低位修复。 </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2>亏钱效应</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>检查项</th>
+                <th>事实</th>
+                <th>结论</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>旧龙是否继续负反馈</td>
+                <td>财联社称圣阳股份走出2连跌停；同花顺跌停家数22只，旧高标亏钱效应未完全释放。</td>
+                <td><span class="badge reject">旧龙风险仍在</span></td>
+              </tr>
+              <tr>
+                <td>主计划候选是否接力成功</td>
+                <td>金富科技14:18触板时成交12.21亿元、换手9.58%，但14:19即打开涨停，封单仅38手。</td>
+                <td><span class="badge reject">封板质量不足</span></td>
+              </tr>
+              <tr>
+                <td>次级观察项是否补量成功</td>
+                <td>金螳螂放量T字板晋级5连板，收盘换手12.50%、成交17.90亿元；苏州高新3连板形成助攻。</td>
+                <td><span class="badge buy">形成试错核心</span></td>
+              </tr>
+              <tr>
+                <td>市场强方向</td>
+                <td>同花顺和财联社均显示CPO、光通信、半导体方向最强；建筑装饰/苏州本地股强度不算大潮，但有中位助攻。</td>
+                <td><span class="badge context">方向强弱分离</span></td>
+              </tr>
+              <tr>
+                <td>亏钱效应结论</td>
+                <td>旧龙压力仍在，但4/5板试错重新出现可交易成功样本；情绪从纯退潮转向“有条件试错”。</td>
+                <td><span class="badge observe">中高，允许极小仓试错</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2>周期链路</h2>
+        <div class="timeline">
+          <div class="step">
+            <div class="title">4月21日</div>
+            <p>圣阳股份跌停确认死亡，旧确认龙头出清，市场回到无有效龙头。</p>
+          </div>
+          <div class="step">
+            <div class="title">4月22日</div>
+            <p>株冶集团盘中5板试错触发但午后炸板，第一次无龙试错失败；金富科技、金螳螂收盘保留4板观察资格。</p>
+          </div>
+          <div class="step">
+            <div class="title">4月23日</div>
+            <p>主计划候选金富科技触板失败；次级观察项金螳螂完成补量T字5板，转成新的试错核心，但仍未确认龙头。</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>最近归档对比</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>日期</th>
+                <th>周期状态</th>
+                <th>核心</th>
+                <th>上次计划</th>
+                <th>本日跟踪结论</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>2026-04-20</td>
+                <td>圣阳股份明显分歧，尚未死亡</td>
+                <td>圣阳股份</td>
+                <td>4月21日只管理圣阳。</td>
+                <td>4月21日跌停确认死亡。</td>
+              </tr>
+              <tr>
+                <td>2026-04-21</td>
+                <td>无有效龙头，株冶集团4板仅观察</td>
+                <td>株冶集团4板</td>
+                <td>4月22日只看株冶4进5。</td>
+                <td>4月22日盘中触发试错但收盘炸板。</td>
+              </tr>
+              <tr>
+                <td>2026-04-22</td>
+                <td>无龙试错失败</td>
+                <td>株冶集团盘中5板失败；金富科技、金螳螂4板观察</td>
+                <td>4月23日优先看金富4进5，金螳螂次级观察。</td>
+                <td>金富触板失败；金螳螂补量T字5板转正为试错核心。</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2>板块强度</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>板块</th>
+                <th>高标核心</th>
+                <th>助攻与容量</th>
+                <th>主源核验</th>
+                <th>与旧周期关系</th>
+                <th>强度</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>CPO / 光通信 / 半导体</td>
+                <td>安诺其20CM 3连板；东山精密9.54%，5天4板；中际旭创、新易盛、天孚通信、沪电股份、胜宏科技等容量中军活跃。</td>
+                <td>财联社称CPO、光通信概念股在东山精密带动下集体爆发；同花顺行业涨幅靠前为通信设备、消费电子、半导体。</td>
+                <td>同花顺、财联社。</td>
+                <td>独立强方向，但多为20CM或N天M板容量线，不直接生成主板5板确认龙头。</td>
+                <td><span class="badge context">最强方向</span></td>
+              </tr>
+              <tr>
+                <td>建筑装饰 / 苏州本地股 / 数据中心概念</td>
+                <td>金螳螂5连板；苏州高新3连板。</td>
+                <td>苏州高新形成3板助攻；金螳螂放量T字回封。容量中军不明显，属连板博弈线。</td>
+                <td>财联社、东方财富证券时报；同花顺/开盘啦完整主题主源待复核。</td>
+                <td>与圣阳旧储能周期无直接延续，更接近独立情绪试错线。</td>
+                <td><span class="badge buy">可支撑试错</span></td>
+              </tr>
+              <tr>
+                <td>液冷服务器 / 算力硬件</td>
+                <td>金富科技盘中触板失败；沃格光电11天7板、康盛股份10天6板属非连续高度。</td>
+                <td>有容量和趋势股，但主板5板承接不够干净。</td>
+                <td>东方财富、财联社。</td>
+                <td>与圣阳液冷属性有重叠，不宜直接当旧龙后排替代。</td>
+                <td><span class="badge observe">强背景，弱接力</span></td>
+              </tr>
+              <tr>
+                <td>有色金属 / 小金属</td>
+                <td>株冶集团退出核心；有色金属位居同花顺行业跌幅前列。</td>
+                <td>株冶试错失败后，板块没有继续承接。</td>
+                <td>同花顺、财联社。</td>
+                <td>上一日失败试错线，当日转弱。</td>
+                <td><span class="badge reject">放弃</span></td>
+              </tr>
+              <tr>
+                <td>储能电池 / 液冷储能 / 钠电池</td>
+                <td>圣阳股份2连跌停。</td>
+                <td>旧龙负反馈继续释放。</td>
+                <td>财联社。</td>
+                <td>上一轮确认主线，当前只作为风险锚点。</td>
+                <td><span class="badge reject">旧周期负反馈</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2>新龙搜索闸门</h2>
+        <p><strong>允许，但先管理金螳螂试错核心。</strong> 4月23日不是确认新周期的时点，因为金螳螂只是5板标准试错核心，还没通过6板加板块高潮日确认。4月24日不得把苏州高新3进4、CPO容量趋势股或华电辽能9天5板这类低位/非连续样本写成替代买点，先看金螳螂能否完成5进6和板块放大。</p>
+      </section>
+
+      <section>
+        <h2>连板梯队</h2>
+        <p class="note">连板口径主用财联社2026-04-23 15:15涨停分析，辅以同花顺收盘复盘和东方财富个股数据。东方财富Choice与财联社对涨停总数统计有差异，页面中已注明来源口径。N天M板单列，不压缩为连续板。</p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>板数</th>
+                <th>股票</th>
+                <th>连续板数</th>
+                <th>几天几板/非连续形态</th>
+                <th>题材</th>
+                <th>角色</th>
+                <th>交易性</th>
+                <th>模型结论</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>旧龙负反馈</td>
+                <td>圣阳股份</td>
+                <td>止步7连板</td>
+                <td>4月21日至4月23日延续跌停负反馈链</td>
+                <td>储能电池 / 液冷储能 / 算力中心电源</td>
+                <td>上一轮确认龙头锚点</td>
+                <td>不低吸，不恢复地位。</td>
+                <td><span class="badge reject">旧龙死亡延续</span></td>
+              </tr>
+              <tr>
+                <td>5</td>
+                <td>金螳螂</td>
+                <td>5</td>
+                <td>无</td>
+                <td>建筑装饰 / 苏州本地股 / 数据中心概念</td>
+                <td>新的5板试错核心</td>
+                <td>放量T字板，收盘换手12.50%、成交17.90亿元。</td>
+                <td><span class="badge buy">标准试错买点</span></td>
+              </tr>
+              <tr>
+                <td>盘中5 / 收盘失败</td>
+                <td>金富科技</td>
+                <td>盘中5，收盘失败</td>
+                <td>无</td>
+                <td>液冷服务器 / 算力硬件</td>
+                <td>主计划候选失败</td>
+                <td>14:18触板成交12.21亿元、换手9.58%，14:19即开板，封单仅38手。</td>
+                <td><span class="badge reject">放弃</span></td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>安诺其、苏州高新</td>
+                <td>3</td>
+                <td>安诺其为20CM；苏州高新为10CM</td>
+                <td>CPO / 光通信；苏州本地股</td>
+                <td>板块助攻</td>
+                <td>3板只做助攻和次日条件观察，不作为4月23日标准买点。</td>
+                <td><span class="badge context">助攻</span></td>
+              </tr>
+              <tr>
+                <td>非连续高度</td>
+                <td>华电辽能、东山精密、沃格光电、康盛股份等</td>
+                <td>非连续</td>
+                <td>华电辽能9天5板；东山精密5天4板；沃格光电11天7板；康盛股份10天6板。</td>
+                <td>绿电 / CPO / 液冷服务器</td>
+                <td>容量或趋势背景</td>
+                <td>N天M板不压缩成连续板，不写成当日或次日标准接力买点。</td>
+                <td><span class="badge reject">放弃</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2>4/5板候选检查</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>股票</th>
+                <th>板数</th>
+                <th>买点状态</th>
+                <th>加分项</th>
+                <th>扣分项</th>
+                <th>模型结论</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>金螳螂</td>
+                <td>5连板</td>
+                <td>4月22日次级观察项在4月23日完成首次真实补量T字回封，形成标准试错买点。</td>
+                <td>旧龙已死；中间有株冶集团5板试错失败；收盘换手12.50%、成交17.90亿元；苏州高新3连板助攻；排除ST和N天M板后成为收盘可交易最高板。</td>
+                <td>板块不是大面积涨停潮，容量中军不强；仍需6板+板块高潮日才能确认龙头。</td>
+                <td><span class="badge buy">标准试错买点</span></td>
+              </tr>
+              <tr>
+                <td>金富科技</td>
+                <td>盘中5板，收盘失败</td>
+                <td>符合前一日主计划的成交/换手门槛，但封板质量不足，未构成有效标准试错核心。</td>
+                <td>14:18触板，成交12.21亿元、换手9.58%，液冷服务器和算力硬件方向有背景强度。</td>
+                <td>14:19即开板，封单仅38手；收盘未保持核心地位；与圣阳旧液冷属性重叠较多。</td>
+                <td><span class="badge reject">放弃</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2>2026-04-24 试错核心管理计划</h2>
+        <div class="plan">
+          <div class="plan-block">
+            <strong>一、继续晋级：持有试错仓</strong>
+            <p>试错核心：金螳螂。条件：非一字弱转强或高位强承接，晋级6板，且苏州高新等助攻不断层。动作：持有试错仓；若6板同时出现更明确的板块放大，可转入“待确认高标”，但仍需板块高潮日后才确认龙头。</p>
+          </div>
+          <div class="plan-block">
+            <strong>二、分歧加大：降仓观察</strong>
+            <p>试错核心：金螳螂。条件：冲高回落、放量长上影、T字后再度大分歧但未直接跌停。动作：只保留最小试错仓或清大部分，不在同板块低位临时切换。</p>
+          </div>
+          <div class="plan-block">
+            <strong>三、失败负反馈：清仓回无龙</strong>
+            <p>试错核心：金螳螂。条件：低开低走、跌停、断板后继续杀，或苏州高新等助攻断层。动作：清掉试错仓，回到无有效龙头；4月24日不把苏州高新3进4、CPO容量股或非连续高度当临时替代买点。</p>
+          </div>
+        </div>
+        <p class="note">4月24日计划先管理金螳螂试错核心，不使用 2026-04-24 盘面结果，也不把 3板助攻和 N天M板写成替代买点。</p>
+      </section>
+
+      <section>
+        <h2>操作与仓位</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>阶段</th>
+                <th>仓位</th>
+                <th>执行</th>
+                <th>候选处理</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>无确认龙头下的5板试错核心</td>
+                <td>极小仓试错；无先手则观察，不追6板首次开口。</td>
+                <td>先管理金螳螂5进6，不低吸圣阳，不碰金富科技失败反包。</td>
+                <td>苏州高新3进4只作助攻跟踪；安诺其20CM、东山精密5天4板、华电辽能9天5板等不写成标准买点。</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2>风控纪律</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>项目</th>
+                <th>规则</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>单笔最大亏损</td>
+                <td>金螳螂次日不能弱转强或直接断板，试错仓立即退出，不格局。</td>
+              </tr>
+              <tr>
+                <td>当日最大亏损</td>
+                <td>若金螳螂失败且圣阳、旧高标负反馈再扩散，当日停止高位接力。</td>
+              </tr>
+              <tr>
+                <td>连续试错次数</td>
+                <td>株冶集团记为一次失败，金螳螂为下一次试错；若再失败，重新回空仓等待新的4/5板。</td>
+              </tr>
+              <tr>
+                <td>仓位上限</td>
+                <td>未过6板+高潮日前不重仓；无先手不追高位加速。</td>
+              </tr>
+              <tr>
+                <td>卖出条件</td>
+                <td>次日不能弱转强、板块助攻断层、放量失控、断板后继续杀、跌停负反馈，均退出。</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2>最终结论</h2>
+        <ol>
+          <li>当前确认龙头：无有效龙头；当前龙头锚点为圣阳股份 / 储能电池、液冷储能、钠电池、固态电池、算力中心电源。</li>
+          <li>当前试错核心：金螳螂5连板，属于建筑装饰 / 苏州本地股 / 数据中心概念线的5板试错核心。</li>
+          <li>龙头状态：金螳螂只是标准试错核心，尚未通过6板+高潮日确认；当前仍不是确认龙头。</li>
+          <li>当前动作：极小仓试错；无先手空仓观察，不追金富科技失败反包，不低吸圣阳股份。</li>
+          <li>是否允许寻找新龙：允许，但先管理金螳螂试错核心；若其失败，立即回无龙观察。</li>
+          <li>下一触发：2026-04-24 只看金螳螂5进6能否弱转强并保住助攻；若失败则清仓回无龙，不把苏州高新3进4和N天M板写成替代买点。</li>
+        </ol>
+      </section>
+
+      <section>
+        <h2>数据源</h2>
+        <ul>
+          <li><a href="https://news.10jqka.com.cn/20260423/c676220133.shtml">同花顺金融研究中心：A股每日行情复盘(4月23日)，2026-04-23 15:30</a></li>
+          <li><a href="https://finance.eastmoney.com/a/202604233715871014.html">东方财富：金富科技盘中涨停，2026-04-23 14:18</a></li>
+          <li><a href="https://finance.eastmoney.com/a/202604233715871356.html">东方财富：金富科技打开涨停，2026-04-23 14:19</a></li>
+          <li><a href="https://finance.eastmoney.com/a/202604233716479066.html">东方财富证券时报：涨停股复盘，金螳螂收盘5连板，2026-04-23 18:52</a></li>
+          <li><a href="https://api3.cls.cn/share/article/2354232?app=&os=web&sv=859">财联社：4月23日涨停分析，2026-04-23 15:15</a></li>
+          <li><a href="https://api3.cls.cn/share/article/2354310?app=&os=web&sv=859">财联社：焦点复盘，2026-04-23 15:42</a></li>
+        </ul>
+      </section>
+
+      <script type="application/json" id="stock-cycle-review-data">
+{
+  "review_date": "2026-04-23",
+  "data_cutoff": "2026-04-23",
+  "generated_by_skill": {
+    "name": "stock-cycle-review"
+  },
+  "previous_trading_day": "2026-04-22",
+  "next_trading_day": "2026-04-24",
+  "current_leader": "无有效龙头",
+  "current_leader_theme": "无",
+  "leader_anchor": "圣阳股份",
+  "leader_anchor_theme": "储能电池 / 液冷储能 / 钠电池 / 固态电池 / 算力中心电源",
+  "leader_anchor_state": "4月21日跌停确认死亡后，4月23日仍延续旧高标负反馈，未恢复有效锚点地位",
+  "leader_state": "试错核心",
+  "position_action": "极小仓试错；无先手空仓观察，不追高位加速",
+  "new_leader_search_allowed": "允许，但先管理金螳螂试错核心；若其失败，立即回无龙观察",
+  "next_trigger": "2026-04-24只看金螳螂5进6能否弱转强并保住苏州高新等助攻；若失败则清仓回无龙",
+  "market_phase": "旧龙死亡后的二次试错，金螳螂5板试错核心待确认",
+  "cycle_stage": "华电辽能旧周期死亡 -> 汇源通信试错失败 -> 中恒电气试错失败 -> 圣阳股份5板试错并6板确认 -> 圣阳股份死亡 -> 株冶集团5板试错失败 -> 金螳螂5板试错核心",
+  "old_leader_state": "圣阳股份旧周期死亡且负反馈延续；金螳螂只是5板试错核心，尚未确认龙头",
+  "loss_effect": {
+    "level": "中高",
+    "summary": "旧龙圣阳股份负反馈仍在，但金螳螂完成了新的5板标准试错，说明情绪从纯退潮转向有条件试错。",
+    "rows": [
+      ["旧龙", "圣阳股份旧周期负反馈仍压制高位情绪"],
+      ["失败候选", "金富科技14:18触板但14:19即开，封单仅38手，回封质量不足"],
+      ["成功候选", "金螳螂放量T字5连板，收盘换手12.50%、成交17.90亿元"],
+      ["市场", "CPO/光通信最强，但主板连续高度真正成功的是金螳螂5板"]
+    ]
+  },
+  "new_direction": {
+    "summary": "CPO、光通信、半导体是最强方向，但主板连板博弈里真正成立的5板试错核心是金螳螂；金富科技所在液冷服务器方向只提供背景，不构成当日成功试错。",
+    "strong_independent": "CPO / 光通信 / 半导体 / 通信设备 / 消费电子",
+    "old_related": "液冷服务器与圣阳旧液冷属性有重叠；金富科技失败后不能作为旧龙后排替代"
+  },
+  "operation_plan": {
+    "position": "极小仓试错；无先手空仓观察",
+    "action": "先管理金螳螂5进6，不低吸圣阳，不追金富科技失败反包，不买华电辽能等非连续高度",
+    "candidate": "4月24日不扩展新候选，只看金螳螂试错核心；苏州高新3进4仅作助攻跟踪"
+  },
+  "risk_control": [
+    ["仓位上限", "未过6板+高潮日前不重仓；无先手不追高位加速"],
+    ["单笔最大亏损", "金螳螂次日不能弱转强或直接断板，试错仓立即退出"],
+    ["当日最大亏损", "若金螳螂失败且圣阳等旧高标负反馈再扩散，当日停止高位接力"],
+    ["连续试错次数", "株冶集团记为一次失败，金螳螂为下一次试错；若再失败，重新回空仓"],
+    ["卖出条件", "次日不能弱转强、板块助攻断层、放量失控、断板后继续杀、跌停负反馈，均退出"]
+  ],
+  "high_level_sentiment": {
+    "nominal_highest_board": "金螳螂5连板；安诺其20CM 3连板；华电辽能9天5板属非连续高度",
+    "tradable_highest_board": "金螳螂是排除ST和N天M板后的可交易5板核心；金富科技盘中冲5失败",
+    "previous_high_board_performance": "圣阳股份旧龙负反馈延续；株冶集团5板试错失败后退场；金富科技未能承接",
+    "broken_board_feedback": "财联社称炸板个股较前两日明显减少，活跃资金回流连板博弈；但金富科技触板即开",
+    "high_level_limit_down_count": "同花顺口径跌停22只，旧高标亏钱效应仍偏重",
+    "high_level_broken_board_count": "财联社口径20股炸板，东方财富Choice口径26股触及涨停后打开，统计口径有差异",
+    "promotion_rate": "财联社口径连板股9只，晋级率50%"
+  },
+  "prior_confirmed_leader": "圣阳股份",
+  "prior_leader_theme": "储能电池 / 液冷储能 / 钠电池 / 固态电池 / 算力中心电源",
+  "intermediate_trial_chain": "汇源通信5板试错失败；中恒电气4板试错失败；圣阳股份5板试错并6板确认；株冶集团5板试错失败；金螳螂5板试错核心待确认",
+  "old_leader_chain": "华电辽能 / 绿电电力央企 -> 神剑股份 / 商业航天试错失败 -> 汇源通信 / 光纤光通信5板试错失败 -> 中恒电气4板试错失败 -> 圣阳股份 / 储能电池6板确认 -> 圣阳股份死亡 -> 株冶集团5板试错失败 -> 金螳螂5板试错核心",
+  "current_core": "金螳螂5连板，建筑装饰 / 苏州本地股 / 数据中心概念线的标准试错核心；仍需6板+高潮日确认",
+  "tradable_high_board": "金螳螂收盘5连板，放量T字板，换手12.50%、成交17.90亿元；金富科技盘中5板14:18触板但14:19即开失败",
+  "next_opportunity": "2026-04-24不新增新候选，先管理金螳螂5进6；若其失败则回无龙，等待新的4/5板",
+  "hard_no_trade": "不低吸圣阳股份；不追金富科技失败反包；不把苏州高新3进4当4月24日替代买点；不把华电辽能9天5板、东山精密5天4板、沃格光电11天7板、康盛股份10天6板等N天M板压缩为连续板机会；不使用2026-04-24盘面结果",
+  "source_verification": {
+    "sector_theme_primary_sources": "同花顺2026-04-23 15:30用于指数、行业和市场宽度；财联社2026-04-23 15:15/15:42用于连板数量、金螳螂5板、苏州高新3板和CPO/光通信强度。",
+    "individual_primary_sources": "东方财富用于金富科技14:18触板与14:19开板的盘中核验；东方财富证券时报收盘复盘用于金螳螂5连板收盘价、换手和成交额核验。",
+    "local_archive_use": "本地2026-04-22归档只用于复核上一交易日计划，不作为2026-04-23行情事实来源。"
+  },
+  "board_sequence_verification": {
+    "status": "部分完整；高位连续板和候选已按财联社、同花顺、东方财富核验，低位完整梯队待开盘啦补充复核",
+    "consecutive_ladder_source": "财联社2026-04-23 15:15涨停分析：连板股数量9家，金螳螂5连板，安诺其20CM 3连板，苏州高新3连板；同花顺复盘列出金螳螂5连板、安诺其3连板、苏州高新3连板",
+    "continuous_5_board": "金螳螂",
+    "continuous_3_board": "安诺其（20CM）、苏州高新",
+    "non_consecutive_patterns": "华电辽能9天5板；东山精密5天4板；沃格光电11天7板；康盛股份10天6板",
+    "notes": "金螳螂为唯一连续5板试错核心。金富科技盘中触及5板但收盘失败，不计连续5板。华电辽能等N天M板单列，不纳入连续板计划。"
+  },
+  "model_verdicts": [
+    {
+      "stock": "圣阳股份",
+      "role": "上一轮确认龙头锚点",
+      "verdict": "reject",
+      "reason": "旧龙死亡后的负反馈延续，当前只作为风险锚点，不低吸、不恢复地位。"
+    },
+    {
+      "stock": "金螳螂",
+      "role": "5板试错核心",
+      "verdict": "standard buy",
+      "reason": "4月22日次级观察项在4月23日完成首次真实补量T字回封，收盘换手12.50%、成交17.90亿元，且有苏州高新3连板助攻，成为排除ST和N天M板后的可交易5板试错核心；但仍需6板+高潮日确认。"
+    },
+    {
+      "stock": "金富科技",
+      "role": "4进5主计划候选",
+      "verdict": "reject",
+      "reason": "4月23日14:18触板时成交12.21亿元、换手9.58%，但14:19即开板且封单仅38手，封板质量不足，未构成有效标准试错核心。"
+    },
+    {
+      "stock": "苏州高新、安诺其",
+      "role": "3板助攻",
+      "verdict": "observe only",
+      "reason": "只构成对金螳螂的中位助攻和板块强度背景，4月23日不属于4/5板标准买点。"
+    },
+    {
+      "stock": "华电辽能、东山精密、沃格光电、康盛股份",
+      "role": "非连续高度/容量背景",
+      "verdict": "reject",
+      "reason": "属于9天5板、5天4板、11天7板、10天6板等非连续形态，不能压缩为连续板接力机会。"
+    }
+  ],
+  "sources": [
+    {
+      "name": "同花顺金融研究中心：A股每日行情复盘(4月23日)",
+      "published_at": "2026-04-23 15:30",
+      "url": "https://news.10jqka.com.cn/20260423/c676220133.shtml"
+    },
+    {
+      "name": "东方财富：金富科技盘中涨停",
+      "published_at": "2026-04-23 14:18",
+      "url": "https://finance.eastmoney.com/a/202604233715871014.html"
+    },
+    {
+      "name": "东方财富：金富科技打开涨停",
+      "published_at": "2026-04-23 14:19",
+      "url": "https://finance.eastmoney.com/a/202604233715871356.html"
+    },
+    {
+      "name": "东方财富证券时报：涨停股复盘，金螳螂收盘5连板",
+      "published_at": "2026-04-23 18:52",
+      "url": "https://finance.eastmoney.com/a/202604233716479066.html"
+    },
+    {
+      "name": "财联社：4月23日涨停分析",
+      "published_at": "2026-04-23 15:15",
+      "url": "https://api3.cls.cn/share/article/2354232?app=&os=web&sv=859"
+    },
+    {
+      "name": "财联社：焦点复盘",
+      "published_at": "2026-04-23 15:42",
+      "url": "https://api3.cls.cn/share/article/2354310?app=&os=web&sv=859"
+    }
+  ]
+}
+      </script>
+    </main>
+  </body>
+</html>

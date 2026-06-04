@@ -1,0 +1,841 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>A股短线周期复盘 - 2026-04-17</title>
+    <style>
+      :root {
+        --bg: #f6f7f9;
+        --panel: #ffffff;
+        --text: #1f2937;
+        --muted: #6b7280;
+        --line: #d9dee7;
+        --strong: #13795b;
+        --warn: #b26a00;
+        --danger: #b42318;
+        --info: #1d4ed8;
+      }
+
+      * { box-sizing: border-box; }
+
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--text);
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        line-height: 1.5;
+      }
+
+      .page {
+        width: min(1180px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 28px 0 40px;
+      }
+
+      header {
+        display: grid;
+        gap: 12px;
+        margin-bottom: 18px;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: clamp(24px, 4vw, 38px);
+        letter-spacing: 0;
+      }
+
+      h2 {
+        margin: 0 0 12px;
+        font-size: 18px;
+        letter-spacing: 0;
+      }
+
+      h3 {
+        margin: 0 0 8px;
+        font-size: 15px;
+      }
+
+      p { margin: 0; }
+
+      .note {
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      .risk {
+        border-left: 4px solid var(--warn);
+        background: #fff8ec;
+        padding: 10px 12px;
+        color: #7a4b00;
+      }
+
+      .status-grid {
+        display: grid;
+        grid-template-columns: repeat(6, minmax(0, 1fr));
+        gap: 12px;
+        margin: 18px 0;
+      }
+
+      .metric, section {
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+      }
+
+      .metric {
+        padding: 12px;
+        min-height: 104px;
+      }
+
+      .metric .label {
+        color: var(--muted);
+        font-size: 12px;
+        margin-bottom: 6px;
+      }
+
+      .metric .value {
+        font-size: 18px;
+        font-weight: 700;
+      }
+
+      section {
+        padding: 16px;
+        margin-bottom: 14px;
+      }
+
+      .timeline, .plan {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+      }
+
+      .step, .plan-block {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 12px;
+        background: #fbfcfe;
+      }
+
+      .step .title, .plan-block strong {
+        display: block;
+        font-weight: 700;
+        margin-bottom: 6px;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 14px;
+      }
+
+      th, td {
+        border-bottom: 1px solid var(--line);
+        padding: 10px 8px;
+        text-align: left;
+        vertical-align: top;
+      }
+
+      th {
+        color: var(--muted);
+        font-weight: 600;
+        background: #f9fafb;
+      }
+
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        min-height: 24px;
+        padding: 2px 8px;
+        border-radius: 999px;
+        font-size: 12px;
+        font-weight: 700;
+        white-space: nowrap;
+      }
+
+      .buy { background: #e8f5ef; color: var(--strong); }
+      .observe { background: #fff4db; color: var(--warn); }
+      .reject { background: #fdebea; color: var(--danger); }
+      .context { background: #eaf1ff; color: var(--info); }
+      .danger-text { color: var(--danger); font-weight: 700; }
+      .strong-text { color: var(--strong); font-weight: 700; }
+
+      ul {
+        margin: 0;
+        padding-left: 18px;
+      }
+
+      li + li { margin-top: 4px; }
+      a { color: var(--info); }
+
+      @media (max-width: 860px) {
+        .status-grid,
+        .timeline,
+        .plan {
+          grid-template-columns: 1fr;
+        }
+
+        .table-wrap {
+          overflow-x: auto;
+        }
+
+        table {
+          min-width: 760px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <header>
+        <h1>A股短线周期复盘 - 2026-04-17</h1>
+        <p class="note">复盘口径：历史实盘模拟。数据截止：2026-04-17 收盘后已公开信息；下一交易日计划对应 2026-04-20。严格不使用 2026-04-20 盘中、收盘及之后数据。</p>
+        <p class="risk">本页先复核 2026-04-16 已归档计划，再生成 2026-04-20 条件计划。4月20日计划只基于 4月15日、4月16日、4月17日三日约束和 4月17日以前公开源；这只是复盘框架，不构成投资建议或荐股。</p>
+      </header>
+
+      <section class="status-grid" aria-label="核心状态">
+        <div class="metric">
+          <div class="label">当前有效龙头</div>
+          <div class="value">圣阳股份</div>
+        </div>
+        <div class="metric">
+          <div class="label">当前龙头锚点</div>
+          <div class="value">圣阳股份 / 储能电池</div>
+        </div>
+        <div class="metric">
+          <div class="label">龙头状态</div>
+          <div class="value">主升延续，分歧加大</div>
+        </div>
+        <div class="metric">
+          <div class="label">当前动作</div>
+          <div class="value">持有先手，降保护仓</div>
+        </div>
+        <div class="metric">
+          <div class="label">找新龙</div>
+          <div class="value">不允许</div>
+        </div>
+        <div class="metric">
+          <div class="label">下一触发</div>
+          <div class="value">4月20日只看圣阳</div>
+        </div>
+      </section>
+
+      <section>
+        <h2>上一交易日计划复核</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>2026-04-16 计划</th>
+                <th>2026-04-17 当日可见事实</th>
+                <th>复核结论</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>圣阳股份继续主升，则持有4月15日试错先手，不加普通后排；无先手不追一字或秒板。</td>
+                <td>东方财富09:30记录圣阳股份高开超5%，成交2.02亿元、换手1.53%；09:34记录其在9:33涨停后打开，成交12.73亿元、换手9.33%。收盘仍为7连板。</td>
+                <td><span class="badge buy">继续有效</span> 龙头仍活着，但不是低分歧加仓日，执行上只保留计划内先手。</td>
+              </tr>
+              <tr>
+                <td>若放量开板次数明显增加、板块助攻减弱但未跌停，按分歧加大减仓，不做新方向切换。</td>
+                <td>证券之星同日15:43口径显示圣阳股份收盘价30.58元，9:33涨停，14次打开涨停，收盘封单资金2.4亿元；新浪证券17:00补充换手18.18%、成交额24.97亿元。</td>
+                <td><span class="badge observe">分歧加大</span> 符合减仓保护条件：仍封住，但7板高位已经不是重仓追击阶段。</td>
+              </tr>
+              <tr>
+                <td>若高开低走大阴、跌停、断板后继续杀，或带崩电池/算力电源核心，则清仓，等待无龙后的4/5板试错。</td>
+                <td>财联社17:28确认圣阳股份7连板并把连板高度拓展至7板；同日固态电池、钠电池、锂电池及CPO、PCB等成长方向仍强。</td>
+                <td><span class="badge context">未触发清仓</span> 没有断板或跌停负反馈，继续锚定圣阳，不寻找新龙。</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2>龙头锚点与状态</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>当前确认龙头</th>
+                <th>所属题材</th>
+                <th>确认链路</th>
+                <th>今日反馈</th>
+                <th>龙头状态</th>
+                <th>动作</th>
+                <th>找新龙</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>圣阳股份</td>
+                <td>储能电池 / 固态电池 / 钠电池 / 锂电池 / 液冷与算力中心电源</td>
+                <td>4月15日5板标准试错先手，4月16日6板加电池/算力电源高潮确认，4月17日继续晋级7板。</td>
+                <td>收盘涨停且7连板，但日内多次开板、换手18.18%、成交24.97亿元，属于主升延续中的高位分歧。</td>
+                <td><span class="badge observe">已确认龙头主升，分歧加大</span></td>
+                <td>持有先手并降为保护仓；无先手不追7板。</td>
+                <td>不允许。博云新材5板、盛视科技4板只能做背景和助攻。</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2>高位情绪快照</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>名义最高板</th>
+                <th>可交易最高板</th>
+                <th>昨日计划跟踪</th>
+                <th>断板/炸板反馈</th>
+                <th>跌停高标</th>
+                <th>连板晋级率</th>
+                <th>口径冲突</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>圣阳股份7连板；博云新材5连板；盛视科技4连板；京投发展、均瑶健康3连板。</td>
+                <td>圣阳股份仍为最高辨识度，但7板不是新买点；博云和盛视因当前龙头未死，不能写成新龙标准买点。</td>
+                <td>上一计划只管理圣阳股份。今日结果是继续封板但分歧放大，按计划持有/减仓，不清仓。</td>
+                <td>财联社口径20股炸板，封板率78%；东方财富口径28只触及涨停未封，封板率73.08%。</td>
+                <td>证券时报口径7只跌停；两市下跌2986只，结构性分化明显。</td>
+                <td>财联社口径62.5%，短线接力修复。</td>
+                <td>涨停数量有71、76、77只不同口径；报告记录冲突，不用单一口径强行美化情绪。</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2>亏钱效应</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>检查项</th>
+                <th>事实</th>
+                <th>结论</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>龙头是否跌破关键位</td>
+                <td>圣阳股份收盘涨停，未出现断板、跌停或大阴。</td>
+                <td><span class="badge buy">未死亡</span></td>
+              </tr>
+              <tr>
+                <td>龙头是否爆量分歧</td>
+                <td>9:33涨停后9:34打开，盘中14次打开涨停，换手18.18%、成交24.97亿元。</td>
+                <td><span class="badge observe">分歧加大</span></td>
+              </tr>
+              <tr>
+                <td>板块是否拖累</td>
+                <td>同花顺A股收评显示CPO、PET铜箔、PCB、光纤、电池、半导体涨幅居前；财联社称固态电池、钠电池等新能源赛道盘中活跃。</td>
+                <td><span class="badge buy">板块仍支撑</span></td>
+              </tr>
+              <tr>
+                <td>市场广度</td>
+                <td>同花顺口径全市场超2300只上涨；财联社称近3000只下跌；证券时报为2396只上涨、2986只下跌。</td>
+                <td><span class="badge observe">指数和个股分化</span></td>
+              </tr>
+              <tr>
+                <td>亏钱效应结论</td>
+                <td>龙头未死，但高位爆量和市场分化都提示下周先保护利润。</td>
+                <td><span class="badge observe">中等</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2>周期链路</h2>
+        <div class="timeline">
+          <div class="step">
+            <div class="title">4月15日</div>
+            <p>圣阳股份5板弱转强成为标准试错核心；当时仍未确认龙头，计划要求4月16日必须6板加板块高潮。</p>
+          </div>
+          <div class="step">
+            <div class="title">4月16日</div>
+            <p>圣阳股份6板并带动储能、电池、算力电源方向高潮，升级为当前确认龙头；次日计划只管理圣阳。</p>
+          </div>
+          <div class="step">
+            <div class="title">4月17日</div>
+            <p>圣阳股份7板继续拓展空间，但开板和换手放大。周期不是无龙，也不是新龙筛选日，而是龙头高位分歧管理日。</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>最近归档对比</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>日期</th>
+                <th>周期状态</th>
+                <th>核心</th>
+                <th>上次计划</th>
+                <th>本日跟踪结论</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>2026-04-14</td>
+                <td>无确认龙头，试错核心</td>
+                <td>中恒电气4板；圣阳股份4板仅观察</td>
+                <td>4月15日只管理中恒4进5，圣阳继续观察。</td>
+                <td>中恒失败，圣阳转为5板试错核心。</td>
+              </tr>
+              <tr>
+                <td>2026-04-15</td>
+                <td>无确认龙头，试错核心</td>
+                <td>圣阳股份5板</td>
+                <td>4月16日看圣阳能否6板加板块高潮。</td>
+                <td>4月16日确认龙头。</td>
+              </tr>
+              <tr>
+                <td>2026-04-16</td>
+                <td>圣阳股份确认龙头主升</td>
+                <td>圣阳股份6板</td>
+                <td>4月17日只管理圣阳，强则持有，分歧减仓，负反馈清仓。</td>
+                <td>4月17日圣阳7板但分歧放大，执行持有先手并降保护仓。</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2>板块强度</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>板块</th>
+                <th>高标核心</th>
+                <th>助攻与容量</th>
+                <th>主源核验</th>
+                <th>与龙头关系</th>
+                <th>强度</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>储能电池 / 固态电池 / 钠电池 / 锂电池</td>
+                <td>圣阳股份7连板；维科技术5天3板；明冠新材、传艺科技等涨停。</td>
+                <td>财联社称固态电池、钠电池等新能源赛道盘中活跃；同花顺收评把电池列为涨幅居前方向。</td>
+                <td>同花顺、财联社、东方财富个股分时。</td>
+                <td>圣阳确认后的主属性支撑，仍支持龙头未死判断。</td>
+                <td><span class="badge buy">强，但高位分歧</span></td>
+              </tr>
+              <tr>
+                <td>CPO / 光通信 / 光芯片</td>
+                <td>华盛昌10天5板，源杰科技、剑桥科技、光迅科技等涨停或创新高。</td>
+                <td>中际旭创、新易盛、天孚通信等容量核心继续走强，财联社称CPO概念延续强势。</td>
+                <td>同花顺A股收评、财联社焦点复盘。</td>
+                <td>市场最强趋势抱团线，是指数和情绪环境支撑，不替代圣阳龙头。</td>
+                <td><span class="badge buy">强</span></td>
+              </tr>
+              <tr>
+                <td>PCB / PET铜箔 / 先进封装</td>
+                <td>广合科技、沃格光电、科瑞技术等。</td>
+                <td>同花顺称PET铜箔、PCB、光刻机、半导体涨幅居前；南方财经列CPO、PET铜箔、先进封装为强势概念前三。</td>
+                <td>同花顺、南方财经。</td>
+                <td>科技成长抱团分支，和圣阳的算力电源属性形成环境共振。</td>
+                <td><span class="badge context">中强</span></td>
+              </tr>
+              <tr>
+                <td>商业航天 / 航空新材料</td>
+                <td>博云新材5连板。</td>
+                <td>财联社称商业航天概念活跃，但板块效应不如科技成长容量线。</td>
+                <td>财联社。</td>
+                <td>博云为独立高标背景，因圣阳仍活着，不写新龙买点。</td>
+                <td><span class="badge observe">观察</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2>新龙搜索闸门</h2>
+        <p><strong>不允许寻找新龙。</strong> 圣阳股份已经是4月16日确认的有效龙头，4月17日继续7连板，未出现断板、跌停或带崩同周期核心。博云新材5板、盛视科技4板、京投发展和均瑶健康3板，只能列为连板背景或助攻，不进入新的4/5板标准买点设计。</p>
+      </section>
+
+      <section>
+        <h2>连板梯队</h2>
+        <p class="note">连板口径主用财联社2026-04-17 17:28焦点复盘；同花顺用于板块强度。连续板数和N天M板分开记录。</p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>板数</th>
+                <th>股票</th>
+                <th>连续板数</th>
+                <th>几天几板/非连续形态</th>
+                <th>题材</th>
+                <th>角色</th>
+                <th>交易性</th>
+                <th>模型结论</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>7</td>
+                <td>圣阳股份</td>
+                <td>7</td>
+                <td>无</td>
+                <td>储能电池 / 固态电池 / 钠电池 / 锂电池 / 算力中心电源</td>
+                <td>当前确认龙头</td>
+                <td>有先手管理；7板不是新买点。</td>
+                <td><span class="badge buy">龙头仍活，分歧加大</span></td>
+              </tr>
+              <tr>
+                <td>5</td>
+                <td>博云新材</td>
+                <td>5</td>
+                <td>无</td>
+                <td>航空航天 / 新材料 / 业绩超预期</td>
+                <td>独立高标背景</td>
+                <td>当前龙头未死，不做新龙切换。</td>
+                <td><span class="badge observe">仅观察</span></td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td>盛视科技</td>
+                <td>4</td>
+                <td>无</td>
+                <td>算力租赁 / 国产算力 / 智慧口岸</td>
+                <td>科技线中位</td>
+                <td>圣阳仍为龙头，盛视只反映算力线热度。</td>
+                <td><span class="badge observe">仅观察</span></td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>京投发展、均瑶健康</td>
+                <td>3</td>
+                <td>无</td>
+                <td>地产/北京国资；食品饮料/健康消费</td>
+                <td>低一档连板背景</td>
+                <td>低位跟踪，不是次日买点。</td>
+                <td><span class="badge observe">盘面跟踪</span></td>
+              </tr>
+              <tr>
+                <td>非连续高度</td>
+                <td>华盛昌、沃格光电、利通电子、科瑞技术、维科技术、华升股份、康盛股份</td>
+                <td>非连续</td>
+                <td>华盛昌10天5板；沃格光电7天4板；利通电子8天4板；科瑞技术9天4板；维科技术5天3板；华升股份、康盛股份6天3板。</td>
+                <td>光通信 / 玻璃基板 / 算力租赁 / 电池等</td>
+                <td>趋势抱团与情绪背景</td>
+                <td>N天M板不压缩为连续板，不用于N进N+1计划。</td>
+                <td><span class="badge context">背景跟踪</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2>4/5板候选检查</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>股票</th>
+                <th>板数</th>
+                <th>买点状态</th>
+                <th>加分项</th>
+                <th>扣分项</th>
+                <th>模型结论</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>无新候选</td>
+                <td>不适用</td>
+                <td>龙头未死，不允许寻找新龙；当日不做4/5板新龙买点检查。</td>
+                <td>圣阳股份7板拓展空间，连板晋级率升至62.5%。</td>
+                <td>有效龙头仍活着，博云新材5板和盛视科技4板不能替代龙头；N天M板不得压缩为连续板机会。</td>
+                <td><span class="badge reject">不做新买点</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2>2026-04-20 龙头管理计划</h2>
+        <div class="plan">
+          <div class="plan-block">
+            <strong>一、继续主升：持有</strong>
+            <p>龙头：圣阳股份。条件：继续强势封板或高位强承接，开板次数明显少于4月17日，封单稳定，且收盘不被砸开。动作：保留计划内先手，不加普通后排；无先手不追高位秒板。</p>
+          </div>
+          <div class="plan-block">
+            <strong>二、分歧加大：减仓</strong>
+            <p>龙头：圣阳股份。条件：继续放量开板、长上影、收盘未能封住但仍无跌停负反馈。动作：降低到观察仓或清掉多数试错利润，不切换新方向。</p>
+          </div>
+          <div class="plan-block">
+            <strong>三、负反馈：清仓</strong>
+            <p>龙头：圣阳股份。条件：低开低走、跌停、断板后继续杀，或带崩电池/算力电源核心。动作：清仓，回到无龙观察，等待后续4/5板标准试错。</p>
+          </div>
+        </div>
+        <p class="note">当前龙头仍活着，4月20日计划只管理圣阳股份，不写其他候选买点。本计划不读取 2026-04-20 盘面结果。</p>
+      </section>
+
+      <section>
+        <h2>操作与仓位</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>阶段</th>
+                <th>仓位</th>
+                <th>执行</th>
+                <th>候选处理</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>确认龙头主升后的高位分歧</td>
+                <td>从主动仓降为保护仓；只保留4月15日试错先手利润垫。</td>
+                <td>圣阳强则持，分歧则减，负反馈则清。</td>
+                <td>不找新龙；博云新材、盛视科技、京投发展、均瑶健康和非连续高度只做记录。</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2>风控纪律</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>项目</th>
+                <th>规则</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>单笔最大亏损</td>
+                <td>已有先手以利润垫保护为主；若回撤吞没当日主动减仓线，直接降到观察仓。</td>
+              </tr>
+              <tr>
+                <td>当日最大亏损</td>
+                <td>若圣阳出现跌停或断板后继续杀，当日停止所有高位接力。</td>
+              </tr>
+              <tr>
+                <td>连续试错次数</td>
+                <td>当前不是新试错阶段，不新增试错次数；等待龙头死亡后再重启4/5板筛选。</td>
+              </tr>
+              <tr>
+                <td>仓位上限</td>
+                <td>保护仓优先；7板后不再加仓，不用后排替代龙头。</td>
+              </tr>
+              <tr>
+                <td>卖出条件</td>
+                <td>跌停、断板后继续杀、放量长上影且次日弱修复、板块助攻断层，均减仓或清仓。</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2>最终结论</h2>
+        <ol>
+          <li>当前确认龙头：圣阳股份 / 储能电池、固态电池、钠电池、锂电池、算力中心电源；已满足5板试错买点后6板+板块高潮日确认，4月17日继续7连板。</li>
+          <li>当前龙头锚点：圣阳股份；上一轮龙头/板块：华电辽能 / 绿电、电力、央企（旧锚点已死亡）。当前试错核心：无新的试错核心。</li>
+          <li>龙头状态：已确认龙头主升延续，但7板高位分歧加大。</li>
+          <li>当前动作：持有4月15日试错先手并降为保护仓；无先手不追7板，不加普通后排。</li>
+          <li>是否允许寻找新龙：不允许。</li>
+          <li>下一触发：2026-04-20 只管理圣阳股份继续主升、分歧减仓或负反馈清仓三条路径。</li>
+        </ol>
+      </section>
+
+      <section>
+        <h2>数据源</h2>
+        <ul>
+          <li><a href="https://finance.eastmoney.com/a/202604173708410111.html">东方财富Choice：圣阳股份4月17日开盘涨幅达5%，2026-04-17 09:30</a></li>
+          <li><a href="https://finance.eastmoney.com/a/202604173708453098.html">东方财富Choice：圣阳股份4月17日打开涨停，2026-04-17 09:36</a></li>
+          <li><a href="https://finance.eastmoney.com/a/202604173708932956.html">东方财富Choice：4月17日涨停复盘，2026-04-17 16:24</a></li>
+          <li><a href="https://finance.eastmoney.com/a/202604173709001518.html">东方财富研究中心：沪指跌0.1%，圣阳股份、中际旭创等创历史新高，2026-04-17 17:12</a></li>
+          <li><a href="https://news.10jqka.com.cn/20260417/c676077279.shtml">同花顺iFinD：财经下午茶20260417，2026-04-17 16:40</a></li>
+          <li><a href="https://www.cls.cn/detail/2347533">财联社：焦点复盘，2026-04-17 17:28</a></li>
+          <li><a href="https://m.sohu.com/a/1010889231_115377">搜狐转载证券之星：圣阳股份4月17日涨停分析，2026-04-17 15:43</a></li>
+          <li><a href="https://m.sohu.com/a/1010930674_122014422">搜狐转载新浪证券：圣阳股份龙虎榜，2026-04-17 17:00</a></li>
+          <li><a href="https://stcn.com/article/detail/3759211.html">证券时报数据宝：111只股收盘价创历史新高，2026-04-17 17:26</a></li>
+        </ul>
+      </section>
+
+      <script type="application/json" id="stock-cycle-review-data">
+{
+  "review_date": "2026-04-17",
+  "data_cutoff": "2026-04-17",
+  "generated_by_skill": {
+    "name": "stock-cycle-review"
+  },
+  "previous_trading_day": "2026-04-16",
+  "next_trading_day": "2026-04-20",
+  "current_leader": "圣阳股份",
+  "current_leader_theme": "储能电池 / 固态电池 / 钠电池 / 锂电池 / 液冷与算力中心电源",
+  "leader_anchor": "圣阳股份",
+  "leader_anchor_theme": "储能电池 / 固态电池 / 钠电池 / 锂电池 / 液冷与算力中心电源",
+  "leader_anchor_state": "4月15日5板标准试错买点后，4月16日6板加电池/算力电源高潮确认；4月17日继续7连板但高位分歧加大",
+  "leader_state": "已确认龙头主升，7板高位分歧加大",
+  "position_action": "持有4月15日试错先手并降为保护仓；无先手不追7板，不加普通后排",
+  "new_leader_search_allowed": "不允许",
+  "next_trigger": "2026-04-20只管理圣阳股份继续主升、分歧减仓或负反馈清仓三条路径",
+  "market_phase": "圣阳股份确认龙头主升后的高位分歧管理",
+  "cycle_stage": "华电辽能旧周期死亡 -> 汇源通信试错失败 -> 中恒电气试错失败 -> 圣阳股份5板试错 -> 圣阳股份6板确认 -> 圣阳股份7板高位分歧",
+  "old_leader_state": "华电辽能旧周期已死亡；当前有效锚点为圣阳股份，未出现龙头死亡信号",
+  "loss_effect": {
+    "level": "中等",
+    "summary": "圣阳股份收盘7连板，短线连板晋级率升至62.5%，但其9:33涨停后多次打开，换手18.18%、成交24.97亿元；同日近3000只个股下跌，指数与个股分化明显。",
+    "rows": [
+      ["龙头", "圣阳股份收盘涨停，未断板或跌停，但14次打开涨停，属于主升中的高位分歧"],
+      ["市场", "同花顺口径创业板指涨1.43%，全市场超2300股上涨；财联社称近3000股下跌，结构分化"],
+      ["风险", "东方财富口径28只触及涨停未封；证券时报口径7只跌停，普通后排不适合开仓"]
+    ]
+  },
+  "new_direction": {
+    "summary": "4月17日市场主线偏CPO、PCB、光通信、固态电池、钠电池和锂电池。它们用于解释圣阳股份和科技抱团环境，不用于在龙头仍活着时寻找新龙。",
+    "strong_independent": "CPO / 光通信 / PCB / PET铜箔 / 先进封装 / 固态电池 / 钠电池 / 锂电池",
+    "old_related": "圣阳股份与华电辽能仅有宽泛能源属性交集，本轮主驱动仍是储能电池、钠电、固态电池和算力中心电源"
+  },
+  "operation_plan": {
+    "position": "保护仓",
+    "action": "只管理圣阳股份强势持有、分歧减仓、负反馈清仓；不新增后排",
+    "candidate": "当前无新候选买点；博云新材、盛视科技、京投发展、均瑶健康及N天M板只做盘面跟踪"
+  },
+  "risk_control": [
+    ["仓位上限", "保护仓优先；7板后不再加仓"],
+    ["单笔最大亏损", "已有利润垫被明显吞噬即降仓，不把高位开板当低吸"],
+    ["当日最大亏损", "圣阳若跌停或断板后继续杀，当日停止高位接力"],
+    ["连续试错次数", "当前不是新试错阶段，不新增试错次数"],
+    ["卖出条件", "跌停、断板后继续杀、放量长上影且次日弱修复、板块助攻断层，均减仓或清仓"]
+  ],
+  "high_level_sentiment": {
+    "nominal_highest_board": "圣阳股份7连板；博云新材5连板；盛视科技4连板；京投发展、均瑶健康3连板",
+    "tradable_highest_board": "圣阳股份为当前确认龙头但7板不是新买点；博云5板和盛视4板因龙头未死，仅观察",
+    "previous_high_board_performance": "4月16日计划对象圣阳股份继续晋级7板，但换手和开板次数明显放大",
+    "broken_board_feedback": "财联社口径20股炸板、封板率78%；东方财富口径28只触及涨停未封、封板率73.08%",
+    "high_level_limit_down_count": "证券时报口径两市7只跌停",
+    "high_level_broken_board_count": "东方财富口径28只触及涨停未封；财联社口径20股炸板",
+    "promotion_rate": "财联社口径连板晋级率62.5%"
+  },
+  "prior_confirmed_leader": "华电辽能",
+  "prior_leader_theme": "绿电 / 电力 / 央企",
+  "intermediate_trial_chain": "神剑股份试错失败；津药药业一字高标负反馈；汇源通信5板试错失败；华远控股6板天地板负反馈；中恒电气4板试错失败；圣阳股份5板试错后6板确认，4月17日7板分歧延续",
+  "old_leader_chain": "华电辽能 / 绿电电力央企 -> 神剑股份 / 商业航天试错失败 -> 汇源通信 / 光纤光通信5板试错失败 -> 中恒电气4板试错失败 -> 圣阳股份 / 储能电池6板确认 -> 圣阳股份7板高位分歧",
+  "current_core": "圣阳股份仍为当前确认龙头；当前不设置新的试错核心",
+  "tradable_high_board": "圣阳股份7板确认龙头延续，9:34开板时成交12.73亿元、换手9.33%，收盘换手18.18%、成交24.97亿元；7板不是新买点",
+  "next_opportunity": "无新的标准买点；2026-04-20只管理圣阳股份，不寻找新龙",
+  "hard_no_trade": "不把7板分歧日当新买点；不买博云新材5板新龙切换；不买盛视科技4板新龙切换；不压缩华盛昌10天5板、沃格光电7天4板、利通电子8天4板等N天M板；不使用2026-04-20盘面结果",
+  "source_verification": {
+    "sector_theme_primary_sources": "同花顺2026-04-17 16:40 A股收评用于CPO、PET铜箔、PCB、光纤、电池、半导体等板块强度；财联社2026-04-17 17:28焦点复盘补充完整连板和主线热点。",
+    "individual_primary_sources": "东方财富Choice用于圣阳股份09:30高开、09:34打开涨停的成交和换手；搜狐转载证券之星与新浪证券同日信息用于收盘、开板次数、换手和龙虎榜补充。",
+    "local_archive_use": "本地2026-04-16归档只用于复核上一交易日计划，不作为2026-04-17行情事实来源。"
+  },
+  "board_sequence_verification": {
+    "status": "完整（财联社补充源；同花顺用于板块强度）",
+    "consecutive_ladder_source": "财联社2026-04-17 17:28焦点复盘明确列出圣阳股份7连板、博云新材5连板、盛视科技4连板、京投发展和均瑶健康3连板",
+    "continuous_7_board": "圣阳股份",
+    "continuous_5_board": "博云新材",
+    "continuous_4_board": "盛视科技",
+    "continuous_3_board": "京投发展、均瑶健康",
+    "non_consecutive_patterns": "华盛昌10天5板、沃格光电7天4板、利通电子8天4板、科瑞技术9天4板、维科技术5天3板、华升股份和康盛股份6天3板",
+    "notes": "圣阳股份为确认龙头且仍活着；其他4/5板不进入新龙买点。N天M板单列，不压缩为连续板。"
+  },
+  "model_verdicts": [
+    {
+      "stock": "圣阳股份",
+      "role": "储能电池/固态电池/钠电池/锂电池确认龙头",
+      "verdict": "leader management",
+      "reason": "7连板继续拓展空间，板块仍有支撑，但开板和换手放大，执行持有先手并降保护仓，不把7板当新买点。"
+    },
+    {
+      "stock": "博云新材",
+      "role": "商业航天/航空新材料5板背景高标",
+      "verdict": "observe only",
+      "reason": "当前圣阳股份未死，博云新材5板不能写成新龙标准买点。"
+    },
+    {
+      "stock": "盛视科技",
+      "role": "算力租赁/国产算力4板中位",
+      "verdict": "observe only",
+      "reason": "只反映算力线情绪，圣阳仍为有效龙头，不做4板新龙切换。"
+    },
+    {
+      "stock": "京投发展、均瑶健康",
+      "role": "3连板背景",
+      "verdict": "observe only",
+      "reason": "3板只能做盘面跟踪，不能放入4/5板候选检查。"
+    },
+    {
+      "stock": "华盛昌、沃格光电、利通电子、科瑞技术、维科技术",
+      "role": "非连续高度/趋势抱团背景",
+      "verdict": "reject",
+      "reason": "N天M板不能压缩为连续板机会，也不能在龙头未死时写成新买点。"
+    }
+  ],
+  "sources": [
+    {
+      "name": "东方财富Choice：圣阳股份4月17日开盘涨幅达5%",
+      "published_at": "2026-04-17 09:30",
+      "url": "https://finance.eastmoney.com/a/202604173708410111.html"
+    },
+    {
+      "name": "东方财富Choice：圣阳股份4月17日打开涨停",
+      "published_at": "2026-04-17 09:36",
+      "url": "https://finance.eastmoney.com/a/202604173708453098.html"
+    },
+    {
+      "name": "东方财富Choice：4月17日涨停复盘",
+      "published_at": "2026-04-17 16:24",
+      "url": "https://finance.eastmoney.com/a/202604173708932956.html"
+    },
+    {
+      "name": "东方财富研究中心：沪指跌0.1% 圣阳股份、中际旭创等创历史新高",
+      "published_at": "2026-04-17 17:12",
+      "url": "https://finance.eastmoney.com/a/202604173709001518.html"
+    },
+    {
+      "name": "同花顺iFinD：财经下午茶20260417",
+      "published_at": "2026-04-17 16:40",
+      "url": "https://news.10jqka.com.cn/20260417/c676077279.shtml"
+    },
+    {
+      "name": "财联社：焦点复盘",
+      "published_at": "2026-04-17 17:28",
+      "url": "https://www.cls.cn/detail/2347533"
+    },
+    {
+      "name": "搜狐转载证券之星：4月17日圣阳股份涨停分析",
+      "published_at": "2026-04-17 15:43",
+      "url": "https://m.sohu.com/a/1010889231_115377"
+    },
+    {
+      "name": "搜狐转载新浪证券：圣阳股份龙虎榜",
+      "published_at": "2026-04-17 17:00",
+      "url": "https://m.sohu.com/a/1010930674_122014422"
+    },
+    {
+      "name": "证券时报数据宝：111只股收盘价创历史新高",
+      "published_at": "2026-04-17 17:26",
+      "url": "https://stcn.com/article/detail/3759211.html"
+    }
+  ]
+}
+      </script>
+    </main>
+  </body>
+</html>

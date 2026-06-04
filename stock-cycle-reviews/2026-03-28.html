@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="zh-CN">
   <head>
     <meta charset="utf-8" />
@@ -119,80 +119,106 @@
 
       <script type="application/json" id="stock-cycle-review-data">
 {
-  "review_date": "2026-03-28",
-  "data_cutoff": "2026-03-28",
-  "previous_trading_day": "2026-03-27",
-  "next_trading_day": "2026-03-30",
-  "is_trading_day": false,
-  "non_trading_reason": "2026-03-28为周六，A股休市",
-  "current_leader": "华电辽能",
-  "current_leader_theme": "绿电 / 电力 / 央企",
-  "leader_state": "非交易日，沿用上一交易日：龙头高位震荡",
-  "position_action": "未到执行日，待2026-03-30复核",
-  "new_leader_search_allowed": "不允许",
-  "next_trigger": "2026-03-30按2026-03-27计划复核华电辽能继续修复、分歧延续或负反馈；不设计其他候选买点",
-  "market_phase": "非交易日",
-  "cycle_stage": "非交易日，沿用2026-03-27归档链路，不新增判断",
-  "old_leader_state": "非交易日未复核",
-  "loss_effect": {
-    "level": "未复核",
-    "summary": "非交易日，无当日盘面反馈。",
-    "rows": []
-  },
-  "new_direction": {
-    "summary": "非交易日不判断新方向。",
-    "strong_independent": "未复核",
-    "old_related": "未复核"
-  },
-  "operation_plan": {
-    "position": "未到执行日",
-    "action": "2026-03-27计划顺延至2026-03-30复核",
-    "candidate": "非交易日不生成候选"
-  },
-  "risk_control": [
-    ["仓位上限", "非交易日不调整，沿用上一交易日计划"],
-    ["单笔最大亏损", "待2026-03-30盘中复核"],
-    ["当日最大亏损", "待2026-03-30盘中复核"],
-    ["连续试错次数", "非交易日不计入"],
-    ["卖出条件", "待2026-03-30按华电辽能修复、分歧延续或负反馈路径执行"]
-  ],
-  "high_level_sentiment": {
-    "nominal_highest_board": "非交易日",
-    "tradable_highest_board": "非交易日",
-    "previous_high_board_performance": "未到执行日，待2026-03-30复核",
-    "broken_board_feedback": "非交易日无反馈",
-    "high_level_limit_down_count": "非交易日无数据",
-    "high_level_broken_board_count": "非交易日无数据",
-    "promotion_rate": "非交易日无数据"
-  },
-  "prior_confirmed_leader": "华电辽能",
-  "prior_leader_theme": "绿电 / 电力 / 央企",
-  "intermediate_trial_chain": "非交易日不新增链路，沿用2026-03-27归档",
-  "old_leader_chain": "豫能控股 / 算力、算电协同 -> 三房巷 / 化工、PTA、瓶片 -> 华电辽能 / 绿电、电力、央企",
-  "current_core": "华电辽能",
-  "tradable_high_board": "非交易日",
-  "next_opportunity": "非交易日无新机会；2026-03-27计划顺延至2026-03-30复核",
-  "hard_no_trade": "非交易日不交易；不使用2026-03-30及之后走势；不生成4/5板候选",
-  "source_verification": {
-    "sector_primary_sources": "非交易日不核验题材强度。",
-    "individual_primary_sources": "非交易日不核验个股分时。",
-    "local_archive_use": "本地2026-03-27归档仅用于读取上一交易日计划和顺延状态，不作为2026-03-28盘面事实来源。"
-  },
-  "board_sequence_verification": {
-    "status": "非交易日不构建连板梯队",
-    "consecutive_ladder_source": "非交易日无",
-    "non_consecutive_patterns": "非交易日无",
-    "notes": "按非交易日规则跳过梯队、候选和题材排名。"
-  },
-  "model_verdicts": [
-    {
-      "stock": "华电辽能",
-      "role": "上一交易日当前龙头",
-      "verdict": "observe only",
-      "reason": "非交易日未到执行日，2026-03-27计划顺延至2026-03-30复核。"
-    }
-  ],
-  "sources": []
+    "review_date":  "2026-03-28",
+    "generated_by_skill":  {
+                               "name":  "stock-cycle-review",
+                               "version":  "0.1.0+codex.20260602143920"
+                           },
+    "data_cutoff":  "2026-03-28",
+    "previous_trading_day":  "2026-03-27",
+    "next_trading_day":  "2026-03-30",
+    "is_trading_day":  false,
+    "non_trading_reason":  "2026-03-28为周六，A股休市",
+    "current_leader":  "华电辽能",
+    "current_leader_theme":  "绿电 / 电力 / 央企",
+    "leader_state":  "非交易日，沿用上一交易日：龙头高位震荡",
+    "position_action":  "未到执行日，待2026-03-30复核",
+    "new_leader_search_allowed":  "不允许",
+    "next_trigger":  "2026-03-30按2026-03-27计划复核华电辽能继续修复、分歧延续或负反馈；不设计其他候选买点",
+    "market_phase":  "非交易日",
+    "cycle_stage":  "非交易日，沿用2026-03-27归档链路，不新增判断",
+    "old_leader_state":  "非交易日未复核",
+    "loss_effect":  {
+                        "level":  "未复核",
+                        "summary":  "非交易日，无当日盘面反馈。",
+                        "rows":  [
+
+                                 ]
+                    },
+    "new_direction":  {
+                          "summary":  "非交易日不判断新方向。",
+                          "strong_independent":  "未复核",
+                          "old_related":  "未复核"
+                      },
+    "operation_plan":  {
+                           "position":  "未到执行日",
+                           "action":  "2026-03-27计划顺延至2026-03-30复核",
+                           "candidate":  "非交易日不生成候选"
+                       },
+    "risk_control":  [
+                         [
+                             "仓位上限",
+                             "非交易日不调整，沿用上一交易日计划"
+                         ],
+                         [
+                             "单笔最大亏损",
+                             "待2026-03-30盘中复核"
+                         ],
+                         [
+                             "当日最大亏损",
+                             "待2026-03-30盘中复核"
+                         ],
+                         [
+                             "连续试错次数",
+                             "非交易日不计入"
+                         ],
+                         [
+                             "卖出条件",
+                             "待2026-03-30按华电辽能修复、分歧延续或负反馈路径执行"
+                         ]
+                     ],
+    "high_level_sentiment":  {
+                                 "nominal_highest_board":  "非交易日",
+                                 "tradable_highest_board":  "非交易日",
+                                 "previous_high_board_performance":  "未到执行日，待2026-03-30复核",
+                                 "broken_board_feedback":  "非交易日无反馈",
+                                 "high_level_limit_down_count":  "非交易日无数据",
+                                 "high_level_broken_board_count":  "非交易日无数据",
+                                 "promotion_rate":  "非交易日无数据"
+                             },
+    "prior_confirmed_leader":  "华电辽能",
+    "prior_leader_theme":  "绿电 / 电力 / 央企",
+    "intermediate_trial_chain":  "非交易日不新增链路，沿用2026-03-27归档",
+    "old_leader_chain":  "豫能控股 / 算力、算电协同 -\u003e 三房巷 / 化工、PTA、瓶片 -\u003e 华电辽能 / 绿电、电力、央企",
+    "current_core":  "华电辽能",
+    "tradable_high_board":  "非交易日",
+    "next_opportunity":  "非交易日无新机会；2026-03-27计划顺延至2026-03-30复核",
+    "hard_no_trade":  "非交易日不交易；不使用2026-03-30及之后走势；不生成4/5板候选",
+    "source_verification":  {
+                                "sector_primary_sources":  "非交易日不核验题材强度。",
+                                "individual_primary_sources":  "非交易日不核验个股分时。",
+                                "local_archive_use":  "本地2026-03-27归档仅用于读取上一交易日计划和顺延状态，不作为2026-03-28盘面事实来源。"
+                            },
+    "board_sequence_verification":  {
+                                        "status":  "非交易日不构建连板梯队",
+                                        "consecutive_ladder_source":  "非交易日无",
+                                        "non_consecutive_patterns":  "非交易日无",
+                                        "notes":  "按非交易日规则跳过梯队、候选和题材排名。"
+                                    },
+    "model_verdicts":  [
+                           {
+                               "stock":  "华电辽能",
+                               "role":  "上一交易日当前龙头",
+                               "verdict":  "observe only",
+                               "reason":  "非交易日未到执行日，2026-03-27计划顺延至2026-03-30复核。"
+                           }
+                       ],
+    "sources":  [
+
+                ],
+    "leader_anchor":  "华电辽能",
+    "leader_anchor_theme":  "绿电 / 电力 / 央企",
+    "leader_anchor_state":  "非交易日，沿用上一交易日：龙头高位震荡"
 }
       </script>
     </main>
